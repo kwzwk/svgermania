@@ -1,0 +1,616 @@
+[
+  {
+    "id": "aw-ball-raeuber",
+    "name": "Balldiebe",
+    "phase": "aufwaermen",
+    "ages": ["G", "F", "E"],
+    "themes": ["dribbling", "1v1", "orientierung"],
+    "players": { "min": 6, "max": 20 },
+    "field": "15 × 15 m bis 20 × 20 m",
+    "material": "1 Ball pro Kind (außer Diebe), Hütchen, Leibchen",
+    "setup": "Alle Kinder dribbeln mit Ball im Feld. 2–3 Diebe ohne Ball tragen Leibchen.",
+    "rules": [
+      "Die Diebe versuchen, Bälle aus dem Feld zu spielen.",
+      "Wer seinen Ball verliert, holt ihn zurück und macht vor dem Wiedereinstieg einen Ballzauber (z. B. 5 Sohlenzieher).",
+      "Nach 60–90 Sekunden neue Diebe bestimmen."
+    ],
+    "easier": "Nur 1 Dieb, größeres Feld, Diebe dürfen nur gehen.",
+    "harder": "Mehr Diebe, kleineres Feld, nur mit dem schwachen Fuß dribbeln.",
+    "questions": ["Wo ist gerade viel Platz?", "Wie schützt du deinen Ball, wenn ein Dieb kommt?"]
+  },
+  {
+    "id": "aw-ampel",
+    "name": "Ampelspiel",
+    "phase": "aufwaermen",
+    "ages": ["G", "F"],
+    "themes": ["dribbling", "koordination"],
+    "players": { "min": 4, "max": 20 },
+    "field": "15 × 15 m",
+    "material": "1 Ball pro Kind, 3 farbige Hütchen oder Leibchen",
+    "setup": "Alle dribbeln frei im Feld. Der Trainer zeigt eine Farbe.",
+    "rules": [
+      "Grün: schnell dribbeln. Gelb: langsam dribbeln, Ball eng führen. Rot: Ball mit der Sohle stoppen und draufsetzen.",
+      "Weitere Signale einführen: Blau = Richtungswechsel, Weiß = Ball um den Körper führen."
+    ],
+    "easier": "Nur drei Farben, Signale zusätzlich laut ansagen.",
+    "harder": "Nur Farbe zeigen ohne Ansage, Signale schnell wechseln, falsche Reaktion = 3 Sohlenzieher.",
+    "questions": ["Wie bekommst du den Ball ganz schnell zum Stehen?", "Musst du auf den Ball schauen oder kannst du hochschauen?"]
+  },
+  {
+    "id": "aw-schatzjagd",
+    "name": "Schatzjagd",
+    "phase": "aufwaermen",
+    "ages": ["G", "F", "E"],
+    "themes": ["dribbling", "orientierung", "koordination"],
+    "players": { "min": 6, "max": 20 },
+    "field": "20 × 20 m, in jeder Ecke ein Hütchenviereck (Schatzkammer)",
+    "material": "Viele Bälle in der Mitte, 16 Hütchen, Leibchen in 4 Farben",
+    "setup": "4 Teams starten in ihrer Schatzkammer. In der Mitte liegen alle Bälle.",
+    "rules": [
+      "Auf Kommando holt immer ein Kind pro Team einen Ball und dribbelt ihn in die eigene Kammer.",
+      "Ist die Mitte leer, darf man Bälle aus anderen Kammern holen.",
+      "Nach 2 Minuten zählt jedes Team seine Bälle."
+    ],
+    "easier": "Alle Kinder eines Teams dürfen gleichzeitig laufen, Bälle nur aus der Mitte holen.",
+    "harder": "Kammern dürfen von einem Wächter verteidigt werden, Ball muss mit dem schwachen Fuß abgelegt werden.",
+    "questions": ["Bei welcher Kammer liegen gerade die meisten Bälle?", "Wann lohnt es sich, bei einem anderen Team zu holen?"]
+  },
+  {
+    "id": "aw-huetchentore",
+    "name": "Hütchentore sammeln",
+    "phase": "aufwaermen",
+    "ages": ["G", "F", "E"],
+    "themes": ["dribbling", "finten", "orientierung"],
+    "players": { "min": 4, "max": 20 },
+    "field": "20 × 20 m mit 8–12 Hütchentoren (2 m breit)",
+    "material": "1 Ball pro Kind, 16–24 Hütchen",
+    "setup": "Hütchentore verteilt im Feld. Jedes Kind hat einen Ball.",
+    "rules": [
+      "In 60 Sekunden durch möglichst viele verschiedene Tore dribbeln und laut mitzählen.",
+      "Nie zweimal hintereinander durch das gleiche Tor.",
+      "Vor jedem Tor eine Finte zeigen."
+    ],
+    "easier": "Breitere Tore, keine Finte nötig, Zeit verlängern.",
+    "harder": "Engere Tore, 2 Fänger ohne Ball stören, bestimmte Finte vorgeben (Übersteiger, Schere).",
+    "questions": ["Welches Tor ist gerade frei?", "Wann machst du die Finte, weit vor dem Tor oder kurz davor?"]
+  },
+  {
+    "id": "aw-schwaenzchen",
+    "name": "Schwänzchenfangen mit Ball",
+    "phase": "aufwaermen",
+    "ages": ["G", "F", "E"],
+    "themes": ["dribbling", "orientierung", "koordination"],
+    "players": { "min": 6, "max": 20 },
+    "field": "15 × 20 m",
+    "material": "1 Ball und 1 Leibchen pro Kind",
+    "setup": "Jedes Kind steckt ein Leibchen hinten in die Hose und dribbelt mit Ball.",
+    "rules": [
+      "Alle versuchen, anderen das Schwänzchen zu klauen, ohne den eigenen Ball zu verlieren.",
+      "Wer kein Schwänzchen mehr hat, macht weiter und darf klauen.",
+      "Wer hat nach 90 Sekunden die meisten Schwänzchen?"
+    ],
+    "easier": "Ohne Ball spielen oder nur 2 Fänger mit Ball.",
+    "harder": "Feld verkleinern, Ball muss immer mit dem schwachen Fuß geführt werden.",
+    "questions": ["Wie behältst du Ball und Gegner gleichzeitig im Blick?"]
+  },
+  {
+    "id": "aw-stinkbombe",
+    "name": "Stinkbombe",
+    "phase": "aufwaermen",
+    "ages": ["G", "F"],
+    "themes": ["dribbling", "koordination", "torschuss"],
+    "players": { "min": 6, "max": 20 },
+    "field": "15 × 15 m",
+    "material": "1 Ball pro Kind, 1–2 Softbälle oder andersfarbige Bälle (Stinkbomben)",
+    "setup": "Alle dribbeln. 1–2 Kinder haben eine Stinkbombe und dribbeln diese.",
+    "rules": [
+      "Die Stinkbomben-Kinder versuchen, den Ball anderer Kinder mit ihrer Stinkbombe anzuschießen.",
+      "Wer getroffen wird, bekommt die Stinkbombe.",
+      "Wer am Ende keine Stinkbombe hat, gewinnt."
+    ],
+    "easier": "Nur eine Stinkbombe, großes Feld.",
+    "harder": "Treffen nur mit dem schwachen Fuß, drei Stinkbomben.",
+    "questions": ["Wie weit musst du weg sein, damit du sicher bist?"]
+  },
+  {
+    "id": "aw-passen-bewegung",
+    "name": "Passen in Bewegung",
+    "phase": "aufwaermen",
+    "ages": ["F", "E"],
+    "levels": [2, 3],
+    "themes": ["passen", "orientierung"],
+    "players": { "min": 6, "max": 20 },
+    "field": "20 × 20 m mit 6–8 Hütchentoren",
+    "material": "1 Ball pro Paar, 12–16 Hütchen",
+    "setup": "Paare mit einem Ball bewegen sich frei im Feld.",
+    "rules": [
+      "Das Paar passt sich den Ball durch ein Hütchentor zu.",
+      "Jeder Pass durch ein anderes Tor zählt einen Punkt.",
+      "Nach dem Pass sofort ein neues freies Tor suchen."
+    ],
+    "easier": "Breitere Tore, Ball darf vor dem Pass gestoppt werden.",
+    "harder": "Maximal 2 Kontakte, Ballannahme in die neue Richtung, 2 Störer ohne Ball.",
+    "questions": ["Wohin läufst du, nachdem du gepasst hast?", "Mit welchem Fuß nimmst du den Ball an, um schnell weiterzuspielen?"]
+  },
+  {
+    "id": "aw-rondo",
+    "name": "Rondo 4 gegen 1",
+    "phase": "aufwaermen",
+    "ages": ["E"],
+    "levels": [2, 3],
+    "themes": ["passen", "orientierung"],
+    "players": { "min": 5, "max": 20 },
+    "field": "Viereck 8 × 8 m pro Gruppe",
+    "material": "1 Ball und 4 Hütchen pro Gruppe, Leibchen",
+    "setup": "Vier Spieler auf den Seiten des Vierecks, einer in der Mitte.",
+    "rules": [
+      "Die Außenspieler passen sich den Ball zu, der Mittelspieler versucht ihn abzufangen.",
+      "Wer den Ballverlust verursacht, geht in die Mitte.",
+      "10 Pässe in Folge = 1 Punkt für die Außenspieler."
+    ],
+    "easier": "5 gegen 1, größeres Viereck, freie Kontaktzahl.",
+    "harder": "4 gegen 2, maximal 2 Kontakte, kleineres Viereck.",
+    "questions": ["Wo musst du stehen, damit du anspielbar bist?", "Siehst du schon vor der Ballannahme, wohin du passt?"]
+  },
+  {
+    "id": "aw-parcours",
+    "name": "Koordinations-Parcours mit Ball",
+    "phase": "aufwaermen",
+    "ages": ["G", "F"],
+    "levels": [1, 2],
+    "themes": ["koordination", "dribbling"],
+    "players": { "min": 4, "max": 16 },
+    "field": "2 parallele Bahnen à 20 m",
+    "material": "Hütchen, Stangen, Ringe oder Leiter, 1 Ball pro Kind",
+    "setup": "Zwei gleiche Bahnen: Slalom, Ringe, Hütchen zum Umrunden, Minitor am Ende.",
+    "rules": [
+      "Erst ohne Ball durch den Parcours (hüpfen, seitwärts, rückwärts).",
+      "Dann mit Ball: Slalom dribbeln, Ball um das Hütchen führen, am Ende ins Minitor schießen.",
+      "Wenig Wartezeit: maximal 3 Kinder pro Bahn."
+    ],
+    "easier": "Weniger Stationen, Ball darf mit der Hand getragen werden.",
+    "harder": "Als Staffelwettkampf, Dribbling nur mit dem schwachen Fuß.",
+    "questions": ["Wie musst du den Ball führen, damit er beim Slalom nah bei dir bleibt?"]
+  },
+
+  {
+    "id": "ue-zwei-tore-1v1",
+    "name": "1 gegen 1 auf zwei Minitore",
+    "phase": "uebung",
+    "ages": ["G", "F", "E"],
+    "themes": ["1v1", "dribbling", "orientierung"],
+    "players": { "min": 4, "max": 20 },
+    "field": "Pro Station 10 × 15 m, 2 Minitore auf einer Grundlinie",
+    "material": "2 Minitore pro Station, Bälle, Hütchen",
+    "setup": "Verteidiger steht vor den zwei Minitoren, Angreifer startet mit Ball an der gegenüberliegenden Linie.",
+    "rules": [
+      "Der Verteidiger passt dem Angreifer den Ball zu und läuft an.",
+      "Der Angreifer entscheidet, auf welches Tor er geht, und dribbelt hinein oder schießt aus 3 m.",
+      "Rollen nach jedem Durchgang tauschen, schnell nachrücken."
+    ],
+    "easier": "Verteidiger startet weiter hinten oder darf nur gehen (passiver Gegner).",
+    "harder": "Feld schmaler, Angreifer hat 6 Sekunden, Verteidiger kontert bei Ballgewinn auf ein Hütchentor.",
+    "questions": ["Welches Tor bewacht der Verteidiger gerade nicht?", "Wann ist der richtige Moment für deinen Richtungswechsel?"]
+  },
+  {
+    "id": "ue-ballzauberer",
+    "name": "Ballzauberer",
+    "phase": "uebung",
+    "ages": ["G"],
+    "themes": ["koordination", "dribbling", "finten"],
+    "players": { "min": 2, "max": 16 },
+    "field": "15 × 15 m",
+    "material": "1 Ball pro Kind",
+    "setup": "Jedes Kind hat einen Ball, der Trainer macht Zaubertricks vor.",
+    "rules": [
+      "Tricks nachmachen: Ball mit der Sohle vor- und zurückziehen, Ball um den Körper führen, auf den Ball tippen (Tippen links/rechts).",
+      "Danach dribbeln und auf Zuruf einen Zaubertrick zeigen.",
+      "Jedes Kind erfindet einen eigenen Trick und gibt ihm einen Namen."
+    ],
+    "easier": "Nur 2 Tricks, langsam und im Stand.",
+    "harder": "Tricks in der Bewegung, mit beiden Füßen, gegen die Uhr.",
+    "questions": ["Mit welchem Teil vom Fuß kannst du den Ball noch berühren?"]
+  },
+  {
+    "id": "ue-finten-tore",
+    "name": "Finten-Parcours mit Torabschluss",
+    "phase": "uebung",
+    "ages": ["F", "E"],
+    "themes": ["finten", "dribbling", "torschuss"],
+    "players": { "min": 4, "max": 16 },
+    "field": "2–3 Bahnen à 20 m, Minitor am Ende jeder Bahn",
+    "material": "Stangen oder Hütchen als Gegner, Minitore, Bälle",
+    "setup": "In jeder Bahn stehen 2–3 Stangen als Gegner, am Ende ein Minitor mit Schusszone.",
+    "rules": [
+      "Auf die Stange zudribbeln, Finte zeigen, vorbei, nächste Stange.",
+      "Aus der Schusszone ins Minitor schießen.",
+      "Jede Runde eine andere Finte: Übersteiger, Schere, Körpertäuschung, Cruyff-Drehung."
+    ],
+    "easier": "Nur eine Stange, Finte frei wählen, kein Torschuss nötig.",
+    "harder": "Statt Stange ein halbaktiver Verteidiger, Finte mit dem schwachen Fuß, Zeitlimit.",
+    "questions": ["Wie weit vor dem Gegner beginnst du die Finte?", "Wie schnell wirst du nach der Finte?"]
+  },
+  {
+    "id": "ue-torschuss-schusszone",
+    "name": "Torschuss aus der Schusszone",
+    "phase": "uebung",
+    "ages": ["G", "F", "E"],
+    "themes": ["torschuss", "dribbling"],
+    "players": { "min": 4, "max": 16 },
+    "field": "20 × 15 m, 4 Minitore wie beim Funino, Schusszone markiert",
+    "material": "4 Minitore, Hütchen, viele Bälle",
+    "setup": "Zwei Gruppen an der Mittellinie mit Bällen, Schusszonen auf beiden Seiten.",
+    "rules": [
+      "Auf Signal in die Schusszone dribbeln und auf eines der zwei Minitore schießen.",
+      "Trainer ruft kurz vor der Schusszone 'links' oder 'rechts'.",
+      "Ball holen, auf der anderen Seite anstellen."
+    ],
+    "easier": "Kein Signal, Schuss aus dem Stand, Tore größer.",
+    "harder": "Ein passiver Verteidiger läuft hinterher, Schuss nur mit dem schwachen Fuß oder direkt nach Zuspiel.",
+    "questions": ["Wo im Tor ist es am schwersten für den Verteidiger?", "Schaust du vor dem Schuss noch einmal hoch?"]
+  },
+  {
+    "id": "ue-passdreieck",
+    "name": "Passdreieck mit Aufdrehen",
+    "phase": "uebung",
+    "ages": ["F", "E"],
+    "themes": ["passen", "orientierung"],
+    "players": { "min": 3, "max": 18 },
+    "field": "Dreieck mit 8–10 m Seitenlänge pro Gruppe",
+    "material": "3 Hütchen und 1 Ball pro Gruppe",
+    "setup": "Drei Kinder pro Dreieck, ein Ball.",
+    "rules": [
+      "Passen und dem Ball hinterherlaufen.",
+      "Ballannahme mit der Innenseite des hinteren Fußes, Körper öffnen, in die neue Richtung mitnehmen.",
+      "Nach einer Minute Richtung wechseln."
+    ],
+    "easier": "Ball darf gestoppt werden, Dreieck kleiner.",
+    "harder": "Nur 2 Kontakte, ein Störer in der Mitte, Trainer ruft Richtung im Moment der Ballannahme.",
+    "questions": ["Wie stellst du dich hin, damit du beide Mitspieler siehst?"]
+  },
+  {
+    "id": "ue-abdraengen",
+    "name": "Abdrängen und Ball erobern",
+    "phase": "uebung",
+    "ages": ["F", "E"],
+    "themes": ["1v1", "umschalten"],
+    "players": { "min": 4, "max": 16 },
+    "field": "Kanal 8 × 15 m, am Ende ein Hütchentor",
+    "material": "Hütchen, Bälle, Leibchen",
+    "setup": "Angreifer mit Ball an einem Ende, Verteidiger in der Mitte des Kanals.",
+    "rules": [
+      "Der Angreifer will durch das Hütchentor dribbeln.",
+      "Der Verteidiger stellt sich seitlich, drängt an die Linie ab und erobert den Ball.",
+      "Bei Ballgewinn dribbelt der Verteidiger über die Startlinie (Umschalten)."
+    ],
+    "easier": "Angreifer dribbelt nur in Gehtempo, Kanal breiter.",
+    "harder": "Kanal schmaler, Angreifer hat zwei Tore zur Auswahl, Verteidiger startet hinter dem Angreifer.",
+    "questions": ["Auf welche Seite willst du den Angreifer schicken?", "Wann gehst du zum Ball?"]
+  },
+  {
+    "id": "ue-dribbel-wettkampf",
+    "name": "Dribbel-Wettkampf: Wer schafft die meisten Tore?",
+    "phase": "uebung",
+    "ages": ["G", "F", "E"],
+    "themes": ["dribbling", "torschuss"],
+    "players": { "min": 4, "max": 20 },
+    "field": "20 × 20 m mit 4 Minitoren in den Ecken",
+    "material": "4 Minitore, 1 Ball pro Kind",
+    "setup": "Alle dribbeln im Feld.",
+    "rules": [
+      "In 3 Minuten möglichst viele Tore schießen, laut mitzählen.",
+      "Nach jedem Tor Ball holen und ein anderes Tor wählen.",
+      "Rekord vom letzten Mal schlagen."
+    ],
+    "easier": "Schuss von überall erlaubt, längere Zeit.",
+    "harder": "Tor zählt nur nach Finte, Schusszone 3 m, schwacher Fuß zählt doppelt.",
+    "questions": ["Welches Tor ist gerade frei?"]
+  },
+  {
+    "id": "ue-1v1-linie",
+    "name": "1 gegen 1 über die Linie",
+    "phase": "uebung",
+    "ages": ["G", "F", "E"],
+    "themes": ["1v1", "dribbling"],
+    "players": { "min": 2, "max": 20 },
+    "field": "Pro Paar 8 × 12 m",
+    "material": "Hütchen, 1 Ball pro Paar",
+    "setup": "Paare stehen sich an den Linien gegenüber.",
+    "rules": [
+      "Wer den Ball hat, versucht über die gegnerische Linie zu dribbeln und den Ball dort zu stoppen.",
+      "Der andere verteidigt; bei Ballgewinn wird sofort umgeschaltet.",
+      "Spielzeit 45 Sekunden, dann Pause und neuer Partner."
+    ],
+    "easier": "Feld breiter, Verteidiger nur mit Händen auf dem Rücken.",
+    "harder": "Feld schmaler, Punkte nur bei Dribbling mit Finte.",
+    "questions": ["Wo ist mehr Platz, links oder rechts vom Verteidiger?"]
+  },
+
+  {
+    "id": "sf-2v1-zwei-tore",
+    "name": "2 gegen 1 auf zwei Minitore",
+    "phase": "spielform",
+    "ages": ["F", "E"],
+    "themes": ["passen", "orientierung", "1v1"],
+    "players": { "min": 6, "max": 18 },
+    "field": "Pro Feld 15 × 20 m, 2 Minitore auf einer Seite",
+    "material": "2 Minitore pro Feld, Bälle, Leibchen",
+    "setup": "Zwei Angreifer starten mit Ball, ein Verteidiger vor den Toren.",
+    "rules": [
+      "Die Angreifer versuchen, ein Tor zu erzielen. Abschluss nur aus der Schusszone.",
+      "Erobert der Verteidiger den Ball, dribbelt er über die Mittellinie.",
+      "Nach jeder Aktion rücken die Nächsten nach, Rollen wechseln."
+    ],
+    "easier": "Verteidiger startet verzögert, Feld breiter.",
+    "harder": "2 gegen 2 mit verzögertem zweiten Verteidiger, 8 Sekunden Zeitlimit.",
+    "questions": ["Wann passt du und wann dribbelst du selbst?", "Was macht der Verteidiger, wenn du auf ihn zudribbelst?"]
+  },
+  {
+    "id": "sf-champions-league",
+    "name": "1-gegen-1-Champions-League",
+    "phase": "spielform",
+    "ages": ["G", "F", "E"],
+    "themes": ["1v1", "dribbling", "torschuss"],
+    "players": { "min": 4, "max": 20 },
+    "field": "Mehrere Felder 10 × 15 m, je 2 Minitore",
+    "material": "2 Minitore pro Feld (oder Hütchentore), Bälle",
+    "setup": "Nebeneinander mehrere 1-gegen-1-Felder, Feld 1 ist die 'Champions League'.",
+    "rules": [
+      "1 Minute 1 gegen 1 auf die kleinen Tore.",
+      "Gewinner steigt ein Feld auf, Verlierer steigt ab.",
+      "Bei Gleichstand entscheidet Schere-Stein-Papier."
+    ],
+    "easier": "Breitere Tore, Tor zählt aus jeder Entfernung.",
+    "harder": "Schmalere Felder, nur Dribbeltor (Ball im Tor stoppen) zählt.",
+    "questions": ["Was hat beim letzten Tor geklappt?"]
+  },
+  {
+    "id": "sf-dribbellinie",
+    "name": "2 gegen 2 auf Dribbellinie",
+    "phase": "spielform",
+    "ages": ["G", "F", "E"],
+    "themes": ["dribbling", "1v1", "orientierung"],
+    "players": { "min": 4, "max": 20 },
+    "field": "Pro Feld 15 × 20 m",
+    "material": "Hütchen, Leibchen, Bälle",
+    "setup": "Mehrere Felder nebeneinander, 2 gegen 2.",
+    "rules": [
+      "Ein Punkt, wenn ein Spieler den Ball über die gegnerische Grundlinie dribbelt und dort stoppt.",
+      "Wiederbeginn durch Eindribbeln von der eigenen Grundlinie.",
+      "4 Minuten spielen, 2 Minuten Pause, Gegner wechseln."
+    ],
+    "easier": "3 gegen 2 mit Joker im ballbesitzenden Team.",
+    "harder": "Punkt nur in einer von zwei markierten Endzonen, Feld schmaler.",
+    "questions": ["Auf welcher Seite ist die Linie frei?", "Wie hilft dir dein Mitspieler beim Dribbeln?"]
+  },
+  {
+    "id": "sf-3v2-vier-tore",
+    "name": "3 gegen 2 auf vier Hütchentore",
+    "phase": "spielform",
+    "ages": ["E"],
+    "levels": [2, 3],
+    "themes": ["passen", "orientierung"],
+    "players": { "min": 5, "max": 15 },
+    "field": "20 × 20 m, an jeder Seite ein Hütchentor",
+    "material": "Hütchen, Leibchen, Bälle",
+    "setup": "3 Angreifer gegen 2 Verteidiger, vier Tore an den Seiten.",
+    "rules": [
+      "Punkt, wenn ein Angreifer durch ein Tor dribbelt oder einem Mitspieler durch ein Tor zuspielt.",
+      "Ballgewinn: Verteidiger dribbeln über eine beliebige Linie.",
+      "Nach 2 Minuten wechseln zwei Angreifer in die Verteidigung."
+    ],
+    "easier": "4 gegen 2, breitere Tore.",
+    "harder": "3 gegen 3, Tor erst nach mindestens 3 Pässen.",
+    "questions": ["Welches Tor ist am weitesten von den Verteidigern weg?", "Wie schnell kannst du die Seite wechseln?"]
+  },
+  {
+    "id": "sf-torjaeger",
+    "name": "Torjäger 2 gegen 2 mit Ballnachschub",
+    "phase": "spielform",
+    "ages": ["G", "F", "E"],
+    "themes": ["torschuss", "umschalten", "1v1"],
+    "players": { "min": 4, "max": 16 },
+    "field": "Pro Feld 15 × 20 m, an jeder Grundlinie 2 Minitore",
+    "material": "4 Minitore pro Feld, Balldepot am Rand",
+    "setup": "2 gegen 2, Trainer steht mit Balldepot an der Seitenlinie.",
+    "rules": [
+      "Geht der Ball ins Aus oder fällt ein Tor, spielt der Trainer sofort einen neuen Ball ins Feld.",
+      "Wer zuerst am Ball ist, greift an.",
+      "4 Minuten spielen, Tore zählen."
+    ],
+    "easier": "Tore aus der ganzen Hälfte zählen, 3 gegen 2.",
+    "harder": "Tore nur aus der Schusszone, nach dem Tor muss das Team die Mittellinie berühren.",
+    "questions": ["Wo stehst du, wenn der neue Ball kommt?", "Was machst du direkt nach einem Ballverlust?"]
+  },
+  {
+    "id": "sf-wellen",
+    "name": "Wellen 2 gegen 1 / 2 gegen 2",
+    "phase": "spielform",
+    "ages": ["F", "E"],
+    "themes": ["umschalten", "orientierung", "1v1"],
+    "players": { "min": 6, "max": 18 },
+    "field": "20 × 25 m, an jeder Grundlinie 2 Minitore",
+    "material": "4 Minitore, Bälle, Leibchen in 2 Farben",
+    "setup": "Zwei Teams an den Grundlinien neben den Toren.",
+    "rules": [
+      "Zwei Spieler von Team A greifen gegen einen Spieler von Team B an.",
+      "Nach dem Abschluss oder Ballverlust greift Team B mit zwei Spielern an, ein Spieler von A bleibt als Verteidiger.",
+      "Fließender Ablauf in Wellen, Tore zählen."
+    ],
+    "easier": "Nur 2 gegen 1, Verteidiger startet verzögert.",
+    "harder": "2 gegen 2 mit sofortigem Umschalten, Zeitlimit 8 Sekunden.",
+    "questions": ["Was passiert, wenn wir sofort nach Ballverlust angreifen?"]
+  },
+  {
+    "id": "sf-kleine-kicker",
+    "name": "Kleine Kicker: 2 gegen 2 auf Minitore",
+    "phase": "spielform",
+    "ages": ["G"],
+    "themes": ["dribbling", "torschuss", "1v1"],
+    "players": { "min": 4, "max": 16 },
+    "field": "Pro Feld 12 × 18 m",
+    "material": "2 Minitore pro Feld, Bälle, Leibchen",
+    "setup": "Mehrere Mini-Felder, 2 gegen 2.",
+    "rules": [
+      "Normales Spiel auf je ein Minitor, Tore aus der eigenen Angriffshälfte.",
+      "Ist der Ball im Aus, dribbelt man ihn ein.",
+      "3 Minuten spielen, Gewinner steigen ein Feld auf."
+    ],
+    "easier": "Vier Minitore (zwei pro Seite), größeres Feld.",
+    "harder": "Tor zählt doppelt, wenn vorher gedribbelt und getäuscht wurde.",
+    "questions": ["Wo ist das Tor frei?"]
+  },
+  {
+    "id": "sf-4v4-zonen",
+    "name": "4 gegen 4 mit Dribbelzonen",
+    "phase": "spielform",
+    "ages": ["E"],
+    "themes": ["finten", "1v1", "dribbling"],
+    "players": { "min": 8, "max": 16 },
+    "field": "25 × 35 m, 4 Minitore, an jeder Seite eine 5 m breite Dribbelzone",
+    "material": "4 Minitore, Hütchen, Leibchen",
+    "setup": "4 gegen 4, zwei Dribbelzonen an den Seitenlinien.",
+    "rules": [
+      "Tore zählen nur aus der Schusszone.",
+      "Wer in der Dribbelzone einen Gegner per Finte überspielt, bekommt einen Extrapunkt.",
+      "Am Ende die Zonen weglassen und frei spielen."
+    ],
+    "easier": "Joker spielt immer mit dem ballbesitzenden Team.",
+    "harder": "Dribbelzonen schmaler, Tor nur nach erfolgreichem 1 gegen 1.",
+    "questions": ["Wo hast du mehr Platz für deine Finte?"]
+  },
+
+  {
+    "id": "ab-funino-grundspiel",
+    "name": "Funino-Grundspiel",
+    "phase": "abschluss",
+    "ages": ["G", "F", "E"],
+    "themes": ["orientierung", "dribbling", "torschuss", "1v1", "passen"],
+    "players": { "min": 6, "max": 24 },
+    "field": "Funino-Feld nach Altersklasse, 4 Minitore, 6-m-Schusszone",
+    "material": "4 Minitore pro Feld, Hütchen für Schusszonen, Leibchen",
+    "setup": "3 gegen 3 (G-Jugend auch 2 gegen 2), je 1–2 Wechselspieler. Bei vielen Kindern mehrere Felder.",
+    "rules": [
+      "Funino-Regeln: Tore nur aus der Schusszone, Wiederbeginn durch Einpassen oder Eindribbeln.",
+      "Nach jedem Tor Rotation: Jedes Team wechselt einen Spieler.",
+      "Blöcke von ca. 4 Minuten, Gewinner steigen ein Feld auf, Verlierer ab."
+    ],
+    "easier": "Handicap-Regel früh anwenden, größeres Feld, Joker für das ballbesitzende Team.",
+    "harder": "Kleineres Feld, Tor zählt doppelt nach Spielverlagerung.",
+    "questions": ["Welches der beiden Tore ist frei?", "Wo ist gerade Platz?"]
+  },
+  {
+    "id": "ab-funino-eindribbeln",
+    "name": "Funino mit Eindribbeln",
+    "phase": "abschluss",
+    "ages": ["G", "F", "E"],
+    "themes": ["dribbling", "1v1", "finten"],
+    "players": { "min": 6, "max": 24 },
+    "field": "Funino-Feld nach Altersklasse",
+    "material": "4 Minitore pro Feld, Hütchen, Leibchen",
+    "setup": "3 gegen 3 nach Funino-Regeln.",
+    "rules": [
+      "Wiederbeginn nur durch Eindribbeln.",
+      "Ein Tor nach einem gewonnenen 1 gegen 1 zählt doppelt.",
+      "Rotation nach jedem Tor."
+    ],
+    "easier": "Gegner muss beim Eindribbeln 5 m Abstand halten.",
+    "harder": "Tor zählt nur, wenn vorher ein Gegner ausgedribbelt wurde.",
+    "questions": ["Wann lohnt sich ein Dribbling und wann ein Pass?"]
+  },
+  {
+    "id": "ab-funino-joker",
+    "name": "Funino mit Joker",
+    "phase": "abschluss",
+    "ages": ["G", "F", "E"],
+    "themes": ["passen", "orientierung"],
+    "players": { "min": 7, "max": 21 },
+    "field": "Funino-Feld nach Altersklasse",
+    "material": "4 Minitore pro Feld, Leibchen in 3 Farben",
+    "setup": "3 gegen 3 plus ein Joker, der immer mit dem ballbesitzenden Team spielt (4 gegen 3).",
+    "rules": [
+      "Funino-Regeln, der Joker darf nicht selbst aufs Tor schießen.",
+      "Joker wechselt nach jedem Tor.",
+      "Extrapunkt, wenn vor dem Tor der Joker angespielt wurde."
+    ],
+    "easier": "Zwei Joker, Joker darf auch schießen.",
+    "harder": "Joker nur 1 Kontakt, Joker nur auf der Seitenlinie.",
+    "questions": ["Wo muss der Joker stehen, damit er frei ist?"]
+  },
+  {
+    "id": "ab-funino-verlagerung",
+    "name": "Funino: Spielverlagerung zählt doppelt",
+    "phase": "abschluss",
+    "ages": ["F", "E"],
+    "themes": ["orientierung", "passen"],
+    "players": { "min": 6, "max": 24 },
+    "field": "Funino-Feld, eher kurz und breit",
+    "material": "4 Minitore pro Feld, Hütchen, Leibchen",
+    "setup": "3 gegen 3 nach Funino-Regeln.",
+    "rules": [
+      "Ein Tor zählt doppelt, wenn der Ball vorher von einer Torseite zur anderen verlagert wurde.",
+      "Rotation nach jedem Tor.",
+      "Trainer fragt in Pausen nach freien Räumen statt Lösungen vorzugeben."
+    ],
+    "easier": "Verlagerung durch Dribbling zählt auch, Joker hilft.",
+    "harder": "Nur Tore nach Verlagerung zählen, 2 Kontakte in der eigenen Hälfte.",
+    "questions": ["Wo stehen die Verteidiger, wenn wir das andere Tor angreifen?"]
+  },
+  {
+    "id": "ab-funino-ballgewinn",
+    "name": "Funino: Ballgewinn zählt",
+    "phase": "abschluss",
+    "ages": ["F", "E"],
+    "themes": ["umschalten", "1v1"],
+    "players": { "min": 6, "max": 24 },
+    "field": "Funino-Feld nach Altersklasse",
+    "material": "4 Minitore pro Feld, Hütchen, Leibchen",
+    "setup": "3 gegen 3 nach Funino-Regeln.",
+    "rules": [
+      "Ein Ballgewinn in der gegnerischen Hälfte zählt einen Punkt.",
+      "Ein Tor innerhalb von 5 Sekunden nach Ballgewinn zählt doppelt.",
+      "Rotation nach jedem Tor."
+    ],
+    "easier": "Nur Tore nach Ballgewinn zählen doppelt, keine Zeitgrenze.",
+    "harder": "Nach Ballverlust muss das Team in 5 Sekunden zurückerobern, sonst Punkt für den Gegner.",
+    "questions": ["Was machst du in der ersten Sekunde nach einem Ballverlust?"]
+  },
+  {
+    "id": "ab-funino-festival",
+    "name": "Funino-Festival mit Auf- und Abstieg",
+    "phase": "abschluss",
+    "ages": ["G", "F", "E"],
+    "themes": ["orientierung", "dribbling", "torschuss", "1v1", "passen", "umschalten"],
+    "players": { "min": 12, "max": 32 },
+    "field": "2–4 Funino-Felder nebeneinander",
+    "material": "4 Minitore pro Feld, Hütchen, Leibchen in 4+ Farben",
+    "setup": "Teams à 3–4 Kinder, ein Feld pro zwei Teams, Feld 1 ist das 'Königsfeld'.",
+    "rules": [
+      "Runden à 4–5 Minuten nach Funino-Regeln, keine Tabelle.",
+      "Gewinner steigen ein Feld auf, Verlierer ab.",
+      "Teams wechseln zwischen den Runden die Wechselspieler, alle spielen gleich viel."
+    ],
+    "easier": "Weniger Regeln, Tore aus der ganzen Hälfte (G-Jugend 2 gegen 2).",
+    "harder": "Pro Feld eine Zusatzregel (Joker, Verlagerung, Ballgewinn).",
+    "questions": ["Was macht ihr anders als in der letzten Runde?"]
+  },
+  {
+    "id": "ab-funino-mini",
+    "name": "Mini-Funino 2 gegen 2",
+    "phase": "abschluss",
+    "ages": ["G"],
+    "themes": ["dribbling", "torschuss", "orientierung", "koordination"],
+    "players": { "min": 4, "max": 20 },
+    "field": "16 × 20 m, 4 Minitore",
+    "material": "4 Minitore pro Feld, Hütchen, Leibchen",
+    "setup": "2 gegen 2 auf vier Minitore, mehrere Felder nebeneinander.",
+    "rules": [
+      "Tore zählen aus der eigenen Angriffshälfte.",
+      "Wiederbeginn durch Eindribbeln.",
+      "Nach jedem Tor kommt ein Wechselspieler rein."
+    ],
+    "easier": "Trainer spielt als Joker mit, Tore von überall.",
+    "harder": "3 gegen 3 mit 6-m-Schusszone.",
+    "questions": ["Welches Tor ist leer?"]
+  }
+]
