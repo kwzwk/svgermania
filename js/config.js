@@ -67,11 +67,14 @@ export const THEMES = {
 
 // Spielen – Üben – Spielen. Anteile pro Phase an der Trainingszeit.
 export const PHASES = [
-  { id: 'aufwaermen', label: 'Einstieg / Aufwärmspiel', share: 0.17 },
+  { id: 'aufwaermen', label: 'Aufwärmspiel', share: 0.2 },
   { id: 'uebung', label: 'Hinführung / Übungsform', share: 0.25 },
-  { id: 'spielform', label: 'Spielform', share: 0.28 },
+  { id: 'spielform', label: 'Spielform', share: 0.25 },
   { id: 'abschluss', label: 'Abschlussspiel (Funino)', share: 0.3 },
 ];
+
+// Feste Rituale am Anfang und Ende jeder Einheit (Minuten). Ankommen läuft vor dem offiziellen Beginn.
+export const RITUAL_MINUTES = { opening: 5, closing: 5 };
 
 export const SESSION_LENGTHS = [45, 60, 75, 90];
 

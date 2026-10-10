@@ -1,10 +1,11 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { AGE_GROUPS, LEVELS, PHASES, THEMES, SESSION_LENGTHS } from '../js/config.js';
+import { AGE_GROUPS, LEVELS, PHASES, THEMES, SESSION_LENGTHS, RITUAL_MINUTES } from '../js/config.js';
 import { generatePlan, splitMinutes, suitableExercises, themeForWeek, isoWeek } from '../js/generator.js';
 
 const exercises = JSON.parse(readFileSync(new URL('../data/exercises.json', import.meta.url)));
+const rituals = JSON.parse(readFileSync(new URL('../data/rituals.json', import.meta.url)));
 
 test('exercise data is well-formed', () => {
   const ids = new Set();
@@ -33,11 +34,43 @@ test('every age, level and phase has at least two exercises', () => {
   }
 });
 
-test('minutes add up for every session length', () => {
+test('minutes add up for every session length, including rituals', () => {
   for (const m of SESSION_LENGTHS) {
-    const parts = splitMinutes(m);
-    assert.equal(parts.reduce((s, x) => s + x, 0), m);
-    assert.ok(parts.every((x) => x >= 5));
+    const plan = generatePlan(exercises, { age: 'F', level: 2, sessions: 1, minutes: m, week: 1 }, rituals);
+    const s = plan.sessions[0];
+    const total = s.opening.minutes + s.blocks.reduce((sum, b) => sum + b.minutes, 0) + s.closing.minutes;
+    assert.equal(total, m);
+    assert.ok(s.blocks.every((b) => b.minutes >= 5));
+    assert.equal(splitMinutes(m).reduce((a, x) => a + x, 0), m);
+  }
+});
+
+test('ritual data is well-formed and covers every age group', () => {
+  assert.ok(rituals.principles.length > 0);
+  assert.ok(rituals.standard.opening.length > 0 && rituals.standard.closing.length > 0);
+  const ids = new Set();
+  for (const kind of ['arrival', 'opening', 'closing']) {
+    for (const r of rituals[kind]) {
+      assert.ok(!ids.has(r.id), `duplicate ritual id ${r.id}`);
+      ids.add(r.id);
+      assert.ok(r.name && r.steps.length > 0 && r.tip, `${r.id}: missing fields`);
+      for (const a of r.ages) assert.ok(AGE_GROUPS[a], `${r.id}: unknown age ${a}`);
+    }
+    for (const age of Object.keys(AGE_GROUPS)) {
+      assert.ok(rituals[kind].filter((r) => r.ages.includes(age)).length >= 2, `${kind}/${age}: fewer than 2 rituals`);
+    }
+  }
+});
+
+test('every session opens and closes with age-appropriate rituals, varied within the week', () => {
+  for (const age of Object.keys(AGE_GROUPS)) {
+    const plan = generatePlan(exercises, { age, level: 2, sessions: 2, minutes: 60, week: 3 }, rituals);
+    for (const s of plan.sessions) {
+      assert.equal(s.opening.minutes, RITUAL_MINUTES.opening);
+      assert.equal(s.closing.minutes, RITUAL_MINUTES.closing);
+      for (const r of [s.opening.arrival, s.opening.circle, s.closing.circle]) assert.ok(r && r.ages.includes(age));
+    }
+    assert.notEqual(plan.sessions[0].opening.circle.id, plan.sessions[1].opening.circle.id);
   }
 });
 

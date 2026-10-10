@@ -6,11 +6,12 @@ Live: https://svgermania.geyen.org
 
 ## Was es kann
 
-- **Wochenplan**: Altersklasse (G-, F-, E-Jugend), Niveau (Einsteiger, Fortgeschritten, Könner), Einheiten pro Woche, Dauer, Anzahl Kinder, Schwerpunkt und Kalenderwoche einstellen. Jede Einheit hat vier Phasen: Aufwärmspiel, Übungsform, Spielform und ein Funino-Abschlussspiel.
+- **Wochenplan**: Altersklasse (G-, F-, E-Jugend), Niveau (Einsteiger, Fortgeschritten, Könner), Einheiten pro Woche, Dauer, Anzahl Kinder, Schwerpunkt und Kalenderwoche einstellen.
+- **Fester Ablauf jeder Einheit**: Ankommen (jedes Kind wird persönlich begrüßt), Begrüßungskreis mit einem Ritual zum Ankommen und Kennenlernen, dann Aufwärmspiel, Übungsform, Spielform und Funino-Abschlussspiel, zum Schluss ein Abschlusskreis mit Lob, Teamruf und Verabschiedung. Die Rituale wechseln von Einheit zu Einheit und passen zur Altersklasse.
 - **Niveau als Stellschraube**: Das Niveau ändert nicht das Spielformat, sondern zeigt für jede Übung die leichtere oder schwerere Variante. Ab der zweiten Einheit der Woche geht es eine Stufe schwerer.
 - **Schwerpunkt pro Woche**: automatisch rotierend nach Kalenderwoche oder fest gewählt.
 - **Teilen und Drucken**: Alle Einstellungen stehen in der URL. "Drucken" klappt alle Übungen auf.
-- **Übungskatalog** mit Filtern und eine Seite mit den **Funino-Regeln** und DFB-Formaten je Altersklasse.
+- **Übungskatalog** mit Filtern und eine Seite mit dem **Ablauf einer Einheit**, den **Funino-Regeln** und DFB-Formaten je Altersklasse.
 
 ## Aufbau
 
@@ -23,6 +24,7 @@ Eine statische Website ohne Build-Schritt und ohne Backend.
 | `js/generator.js` | Plan-Generator (reine Funktionen, auch in Node testbar) |
 | `js/app.js` | Formular, Darstellung, Katalog |
 | `data/exercises.json` | Übungsdatenbank |
+| `data/rituals.json` | Trainer-Grundsätze und Rituale für Ankommen, Begrüßungs- und Abschlusskreis |
 | `test/` | Tests (`npm test`) |
 
 ## Lokal starten
@@ -57,6 +59,8 @@ Einen Eintrag in `data/exercises.json` ergänzen:
   "questions": ["Frage an die Kinder?"]
 }
 ```
+
+Rituale werden genauso in `data/rituals.json` ergänzt (`arrival`, `opening` oder `closing`, jeweils mit `id`, `name`, `ages`, `steps`, `tip`).
 
 `levels` ist optional (ohne Angabe passt die Übung zu allen Niveaus). `npm test` prüft, dass alle Felder gültig sind und jede Altersklasse in jeder Phase genug Übungen hat.
 

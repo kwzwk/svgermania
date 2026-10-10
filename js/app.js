@@ -1,4 +1,4 @@
-import { AGE_GROUPS, LEVELS, THEMES, PHASES, SESSION_LENGTHS, FUNINO_RULES } from './config.js';
+import { AGE_GROUPS, LEVELS, THEMES, PHASES, SESSION_LENGTHS, FUNINO_RULES, RITUAL_MINUTES } from './config.js';
 import { generatePlan, isoWeek } from './generator.js';
 
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -8,6 +8,7 @@ const phaseLabel = (id) => PHASES.find((p) => p.id === id)?.label ?? id;
 const VARIATION_LABEL = { easier: 'Leichter', base: 'Grundform', harder: 'Schwerer' };
 
 let exercises = [];
+let rituals = null;
 let variant = 0;
 
 // ---------- Zustand <-> URL, damit ein Plan per Link geteilt werden kann ----------
@@ -96,7 +97,7 @@ function render() {
   const state = formState();
   writeState(state);
   $('#level-hint').textContent = `${LEVELS[state.level].label}: ${LEVELS[state.level].hint}`;
-  const plan = generatePlan(exercises, state);
+  const plan = generatePlan(exercises, state, rituals);
   const group = AGE_GROUPS[plan.age];
 
   $('#plan').innerHTML = `
@@ -115,9 +116,31 @@ function renderSession(session, plan) {
     <article class="session">
       <h3>Training ${session.number}<span class="muted">${progression}</span></h3>
       <ol class="blocks">
+        ${renderRitualBlock('arrival', 'vorher', 'Ankommen', session.opening.arrival)}
+        ${renderRitualBlock('opening', `${session.opening.minutes} min`, 'Begrüßungskreis', session.opening.circle, rituals?.standard.opening)}
         ${session.blocks.map((b) => `<li class="block phase-${b.phase}">${renderBlock(b)}</li>`).join('')}
+        ${renderRitualBlock('closing', `${session.closing.minutes} min`, 'Abschlusskreis', session.closing.circle, rituals?.standard.closing)}
       </ol>
     </article>`;
+}
+
+function renderRitualBlock(kind, time, label, item, standard = []) {
+  if (!item) return '';
+  return `
+    <li class="block ritual ritual-${kind}">
+      <details>
+        <summary class="block-head">
+          <span class="time">${esc(time)}</span>
+          <span class="phase">${esc(label)}</span>
+          <span class="name">${esc(item.name)}</span>
+          <span class="tag tag-ritual">Ritual</span>
+        </summary>
+        <div class="ex-body">
+          <ol>${[...item.steps, ...standard].map((step) => `<li>${esc(step)}</li>`).join('')}</ol>
+          <p class="dial"><strong>Tipp:</strong> ${esc(item.tip)}</p>
+        </div>
+      </details>
+    </li>`;
 }
 
 function renderBlock(block) {
@@ -213,8 +236,43 @@ function fieldSvg(group) {
     </svg>`;
 }
 
+function renderStructure() {
+  if (!rituals) return '';
+  const steps = [
+    ['Ankommen (vor Beginn)', 'Jedes Kind wird persönlich mit Namen begrüßt, dann sofort Ball und freies Spiel.'],
+    [`Begrüßungskreis (${RITUAL_MINUTES.opening} min)`, 'Im Kreis zusammenkommen, ein kurzes Ritual zum Ankommen und Kennenlernen, Schwerpunkt vorstellen, Teamruf.'],
+    ...PHASES.map((p) => [p.label, PHASE_HINTS[p.id]]),
+    [`Abschlusskreis (${RITUAL_MINUTES.closing} min)`, 'Lob und Rückmeldung, Teamruf, gemeinsam aufräumen, jedes Kind einzeln verabschieden.'],
+  ];
+  return `
+    <h2>Ablauf einer Trainingseinheit</h2>
+    <ol class="structure">${steps.map(([t, d]) => `<li><strong>${esc(t)}</strong><br>${esc(d)}</li>`).join('')}</ol>
+    <h3>Grundsätze für Trainer</h3>
+    <ul class="rules">${rituals.principles.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>
+    <h3>Rituale zur Auswahl</h3>
+    <div class="age-cards">
+      ${[['arrival', 'Ankommen'], ['opening', 'Begrüßungskreis'], ['closing', 'Abschlusskreis']]
+        .map(
+          ([kind, title]) => `
+        <article class="card">
+          <h3>${title}</h3>
+          <ul>${rituals[kind].map((r) => `<li>${esc(r.name)} <span class="muted">(${r.ages.map((a) => AGE_GROUPS[a].short).join(', ')})</span></li>`).join('')}</ul>
+        </article>`,
+        )
+        .join('')}
+    </div>`;
+}
+
+const PHASE_HINTS = {
+  aufwaermen: 'Spielerisch warm werden mit vielen Ballkontakten (Fangspiele, Dribbelspiele).',
+  uebung: 'Den Schwerpunkt üben, erst ohne, dann mit Gegner. Kurze Wartezeiten.',
+  spielform: 'Kleine Spiele (1 gegen 1 bis 4 gegen 4) mit Sonderregeln für den Schwerpunkt, mehrere Felder.',
+  abschluss: 'Funino nach den Regeln unten, Gewinner steigen auf, Verlierer ab.',
+};
+
 function renderRules() {
   $('#rules').innerHTML = `
+    ${renderStructure()}
     <h2>Funino-Grundregeln</h2>
     <ul class="rules">${FUNINO_RULES.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>
     <h2>Formate nach Altersklasse (DFB)</h2>
@@ -250,8 +308,9 @@ function showView(name) {
 }
 
 async function main() {
-  const res = await fetch('data/exercises.json');
-  exercises = await res.json();
+  const [exRes, ritRes] = await Promise.all([fetch('data/exercises.json'), fetch('data/rituals.json')]);
+  exercises = await exRes.json();
+  rituals = await ritRes.json();
   const state = readState();
   variant = state.variant;
   initForm(state);

@@ -1,0 +1,190 @@
+{
+  "principles": [
+    "Jedes Kind wird persönlich mit Namen begrüßt und am Ende einzeln verabschiedet.",
+    "Jede Einheit läuft gleich ab: Ankommen, Begrüßungskreis, Spielen – Üben – Spielen, Abschlusskreis. Feste Rituale geben Sicherheit.",
+    "Kurz erklären (höchstens 30 Sekunden), dann spielen lassen.",
+    "Fragen statt Anweisungen: Die Kinder finden Lösungen selbst.",
+    "Konkret loben (\"Toll, wie du hochgeschaut hast\"), Fehler sind erlaubt.",
+    "Trinkpause zwischen den Phasen, alle spielen gleich viel, niemand wartet lange."
+  ],
+  "standard": {
+    "opening": [
+      "Alle stehen im Kreis, der Trainer auf Augenhöhe (in die Hocke gehen).",
+      "Schwerpunkt der Woche in einem Satz nennen, am besten als Frage."
+    ],
+    "closing": [
+      "Teamruf: Hände in die Mitte, \"1, 2, 3 – Germania!\"",
+      "Gemeinsam Material einsammeln, jedes Kind hilft.",
+      "Jedes Kind einzeln verabschieden (Abklatschen, Name, ein lobender Satz)."
+    ]
+  },
+  "arrival": [
+    {
+      "id": "an-begruessung-eingang",
+      "name": "Persönliche Begrüßung am Eingang",
+      "ages": ["G", "F", "E"],
+      "steps": [
+        "Der Trainer steht am Platzeingang und begrüßt jedes Kind mit Namen und Abklatschen.",
+        "Eine kurze persönliche Frage: \"Wie war dein Tag?\" oder \"Hast du am Wochenende gespielt?\"",
+        "Danach holt sich das Kind einen Ball und spielt frei, bis alle da sind."
+      ],
+      "tip": "Auch die Eltern kurz begrüßen. Ein Kind, das schüchtern ankommt, bekommt eine kleine Aufgabe (z. B. Hütchen tragen)."
+    },
+    {
+      "id": "an-eigener-handschlag",
+      "name": "Eigener Begrüßungs-Handschlag",
+      "ages": ["G", "F"],
+      "steps": [
+        "Jedes Kind hat mit dem Trainer einen eigenen Begrüßungs-Handschlag (z. B. Faust, Abklatschen, Ellbogen).",
+        "Neue Kinder erfinden ihren Handschlag beim ersten Training selbst.",
+        "Danach Ball holen und frei kicken."
+      ],
+      "tip": "Kinder lieben es, wenn sich der Trainer ihren Handschlag merkt."
+    },
+    {
+      "id": "an-offenes-ankommen",
+      "name": "Offenes Ankommen mit Minitor-Kicken",
+      "ages": ["G", "F", "E"],
+      "steps": [
+        "Jedes Kind wird beim Ankommen mit Namen begrüßt.",
+        "Ein Feld mit Minitoren ist schon aufgebaut: Wer da ist, spielt sofort 1 gegen 1 oder 2 gegen 2.",
+        "Neue Kinder steigen einfach ein."
+      ],
+      "tip": "So gibt es keine Wartezeit, und Nachzügler stören den Beginn nicht."
+    },
+    {
+      "id": "an-kapitaen-aufbau",
+      "name": "Kapitän des Tages hilft beim Aufbau",
+      "ages": ["F", "E"],
+      "steps": [
+        "Jedes Kind wird mit Namen begrüßt.",
+        "Der Kapitän des Tages (reihum, jedes Kind kommt dran) hilft beim Aufbau und verteilt Leibchen.",
+        "Die anderen spielen frei auf die Minitore."
+      ],
+      "tip": "Eine Liste führen, damit jedes Kind gleich oft Kapitän ist."
+    }
+  ],
+  "opening": [
+    {
+      "id": "kr-stimmungsdaumen",
+      "name": "Stimmungsdaumen",
+      "ages": ["G", "F", "E"],
+      "steps": [
+        "Jedes Kind zeigt mit dem Daumen, wie es ihm heute geht: hoch, Mitte oder runter.",
+        "Wer mag, sagt einen Satz dazu.",
+        "Der Trainer bedankt sich bei jedem und nennt den Schwerpunkt."
+      ],
+      "tip": "Kinder mit Daumen runter im Training im Blick behalten und ansprechen."
+    },
+    {
+      "id": "kr-namensball",
+      "name": "Namensball",
+      "ages": ["G", "F"],
+      "steps": [
+        "Ein Ball wird im Kreis zugeworfen oder zugepasst.",
+        "Wer passt, ruft den Namen des Kindes, das den Ball bekommt.",
+        "Steigerung: zwei Bälle gleichzeitig."
+      ],
+      "tip": "Ideal zu Saisonbeginn oder wenn neue Kinder dazukommen."
+    },
+    {
+      "id": "kr-highlight",
+      "name": "Mein Highlight der Woche",
+      "ages": ["F", "E"],
+      "steps": [
+        "Reihum erzählt jedes Kind in einem Satz etwas Schönes aus seiner Woche.",
+        "Der Trainer erzählt auch eins.",
+        "Danach den Schwerpunkt vorstellen."
+      ],
+      "tip": "Kurz halten, maximal ein Satz pro Kind."
+    },
+    {
+      "id": "kr-tierbewegungen",
+      "name": "Tierbewegungen im Kreis",
+      "ages": ["G"],
+      "steps": [
+        "Ein Kind macht eine Tierbewegung vor (Frosch, Storch, Bär), alle machen sie nach.",
+        "Die anderen raten das Tier.",
+        "Reihum, bis jedes Kind einmal dran war."
+      ],
+      "tip": "Bewegt die Kleinen schon im Kreis und bricht das Eis."
+    },
+    {
+      "id": "kr-frage-der-woche",
+      "name": "Frage der Woche",
+      "ages": ["F", "E"],
+      "steps": [
+        "Der Trainer stellt eine Frage zum Schwerpunkt (z. B. \"Wann ist es besser zu dribbeln als zu passen?\").",
+        "Zwei oder drei Kinder antworten.",
+        "Im Abschlusskreis wird die Frage noch einmal aufgegriffen."
+      ],
+      "tip": "Nach Horst Wein: Die Kinder sollen Lösungen selbst entdecken."
+    },
+    {
+      "id": "kr-kapitaen-teamruf",
+      "name": "Kapitän des Tages wählt den Teamruf",
+      "ages": ["G", "F", "E"],
+      "steps": [
+        "Der Kapitän des Tages wird vorgestellt und bekommt die Kapitänsbinde.",
+        "Er oder sie wählt den Teamruf oder ein Aufwärmspiel aus.",
+        "Gemeinsamer Teamruf zum Start."
+      ],
+      "tip": "Reihum vergeben, damit jedes Kind einmal im Mittelpunkt steht."
+    }
+  ],
+  "closing": [
+    {
+      "id": "ab-lob-runde",
+      "name": "Lob-Runde",
+      "ages": ["G", "F", "E"],
+      "steps": [
+        "Im Kreis: Der Trainer lobt jedes Kind für eine konkrete Sache aus dem Training.",
+        "Daumen-Feedback: Wie hat euch das Training gefallen?"
+      ],
+      "tip": "Vorher im Training notieren, was jedem Kind gut gelungen ist."
+    },
+    {
+      "id": "ab-beste-aktion",
+      "name": "Meine beste Aktion",
+      "ages": ["F", "E"],
+      "steps": [
+        "Zwei oder drei Kinder erzählen ihre beste Aktion des Tages.",
+        "Die Frage der Woche aufgreifen: Was habt ihr herausgefunden?",
+        "Applaus für alle."
+      ],
+      "tip": "Wechseln, wer erzählen darf, damit alle mal drankommen."
+    },
+    {
+      "id": "ab-fairplay-kind",
+      "name": "Fairplay-Kind des Tages",
+      "ages": ["G", "F", "E"],
+      "steps": [
+        "Die Kinder schlagen vor, wer heute besonders fair oder hilfsbereit war.",
+        "Das Kind bekommt einen Applaus und darf den Teamruf anstimmen."
+      ],
+      "tip": "Auf Fairness und Hilfsbereitschaft achten, nicht auf Tore."
+    },
+    {
+      "id": "ab-ruhiger-ausklang",
+      "name": "Ruhiger Ausklang",
+      "ages": ["G", "F"],
+      "steps": [
+        "Alle sitzen im Kreis, Ball auf dem Schoß, und atmen dreimal tief ein und aus.",
+        "Mit dem Ball über die Beine rollen (Ballmassage).",
+        "Kurze Daumen-Abstimmung: Was war heute das schönste Spiel?"
+      ],
+      "tip": "Bringt die Kinder runter, bevor die Eltern kommen."
+    },
+    {
+      "id": "ab-ausblick",
+      "name": "Ausblick und Termine",
+      "ages": ["F", "E"],
+      "steps": [
+        "Kurzes Feedback: Was hat heute gut geklappt?",
+        "Ausblick auf das nächste Training oder den Spieltag (Treffpunkt, Uhrzeit).",
+        "Kapitän für das nächste Mal bestimmen."
+      ],
+      "tip": "Termine zusätzlich den Eltern mitgeben."
+    }
+  ]
+}
