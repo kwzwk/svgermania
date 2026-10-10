@@ -163,3 +163,12 @@ body {
   summary { list-style: none; }
   summary::-webkit-details-marker { display: none; }
 }
+
+/* Rituale: Ankommen, Begrüßungs- und Abschlusskreis */
+.ritual { --phase-c: #e0578a; }
+.tag-ritual { background: #fbe3ec; color: #9b1f4f; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .tag-ritual { background: #4a1f30; color: #f5a8c4; }
+}
+.structure { padding-left: 20px; }
+.structure li { margin-bottom: 8px; }

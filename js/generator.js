@@ -1,6 +1,6 @@
 // Wochenplan-Generator. Reine Funktionen ohne DOM, damit sie im Browser und in Node-Tests laufen.
 
-import { AGE_GROUPS, PHASES } from './config.js';
+import { AGE_GROUPS, PHASES, RITUAL_MINUTES } from './config.js';
 
 // Kleiner deterministischer Zufallsgenerator (mulberry32), damit ein Plan reproduzierbar ist.
 export function createRng(seed) {
@@ -39,7 +39,8 @@ export function themeForWeek(ageId, week) {
 
 // Verteilt die Trainingszeit auf die Phasen (Spielen – Üben – Spielen), gerundet auf 5 Minuten.
 export function splitMinutes(total) {
-  const blocks = PHASES.map((p) => Math.max(5, Math.round((total * p.share) / 5) * 5));
+  // Abrunden, damit der Rest dem Abschlussspiel (Funino) zugutekommt.
+  const blocks = PHASES.map((p) => Math.max(5, Math.floor((total * p.share) / 5) * 5));
   const diff = total - blocks.reduce((s, m) => s + m, 0);
   blocks[blocks.length - 1] += diff;
   return blocks;
@@ -83,16 +84,27 @@ function pick(candidates, theme, used, rng) {
  * @param {number} opts.week Kalenderwoche
  * @param {number} [opts.players] Anzahl Kinder
  * @param {number} [opts.variant] Zum Neu-Mischen
+ * @param {object} [rituals] Rituale (data/rituals.json) für Ankommen, Begrüßungs- und Abschlusskreis
  */
-export function generatePlan(exercises, opts) {
+export function generatePlan(exercises, opts, rituals = null) {
   const { age, level, sessions, minutes, week, players, variant = 0 } = opts;
   const group = AGE_GROUPS[age];
   if (!group) throw new Error(`Unbekannte Altersklasse: ${age}`);
   const theme = !opts.theme || opts.theme === 'auto' ? themeForWeek(age, week) : opts.theme;
   const rng = createRng(hashSeed(age, level, sessions, minutes, theme, week, players ?? '', variant));
   const candidates = suitableExercises(exercises, { age, level, players });
-  const phaseMinutes = splitMinutes(minutes);
+  const phaseMinutes = splitMinutes(minutes - RITUAL_MINUTES.opening - RITUAL_MINUTES.closing);
   const used = new Set();
+  const usedRituals = new Set();
+  const ritual = (kind) => {
+    const pool = (rituals?.[kind] ?? []).filter((r) => r.ages.includes(age));
+    const fresh = pool.filter((r) => !usedRituals.has(r.id));
+    const list = fresh.length ? fresh : pool;
+    if (!list.length) return null;
+    const item = list[Math.floor(rng() * list.length)];
+    usedRituals.add(item.id);
+    return item;
+  };
 
   const plan = [];
   for (let s = 0; s < sessions; s++) {
@@ -108,7 +120,13 @@ export function generatePlan(exercises, opts) {
       if (exercise) used.add(exercise.id);
       return { phase: phase.id, label: phase.label, minutes: phaseMinutes[i], exercise, variation: variationFor(sessionLevel) };
     });
-    plan.push({ number: s + 1, level: sessionLevel, blocks });
+    plan.push({
+      number: s + 1,
+      level: sessionLevel,
+      opening: { minutes: RITUAL_MINUTES.opening, arrival: ritual('arrival'), circle: ritual('opening') },
+      blocks,
+      closing: { minutes: RITUAL_MINUTES.closing, circle: ritual('closing') },
+    });
   }
 
   const fields = players ? Math.max(1, Math.ceil(players / group.playersPerField)) : 1;
