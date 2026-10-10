@@ -67,3 +67,21 @@ Jeder statische Webserver reicht: einfach den Repository-Inhalt ausliefern. Für
 ## Grundlage
 
 Horst Weins Funino und die DFB-Spielformen im Kinderfußball (verbindlich seit 2024/25). Feldmaße sind Richtwerte. Die Übungen sind eigene Beschreibungen, angelehnt an gängige Spielformen.
+
+## Docker
+
+Bei jedem Push auf `main` baut GitHub Actions automatisch ein Image (amd64 und arm64) und veröffentlicht es als `ghcr.io/kwzwk/svgermania:latest`. Tags `v*` erzeugen zusätzlich Versions-Tags.
+
+Der Container liefert die Seite mit nginx auf Port **8080** aus (ohne Root), mit Healthcheck unter `/healthz`.
+
+```sh
+docker compose up -d          # nutzt docker-compose.yml
+# oder
+docker run -d --name svgermania --restart unless-stopped -p 127.0.0.1:8080:8080 ghcr.io/kwzwk/svgermania:latest
+```
+
+Im Reverse Proxy `svgermania.geyen.org` auf `http://<server>:8080` weiterleiten. Updates holen mit `docker compose pull && docker compose up -d` (oder automatisch mit Watchtower).
+
+Falls das Paket auf GitHub privat ist: entweder unter *Package settings* auf "Public" stellen oder auf dem Server mit `docker login ghcr.io` und einem Token mit `read:packages` anmelden.
+
+Lokal bauen: `docker build -t svgermania . && docker run -p 8080:8080 svgermania`
