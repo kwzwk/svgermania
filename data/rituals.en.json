@@ -1,0 +1,160 @@
+{
+  "principles": [
+    "Greet every child personally by name and say goodbye to each one individually at the end.",
+    "Every session follows the same pattern: arrival, opening circle, play – practise – play, closing circle. Fixed rituals give children security.",
+    "Explain briefly (30 seconds at most), then let them play.",
+    "Ask questions instead of giving instructions: the children find solutions themselves.",
+    "Praise specifically (\"Great how you looked up there\"), mistakes are allowed.",
+    "Drinks break between phases, everyone plays the same amount, nobody waits for long."
+  ],
+  "standard": {
+    "opening": [
+      "Everyone stands in a circle, the coach at eye level (crouch down).",
+      "Name the focus of the week in one sentence, ideally as a question."
+    ],
+    "closing": [
+      "Team call: hands in the middle, \"1, 2, 3 – Germania!\"",
+      "Collect the equipment together, every child helps.",
+      "Say goodbye to each child individually (high five, their name, one sentence of praise)."
+    ]
+  },
+  "arrival": {
+    "an-begruessung-eingang": {
+      "name": "Personal Welcome at the Entrance",
+      "steps": [
+        "The coach stands at the pitch entrance and greets every child by name with a high five.",
+        "A short personal question: \"How was your day?\" or \"Did you play at the weekend?\"",
+        "Then the child grabs a ball and plays freely until everyone has arrived."
+      ],
+      "tip": "Say a quick hello to the parents too. A child who arrives shyly gets a small job (e.g. carrying cones)."
+    },
+    "an-eigener-handschlag": {
+      "name": "Personal Secret Handshake",
+      "steps": [
+        "Every child has their own greeting handshake with the coach (e.g. fist bump, high five, elbow bump).",
+        "New children invent their handshake themselves at their first session.",
+        "Then grab a ball and kick around freely."
+      ],
+      "tip": "Children love it when the coach remembers their handshake."
+    },
+    "an-offenes-ankommen": {
+      "name": "Open Arrival with Mini Goal Games",
+      "steps": [
+        "Every child is greeted by name on arrival.",
+        "A pitch with mini goals is already set up: whoever is there plays 1v1 or 2v2 straight away.",
+        "New arrivals simply join in."
+      ],
+      "tip": "This way there's no waiting, and latecomers don't disrupt the start."
+    },
+    "an-kapitaen-aufbau": {
+      "name": "Captain of the Day Helps Set Up",
+      "steps": [
+        "Every child is greeted by name.",
+        "The captain of the day (taking turns, every child gets a go) helps set up and hands out the bibs.",
+        "The others play freely on the mini goals."
+      ],
+      "tip": "Keep a list so every child is captain equally often."
+    }
+  },
+  "opening": {
+    "kr-stimmungsdaumen": {
+      "name": "Mood Thumbs",
+      "steps": [
+        "Every child shows with their thumb how they're feeling today: up, middle or down.",
+        "Anyone who wants to can add a sentence.",
+        "The coach thanks everyone and names the focus."
+      ],
+      "tip": "Keep an eye on children with a thumbs down during the session and check in with them."
+    },
+    "kr-namensball": {
+      "name": "Name Ball",
+      "steps": [
+        "A ball is thrown or passed around the circle.",
+        "Whoever passes calls out the name of the child receiving the ball.",
+        "Next level: two balls at the same time."
+      ],
+      "tip": "Ideal at the start of the season or when new children join."
+    },
+    "kr-highlight": {
+      "name": "My Highlight of the Week",
+      "steps": [
+        "Taking turns, each child shares something nice from their week in one sentence.",
+        "The coach shares one too.",
+        "Then introduce the focus."
+      ],
+      "tip": "Keep it short, one sentence per child at most."
+    },
+    "kr-tierbewegungen": {
+      "name": "Animal Moves in the Circle",
+      "steps": [
+        "One child shows an animal movement (frog, stork, bear), everyone copies it.",
+        "The others guess the animal.",
+        "Take turns until every child has had a go."
+      ],
+      "tip": "Gets the little ones moving already in the circle and breaks the ice."
+    },
+    "kr-frage-der-woche": {
+      "name": "Question of the Week",
+      "steps": [
+        "The coach asks a question about the focus (e.g. \"When is it better to dribble than to pass?\").",
+        "Two or three children answer.",
+        "The question comes up again in the closing circle."
+      ],
+      "tip": "Following Horst Wein: the children should discover solutions themselves."
+    },
+    "kr-kapitaen-teamruf": {
+      "name": "Captain of the Day Picks the Team Call",
+      "steps": [
+        "The captain of the day is introduced and gets the captain's armband.",
+        "He or she chooses the team call or a warm-up game.",
+        "Team call together to start."
+      ],
+      "tip": "Take turns so every child gets to be in the spotlight once."
+    }
+  },
+  "closing": {
+    "ab-lob-runde": {
+      "name": "Praise Round",
+      "steps": [
+        "In the circle: the coach praises every child for one specific thing from the session.",
+        "Thumbs feedback: how did you like the session?"
+      ],
+      "tip": "During the session, make a note of what each child did well."
+    },
+    "ab-beste-aktion": {
+      "name": "My Best Move",
+      "steps": [
+        "Two or three children talk about their best move of the day.",
+        "Come back to the question of the week: what did you find out?",
+        "A round of applause for everyone."
+      ],
+      "tip": "Rotate who gets to share so everyone has a turn."
+    },
+    "ab-fairplay-kind": {
+      "name": "Fair Play Star of the Day",
+      "steps": [
+        "The children suggest who was especially fair or helpful today.",
+        "That child gets a round of applause and gets to lead the team call."
+      ],
+      "tip": "Focus on fairness and helpfulness, not on goals."
+    },
+    "ab-ruhiger-ausklang": {
+      "name": "Calm Cool-Down",
+      "steps": [
+        "Everyone sits in a circle, ball on their lap, and breathes in and out deeply three times.",
+        "Roll the ball over your legs (ball massage).",
+        "Quick thumbs vote: what was the best game today?"
+      ],
+      "tip": "Helps the children calm down before the parents arrive."
+    },
+    "ab-ausblick": {
+      "name": "Look Ahead and Dates",
+      "steps": [
+        "Quick feedback: what went well today?",
+        "Look ahead to the next session or match day (meeting point, time).",
+        "Choose the captain for next time."
+      ],
+      "tip": "Also give the dates to the parents."
+    }
+  }
+}

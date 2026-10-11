@@ -1,0 +1,449 @@
+{
+  "aw-ball-raeuber": {
+    "name": "Ball Thieves",
+    "field": "15 × 15 m to 20 × 20 m",
+    "material": "1 ball per child (except the thieves), cones, bibs",
+    "setup": "All children dribble with a ball in the area. 2–3 thieves without a ball wear bibs.",
+    "rules": [
+      "The thieves try to knock balls out of the area.",
+      "If you lose your ball, fetch it and do a ball trick before rejoining (e.g. 5 sole rolls).",
+      "Pick new thieves after 60–90 seconds."
+    ],
+    "easier": "Only 1 thief, bigger area, thieves may only walk.",
+    "harder": "More thieves, smaller area, dribble with the weaker foot only.",
+    "questions": ["Where is there lots of space right now?", "How do you protect your ball when a thief comes?"]
+  },
+  "aw-ampel": {
+    "name": "Traffic Lights",
+    "field": "15 × 15 m",
+    "material": "1 ball per child, 3 coloured cones or bibs",
+    "setup": "Everyone dribbles freely in the area. The coach holds up a colour.",
+    "rules": [
+      "Green: dribble fast. Yellow: dribble slowly, keep the ball close. Red: stop the ball with your sole and sit on it.",
+      "Add more signals: blue = change direction, white = move the ball around your body."
+    ],
+    "easier": "Only three colours, also call out the signals.",
+    "harder": "Show the colour without calling it, switch signals quickly, wrong reaction = 3 sole rolls.",
+    "questions": ["How can you stop the ball really quickly?", "Do you have to look at the ball or can you look up?"]
+  },
+  "aw-schatzjagd": {
+    "name": "Treasure Hunt",
+    "field": "20 × 20 m, a cone square in each corner (treasure chamber)",
+    "material": "Lots of balls in the middle, 16 cones, bibs in 4 colours",
+    "setup": "4 teams start in their treasure chamber. All the balls are in the middle.",
+    "rules": [
+      "On the signal, one child per team at a time fetches a ball and dribbles it into their own chamber.",
+      "Once the middle is empty, you may take balls from other chambers.",
+      "After 2 minutes each team counts its balls."
+    ],
+    "easier": "All children in a team may run at once, balls only from the middle.",
+    "harder": "Chambers may be defended by a guard, the ball must be dropped off with the weaker foot.",
+    "questions": ["Which chamber has the most balls right now?", "When is it worth stealing from another team?"]
+  },
+  "aw-huetchentore": {
+    "name": "Collect the Cone Gates",
+    "field": "20 × 20 m with 8–12 cone gates (2 m wide)",
+    "material": "1 ball per child, 16–24 cones",
+    "setup": "Cone gates spread around the area. Every child has a ball.",
+    "rules": [
+      "In 60 seconds, dribble through as many different gates as possible and count out loud.",
+      "Never go through the same gate twice in a row.",
+      "Show a feint before every gate."
+    ],
+    "easier": "Wider gates, no feint needed, more time.",
+    "harder": "Narrower gates, 2 taggers without a ball get in the way, set a specific feint (step-over, scissors).",
+    "questions": ["Which gate is free right now?", "When do you do the feint, well before the gate or just before it?"]
+  },
+  "aw-schwaenzchen": {
+    "name": "Tail Tag with a Ball",
+    "field": "15 × 20 m",
+    "material": "1 ball and 1 bib per child",
+    "setup": "Every child tucks a bib into the back of their shorts as a tail and dribbles with a ball.",
+    "rules": [
+      "Everyone tries to steal other players' tails without losing their own ball.",
+      "If you have no tail left, keep playing and keep stealing.",
+      "Who has the most tails after 90 seconds?"
+    ],
+    "easier": "Play without a ball, or only 2 taggers with a ball.",
+    "harder": "Make the area smaller, the ball must always be dribbled with the weaker foot.",
+    "questions": ["How do you keep an eye on your ball and the other players at the same time?"]
+  },
+  "aw-stinkbombe": {
+    "name": "Stink Bomb",
+    "field": "15 × 15 m",
+    "material": "1 ball per child, 1–2 soft balls or different-coloured balls (stink bombs)",
+    "setup": "Everyone dribbles. 1–2 children have a stink bomb and dribble it.",
+    "rules": [
+      "The stink bomb children try to hit other children's balls with their stink bomb.",
+      "If your ball gets hit, you get the stink bomb.",
+      "Whoever doesn't have a stink bomb at the end wins."
+    ],
+    "easier": "Only one stink bomb, big area.",
+    "harder": "Hits only count with the weaker foot, three stink bombs.",
+    "questions": ["How far away do you need to be to stay safe?"]
+  },
+  "aw-passen-bewegung": {
+    "name": "Passing on the Move",
+    "field": "20 × 20 m with 6–8 cone gates",
+    "material": "1 ball per pair, 12–16 cones",
+    "setup": "Pairs with one ball move freely around the area.",
+    "rules": [
+      "The pair passes the ball to each other through a cone gate.",
+      "Each pass through a different gate scores a point.",
+      "After the pass, look for a new free gate straight away."
+    ],
+    "easier": "Wider gates, the ball may be stopped before the pass.",
+    "harder": "Max. 2 touches, first touch into the new direction, 2 defenders without a ball get in the way.",
+    "questions": ["Where do you run after you pass?", "Which foot do you receive with so you can play on quickly?"]
+  },
+  "aw-rondo": {
+    "name": "Rondo 4v1",
+    "field": "8 × 8 m square per group",
+    "material": "1 ball and 4 cones per group, bibs",
+    "setup": "Four players on the sides of the square, one in the middle.",
+    "rules": [
+      "The outside players pass the ball to each other, the middle player tries to intercept it.",
+      "Whoever causes the loss of the ball goes into the middle.",
+      "10 passes in a row = 1 point for the outside players."
+    ],
+    "easier": "5v1, bigger square, unlimited touches.",
+    "harder": "4v2, max. 2 touches, smaller square.",
+    "questions": ["Where do you need to stand so you can receive a pass?", "Do you already know where you'll pass before the ball reaches you?"]
+  },
+  "aw-parcours": {
+    "name": "Coordination Course with a Ball",
+    "field": "2 parallel lanes, 20 m each",
+    "material": "Cones, poles, rings or a ladder, 1 ball per child",
+    "setup": "Two identical lanes: slalom, rings, cones to go around, mini goal at the end.",
+    "rules": [
+      "First go through the course without a ball (hopping, sideways, backwards).",
+      "Then with a ball: dribble the slalom, take the ball around the cone, shoot into the mini goal at the end.",
+      "Little waiting time: max. 3 children per lane."
+    ],
+    "easier": "Fewer stations, the ball may be carried in the hands.",
+    "harder": "As a relay race, dribbling with the weaker foot only.",
+    "questions": ["How do you need to dribble so the ball stays close to you in the slalom?"]
+  },
+  "ue-zwei-tore-1v1": {
+    "name": "1v1 on Two Mini Goals",
+    "field": "10 × 15 m per station, 2 mini goals on one end line",
+    "material": "2 mini goals per station, balls, cones",
+    "setup": "The defender stands in front of the two mini goals, the attacker starts with a ball on the opposite line.",
+    "rules": [
+      "The defender passes the ball to the attacker and closes them down.",
+      "The attacker decides which goal to go for and dribbles in or shoots from 3 m.",
+      "Swap roles after each turn, next pair moves up quickly."
+    ],
+    "easier": "Defender starts further back or may only walk (passive opponent).",
+    "harder": "Narrower area, attacker has 6 seconds, if the defender wins the ball they counter to a cone gate.",
+    "questions": ["Which goal is the defender not guarding right now?", "When is the right moment to change direction?"]
+  },
+  "ue-ballzauberer": {
+    "name": "Ball Wizards",
+    "field": "15 × 15 m",
+    "material": "1 ball per child",
+    "setup": "Every child has a ball, the coach shows magic tricks.",
+    "rules": [
+      "Copy the tricks: roll the ball forwards and back with the sole, move the ball around your body, tap the top of the ball (left/right toe taps).",
+      "Then dribble and show a magic trick when the coach calls out.",
+      "Every child invents their own trick and gives it a name."
+    ],
+    "easier": "Only 2 tricks, slowly and standing still.",
+    "harder": "Tricks on the move, with both feet, against the clock.",
+    "questions": ["What other part of your foot can you touch the ball with?"]
+  },
+  "ue-finten-tore": {
+    "name": "Feint Course with a Finish",
+    "field": "2–3 lanes, 20 m each, mini goal at the end of each lane",
+    "material": "Poles or cones as opponents, mini goals, balls",
+    "setup": "Each lane has 2–3 poles as opponents, and a mini goal with a shooting zone at the end.",
+    "rules": [
+      "Dribble at the pole, show a feint, go past, on to the next pole.",
+      "Shoot into the mini goal from the shooting zone.",
+      "A different feint each round: step-over, scissors, body feint, Cruyff turn."
+    ],
+    "easier": "Only one pole, any feint, no shot needed.",
+    "harder": "A semi-active defender instead of a pole, feint with the weaker foot, time limit.",
+    "questions": ["How far in front of the opponent do you start the feint?", "How quickly do you speed up after the feint?"]
+  },
+  "ue-torschuss-schusszone": {
+    "name": "Shooting from the Shooting Zone",
+    "field": "20 × 15 m, 4 mini goals like in Funino, shooting zone marked",
+    "material": "4 mini goals, cones, lots of balls",
+    "setup": "Two groups on the halfway line with balls, shooting zones at both ends.",
+    "rules": [
+      "On the signal, dribble into the shooting zone and shoot at one of the two mini goals.",
+      "Just before the shooting zone the coach calls 'left' or 'right'.",
+      "Fetch your ball and join the line on the other side."
+    ],
+    "easier": "No signal, shoot from a standing start, bigger goals.",
+    "harder": "A passive defender chases you, shoot only with the weaker foot or first time after a pass.",
+    "questions": ["Where in the goal is it hardest for the defender?", "Do you look up once more before you shoot?"]
+  },
+  "ue-passdreieck": {
+    "name": "Passing Triangle with Turning",
+    "field": "Triangle with 8–10 m sides per group",
+    "material": "3 cones and 1 ball per group",
+    "setup": "Three children per triangle, one ball.",
+    "rules": [
+      "Pass and follow your pass.",
+      "Receive with the inside of your back foot, open your body, take the ball into the new direction.",
+      "Change direction after one minute."
+    ],
+    "easier": "The ball may be stopped, smaller triangle.",
+    "harder": "Only 2 touches, one defender in the middle, coach calls the direction at the moment the ball is received.",
+    "questions": ["How do you stand so you can see both teammates?"]
+  },
+  "ue-abdraengen": {
+    "name": "Show Them Wide and Win the Ball",
+    "field": "8 × 15 m channel, a cone gate at the end",
+    "material": "Cones, balls, bibs",
+    "setup": "Attacker with a ball at one end, defender in the middle of the channel.",
+    "rules": [
+      "The attacker wants to dribble through the cone gate.",
+      "The defender stands side-on, shows the attacker towards the line and wins the ball.",
+      "If the defender wins the ball, they dribble over the start line (transition)."
+    ],
+    "easier": "Attacker dribbles only at walking pace, wider channel.",
+    "harder": "Narrower channel, attacker can choose between two gates, defender starts behind the attacker.",
+    "questions": ["Which side do you want to send the attacker to?", "When do you go for the ball?"]
+  },
+  "ue-dribbel-wettkampf": {
+    "name": "Dribbling Contest: Who Scores the Most?",
+    "field": "20 × 20 m with 4 mini goals in the corners",
+    "material": "4 mini goals, 1 ball per child",
+    "setup": "Everyone dribbles in the area.",
+    "rules": [
+      "Score as many goals as possible in 3 minutes, count out loud.",
+      "After each goal, fetch the ball and choose a different goal.",
+      "Beat your record from last time."
+    ],
+    "easier": "Shooting allowed from anywhere, more time.",
+    "harder": "A goal only counts after a feint, 3 m shooting zone, weaker foot counts double.",
+    "questions": ["Which goal is free right now?"]
+  },
+  "ue-1v1-linie": {
+    "name": "1v1 over the Line",
+    "field": "8 × 12 m per pair",
+    "material": "Cones, 1 ball per pair",
+    "setup": "Pairs face each other on the lines.",
+    "rules": [
+      "Whoever has the ball tries to dribble over the opponent's line and stop the ball there.",
+      "The other player defends; if they win the ball, they switch to attack straight away.",
+      "Play for 45 seconds, then a break and a new partner."
+    ],
+    "easier": "Wider area, defender keeps hands behind their back.",
+    "harder": "Narrower area, points only for a dribble with a feint.",
+    "questions": ["Where is there more space, left or right of the defender?"]
+  },
+  "sf-2v1-zwei-tore": {
+    "name": "2v1 on Two Mini Goals",
+    "field": "15 × 20 m per area, 2 mini goals at one end",
+    "material": "2 mini goals per area, balls, bibs",
+    "setup": "Two attackers start with a ball, one defender in front of the goals.",
+    "rules": [
+      "The attackers try to score. Shots only from the shooting zone.",
+      "If the defender wins the ball, they dribble over the halfway line.",
+      "After each attack the next players move up, swap roles."
+    ],
+    "easier": "Defender starts with a delay, wider area.",
+    "harder": "2v2 with a delayed second defender, 8-second time limit.",
+    "questions": ["When do you pass and when do you dribble yourself?", "What does the defender do when you dribble at them?"]
+  },
+  "sf-champions-league": {
+    "name": "1v1 Champions League",
+    "field": "Several areas 10 × 15 m, 2 mini goals each",
+    "material": "2 mini goals per area (or cone gates), balls",
+    "setup": "Several 1v1 areas side by side, area 1 is the 'Champions League'.",
+    "rules": [
+      "1 minute of 1v1 on the small goals.",
+      "The winner moves up one area, the loser moves down.",
+      "If it's a draw, rock-paper-scissors decides."
+    ],
+    "easier": "Wider goals, goals count from any distance.",
+    "harder": "Narrower areas, only a dribble-in goal (ball stopped in the goal) counts.",
+    "questions": ["What worked for your last goal?"]
+  },
+  "sf-dribbellinie": {
+    "name": "2v2 to the Dribble Line",
+    "field": "15 × 20 m per area",
+    "material": "Cones, bibs, balls",
+    "setup": "Several areas side by side, 2v2.",
+    "rules": [
+      "A point when a player dribbles the ball over the opponents' end line and stops it there.",
+      "Restart with a dribble-in from your own end line.",
+      "Play 4 minutes, 2 minutes' rest, change opponents."
+    ],
+    "easier": "3v2 with a joker on the team in possession.",
+    "harder": "A point only in one of two marked end zones, narrower area.",
+    "questions": ["Which side of the line is free?", "How does your teammate help you when you dribble?"]
+  },
+  "sf-3v2-vier-tore": {
+    "name": "3v2 on Four Cone Gates",
+    "field": "20 × 20 m, a cone gate on each side",
+    "material": "Cones, bibs, balls",
+    "setup": "3 attackers against 2 defenders, four gates on the sides.",
+    "rules": [
+      "A point when an attacker dribbles through a gate or passes to a teammate through a gate.",
+      "If they win the ball, the defenders dribble over any line.",
+      "After 2 minutes, two attackers switch to defence."
+    ],
+    "easier": "4v2, wider gates.",
+    "harder": "3v3, goal only after at least 3 passes.",
+    "questions": ["Which gate is furthest from the defenders?", "How quickly can you switch sides?"]
+  },
+  "sf-torjaeger": {
+    "name": "Goal Hunters 2v2 with Ball Supply",
+    "field": "15 × 20 m per area, 2 mini goals on each end line",
+    "material": "4 mini goals per area, ball supply at the side",
+    "setup": "2v2, the coach stands at the sideline with a supply of balls.",
+    "rules": [
+      "When the ball goes out or a goal is scored, the coach immediately plays a new ball into the area.",
+      "Whoever gets to the ball first attacks.",
+      "Play 4 minutes, count the goals."
+    ],
+    "easier": "Goals count from the whole half, 3v2.",
+    "harder": "Goals only from the shooting zone, after a goal the team must touch the halfway line.",
+    "questions": ["Where do you stand when the new ball comes in?", "What do you do straight after losing the ball?"]
+  },
+  "sf-wellen": {
+    "name": "Waves 2v1 / 2v2",
+    "field": "20 × 25 m, 2 mini goals on each end line",
+    "material": "4 mini goals, balls, bibs in 2 colours",
+    "setup": "Two teams on the end lines next to the goals.",
+    "rules": [
+      "Two players from team A attack against one player from team B.",
+      "After the shot or a loss of the ball, team B attacks with two players, one player from A stays on as the defender.",
+      "Keep it flowing in waves, count the goals."
+    ],
+    "easier": "Only 2v1, defender starts with a delay.",
+    "harder": "2v2 with immediate transition, 8-second time limit.",
+    "questions": ["What happens if we attack straight after losing the ball?"]
+  },
+  "sf-kleine-kicker": {
+    "name": "Little Kickers: 2v2 on Mini Goals",
+    "field": "12 × 18 m per area",
+    "material": "2 mini goals per area, balls, bibs",
+    "setup": "Several mini areas, 2v2.",
+    "rules": [
+      "Normal game with one mini goal each, goals from your own attacking half.",
+      "If the ball goes out, dribble it back in.",
+      "Play 3 minutes, winners move up one area."
+    ],
+    "easier": "Four mini goals (two per side), bigger area.",
+    "harder": "A goal counts double if you dribbled and feinted first.",
+    "questions": ["Where is the goal free?"]
+  },
+  "sf-4v4-zonen": {
+    "name": "4v4 with Dribble Zones",
+    "field": "25 × 35 m, 4 mini goals, a 5 m wide dribble zone along each side",
+    "material": "4 mini goals, cones, bibs",
+    "setup": "4v4, two dribble zones along the sidelines.",
+    "rules": [
+      "Goals only count from the shooting zone.",
+      "Beating an opponent with a feint in the dribble zone earns a bonus point.",
+      "At the end, remove the zones and play freely."
+    ],
+    "easier": "A joker always plays with the team in possession.",
+    "harder": "Narrower dribble zones, goal only after a successful 1v1.",
+    "questions": ["Where do you have more space for your feint?"]
+  },
+  "ab-funino-grundspiel": {
+    "name": "Basic Funino",
+    "field": "Funino pitch for the age group, 4 mini goals, 6 m shooting zone",
+    "material": "4 mini goals per pitch, cones for the shooting zones, bibs",
+    "setup": "3v3 (under-7s also 2v2), 1–2 subs each. With lots of children, use several pitches.",
+    "rules": [
+      "Funino rules: goals only from the shooting zone, restart with a pass-in or dribble-in.",
+      "Rotate after every goal: each team swaps one player.",
+      "Blocks of about 4 minutes, winners move up a pitch, losers move down."
+    ],
+    "easier": "Use the handicap rule early, bigger pitch, joker for the team in possession.",
+    "harder": "Smaller pitch, a goal counts double after a switch of play.",
+    "questions": ["Which of the two goals is free?", "Where is there space right now?"]
+  },
+  "ab-funino-eindribbeln": {
+    "name": "Funino with Dribble-In",
+    "field": "Funino pitch for the age group",
+    "material": "4 mini goals per pitch, cones, bibs",
+    "setup": "3v3 with Funino rules.",
+    "rules": [
+      "Restarts only by dribble-in.",
+      "A goal after winning a 1v1 counts double.",
+      "Rotate after every goal."
+    ],
+    "easier": "Opponents must stay 5 m away during the dribble-in.",
+    "harder": "A goal only counts if an opponent was dribbled past first.",
+    "questions": ["When is a dribble worth it and when is a pass better?"]
+  },
+  "ab-funino-joker": {
+    "name": "Funino with a Joker",
+    "field": "Funino pitch for the age group",
+    "material": "4 mini goals per pitch, bibs in 3 colours",
+    "setup": "3v3 plus one joker who always plays with the team in possession (4v3).",
+    "rules": [
+      "Funino rules, the joker may not shoot at goal.",
+      "The joker changes after every goal.",
+      "Bonus point if the joker was involved before the goal."
+    ],
+    "easier": "Two jokers, the joker may also shoot.",
+    "harder": "Joker has only 1 touch, joker stays on the sideline.",
+    "questions": ["Where does the joker need to stand to be free?"]
+  },
+  "ab-funino-verlagerung": {
+    "name": "Funino: Switching Play Counts Double",
+    "field": "Funino pitch, fairly short and wide",
+    "material": "4 mini goals per pitch, cones, bibs",
+    "setup": "3v3 with Funino rules.",
+    "rules": [
+      "A goal counts double if the ball was first switched from one goal side to the other.",
+      "Rotate after every goal.",
+      "In breaks, the coach asks about free spaces instead of giving the answers."
+    ],
+    "easier": "Switching by dribbling also counts, a joker helps.",
+    "harder": "Only goals after a switch count, 2 touches in your own half.",
+    "questions": ["Where are the defenders when we attack the other goal?"]
+  },
+  "ab-funino-ballgewinn": {
+    "name": "Funino: Winning the Ball Counts",
+    "field": "Funino pitch for the age group",
+    "material": "4 mini goals per pitch, cones, bibs",
+    "setup": "3v3 with Funino rules.",
+    "rules": [
+      "Winning the ball in the opponents' half scores a point.",
+      "A goal within 5 seconds of winning the ball counts double.",
+      "Rotate after every goal."
+    ],
+    "easier": "Only goals after winning the ball count double, no time limit.",
+    "harder": "After losing the ball, the team must win it back within 5 seconds, otherwise the opponents get a point.",
+    "questions": ["What do you do in the first second after losing the ball?"]
+  },
+  "ab-funino-festival": {
+    "name": "Funino Festival with Promotion and Relegation",
+    "field": "2–4 Funino pitches side by side",
+    "material": "4 mini goals per pitch, cones, bibs in 4+ colours",
+    "setup": "Teams of 3–4 children, one pitch for every two teams, pitch 1 is the 'King's Pitch'.",
+    "rules": [
+      "Rounds of 4–5 minutes with Funino rules, no league table.",
+      "Winners move up a pitch, losers move down.",
+      "Teams rotate their subs between rounds, everyone plays the same amount."
+    ],
+    "easier": "Fewer rules, goals from the whole half (under-7s 2v2).",
+    "harder": "One extra rule per pitch (joker, switching play, winning the ball).",
+    "questions": ["What are you doing differently from the last round?"]
+  },
+  "ab-funino-mini": {
+    "name": "Mini Funino 2v2",
+    "field": "16 × 20 m, 4 mini goals",
+    "material": "4 mini goals per pitch, cones, bibs",
+    "setup": "2v2 on four mini goals, several pitches side by side.",
+    "rules": [
+      "Goals count from your own attacking half.",
+      "Restart with a dribble-in.",
+      "After every goal a sub comes on."
+    ],
+    "easier": "The coach joins in as a joker, goals from anywhere.",
+    "harder": "3v3 with a 6 m shooting zone.",
+    "questions": ["Which goal is empty?"]
+  }
+}

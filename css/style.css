@@ -19,6 +19,8 @@
   --phase-uebung: #3b8fd9;
   --phase-spielform: #8a5cd1;
   --phase-abschluss: #1f7a3f;
+  --ritual-bg: #fbe3ec;
+  --ritual-ink: #9b1f4f;
   color-scheme: light;
 }
 
@@ -40,8 +42,32 @@
     --base-ink: #c5ccc8;
     --harder: #45291a;
     --harder-ink: #f4b58c;
+    --ritual-bg: #4a1f30;
+    --ritual-ink: #f5a8c4;
     color-scheme: dark;
   }
+}
+
+:root[data-theme="dark"] {
+  --bg: #121614;
+  --surface: #1b211e;
+  --text: #e6ebe8;
+  --muted: #9aa5a0;
+  --border: #2e3732;
+  --accent: #4cbf72;
+  --accent-ink: #0d1a12;
+  --pitch: #1d3324;
+  --pitch-line: #5f9a6d;
+  --zone: #24442d;
+  --easier: #17324a;
+  --easier-ink: #9ccbf2;
+  --base: #262d29;
+  --base-ink: #c5ccc8;
+  --harder: #45291a;
+  --harder-ink: #f4b58c;
+  --ritual-bg: #4a1f30;
+  --ritual-ink: #f5a8c4;
+  color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
@@ -57,6 +83,17 @@ body {
 
 .site-header { background: var(--accent); color: var(--accent-ink); padding: 20px 0 0; margin-bottom: 24px; }
 .site-header h1 { margin: 0; font-size: 1.6rem; }
+.header-top { display: flex; align-items: center; gap: 14px; }
+.header-top .titles { flex: 1; min-width: 0; }
+.logo { height: 56px; width: auto; flex: none; background: #fff; border-radius: 8px; padding: 4px; }
+.header-buttons { display: flex; gap: 6px; flex: none; align-self: flex-start; flex-wrap: wrap; justify-content: flex-end; }
+.theme-toggle {
+  flex: none; font: inherit; font-size: 0.85rem; font-weight: 600; cursor: pointer;
+  color: inherit; background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px; padding: 6px 12px; white-space: nowrap;
+}
+.theme-toggle:hover { background: rgba(255, 255, 255, 0.25); }
+.theme-toggle:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
 .tagline { margin: 4px 0 16px; opacity: 0.85; }
 .tabs { display: flex; gap: 4px; overflow-x: auto; }
 .tab {
@@ -157,7 +194,7 @@ body {
 
 @media print {
   body { background: #fff; color: #000; font-size: 12px; }
-  .site-header, .controls, .hint, .tabs, .site-footer { display: none; }
+  .site-header, .controls, .hint, .tabs, .site-footer, .header-buttons { display: none; }
   .session { break-inside: avoid-page; border-color: #999; }
   .block { background: #fff; border: 1px solid #ccc; border-left-width: 4px; }
   summary { list-style: none; }
@@ -166,9 +203,6 @@ body {
 
 /* Rituale: Ankommen, Begrüßungs- und Abschlusskreis */
 .ritual { --phase-c: #e0578a; }
-.tag-ritual { background: #fbe3ec; color: #9b1f4f; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .tag-ritual { background: #4a1f30; color: #f5a8c4; }
-}
+.tag-ritual { background: var(--ritual-bg); color: var(--ritual-ink); }
 .structure { padding-left: 20px; }
 .structure li { margin-bottom: 8px; }

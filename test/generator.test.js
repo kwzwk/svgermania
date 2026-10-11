@@ -117,3 +117,30 @@ test('isoWeek', () => {
   assert.equal(isoWeek(new Date(2026, 0, 1)), 1);
   assert.equal(isoWeek(new Date(2026, 9, 10)), 41);
 });
+
+test('English translations cover all strings, config and data', async () => {
+  const { STRING_KEYS, CONFIG_EN } = await import('../js/i18n.js');
+  assert.deepEqual([...STRING_KEYS.en].sort(), [...STRING_KEYS.de].sort());
+  for (const id of Object.keys(AGE_GROUPS)) assert.ok(CONFIG_EN.ages[id]?.label, `age ${id}`);
+  for (const id of Object.keys(LEVELS)) assert.ok(CONFIG_EN.levels[id]?.label, `level ${id}`);
+  for (const id of Object.keys(THEMES)) assert.ok(CONFIG_EN.themes[id], `theme ${id}`);
+  for (const p of PHASES) assert.ok(CONFIG_EN.phases[p.id], `phase ${p.id}`);
+
+  const exEn = JSON.parse(readFileSync(new URL('../data/exercises.en.json', import.meta.url)));
+  for (const ex of exercises) {
+    const en = exEn[ex.id];
+    assert.ok(en, `missing English exercise ${ex.id}`);
+    for (const key of ['name', 'field', 'material', 'setup', 'easier', 'harder']) assert.ok(en[key], `${ex.id}: English ${key}`);
+    assert.equal(en.rules.length, ex.rules.length, `${ex.id}: rules`);
+    assert.equal(en.questions.length, ex.questions.length, `${ex.id}: questions`);
+  }
+  const ritEn = JSON.parse(readFileSync(new URL('../data/rituals.en.json', import.meta.url)));
+  assert.equal(ritEn.principles.length, rituals.principles.length);
+  for (const kind of ['arrival', 'opening', 'closing']) {
+    for (const r of rituals[kind]) {
+      const en = ritEn[kind][r.id];
+      assert.ok(en?.name && en.tip, `missing English ritual ${r.id}`);
+      assert.equal(en.steps.length, r.steps.length, `${r.id}: steps`);
+    }
+  }
+});
