@@ -5,17 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Funino-Wochenplaner · SV Germania</title>
   <meta name="description" content="Wochenpläne mit Funino-Übungen für G-, F- und E-Jugend, passend zu Alter und Niveau der Kinder.">
+  <script>
+    // Gespeichertes Farbschema vor dem ersten Zeichnen setzen, damit nichts aufblitzt.
+    try { const t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header class="site-header">
     <div class="wrap">
-      <h1>Funino-Wochenplaner</h1>
-      <p class="tagline">SV Germania · Kinderfußball nach dem Prinzip Spielen – Üben – Spielen</p>
+      <div class="header-top">
+        <img class="logo" src="img/logo.svg" alt="Logo" onerror="this.remove()">
+        <div class="titles">
+          <h1 data-i18n="title">Funino-Wochenplaner</h1>
+          <p class="tagline" data-i18n="tagline">SV Germania · Kinderfußball nach dem Prinzip Spielen – Üben – Spielen</p>
+        </div>
+        <div class="header-buttons">
+          <button type="button" class="theme-toggle" id="lang-toggle">EN</button>
+          <button type="button" class="theme-toggle" id="theme-toggle">Automatisch</button>
+        </div>
+      </div>
       <nav class="tabs" aria-label="Bereiche">
-        <button class="tab" data-view="plan" aria-current="page">Wochenplan</button>
-        <button class="tab" data-view="catalog">Übungen</button>
-        <button class="tab" data-view="rules">Ablauf &amp; Regeln</button>
+        <button class="tab" data-view="plan" aria-current="page" data-i18n="tabPlan">Wochenplan</button>
+        <button class="tab" data-view="catalog" data-i18n="tabCatalog">Übungen</button>
+        <button class="tab" data-view="rules" data-i18n="tabRules">Ablauf &amp; Regeln</button>
       </nav>
     </div>
   </header>
@@ -23,35 +36,35 @@
   <main class="wrap">
     <section id="view-plan" class="view">
       <form id="plan-form" class="controls">
-        <label>Altersklasse
+        <label><span data-i18n="age">Altersklasse</span>
           <select name="age" id="age"></select>
         </label>
         <fieldset class="levels">
-          <legend>Niveau</legend>
+          <legend data-i18n="level">Niveau</legend>
           <div id="levels" class="segmented"></div>
         </fieldset>
-        <label>Einheiten pro Woche
+        <label><span data-i18n="sessions">Einheiten pro Woche</span>
           <select name="sessions">
             <option value="1">1</option>
             <option value="2" selected>2</option>
             <option value="3">3</option>
           </select>
         </label>
-        <label>Dauer (Minuten)
+        <label><span data-i18n="minutes">Dauer (Minuten)</span>
           <select name="minutes" id="minutes"></select>
         </label>
-        <label>Anzahl Kinder
+        <label><span data-i18n="players">Anzahl Kinder</span>
           <input type="number" name="players" min="2" max="40" value="12">
         </label>
-        <label>Schwerpunkt
+        <label><span data-i18n="theme">Schwerpunkt</span>
           <select name="theme" id="theme"></select>
         </label>
-        <label>Kalenderwoche
+        <label><span data-i18n="week">Kalenderwoche</span>
           <input type="number" name="week" min="1" max="53">
         </label>
         <div class="actions">
-          <button type="button" id="shuffle">Neu mischen</button>
-          <button type="button" id="print">Drucken</button>
+          <button type="button" id="shuffle" data-i18n="shuffle">Neu mischen</button>
+          <button type="button" id="print" data-i18n="print">Drucken</button>
         </div>
       </form>
       <p id="level-hint" class="hint"></p>
@@ -60,14 +73,14 @@
 
     <section id="view-catalog" class="view" hidden>
       <div class="controls compact">
-        <label>Altersklasse
-          <select id="cat-age"><option value="">Alle</option></select>
+        <label><span data-i18n="age">Altersklasse</span>
+          <select id="cat-age"></select>
         </label>
-        <label>Phase
-          <select id="cat-phase"><option value="">Alle</option></select>
+        <label><span data-i18n="phase">Phase</span>
+          <select id="cat-phase"></select>
         </label>
-        <label>Schwerpunkt
-          <select id="cat-theme"><option value="">Alle</option></select>
+        <label><span data-i18n="theme">Schwerpunkt</span>
+          <select id="cat-theme"></select>
         </label>
       </div>
       <p id="cat-count" class="hint"></p>
@@ -80,7 +93,7 @@
   </main>
 
   <footer class="site-footer wrap">
-    <p>Grundlage: Horst Weins Funino und die DFB-Spielformen im Kinderfußball. Feldmaße sind Richtwerte.</p>
+    <p data-i18n="footer">Grundlage: Horst Weins Funino und die DFB-Spielformen im Kinderfußball. Feldmaße sind Richtwerte.</p>
   </footer>
 
   <script type="module" src="js/app.js"></script>

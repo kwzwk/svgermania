@@ -10,6 +10,9 @@ Live: https://svgermania.geyen.org
 - **Fester Ablauf jeder Einheit**: Ankommen (jedes Kind wird persönlich begrüßt), Begrüßungskreis mit einem Ritual zum Ankommen und Kennenlernen, dann Aufwärmspiel, Übungsform, Spielform und Funino-Abschlussspiel, zum Schluss ein Abschlusskreis mit Lob, Teamruf und Verabschiedung. Die Rituale wechseln von Einheit zu Einheit und passen zur Altersklasse.
 - **Niveau als Stellschraube**: Das Niveau ändert nicht das Spielformat, sondern zeigt für jede Übung die leichtere oder schwerere Variante. Ab der zweiten Einheit der Woche geht es eine Stufe schwerer.
 - **Schwerpunkt pro Woche**: automatisch rotierend nach Kalenderwoche oder fest gewählt.
+- **Deutsch / Englisch** per Knopf oben rechts (oder `?lang=en` im Link), inklusive aller Übungen und Rituale.
+- **Hell / Dunkel / Automatisch** per Knopf oben rechts, die Wahl wird im Browser gespeichert.
+- **Logo**: eine Datei `img/logo.svg` erscheint oben links (siehe `img/README.md`).
 - **Teilen und Drucken**: Alle Einstellungen stehen in der URL. "Drucken" klappt alle Übungen auf.
 - **Übungskatalog** mit Filtern und eine Seite mit dem **Ablauf einer Einheit**, den **Funino-Regeln** und DFB-Formaten je Altersklasse.
 
@@ -24,6 +27,7 @@ Eine statische Website ohne Build-Schritt und ohne Backend.
 | `js/generator.js` | Plan-Generator (reine Funktionen, auch in Node testbar) |
 | `js/app.js` | Formular, Darstellung, Katalog |
 | `data/exercises.json` | Übungsdatenbank |
+| `js/i18n.js`, `data/*.en.json` | Englische Texte und Übersetzungen |
 | `data/rituals.json` | Trainer-Grundsätze und Rituale für Ankommen, Begrüßungs- und Abschlusskreis |
 | `test/` | Tests (`npm test`) |
 
@@ -61,6 +65,8 @@ Einen Eintrag in `data/exercises.json` ergänzen:
 ```
 
 Rituale werden genauso in `data/rituals.json` ergänzt (`arrival`, `opening` oder `closing`, jeweils mit `id`, `name`, `ages`, `steps`, `tip`).
+
+Neue Übungen und Rituale brauchen auch einen englischen Eintrag in `data/exercises.en.json` bzw. `data/rituals.en.json` (gleiche `id`); `npm test` prüft das.
 
 `levels` ist optional (ohne Angabe passt die Übung zu allen Niveaus). `npm test` prüft, dass alle Felder gültig sind und jede Altersklasse in jeder Phase genug Übungen hat.
 
