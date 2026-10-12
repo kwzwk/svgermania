@@ -4,8 +4,9 @@
   --text: #1c2321;
   --muted: #5d6763;
   --border: #d9ddd8;
-  --accent: #1f7a3f;
+  --accent: #da251c;
   --accent-ink: #ffffff;
+  --accent-text: #da251c;
   --pitch: #e3f1e5;
   --pitch-line: #6a9e76;
   --zone: #c7e3cc;
@@ -31,8 +32,9 @@
     --text: #e6ebe8;
     --muted: #9aa5a0;
     --border: #2e3732;
-    --accent: #4cbf72;
-    --accent-ink: #0d1a12;
+    --accent: #da251c;
+    --accent-ink: #ffffff;
+    --accent-text: #ff7a72;
     --pitch: #1d3324;
     --pitch-line: #5f9a6d;
     --zone: #24442d;
@@ -54,8 +56,9 @@
   --text: #e6ebe8;
   --muted: #9aa5a0;
   --border: #2e3732;
-  --accent: #4cbf72;
-  --accent-ink: #0d1a12;
+  --accent: #da251c;
+  --accent-ink: #ffffff;
+  --accent-text: #ff7a72;
   --pitch: #1d3324;
   --pitch-line: #5f9a6d;
   --zone: #24442d;
@@ -117,11 +120,11 @@ body {
 .segmented span { display: block; text-align: center; padding: 8px 6px; cursor: pointer; background: var(--bg); }
 .segmented label + label span { border-left: 1px solid var(--border); }
 .segmented input:checked + span { background: var(--accent); color: var(--accent-ink); }
-.segmented input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: -4px; }
+.segmented input:focus-visible + span { outline: 2px solid var(--accent-text); outline-offset: -4px; }
 .actions { display: flex; gap: 8px; align-items: end; }
 .actions button {
   flex: 1; font: inherit; font-weight: 600; padding: 9px 12px; border-radius: 8px; cursor: pointer;
-  border: 1px solid var(--accent); background: var(--surface); color: var(--accent);
+  border: 1px solid var(--accent-text); background: var(--surface); color: var(--accent-text);
 }
 .actions button:first-child { background: var(--accent); color: var(--accent-ink); }
 

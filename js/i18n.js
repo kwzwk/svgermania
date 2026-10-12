@@ -78,7 +78,7 @@ const STRINGS = {
   },
   en: {
     title: 'Funino Weekly Planner',
-    tagline: 'SV Germania · Kids’ football following Play – Practise – Play',
+    tagline: 'SV Germania · Kids’ soccer following Play – Practise – Play',
     tabPlan: 'Weekly plan',
     tabCatalog: 'Exercises',
     tabRules: 'Structure & rules',
@@ -94,7 +94,7 @@ const STRINGS = {
     phase: 'Phase',
     all: 'All',
     themeAuto: 'Automatic (weekly rotation)',
-    footer: 'Based on Horst Wein’s Funino and the DFB children’s football formats. Field sizes are guidelines.',
+    footer: 'Based on Horst Wein’s Funino and the DFB children’s soccer formats. Field sizes are guidelines.',
     summaryTitle: 'Week {week} · {age} · Focus: {theme}',
     summaryLine: '{sessions} × {minutes} min · {players} kids · {level}. For game forms and the final game: <strong>{fields}</strong> ({field}), {goals} mini goals.',
     field1: '1 field',
