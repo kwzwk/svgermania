@@ -8,7 +8,7 @@ export const LANGS = ['de', 'en'];
 const STRINGS = {
   de: {
     title: 'Funino-Wochenplaner',
-    tagline: 'SV Germania · Kinderfußball nach dem Prinzip Spielen – Üben – Spielen',
+    tagline: 'Kinderfußball nach dem Prinzip Spielen – Üben – Spielen',
     tabPlan: 'Wochenplan',
     tabCatalog: 'Übungen',
     tabRules: 'Ablauf & Regeln',
@@ -78,7 +78,7 @@ const STRINGS = {
   },
   en: {
     title: 'Funino Weekly Planner',
-    tagline: 'SV Germania · Kids’ soccer following Play – Practise – Play',
+    tagline: 'Kids’ soccer following Play – Practise – Play',
     tabPlan: 'Weekly plan',
     tabCatalog: 'Exercises',
     tabRules: 'Structure & rules',
