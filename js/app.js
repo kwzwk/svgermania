@@ -54,7 +54,7 @@ function clamp(n, lo, hi) {
 // ---------- Statische Texte ----------
 
 function applyStaticTexts() {
-  document.title = `${t('title')} · SV Germania`;
+  document.title = t('title');
   for (const el of document.querySelectorAll('[data-i18n]')) el.textContent = t(el.dataset.i18n);
   const langBtn = $('#lang-toggle');
   langBtn.textContent = t('langButton');
