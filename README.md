@@ -32,6 +32,7 @@ Eine statische Website ohne Build-Schritt und ohne Backend.
 | `data/exercises.json` | Übungsdatenbank |
 | `js/i18n.js`, `data/*.en.json` | Englische Texte und Übersetzungen |
 | `data/rituals.json` | Trainer-Grundsätze und Rituale für Ankommen, Begrüßungs- und Abschlusskreis |
+| `img/exercises/`, `tools/exercise-gifs/` | Animierte Draufsicht pro Übung (de/en) und der Renderer dazu: `python3 tools/exercise-gifs/render.py --all` (braucht Pillow) |
 | `test/` | Tests (`npm test`) |
 
 ## Lokal starten

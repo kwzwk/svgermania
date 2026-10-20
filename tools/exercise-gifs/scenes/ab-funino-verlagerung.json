@@ -1,0 +1,44 @@
+{
+  "id": "ab-funino-verlagerung",
+  "name": "Funino: Spielverlagerung zählt doppelt",
+  "duration": 10,
+  "fps": 12.5,
+  "field": {"w": 26, "h": 22, "margin": 2.5},
+  "lines": [[0, 11, 26, 11]],
+  "dashed": [[0, 6, 26, 6], [0, 16, 26, 16]],
+  "goals": [
+    {"x": 4, "y": 0, "side": "top"},
+    {"x": 22, "y": 0, "side": "top"},
+    {"x": 4, "y": 22, "side": "bottom"},
+    {"x": 22, "y": 22, "side": "bottom"}
+  ],
+  "teams": {
+    "blue": {"color": "#2f6fd6"},
+    "red": {"color": "#d6452f"}
+  },
+  "players": [
+    {"id": "B1", "team": "blue", "path": [[0, 6, 15], [1.2, 5.5, 11], [4, 6, 13], [7, 4, 16.5], [8.3, 5, 17], [8.9, 6, 15.2], [10, 6, 15]]},
+    {"id": "B2", "team": "blue", "path": [[0, 12, 16], [1.9, 12, 12.5], [2.3, 12, 12], [4, 12.5, 10], [6, 14, 13], [8, 13, 16], [10, 12, 16]], "highlight": [[1.6, 2.6]]},
+    {"id": "B3", "team": "blue", "path": [[0, 21, 15], [2, 21.5, 11], [3.2, 21, 8.5], [4.0, 21.3, 5.6], [4.6, 20, 6.5], [6, 21.5, 10], [8, 20, 13], [10, 21, 15]], "highlight": [[2.9, 4.6]]},
+    {"id": "R1", "team": "red", "path": [[0, 7, 8.5], [1.2, 5.5, 7], [2.5, 5, 6.5], [4, 6, 7], [6, 6, 9], [8.4, 3.5, 12.5], [10, 7, 8.5]]},
+    {"id": "R2", "team": "red", "path": [[0, 10.5, 7], [1.2, 8.5, 6.5], [2.5, 9, 6], [4, 11, 5], [6, 10.5, 7], [7.4, 10, 8.3], [8.4, 8, 11], [10, 10.5, 7]]},
+    {"id": "R3", "team": "red", "path": [[0, 16, 8], [1.2, 13.5, 7], [2.5, 12.5, 6.5], [3.4, 15.5, 5], [4.2, 18.5, 3], [5.1, 21.3, 1.4], [5.9, 19.8, 3.2], [6.8, 17.3, 5.5], [8.4, 16, 9], [10, 16, 8]]}
+  ],
+  "balls": [
+    {"keys": [{"t": 0, "on": "B1"}, {"t": 1.2, "on": "B1"}, {"t": 1.9, "on": "B2"}, {"t": 2.3, "on": "B2"}, {"t": 3.2, "on": "B3"}, {"t": 4.0, "on": "B3"}, {"t": 4.35, "x": 22, "y": -0.4}, {"t": 5.05, "x": 22, "y": -0.4}, {"t": 5.3, "on": "R3"}, {"t": 6.8, "on": "R3"}, {"t": 7.4, "on": "R2"}, {"t": 8.4, "on": "R2"}, {"t": 8.9, "on": "B1"}]}
+  ],
+  "signals": [
+    {"from": 4.4, "to": 6.4, "color": "#ffd23f", "de": "Tor x2", "en": "Goal x2"}
+  ],
+  "captions": [
+    {"from": 0, "to": 1.4, "de": "Blau greift links an, Rot verschiebt", "en": "Blue attacks left, red shifts across"},
+    {"from": 1.4, "to": 3.4, "de": "Spielverlagerung auf die andere Torseite", "en": "Switch play to the other goal side"},
+    {"from": 3.4, "to": 4.6, "de": "Abschluss am freien Tor", "en": "Finish at the open goal"},
+    {"from": 4.6, "to": 6.6, "de": "Tor nach Verlagerung zählt doppelt", "en": "Goal after a switch counts double"},
+    {"from": 6.6, "to": 10, "de": "Rot dribbelt ein, das Spiel läuft weiter", "en": "Red dribbles in, play goes on"}
+  ],
+  "legend": [
+    {"team": "blue", "de": "Team Blau", "en": "Team blue"},
+    {"team": "red", "de": "Team Rot", "en": "Team red"}
+  ]
+}

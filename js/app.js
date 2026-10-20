@@ -213,10 +213,17 @@ function renderBlock(block, age) {
     </details>`;
 }
 
+// Animierte Draufsicht aus tools/exercise-gifs; fehlt die Datei, verschwindet das Bild.
+function exerciseAnimation(ex) {
+  const suffix = getLang() === 'de' ? '' : `.${getLang()}`;
+  return `<img class="ex-anim" src="img/exercises/${esc(ex.id)}${suffix}.gif" alt="${esc(ex.name)}" loading="lazy" width="416" onerror="this.remove()">`;
+}
+
 function renderExerciseBody(ex, variation) {
   const dial = variation === 'easier' ? ex.easier : variation === 'harder' ? ex.harder : null;
   return `
     <div class="ex-body">
+      ${exerciseAnimation(ex)}
       <p class="themes">${ex.themes.map((id) => `<span class="chip">${esc(themeLabel(id))}</span>`).join('')}</p>
       ${dial ? `<p class="dial"><strong>${esc(t('forYourLevel', { dial: t(variation) }))}:</strong> ${esc(dial)}</p>` : ''}
       <dl>

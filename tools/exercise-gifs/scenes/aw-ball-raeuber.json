@@ -1,0 +1,40 @@
+{
+  "id": "aw-ball-raeuber",
+  "name": "Balldiebe",
+  "duration": 8,
+  "fps": 12.5,
+  "field": { "w": 20, "h": 20, "margin": 3 },
+  "cones": [[0, 0], [10, 0], [20, 0], [0, 10], [20, 10], [0, 20], [10, 20], [20, 20]],
+  "teams": {
+    "kids": { "color": "#2f6fd6" },
+    "thieves": { "color": "#f28c1b", "bib": "#ffd23f" }
+  },
+  "players": [
+    { "id": "A", "team": "kids", "path": [[0, 8, 13], [1, 11, 14.5], [2, 14, 16.6], [2.6, 15.8, 19.8], [3, 16.6, 21.6], [4.6, 16.6, 21.6], [5.4, 15.5, 18.5], [6.4, 12.5, 16.5], [7.3, 9.6, 14.5]], "highlight": [[1.4, 6.2]] },
+    { "id": "B", "team": "kids", "path": [[0, 3, 3], [2, 8, 2.5], [4, 6, 6], [6, 2.5, 7]] },
+    { "id": "C", "team": "kids", "path": [[0, 15, 5], [1.5, 11, 4], [3, 7, 6], [4.5, 6, 10], [6, 11, 10], [7, 15, 8]] },
+    { "id": "D", "team": "kids", "path": [[0, 18, 14], [2, 18, 10], [4, 15, 11.5], [6, 17, 17]] },
+    { "id": "E", "team": "kids", "path": [[0, 3, 10], [2, 4, 14], [4, 7, 17.5], [6, 5, 12]] },
+    { "id": "F", "team": "kids", "path": [[0, 10, 8], [2, 13, 9.5], [4, 11, 12.5], [6, 8, 10]] },
+    { "id": "T1", "team": "thieves", "path": [[0, 4, 17], [1, 9.5, 17.2], [2, 13.4, 17.6], [2.7, 12.8, 15.4], [4, 9, 12], [5.5, 5, 10], [7, 3, 14]] },
+    { "id": "T2", "team": "thieves", "path": [[0, 17, 10], [1.5, 14, 6], [3, 10, 6.5], [4.5, 9, 9.5], [6, 13, 12.5], [7, 16, 12]] }
+  ],
+  "balls": [
+    { "keys": [{ "t": 0, "on": "A" }, { "t": 2, "on": "A" }, { "t": 2.7, "x": 17.2, "y": 22.3 }, { "t": 3, "on": "A", "fx": "sole" }, { "t": 4.6, "on": "A" }] },
+    { "keys": [{ "t": 0, "on": "B" }] },
+    { "keys": [{ "t": 0, "on": "C" }] },
+    { "keys": [{ "t": 0, "on": "D" }] },
+    { "keys": [{ "t": 0, "on": "E" }] },
+    { "keys": [{ "t": 0, "on": "F" }] }
+  ],
+  "captions": [
+    { "from": 0, "to": 2, "de": "Alle dribbeln, die Diebe jagen die Bälle", "en": "Everyone dribbles, the thieves hunt the balls" },
+    { "from": 2, "to": 3, "de": "Dieb spielt den Ball aus dem Feld!", "en": "A thief knocks the ball out!" },
+    { "from": 3, "to": 4.8, "de": "Ball holen, Ballzauber: 5 Sohlenzieher", "en": "Get the ball, ball trick: 5 sole rolls" },
+    { "from": 4.8, "to": 8, "de": "Zurück ins Feld und weiterdribbeln", "en": "Back into the field, keep dribbling" }
+  ],
+  "legend": [
+    { "team": "kids", "de": "Kind mit Ball", "en": "Child with ball" },
+    { "team": "thieves", "de": "Dieb (Leibchen)", "en": "Thief (bib)" }
+  ]
+}

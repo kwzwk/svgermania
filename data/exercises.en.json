@@ -75,7 +75,7 @@
     "setup": "Everyone dribbles. 1–2 children have a stink bomb and dribble it.",
     "rules": [
       "The stink bomb children try to hit other children's balls with their stink bomb.",
-      "If your ball gets hit, you get the stink bomb.",
+      "If your ball gets hit, you get the stink bomb and the thrower carries on with your ball.",
       "Whoever doesn't have a stink bomb at the end wins."
     ],
     "easier": "Only one stink bomb, big area.",
@@ -188,7 +188,7 @@
     "name": "Passing Triangle with Turning",
     "field": "Triangle with 8–10 m sides per group",
     "material": "3 cones and 1 ball per group",
-    "setup": "Three children per triangle, one ball.",
+    "setup": "Four children per triangle, one ball. Two children start at the first cone, so someone is always waiting at the next cone after following the pass.",
     "rules": [
       "Pass and follow your pass.",
       "Receive with the inside of your back foot, open your body, take the ball into the new direction.",

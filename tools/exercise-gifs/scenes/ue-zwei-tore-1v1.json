@@ -1,0 +1,34 @@
+{
+  "id": "ue-zwei-tore-1v1",
+  "name": "1 gegen 1 auf zwei Minitore",
+  "duration": 9,
+  "fps": 12.5,
+  "field": { "w": 10, "h": 15, "margin": 2.5 },
+  "goals": [{ "x": 2.5, "y": 0, "side": "top" }, { "x": 7.5, "y": 0, "side": "top" }],
+  "cones": [[0, 0], [10, 0], [0, 15], [10, 15]],
+  "teams": {
+    "att": { "color": "#2f6fd6" },
+    "def": { "color": "#f28c1b" }
+  },
+  "players": [
+    { "id": "A", "team": "att", "face": [0, -1], "hidden": [[8.0, 8.7]],
+      "path": [[0, 5, 14.5], [1.5, 5, 14.5], [2.6, 5, 11.4], [3.4, 3.8, 9.3], [4.3, 6.8, 7.2], [5.1, 7.3, 3.6], [5.6, 7.5, 2.4], [6.1, 7.5, 1.3], [6.4, 7.5, 1.3], [7.0, 6.3, 1.5], [7.6, 5.1, 1.9], [7.9, 5, 2.5], [8.15, 5, 2.5], [8.3, 5, 15.2], [8.5, 5, 14.5]],
+      "highlight": [[2.6, 5.2]] },
+    { "id": "D", "team": "def", "face": [0, 1], "hidden": [[8.7, 9]],
+      "path": [[0, 5, 2.5], [0.4, 5, 2.5], [1.4, 5, 4.6], [2.4, 4.9, 6.6], [3.3, 4.3, 7.0], [4.2, 5.5, 6.1], [5.0, 6.4, 4.7], [5.6, 6.3, 4.6], [6.4, 5.9, 6.6], [7.6, 5.3, 11.0], [8.5, 5, 14.5], [8.7, 5, 14.5], [8.78, 5, 1.9], [8.95, 5, 2.5]] },
+    { "id": "D2", "team": "def", "face": [0, 1], "hidden": [[0, 8.0]], "path": [[0, 5, 2.5]] }
+  ],
+  "balls": [
+    { "keys": [{ "t": 0, "on": "D" }, { "t": 0.3, "on": "D" }, { "t": 1.75, "on": "A" }, { "t": 5.15, "on": "A" }, { "t": 5.6, "x": 7.5, "y": -0.2 }, { "t": 6.0, "x": 7.5, "y": -0.2 }, { "t": 6.35, "on": "A" }, { "t": 7.98, "on": "A" }, { "t": 8.0, "on": "D2" }] }
+  ],
+  "captions": [
+    { "from": 0, "to": 1.8, "de": "Verteidiger passt zu und läuft an", "en": "Defender passes and closes in" },
+    { "from": 1.8, "to": 4.4, "de": "Angreifer wählt das freie Tor", "en": "Attacker picks the open goal" },
+    { "from": 4.4, "to": 6.2, "de": "Reindribbeln oder aus 3 m schießen", "en": "Dribble in or shoot from 3 m" },
+    { "from": 6.2, "to": 9, "de": "Rollen tauschen, nächster Durchgang", "en": "Swap roles, next round" }
+  ],
+  "legend": [
+    { "team": "att", "de": "Angreifer", "en": "Attacker" },
+    { "team": "def", "de": "Verteidiger", "en": "Defender" }
+  ]
+}
