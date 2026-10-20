@@ -1,0 +1,44 @@
+{
+  "id": "ab-funino-eindribbeln",
+  "name": "Funino mit Eindribbeln",
+  "duration": 10,
+  "fps": 12.5,
+  "field": {"w": 22, "h": 30, "margin": 2.5},
+  "lines": [[0, 15, 22, 15]],
+  "dashed": [[0, 6, 22, 6], [0, 24, 22, 24]],
+  "goals": [
+    {"x": 4, "y": 0, "side": "top"},
+    {"x": 18, "y": 0, "side": "top"},
+    {"x": 4, "y": 30, "side": "bottom"},
+    {"x": 18, "y": 30, "side": "bottom"}
+  ],
+  "teams": {
+    "blue": {"color": "#2f6fd6"},
+    "red": {"color": "#d6452f"}
+  },
+  "players": [
+    {"id": "B1", "team": "blue", "path": [[0, 22.3, 17.5], [0.5, 22, 17.2], [1.5, 19.5, 14.5], [2.2, 17.8, 13], [2.6, 17, 13.2], [3.2, 18.6, 10.8], [4.0, 18.2, 7.2], [4.6, 16.8, 5.3], [5.4, 14.5, 4.8], [7, 13, 8], [10, 11, 8]], "highlight": [[0, 5.2]]},
+    {"id": "B2", "team": "blue", "path": [[0, 8, 18], [3, 8.5, 13], [5, 7.5, 11.5], [7.5, 8, 14], [10, 8, 18]]},
+    {"id": "B3", "team": "blue", "path": [[0, 11, 8], [2, 10, 8.5], [4.6, 10, 9], [6.5, 12, 12], [8.5, 17, 18.5], [9.4, 21.6, 17.4], [10, 22.3, 17.5]]},
+    {"id": "R1", "team": "red", "path": [[0, 15.5, 8], [1.5, 16, 10], [2.4, 16, 11], [2.8, 15.6, 11.6], [3.4, 16.4, 10.2], [4.4, 16.3, 8.6], [5.4, 18, 4.5], [6.0, 17.5, 1.4], [6.6, 17, 4], [7.5, 15, 8], [8.5, 14, 10], [10, 15.5, 8]]},
+    {"id": "R2", "team": "red", "path": [[0, 7, 5], [3, 8, 6], [5, 7, 5], [7.5, 5, 11], [10, 7, 5]]},
+    {"id": "R3", "team": "red", "path": [[0, 16.5, 15.5], [1.5, 14, 13], [2.5, 12.5, 11.5], [4.5, 13.5, 10], [6.5, 16, 11], [8.2, 20.3, 14.3], [8.8, 20.5, 15.3], [10, 16.5, 15.5]]}
+  ],
+  "balls": [
+    {"keys": [{"t": 0, "on": "B1", "fx": "sole"}, {"t": 0.4, "on": "B1"}, {"t": 4.6, "on": "B1"}, {"t": 5.05, "x": 18, "y": -0.4}, {"t": 5.85, "x": 18, "y": -0.4}, {"t": 6.1, "on": "R1"}, {"t": 7.5, "on": "R1"}, {"t": 8.7, "x": 22.9, "y": 17.4}, {"t": 9.3, "x": 22.9, "y": 17.4}, {"t": 9.55, "on": "B3"}]}
+  ],
+  "signals": [
+    {"from": 5.1, "to": 6.9, "color": "#ffd23f", "de": "Tor x2", "en": "Goal x2"}
+  ],
+  "captions": [
+    {"from": 0, "to": 2.2, "de": "Blau dribbelt ein, kein Einpassen", "en": "Blue dribbles in, no passing in"},
+    {"from": 2.2, "to": 5.0, "de": "Finte, 1 gegen 1 gewinnen, Torschuss", "en": "Feint, win the 1 v 1, shoot"},
+    {"from": 5.0, "to": 6.8, "de": "Tor nach gewonnenem 1 gegen 1 zählt doppelt", "en": "Goal after a won 1 v 1 counts double"},
+    {"from": 6.8, "to": 8.8, "de": "Nach dem Tor: Rot dribbelt ein", "en": "After the goal red dribbles in"},
+    {"from": 8.8, "to": 10, "de": "Ball im Aus: wieder Eindribbeln", "en": "Ball out: dribble in again"}
+  ],
+  "legend": [
+    {"team": "blue", "de": "Team Blau", "en": "Team blue"},
+    {"team": "red", "de": "Team Rot", "en": "Team red"}
+  ]
+}

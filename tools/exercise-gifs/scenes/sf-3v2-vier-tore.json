@@ -1,0 +1,33 @@
+{
+  "id": "sf-3v2-vier-tore",
+  "name": "3 gegen 2 auf vier Hütchentore",
+  "duration": 10,
+  "fps": 12.5,
+  "field": {"w": 20, "h": 20, "margin": 3},
+  "cones": [[8.5, 0], [11.5, 0], [8.5, 20], [11.5, 20], [0, 8.5], [0, 11.5], [20, 8.5], [20, 11.5], [0, 0], [20, 0], [0, 20], [20, 20]],
+  "teams": {
+    "att": {"color": "#2f6fd6"},
+    "def": {"color": "#f28c1b", "bib": "#ffd23f"}
+  },
+  "players": [
+    {"id": "A1", "team": "att", "path": [[0, 8, 5.5], [1.0, 8.5, 6.5], [2.0, 9, 7.5], [2.6, 9.3, 8.2], [3.8, 11, 11.5], [5.0, 12, 14.5], [6.0, 11.5, 13.5], [7.0, 11, 12.5], [7.6, 10.7, 11.8], [8.8, 9, 8.5]]},
+    {"id": "A2", "team": "att", "path": [[0, 13, 15], [1.3, 14, 14.5], [2.4, 15.2, 13.2], [3.3, 16, 12.5], [4.2, 18.5, 11], [5.0, 21.5, 9.8], [5.8, 19, 9], [6.5, 16.2, 8], [7.6, 14.5, 11], [8.8, 13.5, 13.5]], "highlight": [[3.3, 5.4]]},
+    {"id": "A3", "team": "att", "path": [[0, -1.5, 10.2], [0.8, 1, 11], [1.5, 3.8, 12], [2.6, 5.5, 9], [3.8, 6.5, 6.5], [5.0, 7, 5], [6.3, 6, 5.5], [7.4, 4.8, 6.8], [8.3, 4, 7.5], [9.2, 1.5, 9]], "highlight": [[8.3, 10]]},
+    {"id": "D1", "team": "def", "path": [[0, 6, 10], [0.8, 4.8, 10.5], [1.6, 6.5, 10], [2.6, 8, 9.8], [3.8, 9, 11], [5.0, 8, 11], [6.0, 8.2, 11.4], [6.9, 8.5, 11.5], [8.3, 6, 9.5], [9.2, 3.7, 9.4]]},
+    {"id": "D2", "team": "def", "path": [[0, 12, 9], [1.0, 11.8, 8.6], [1.9, 11.5, 8.5], [3.3, 14, 10.5], [4.2, 16.3, 10.6], [5.0, 14, 10], [5.8, 15.2, 9.5], [6.6, 13.5, 10], [7.6, 12, 10.2], [8.8, 11, 9]]}
+  ],
+  "balls": [
+    {"keys": [{"t": 0, "on": "A3"}, {"t": 1.5, "on": "A3"}, {"t": 2.0, "on": "A1"}, {"t": 2.6, "on": "A1"}, {"t": 3.3, "on": "A2"}, {"t": 5.0, "on": "A2"}, {"t": 6.5, "on": "A2"}, {"t": 7.0, "on": "A1"}, {"t": 7.6, "on": "A1"}, {"t": 8.3, "on": "A3"}]}
+  ],
+  "captions": [
+    {"from": 0, "to": 1.4, "de": "3 gegen 2, an jeder Seite ein Hütchentor", "en": "3 v 2, a cone gate on every side"},
+    {"from": 1.4, "to": 3.4, "de": "Kombinieren, das freie Tor suchen", "en": "Combine, look for the open gate"},
+    {"from": 3.4, "to": 5.4, "de": "Durchs Tor dribbeln: Punkt!", "en": "Dribble through the gate: point!"},
+    {"from": 5.4, "to": 8.3, "de": "Sofort weiter, die Seite wechseln", "en": "Keep going, switch sides"},
+    {"from": 8.3, "to": 10, "de": "Punkt! Zählt auch per Pass durchs Tor", "en": "Point! A pass through a gate counts too"}
+  ],
+  "legend": [
+    {"team": "att", "de": "Angreifer", "en": "Attacker"},
+    {"team": "def", "de": "Verteidiger", "en": "Defender"}
+  ]
+}

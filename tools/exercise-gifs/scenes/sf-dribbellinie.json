@@ -1,0 +1,32 @@
+{
+  "id": "sf-dribbellinie",
+  "name": "2 gegen 2 auf Dribbellinie",
+  "duration": 10,
+  "fps": 12.5,
+  "field": {"w": 15, "h": 20, "margin": 3},
+  "lines": [[0, 10, 15, 10]],
+  "cones": [[0, 0], [15, 0], [0, 20], [15, 20]],
+  "teams": {
+    "blue": {"color": "#2f6fd6"},
+    "red": {"color": "#d6452f"}
+  },
+  "players": [
+    {"id": "B1", "team": "blue", "path": [[0, 4, 20.4], [0.7, 4.3, 17.5], [1.4, 4.6, 14.6], [2.6, 5.3, 12], [3.8, 6, 10.5], [5.0, 6.5, 9.5], [6.0, 4.8, 11.4], [7.1, 4.9, 12.6], [8.0, 4, 14.5], [8.8, 5, 17.8], [9.5, 4.8, 20.8]]},
+    {"id": "B2", "team": "blue", "path": [[0, 11.5, 13], [1.0, 11.5, 11], [2.1, 12, 8.8], [3.1, 12.5, 4.5], [4.0, 11.5, 0.3], [4.3, 11.5, 0.3], [5.0, 13.5, 1.5], [6.4, 12, 4.5], [7.6, 11.5, 7.5], [8.8, 11.5, 10.5]], "highlight": [[2.1, 4.4]]},
+    {"id": "R1", "team": "red", "path": [[0, 8.5, 10.5], [1.0, 10.2, 8.6], [2.1, 10.1, 7.4], [3.0, 11, 5.5], [3.8, 10, 2.2], [4.5, 10.2, -0.8], [5.0, 11, -0.4], [5.7, 10.7, 2.5], [6.4, 10.4, 5.4], [7.6, 9.7, 8], [8.8, 9, 9.5]]},
+    {"id": "R2", "team": "red", "path": [[0, 1.5, 18.5], [1.4, 3, 15.5], [2.6, 3.5, 12.5], [3.8, 3.5, 9.5], [5.0, 3.5, 7], [6.0, 3.5, 9], [7.1, 3, 11.2], [8.1, 2.5, 15.5], [9.0, 3.5, 19.7], [9.3, 3.5, 19.7]], "highlight": [[7.1, 9.4]]}
+  ],
+  "balls": [
+    {"keys": [{"t": 0, "on": "B1"}, {"t": 1.4, "on": "B1"}, {"t": 2.1, "on": "B2"}, {"t": 4.0, "on": "B2"}, {"t": 4.25, "x": 11.5, "y": -0.45}, {"t": 4.6, "x": 11.5, "y": -0.45}, {"t": 4.85, "on": "R1"}, {"t": 5.0, "on": "R1"}, {"t": 6.4, "on": "R1"}, {"t": 7.1, "on": "R2"}, {"t": 9.0, "on": "R2"}, {"t": 9.25, "x": 3.5, "y": 20.45}, {"t": 9.6, "x": 3.5, "y": 20.45}, {"t": 9.85, "on": "B1"}]}
+  ],
+  "captions": [
+    {"from": 0, "to": 2.1, "de": "Blau dribbelt von der eigenen Linie ein", "en": "Blue dribbles in from its own line"},
+    {"from": 2.1, "to": 5.0, "de": "Über die Linie dribbeln, stoppen: Punkt!", "en": "Dribble over the line and stop: point!"},
+    {"from": 5.0, "to": 7.1, "de": "Jetzt dribbelt Rot von seiner Linie ein", "en": "Now red dribbles in from its line"},
+    {"from": 7.1, "to": 10, "de": "Rot stoppt den Ball hinter der Linie: Punkt!", "en": "Red stops the ball over the line: point!"}
+  ],
+  "legend": [
+    {"team": "blue", "de": "Team Blau", "en": "Blue team"},
+    {"team": "red", "de": "Team Rot", "en": "Red team"}
+  ]
+}

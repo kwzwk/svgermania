@@ -1,0 +1,30 @@
+{
+  "id": "ue-abdraengen",
+  "name": "Abdrängen und Ball erobern",
+  "duration": 9,
+  "fps": 12.5,
+  "field": { "w": 8, "h": 15, "margin": 2.5 },
+  "cones": [[0, 0], [8, 0], [0, 15], [8, 15], [2.5, 0], [5.5, 0]],
+  "labels": [{ "x": 4, "y": -1.2, "de": "Hütchentor", "en": "Cone gate", "size": 10 }, { "x": 6.4, "y": 16.4, "de": "Startlinie", "en": "Start line", "size": 9 }],
+  "teams": {
+    "att": { "color": "#2f6fd6" },
+    "def": { "color": "#f28c1b" }
+  },
+  "players": [
+    { "id": "A", "team": "att", "path": [[0, 4, 14.5], [1.0, 4.3, 12.0], [2.0, 6.2, 9.6], [2.8, 7.2, 7.5], [3.3, 7.3, 7.0], [3.8, 7.0, 8.2], [4.6, 6.4, 10.8], [5.4, 5.6, 13.0], [6.5, 4.4, 15.4], [7.2, 3.8, 17.1], [7.6, 3.7, 17.1], [8.4, 3.9, 15.6]] },
+    { "id": "D", "team": "def", "highlight": [[1.0, 3.3]], "path": [[0, 4, 7.6], [1.0, 3.9, 9.2], [2.0, 5.0, 8.4], [2.8, 6.1, 7.0], [3.3, 6.5, 7.2], [3.7, 6.3, 8.4], [4.5, 5.3, 10.8], [5.3, 4.2, 13.6], [6.0, 3.6, 15.8], [6.6, 2.6, 14.8], [7.6, 2.8, 11.0], [8.2, 3.4, 8.8], [8.6, 3.8, 7.4]] }
+  ],
+  "balls": [
+    { "keys": [{ "t": 0, "on": "A" }, { "t": 3.05, "on": "A" }, { "t": 3.35, "on": "D" }, { "t": 6.0, "on": "D" }, { "t": 6.15, "x": 3.6, "y": 16.35 }, { "t": 7.4, "x": 3.6, "y": 16.35 }, { "t": 7.7, "on": "A" }] }
+  ],
+  "captions": [
+    { "from": 0, "to": 1.2, "de": "Angreifer will durchs Hütchentor", "en": "Attacker wants to get through the gate" },
+    { "from": 1.2, "to": 3.2, "de": "Seitlich stellen, an die Linie drängen", "en": "Stand side-on, push him to the line" },
+    { "from": 3.2, "to": 6.0, "de": "Ball erobert: über die Startlinie!", "en": "Ball won: dribble over the start line!" },
+    { "from": 6.0, "to": 9, "de": "Zurück auf die Startpositionen", "en": "Back to the start positions" }
+  ],
+  "legend": [
+    { "team": "att", "de": "Angreifer", "en": "Attacker" },
+    { "team": "def", "de": "Verteidiger", "en": "Defender" }
+  ]
+}

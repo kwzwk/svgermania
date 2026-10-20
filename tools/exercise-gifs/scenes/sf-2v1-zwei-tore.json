@@ -1,0 +1,38 @@
+{
+  "id": "sf-2v1-zwei-tore",
+  "name": "2 gegen 1 auf zwei Minitore",
+  "duration": 9.6,
+  "fps": 12.5,
+  "field": {"w": 15, "h": 20, "margin": 3},
+  "lines": [[0, 10, 15, 10]],
+  "dashed": [[0, 6, 15, 6]],
+  "goals": [
+    {"x": 4, "y": 0, "side": "top"},
+    {"x": 11, "y": 0, "side": "top"}
+  ],
+  "teams": {
+    "att": {"color": "#2f6fd6"},
+    "def": {"color": "#f28c1b", "bib": "#ffd23f"}
+  },
+  "players": [
+    {"id": "A1", "team": "att", "path": [[0, 5, 19], [2.0, 6, 12.5], [3.0, 5.5, 10.6], [4.3, 5.5, 10], [6.0, 1.4, 14.5], [7.6, 1, 19.5], [8.6, 2.5, 21.6], [9.55, 2.5, 21.6]]},
+    {"id": "A2", "team": "att", "path": [[0, 10.5, 19], [2.0, 11, 12.5], [3.8, 11, 5.9], [4.4, 11, 5.9], [6.6, 13.8, 13.5], [8.2, 14, 19.8], [9.0, 12.5, 21.6], [9.55, 12.5, 21.6]], "highlight": [[2.4, 4.4]]},
+    {"id": "W1", "team": "att", "path": [[0, 2.5, 21.6], [5.0, 2.5, 21.6], [6.4, 5, 19], [9.55, 5, 19]]},
+    {"id": "W2", "team": "att", "path": [[0, 12.5, 21.6], [5.0, 12.5, 21.6], [6.6, 10.5, 19], [9.55, 10.5, 19]]},
+    {"id": "D", "team": "def", "path": [[0, 7.5, 5], [0.6, 7.5, 5], [2.0, 6.6, 9.3], [3.6, 9, 7.6], [4.3, 9.4, 7.1], [6.0, 7.5, 5], [9.55, 7.5, 5]]}
+  ],
+  "balls": [
+    {"show": [[0, 5.8]], "keys": [{"t": 0, "on": "A1"}, {"t": 2.0, "on": "A1"}, {"t": 2.5, "on": "A2"}, {"t": 3.8, "on": "A2"}, {"t": 4.3, "x": 11, "y": -0.3}, {"t": 5.8, "x": 11, "y": -0.3}, {"t": 9.5, "on": "A1"}]},
+    {"keys": [{"t": 0, "x": 2.5, "y": 20.85}, {"t": 5.0, "x": 2.5, "y": 20.85}, {"t": 5.15, "on": "W1"}, {"t": 9.56, "on": "W1"}]}
+  ],
+  "captions": [
+    {"from": 0, "to": 2.0, "de": "2 gegen 1: Angreifer starten mit Ball", "en": "2 v 1: attackers start with the ball"},
+    {"from": 2.0, "to": 3.6, "de": "Verteidiger kommt: Pass zum Freien", "en": "Defender closes in: pass to the free one"},
+    {"from": 3.6, "to": 5.4, "de": "Abschluss aus der Schusszone!", "en": "Finish from the shooting zone!"},
+    {"from": 5.4, "to": 9.6, "de": "Die Nächsten rücken nach, Rollen wechseln", "en": "Next pair steps in, roles rotate"}
+  ],
+  "legend": [
+    {"team": "att", "de": "Angreifer", "en": "Attacker"},
+    {"team": "def", "de": "Verteidiger", "en": "Defender"}
+  ]
+}

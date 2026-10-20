@@ -1,0 +1,430 @@
+{
+ "id": "aw-ballschule",
+ "name": "Ballschule: rollen, springen, fliegen",
+ "duration": 8.0,
+ "fps": 12.5,
+ "field": {
+  "w": 15,
+  "h": 15,
+  "margin": 3
+ },
+ "cones": [
+  [
+   0,
+   0
+  ],
+  [
+   15,
+   0
+  ],
+  [
+   0,
+   15
+  ],
+  [
+   15,
+   15
+  ]
+ ],
+ "teams": {
+  "kids": {
+   "color": "#2f6fd6"
+  }
+ },
+ "players": [
+  {
+   "id": "A",
+   "team": "kids",
+   "path": [
+    [
+     0,
+     2.5,
+     12
+    ],
+    [
+     0.5,
+     2.5,
+     12
+    ],
+    [
+     1.0,
+     3.5,
+     12
+    ],
+    [
+     1.9,
+     7.3,
+     12
+    ],
+    [
+     2.6,
+     7.3,
+     12
+    ],
+    [
+     2.9,
+     7.0,
+     12.1
+    ],
+    [
+     3.3,
+     6.6,
+     12.0
+    ],
+    [
+     3.7,
+     5.5,
+     12.0
+    ],
+    [
+     4.6,
+     3.2,
+     12
+    ],
+    [
+     5.2,
+     3.2,
+     12
+    ],
+    [
+     6.0,
+     2.2,
+     12.6
+    ],
+    [
+     6.6,
+     1.8,
+     12.1
+    ],
+    [
+     7.2,
+     2.5,
+     12
+    ]
+   ],
+   "highlight": [
+    [
+     0,
+     2.4
+    ]
+   ]
+  },
+  {
+   "id": "B",
+   "team": "kids",
+   "path": [
+    [
+     0,
+     12,
+     4
+    ]
+   ],
+   "face": [
+    0,
+    1
+   ],
+   "highlight": [
+    [
+     2.4,
+     4.6
+    ]
+   ]
+  },
+  {
+   "id": "C",
+   "team": "kids",
+   "path": [
+    [
+     0,
+     2.5,
+     3
+    ]
+   ],
+   "face": [
+    1,
+    0
+   ],
+   "highlight": [
+    [
+     4.6,
+     8
+    ]
+   ]
+  },
+  {
+   "id": "Dd",
+   "team": "kids",
+   "path": [
+    [
+     0,
+     8,
+     3
+    ]
+   ],
+   "face": [
+    -1,
+    0
+   ],
+   "highlight": [
+    [
+     4.6,
+     8
+    ]
+   ]
+  },
+  {
+   "id": "E",
+   "team": "kids",
+   "path": [
+    [
+     0,
+     11.5,
+     9.5
+    ],
+    [
+     2,
+     13.5,
+     11.5
+    ],
+    [
+     4,
+     11.5,
+     13.5
+    ],
+    [
+     6,
+     9.5,
+     11.5
+    ]
+   ]
+  }
+ ],
+ "balls": [
+  {
+   "color": "#ff6b6b",
+   "keys": [
+    {
+     "t": 0,
+     "on": "A",
+     "fx": "hand"
+    },
+    {
+     "t": 0.5,
+     "on": "A",
+     "fx": "hand"
+    },
+    {
+     "t": 1.7,
+     "x": 7.95,
+     "y": 12
+    },
+    {
+     "t": 1.9,
+     "on": "A"
+    },
+    {
+     "t": 2.05,
+     "on": "A"
+    },
+    {
+     "t": 2.3,
+     "on": "A",
+     "fx": "hand"
+    },
+    {
+     "t": 3.3,
+     "on": "A",
+     "fx": "hand"
+    },
+    {
+     "t": 4.4,
+     "x": 2.6,
+     "y": 12
+    },
+    {
+     "t": 4.6,
+     "on": "A"
+    },
+    {
+     "t": 4.85,
+     "on": "A"
+    },
+    {
+     "t": 5.05,
+     "on": "A",
+     "fx": "hand"
+    }
+   ]
+  },
+  {
+   "color": "#d7f03c",
+   "keys": [
+    {
+     "t": 0,
+     "on": "B",
+     "fx": "hand"
+    },
+    {
+     "t": 0.2,
+     "on": "B",
+     "fx": "hand"
+    },
+    {
+     "t": 1.0,
+     "x": 12,
+     "y": 4.9,
+     "lob": true
+    },
+    {
+     "t": 1.5,
+     "on": "B",
+     "lob": true
+    },
+    {
+     "t": 1.9,
+     "on": "B"
+    },
+    {
+     "t": 2.1,
+     "on": "B",
+     "fx": "hand"
+    },
+    {
+     "t": 2.6,
+     "on": "B",
+     "fx": "hand"
+    },
+    {
+     "t": 3.4,
+     "x": 12,
+     "y": 4.9,
+     "lob": true
+    },
+    {
+     "t": 4.0,
+     "on": "B",
+     "fx": "hand",
+     "lob": true
+    },
+    {
+     "t": 4.6,
+     "on": "B",
+     "fx": "hand"
+    },
+    {
+     "t": 5.4,
+     "x": 12,
+     "y": 4.9,
+     "lob": true
+    },
+    {
+     "t": 5.9,
+     "on": "B",
+     "lob": true
+    },
+    {
+     "t": 6.4,
+     "on": "B"
+    },
+    {
+     "t": 6.6,
+     "on": "B",
+     "fx": "hand"
+    }
+   ]
+  },
+  {
+   "color": "#3cc3f0",
+   "keys": [
+    {
+     "t": 0,
+     "on": "C",
+     "fx": "hand"
+    },
+    {
+     "t": 0.5,
+     "on": "C",
+     "fx": "hand"
+    },
+    {
+     "t": 1.4,
+     "on": "Dd",
+     "fx": "hand",
+     "lob": true
+    },
+    {
+     "t": 4.7,
+     "on": "Dd",
+     "fx": "hand"
+    },
+    {
+     "t": 5.6,
+     "on": "C"
+    },
+    {
+     "t": 5.9,
+     "on": "C"
+    },
+    {
+     "t": 6.4,
+     "on": "Dd"
+    },
+    {
+     "t": 6.6,
+     "on": "Dd"
+    },
+    {
+     "t": 6.8,
+     "on": "Dd",
+     "fx": "hand"
+    },
+    {
+     "t": 7.0,
+     "on": "Dd",
+     "fx": "hand"
+    },
+    {
+     "t": 7.9,
+     "on": "C",
+     "fx": "hand",
+     "lob": true
+    }
+   ]
+  },
+  {
+   "keys": [
+    {
+     "t": 0,
+     "on": "E"
+    }
+   ]
+  }
+ ],
+ "captions": [
+  {
+   "from": 0,
+   "to": 2.4,
+   "de": "Ball rollen, nachlaufen, mit Fuß stoppen",
+   "en": "Roll it, chase it, stop it with your foot"
+  },
+  {
+   "from": 2.4,
+   "to": 4.6,
+   "de": "Hochwerfen, aufspringen lassen, fangen",
+   "en": "Throw it up, let it bounce, catch it"
+  },
+  {
+   "from": 4.6,
+   "to": 8,
+   "de": "Zu zweit: zurollen, zuspielen, zuwerfen",
+   "en": "In pairs: roll, pass and throw"
+  }
+ ],
+ "legend": [
+  {
+   "team": "kids",
+   "de": "Kind – jeder Ball ist anders",
+   "en": "Child – every ball is different"
+  }
+ ]
+}
