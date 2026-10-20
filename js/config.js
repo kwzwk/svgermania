@@ -15,6 +15,9 @@ export const AGE_GROUPS = {
     ball: 'Größe 3',
     defaultMinutes: 60,
     themes: ['dribbling', 'koordination', '1v1', 'torschuss', 'orientierung'],
+    // DFB: Bambini spielen nur (Aktivierung – Spielen – Spielen – Spielen), keine isolierte Technikschulung.
+    sessionKey: 'playHour',
+    phaseLabels: { spielform: 'Spielen I', uebung: 'Spielen II (Challenges)', abschluss: 'Spielen III (Funino)' },
   },
   F: {
     id: 'F',
@@ -49,7 +52,7 @@ export const AGE_GROUPS = {
 // Das Niveau ändert nicht das Spielformat, sondern dreht an den "Stellschrauben"
 // (Raum, Überzahl, Gegnerdruck, Regeln, Zeit).
 export const LEVELS = {
-  1: { id: 1, label: 'Einsteiger', hint: 'Mehr Raum, Überzahl, wenig Gegnerdruck, wenige Regeln.' },
+  1: { id: 1, label: 'Einsteiger', hint: 'Mehr Raum, wenig Gegnerdruck, wenige Regeln. Überzahl erst ab F-Jugend, Bambini spielen in Gleichzahl.' },
   2: { id: 2, label: 'Fortgeschritten', hint: 'Grundform: gleiche Zahl, halbaktiver bis aktiver Gegner.' },
   3: { id: 3, label: 'Könner', hint: 'Weniger Raum und Zeit, aktiver Gegner, Zusatzregeln.' },
 };
@@ -65,12 +68,13 @@ export const THEMES = {
   koordination: 'Koordination & Bewegung',
 };
 
-// Spielen – Üben – Spielen. Anteile pro Phase an der Trainingszeit.
+// DFB-Trainingsstruktur: Aktivierung – Spielen – Üben – Spielen (mehr Spielen als Üben).
+// Anteile pro Phase an der Trainingszeit; das letzte Spiel bekommt den Rest.
 export const PHASES = [
-  { id: 'aufwaermen', label: 'Aufwärmspiel', share: 0.2 },
-  { id: 'uebung', label: 'Hinführung / Übungsform', share: 0.25 },
-  { id: 'spielform', label: 'Spielform', share: 0.25 },
-  { id: 'abschluss', label: 'Abschlussspiel (Funino)', share: 0.3 },
+  { id: 'aufwaermen', label: 'Aktivierung', share: 0.2 },
+  { id: 'spielform', label: 'Spielen I', share: 0.25 },
+  { id: 'uebung', label: 'Üben (Zwischenblock)', share: 0.25 },
+  { id: 'abschluss', label: 'Spielen II (Funino)', share: 0.3 },
 ];
 
 // Feste Rituale am Anfang und Ende jeder Einheit (Minuten). Ankommen läuft vor dem offiziellen Beginn.

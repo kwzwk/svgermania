@@ -13,6 +13,7 @@ import {
   localizeExercise,
   localizeRitual,
   ritualTexts,
+  sessionTitle,
 } from './i18n.js';
 
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -156,11 +157,11 @@ function renderSession(session, plan) {
   const standard = ritualTexts(rituals)?.standard;
   return `
     <article class="session">
-      <h3>${esc(t('training', { n: session.number }))}<span class="muted">${esc(progression)}</span></h3>
+      <h3>${esc(sessionTitle(session.number, plan.age))}<span class="muted">${esc(progression)}</span></h3>
       <ol class="blocks">
         ${session.opening ? renderRitualBlock('arrival', t('before'), t('arrival'), session.opening.arrival) : ''}
         ${session.opening ? renderRitualBlock('opening', `${session.opening.minutes} min`, t('openingCircle'), session.opening.circle, standard?.opening, plan.theme) : ''}
-        ${session.blocks.map((b) => `<li class="block phase-${b.phase}">${renderBlock(b)}</li>`).join('')}
+        ${session.blocks.map((b) => `<li class="block phase-${b.phase}">${renderBlock(b, plan.age)}</li>`).join('')}
         ${session.closing ? renderRitualBlock('closing', `${session.closing.minutes} min`, t('closingCircle'), session.closing.circle, standard?.closing) : ''}
       </ol>
     </article>`;
@@ -196,8 +197,8 @@ function renderRitualBlock(kind, time, label, raw, standard = [], theme = null) 
     </li>`;
 }
 
-function renderBlock(block) {
-  const label = phaseLabel(block.phase);
+function renderBlock(block, age) {
+  const label = phaseLabel(block.phase, age);
   if (!block.exercise) return `<div class="block-head"><span class="time">${block.minutes} min</span><span>${esc(label)}: ${esc(t('noExercise'))}</span></div>`;
   const ex = localizeExercise(block.exercise);
   return `
@@ -305,7 +306,9 @@ function renderStructure() {
   ];
   return `
     <h2>${esc(t('structureTitle'))}</h2>
+    <p>${esc(t('structSource'))}</p>
     <ol class="structure">${steps.map(([title, d]) => `<li><strong>${esc(title)}</strong><br>${esc(d)}</li>`).join('')}</ol>
+    <p class="dial">${esc(t('structBambini'))}</p>
     <h3>${esc(t('principles'))}</h3>
     <ul class="rules">${texts.principles.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>
     <h3>${esc(t('ritualChoice'))}</h3>
@@ -359,7 +362,7 @@ const trainer = { steps: [], index: 0, endAt: 0, left: 0, paused: false, alerted
 function fillStartSessions(plan) {
   const select = $('#start-session');
   const keep = Number(select.value) || 1;
-  select.innerHTML = plan.sessions.map((s) => option(s.number, t('training', { n: s.number }), s.number === keep)).join('');
+  select.innerHTML = plan.sessions.map((s) => option(s.number, sessionTitle(s.number, plan.age), s.number === keep)).join('');
   $('#start-session-label').hidden = plan.sessions.length < 2;
 }
 
@@ -368,6 +371,7 @@ function startTraining() {
   if (!session) return;
   trainer.steps = sessionSteps(session).map((st) => ({ ...st, level: session.level }));
   trainer.session = session.number;
+  trainer.age = currentPlan.age;
   trainer.theme = currentPlan.theme;
   // Audio muss in einer Nutzeraktion entsperrt werden (iOS).
   try {
@@ -469,7 +473,7 @@ function stepTitle(step) {
     return { label: t(step.kind === 'opening' ? 'openingCircle' : 'closingCircle'), name: item?.name ?? '' };
   }
   const ex = step.block.exercise && localizeExercise(step.block.exercise);
-  return { label: phaseLabel(step.kind), name: ex ? ex.name : t('noExercise') };
+  return { label: phaseLabel(step.kind, trainer.age), name: ex ? ex.name : t('noExercise') };
 }
 
 function renderTrainer() {
@@ -478,7 +482,7 @@ function renderTrainer() {
   if (trainer.index >= total) {
     box.innerHTML = `
       <div class="trainer-inner trainer-done">
-        <p class="trainer-step">${esc(t('training', { n: trainer.session }))}</p>
+        <p class="trainer-step">${esc(sessionTitle(trainer.session, trainer.age))}</p>
         <h2>${esc(t('trainingDone'))}</h2>
         <p>${esc(t('trainingDoneText'))}</p>
         <div class="trainer-controls"><button type="button" class="primary" data-act="end">${esc(t('close'))}</button></div>
@@ -500,7 +504,7 @@ function renderTrainer() {
   box.innerHTML = `
     <div class="trainer-inner ${step.ritual ? 'ritual' : `phase-${step.kind}`}">
       <div class="trainer-top">
-        <p class="trainer-step">${esc(t('training', { n: trainer.session }))} · ${esc(t('stepOf', { n: trainer.index + 1, total }))} · <span id="trainer-total"></span></p>
+        <p class="trainer-step">${esc(sessionTitle(trainer.session, trainer.age))} · ${esc(t('stepOf', { n: trainer.index + 1, total }))} · <span id="trainer-total"></span></p>
         <button type="button" class="trainer-close" data-act="end" aria-label="${esc(t('endTraining'))}">✕</button>
       </div>
       <div class="trainer-progress"><span id="trainer-bar"></span></div>
