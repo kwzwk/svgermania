@@ -62,6 +62,7 @@
         <label><span data-i18n="week">Kalenderwoche</span>
           <input type="number" name="week" min="1" max="53">
         </label>
+        <label class="check"><input type="checkbox" name="rituals" checked> <span data-i18n="includeRituals">Rituale einplanen</span></label>
         <div class="actions">
           <button type="button" id="shuffle" data-i18n="shuffle">Neu mischen</button>
           <button type="button" id="print" data-i18n="print">Drucken</button>
@@ -69,6 +70,12 @@
       </form>
       <p id="level-hint" class="hint"></p>
       <div id="plan"></div>
+      <div class="start-area">
+        <label id="start-session-label"><span data-i18n="startWhich">Einheit</span>
+          <select id="start-session"></select>
+        </label>
+        <button type="button" id="start-training" class="start-button" data-i18n="startTraining">▶ Training jetzt starten</button>
+      </div>
     </section>
 
     <section id="view-catalog" class="view" hidden>
@@ -91,6 +98,8 @@
       <div id="rules"></div>
     </section>
   </main>
+
+  <div id="trainer" class="trainer" role="dialog" aria-modal="true" aria-label="Training" hidden></div>
 
   <footer class="site-footer wrap">
     <p data-i18n="footer">Grundlage: Horst Weins Funino und die DFB-Spielformen im Kinderfußball. Feldmaße sind Richtwerte.</p>

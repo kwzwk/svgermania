@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { AGE_GROUPS, LEVELS, PHASES, THEMES, SESSION_LENGTHS, RITUAL_MINUTES } from '../js/config.js';
-import { generatePlan, splitMinutes, suitableExercises, themeForWeek, isoWeek } from '../js/generator.js';
+import { generatePlan, sessionSteps, splitMinutes, suitableExercises, themeForWeek, isoWeek } from '../js/generator.js';
 
 const exercises = JSON.parse(readFileSync(new URL('../data/exercises.json', import.meta.url)));
 const rituals = JSON.parse(readFileSync(new URL('../data/rituals.json', import.meta.url)));
@@ -43,6 +43,30 @@ test('minutes add up for every session length, including rituals', () => {
     assert.ok(s.blocks.every((b) => b.minutes >= 5));
     assert.equal(splitMinutes(m).reduce((a, x) => a + x, 0), m);
   }
+});
+
+test('without rituals the phases get the whole session and the exercises stay the same', () => {
+  for (const m of SESSION_LENGTHS) {
+    const opts = { age: 'E', level: 2, sessions: 2, minutes: m, week: 7, players: 12 };
+    const withR = generatePlan(exercises, opts, rituals);
+    const without = generatePlan(exercises, { ...opts, rituals: false }, rituals);
+    assert.equal(without.rituals, false);
+    for (const [i, s] of without.sessions.entries()) {
+      assert.equal(s.opening, null);
+      assert.equal(s.closing, null);
+      assert.equal(s.blocks.reduce((sum, b) => sum + b.minutes, 0), m);
+      assert.deepEqual(s.blocks.map((b) => b.exercise.id), withR.sessions[i].blocks.map((b) => b.exercise.id));
+    }
+  }
+});
+
+test('session steps list rituals and phases in order with their minutes', () => {
+  const plan = generatePlan(exercises, { age: 'F', level: 1, sessions: 1, minutes: 60, week: 1 }, rituals);
+  const steps = sessionSteps(plan.sessions[0]);
+  assert.deepEqual(steps.map((st) => st.kind), ['opening', ...PHASES.map((p) => p.id), 'closing']);
+  assert.equal(steps.reduce((sum, st) => sum + st.minutes, 0), 60);
+  const bare = generatePlan(exercises, { age: 'F', level: 1, sessions: 1, minutes: 60, week: 1, rituals: false }, rituals);
+  assert.deepEqual(sessionSteps(bare.sessions[0]).map((st) => st.kind), PHASES.map((p) => p.id));
 });
 
 test('ritual data is well-formed and covers every age group', () => {

@@ -8,6 +8,8 @@ Live: https://svgermania.geyen.org
 
 - **Wochenplan**: Altersklasse (G-, F-, E-Jugend), Niveau (Einsteiger, Fortgeschritten, Könner), Einheiten pro Woche, Dauer, Anzahl Kinder, Schwerpunkt und Kalenderwoche einstellen.
 - **Fester Ablauf jeder Einheit**: Ankommen (jedes Kind wird persönlich begrüßt), Begrüßungskreis mit einem Ritual zum Ankommen und Kennenlernen, dann Aufwärmspiel, Übungsform, Spielform und Funino-Abschlussspiel, zum Schluss ein Abschlusskreis mit Lob, Teamruf und Verabschiedung. Die Rituale wechseln von Einheit zu Einheit und passen zur Altersklasse.
+- **Rituale abschaltbar**: Ohne Haken bei „Rituale einplanen“ entfallen Begrüßungs- und Abschlusskreis, die Zeit geht an die Übungsphasen.
+- **Trainingsmodus**: „Training jetzt starten“ unter dem Plan führt im Vollbild Schritt für Schritt durch die gewählte Einheit, mit Countdown pro Übung, Signal (Ton und Vibration) bei Ablauf, Pause, Zurück und Nächste Übung. Das Display bleibt dabei an.
 - **Niveau als Stellschraube**: Das Niveau ändert nicht das Spielformat, sondern zeigt für jede Übung die leichtere oder schwerere Variante. Ab der zweiten Einheit der Woche geht es eine Stufe schwerer.
 - **Schwerpunkt pro Woche**: automatisch rotierend nach Kalenderwoche oder fest gewählt.
 - **Deutsch / Englisch** per Knopf oben rechts (oder `?lang=en` im Link), inklusive aller Übungen und Rituale.
