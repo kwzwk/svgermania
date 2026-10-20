@@ -105,7 +105,7 @@
     "setup": "Alle dribbeln. 1–2 Kinder haben eine Stinkbombe und dribbeln diese.",
     "rules": [
       "Die Stinkbomben-Kinder versuchen, den Ball anderer Kinder mit ihrer Stinkbombe anzuschießen.",
-      "Wer getroffen wird, bekommt die Stinkbombe.",
+      "Wer getroffen wird, bekommt die Stinkbombe, der Werfer dribbelt mit dessen Ball weiter.",
       "Wer am Ende keine Stinkbombe hat, gewinnt."
     ],
     "easier": "Nur eine Stinkbombe, großes Feld.",
@@ -297,10 +297,10 @@
     "phase": "uebung",
     "ages": ["F", "E"],
     "themes": ["passen", "orientierung"],
-    "players": { "min": 3, "max": 18 },
+    "players": { "min": 4, "max": 20 },
     "field": "Dreieck mit 8–10 m Seitenlänge pro Gruppe",
     "material": "3 Hütchen und 1 Ball pro Gruppe",
-    "setup": "Drei Kinder pro Dreieck, ein Ball.",
+    "setup": "Vier Kinder pro Dreieck, ein Ball. Zwei Kinder starten am ersten Hütchen, damit nach dem Hinterherlaufen immer jemand am nächsten Hütchen steht.",
     "rules": [
       "Passen und dem Ball hinterherlaufen.",
       "Ballannahme mit der Innenseite des hinteren Fußes, Körper öffnen, in die neue Richtung mitnehmen.",
