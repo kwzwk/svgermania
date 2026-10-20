@@ -252,3 +252,4 @@ body.training { overflow: hidden; }
 .trainer-details .ex-body { padding: 4px 0 0; }
 .trainer-done { text-align: center; padding-top: 15vh; }
 .trainer-done .trainer-controls { grid-template-columns: minmax(0, 320px); justify-content: center; }
+.focus-note { margin: 8px 0; padding: 8px 10px; border-radius: 8px; background: var(--base); border-left: 4px solid var(--accent); }

@@ -159,22 +159,27 @@ function renderSession(session, plan) {
       <h3>${esc(t('training', { n: session.number }))}<span class="muted">${esc(progression)}</span></h3>
       <ol class="blocks">
         ${session.opening ? renderRitualBlock('arrival', t('before'), t('arrival'), session.opening.arrival) : ''}
-        ${session.opening ? renderRitualBlock('opening', `${session.opening.minutes} min`, t('openingCircle'), session.opening.circle, standard?.opening) : ''}
+        ${session.opening ? renderRitualBlock('opening', `${session.opening.minutes} min`, t('openingCircle'), session.opening.circle, standard?.opening, plan.theme) : ''}
         ${session.blocks.map((b) => `<li class="block phase-${b.phase}">${renderBlock(b)}</li>`).join('')}
         ${session.closing ? renderRitualBlock('closing', `${session.closing.minutes} min`, t('closingCircle'), session.closing.circle, standard?.closing) : ''}
       </ol>
     </article>`;
 }
 
-function renderRitualBody(item, standard = []) {
+function focusNote(theme) {
+  return `<p class="focus-note"><strong>${esc(t('focusOfWeek'))}:</strong> ${esc(themeLabel(theme))}</p>`;
+}
+
+function renderRitualBody(item, standard = [], theme = null) {
   return `
         <div class="ex-body">
+          ${theme ? focusNote(theme) : ''}
           <ol>${[...item.steps, ...standard].map((step) => `<li>${esc(step)}</li>`).join('')}</ol>
           <p class="dial"><strong>${esc(t('tip'))}:</strong> ${esc(item.tip)}</p>
         </div>`;
 }
 
-function renderRitualBlock(kind, time, label, raw, standard = []) {
+function renderRitualBlock(kind, time, label, raw, standard = [], theme = null) {
   const item = localizeRitual(kind, raw);
   if (!item) return '';
   return `
@@ -186,7 +191,7 @@ function renderRitualBlock(kind, time, label, raw, standard = []) {
           <span class="name">${esc(item.name)}</span>
           <span class="tag tag-ritual">${esc(t('ritual'))}</span>
         </summary>
-        ${renderRitualBody(item, standard)}
+        ${renderRitualBody(item, standard, theme)}
       </details>
     </li>`;
 }
@@ -363,6 +368,7 @@ function startTraining() {
   if (!session) return;
   trainer.steps = sessionSteps(session).map((st) => ({ ...st, level: session.level }));
   trainer.session = session.number;
+  trainer.theme = currentPlan.theme;
   // Audio muss in einer Nutzeraktion entsperrt werden (iOS).
   try {
     trainer.audio ??= new (window.AudioContext || window.webkitAudioContext)();
@@ -486,7 +492,7 @@ function renderTrainer() {
   let body = '';
   if (step.ritual) {
     const item = localizeRitual(step.kind, step.ritual);
-    if (item) body = renderRitualBody(item, standard?.[step.kind]);
+    if (item) body = renderRitualBody(item, standard?.[step.kind], trainer.index === 0 ? trainer.theme : null);
   } else if (step.block.exercise) {
     body = renderExerciseBody(localizeExercise(step.block.exercise), step.block.variation);
   }
@@ -506,6 +512,7 @@ function renderTrainer() {
       ${next ? `<p class="trainer-next"><strong>${esc(t('upNext'))}:</strong> ${esc(stepTitle(next).name || stepTitle(next).label)} · ${next.minutes} min</p>` : ''}
       <details class="trainer-details" open>
         <summary>${esc(t('procedure'))}</summary>
+        ${trainer.index === 0 && !step.ritual ? focusNote(trainer.theme) : ''}
         ${body}
       </details>
     </div>`;
