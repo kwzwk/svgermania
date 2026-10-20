@@ -69,6 +69,18 @@ test('session steps list rituals and phases in order with their minutes', () => 
   assert.deepEqual(sessionSteps(bare.sessions[0]).map((st) => st.kind), PHASES.map((p) => p.id));
 });
 
+test('session follows the DFB order Aktivierung – Spielen – Üben – Spielen', () => {
+  assert.deepEqual(PHASES.map((p) => p.id), ['aufwaermen', 'spielform', 'uebung', 'abschluss']);
+  const plan = generatePlan(exercises, { age: 'E', level: 2, sessions: 1, minutes: 75, week: 2 }, rituals);
+  assert.deepEqual(plan.sessions[0].blocks.map((b) => b.phase), PHASES.map((p) => p.id));
+});
+
+test('Bambini get no queue drills and no uneven-number games', () => {
+  const pool = exercises.filter((ex) => ex.ages.includes('G'));
+  for (const id of ['ue-torschuss-schusszone', 'ab-funino-joker']) assert.ok(!pool.some((ex) => ex.id === id), id);
+  for (const ex of pool) assert.ok(!/\b(3 gegen 2|4 gegen 3|Joker)\b/.test(ex.easier) || /Ab F-Jugend/.test(ex.easier), `${ex.id}: ${ex.easier}`);
+});
+
 test('ritual data is well-formed and covers every age group', () => {
   assert.ok(rituals.principles.length > 0);
   assert.ok(rituals.standard.opening.length > 0 && rituals.standard.closing.length > 0);

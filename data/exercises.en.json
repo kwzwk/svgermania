@@ -3,7 +3,7 @@
     "name": "Ball Thieves",
     "field": "15 × 15 m to 20 × 20 m",
     "material": "1 ball per child (except the thieves), cones, bibs",
-    "setup": "All children dribble with a ball in the area. 2–3 thieves without a ball wear bibs.",
+    "setup": "All children dribble with a ball in the area. 2–3 thieves without a ball wear bibs. For Bambini, tell it as a story: the robbers want to steal the treasure keepers’ treasure (the balls).",
     "rules": [
       "The thieves try to knock balls out of the area.",
       "If you lose your ball, fetch it and do a ball trick before rejoining (e.g. 5 sole rolls).",
@@ -112,12 +112,13 @@
   },
   "aw-parcours": {
     "name": "Coordination Course with a Ball",
-    "field": "2 parallel lanes, 20 m each",
+    "field": "2–3 parallel lanes of 20 m each, cones in different colours",
     "material": "Cones, poles, rings or a ladder, 1 ball per child",
     "setup": "Two identical lanes: slalom, rings, cones to go around, mini goal at the end.",
     "rules": [
-      "First go through the course without a ball (hopping, sideways, backwards).",
+      "First go through the course without a ball: hop, go sideways and backwards, fall down and get up quickly, forward roll on a mat or grass.",
       "Then with a ball: dribble the slalom, take the ball around the cone, shoot into the mini goal at the end.",
+      "Awareness (especially E youth): the coach calls a colour, the kids pick the cone or lane of that colour.",
       "Little waiting time: max. 3 children per lane."
     ],
     "easier": "Fewer stations, the ball may be carried in the hands.",
@@ -132,24 +133,25 @@
     "rules": [
       "The defender passes the ball to the attacker and closes them down.",
       "The attacker decides which goal to go for and dribbles in or shoots from 3 m.",
-      "Swap roles after each turn, next pair moves up quickly."
+      "Fixed pairs at several stations, swap roles after each turn. No queue; for Bambini run it as a continuous challenge."
     ],
     "easier": "Defender starts further back or may only walk (passive opponent).",
     "harder": "Narrower area, attacker has 6 seconds, if the defender wins the ball they counter to a cone gate.",
     "questions": ["Which goal is the defender not guarding right now?", "When is the right moment to change direction?"]
   },
   "ue-ballzauberer": {
-    "name": "Ball Wizards",
-    "field": "15 × 15 m",
-    "material": "1 ball per child",
-    "setup": "Every child has a ball, the coach shows magic tricks.",
+    "name": "Magic Challenge Between Games",
+    "field": "Several mini pitches of 10 × 15 m, each with 2 mini goals",
+    "material": "1 ball per child, mini goals, cones",
+    "setup": "Several mini pitches for 1v1 or 2v2. Every child also has their own ball at the side of the pitch.",
     "rules": [
-      "Copy the tricks: roll the ball forwards and back with the sole, move the ball around your body, tap the top of the ball (left/right toe taps).",
-      "Then dribble and show a magic trick when the coach calls out.",
-      "Every child invents their own trick and gives it a name."
+      "2–3 minutes of free play on the mini goals.",
+      "Whistle: everyone fetches their ball. Magic challenge: who can show the most tricks in 30 seconds (sole roll forwards and back, ball around the body, toe taps left/right)?",
+      "Every child invents their own trick and gives it a name, everyone copies it.",
+      "Then play on straight away. No demonstrating and copying in a line."
     ],
-    "easier": "Only 2 tricks, slowly and standing still.",
-    "harder": "Tricks on the move, with both feet, against the clock.",
+    "easier": "Only 2 tricks, the coach counts along slowly.",
+    "harder": "Tricks with both feet, two tricks in a row, the challenge while dribbling instead of standing still.",
     "questions": ["What other part of your foot can you touch the ball with?"]
   },
   "ue-finten-tore": {
@@ -160,7 +162,8 @@
     "rules": [
       "Dribble at the pole, show a feint, go past, on to the next pole.",
       "Shoot into the mini goal from the shooting zone.",
-      "A different feint each round: step-over, scissors, body feint, Cruyff turn."
+      "A different feint each round: step-over, scissors, body feint, Cruyff turn, alternating to the right and left.",
+      "Max. 2 children per lane so nobody waits long."
     ],
     "easier": "Only one pole, any feint, no shot needed.",
     "harder": "A semi-active defender instead of a pole, feint with the weaker foot, time limit.",
@@ -170,10 +173,11 @@
     "name": "Shooting from the Shooting Zone",
     "field": "20 × 15 m, 4 mini goals like in Funino, shooting zone marked",
     "material": "4 mini goals, cones, lots of balls",
-    "setup": "Two groups on the halfway line with balls, shooting zones at both ends.",
+    "setup": "Small groups of at most 3 children per station, shooting zones at both ends. With lots of children, use several stations.",
     "rules": [
       "On the signal, dribble into the shooting zone and shoot at one of the two mini goals.",
-      "Just before the shooting zone the coach calls 'left' or 'right'.",
+      "Just before the shot the coach or a child steps in front of one goal: the shooter decides which goal is free.",
+      "Alternate shooting with the right and left foot.",
       "Fetch your ball and join the line on the other side."
     ],
     "easier": "No signal, shoot from a standing start, bigger goals.",
@@ -188,7 +192,8 @@
     "rules": [
       "Pass and follow your pass.",
       "Receive with the inside of your back foot, open your body, take the ball into the new direction.",
-      "Change direction after one minute."
+      "Change direction after one minute.",
+      "Competition: which triangle makes the most passes in 1 minute? Then beat your own record."
     ],
     "easier": "The ball may be stopped, smaller triangle.",
     "harder": "Only 2 touches, one defender in the middle, coach calls the direction at the moment the ball is received.",
@@ -244,7 +249,8 @@
     "rules": [
       "The attackers try to score. Shots only from the shooting zone.",
       "If the defender wins the ball, they dribble over the halfway line.",
-      "After each attack the next players move up, swap roles."
+      "After each attack the next players move up, swap roles.",
+      "After each attack, ask briefly: dribble or pass, which was better and why?"
     ],
     "easier": "Defender starts with a delay, wider area.",
     "harder": "2v2 with a delayed second defender, 8-second time limit.",
@@ -274,7 +280,7 @@
       "Restart with a dribble-in from your own end line.",
       "Play 4 minutes, 2 minutes' rest, change opponents."
     ],
-    "easier": "3v2 with a joker on the team in possession.",
+    "easier": "Bigger area, defenders start with a delay. From F youth on, also 3v2 with a joker on the team in possession.",
     "harder": "A point only in one of two marked end zones, narrower area.",
     "questions": ["Which side of the line is free?", "How does your teammate help you when you dribble?"]
   },
@@ -302,7 +308,7 @@
       "Whoever gets to the ball first attacks.",
       "Play 4 minutes, count the goals."
     ],
-    "easier": "Goals count from the whole half, 3v2.",
+    "easier": "Goals count from the whole half, bigger area. From F youth on, also 3v2.",
     "harder": "Goals only from the shooting zone, after a goal the team must touch the halfway line.",
     "questions": ["Where do you stand when the new ball comes in?", "What do you do straight after losing the ball?"]
   },
@@ -344,7 +350,7 @@
       "Beating an opponent with a feint in the dribble zone earns a bonus point.",
       "At the end, remove the zones and play freely."
     ],
-    "easier": "A joker always plays with the team in possession.",
+    "easier": "One target player on each sideline plays with the team in possession but may not enter the pitch.",
     "harder": "Narrower dribble zones, goal only after a successful 1v1.",
     "questions": ["Where do you have more space for your feint?"]
   },
@@ -358,7 +364,7 @@
       "Rotate after every goal: each team swaps one player.",
       "Blocks of about 4 minutes, winners move up a pitch, losers move down."
     ],
-    "easier": "Use the handicap rule early, bigger pitch, joker for the team in possession.",
+    "easier": "Use the handicap rule early, bigger pitch. From F youth on, also a joker for the team in possession.",
     "harder": "Smaller pitch, a goal counts double after a switch of play.",
     "questions": ["Which of the two goals is free?", "Where is there space right now?"]
   },
@@ -442,8 +448,67 @@
       "Restart with a dribble-in.",
       "After every goal a sub comes on."
     ],
-    "easier": "The coach joins in as a joker, goals from anywhere.",
+    "easier": "Bigger pitch, goals count from anywhere.",
     "harder": "3v3 with a 6 m shooting zone.",
     "questions": ["Which goal is empty?"]
+  },
+  "aw-ballschule": {
+    "name": "Ball School: Roll, Bounce, Fly",
+    "field": "15 × 15 m to 20 × 20 m",
+    "material": "Different balls: soft balls, tennis balls, gym balls, balloons, footballs",
+    "setup": "A basket with different balls, every child takes one. For Bambini as a story: every ball is a different animal.",
+    "rules": [
+      "Roll the ball, run after it and stop it with your foot.",
+      "Throw the ball up, let it bounce once, catch it. Then stop it with your foot or thigh.",
+      "On the whistle, swap balls and do the same task with the new ball.",
+      "In pairs: roll, throw and pass the ball to each other."
+    ],
+    "easier": "Start with big, slow balls (balloon, soft ball) and the hands.",
+    "harder": "Small balls (tennis ball) with the foot. As a team competition: who makes the most catches in 1 minute?",
+    "questions": ["Which ball bounces highest?", "How do you need to stand to catch the ball well?"]
+  },
+  "aw-staffel": {
+    "name": "Relay Games with a Ball",
+    "field": "Lanes of 15–20 m, each with a mini goal at the end",
+    "material": "Cones, poles, mini goals, 1 ball per team",
+    "setup": "Teams of 3 children, each team has its own lane. Small teams so nobody waits long.",
+    "rules": [
+      "Dribble out, around the cone, back, and hand the ball to the next child.",
+      "Round 2: slalom through the poles, alternating right and left foot.",
+      "Round 3: shoot into the mini goal at the end. The next child may only start after a goal."
+    ],
+    "easier": "First run without a ball, then carry the ball in your hands, then dribble.",
+    "harder": "Weaker foot only, 3 sole rolls at the cone, pass back to the next child instead of handing over.",
+    "questions": ["How fast can you dribble without losing the ball?"]
+  },
+  "sf-3v3-torwart": {
+    "name": "3v3 with Goalkeepers on Small Goals",
+    "field": "Per pitch 25 × 20 m, a small goal on each end line (ideally lowered, otherwise made of poles)",
+    "material": "2 small goals or poles per pitch, cones, bibs",
+    "setup": "3v3 plus a goalkeeper each, with lots of children use several pitches.",
+    "rules": [
+      "Free play without fixed positions, goals from the whole pitch.",
+      "After every goal a different child goes in goal, every child is goalkeeper once.",
+      "The goalkeeper restarts with a throw or a dribble-in.",
+      "Blocks of 4 minutes, winners move up a pitch, losers move down."
+    ],
+    "easier": "Bigger goal, the goalkeeper stays on the goal line.",
+    "harder": "Smaller pitch, a goal counts double after a won 1v1, the goalkeeper joins in when their team has the ball.",
+    "questions": ["Where do you need to shoot so the goalkeeper can’t reach it?", "What do you do as goalkeeper when you have the ball?"]
+  },
+  "sf-4v4-torwart-anspieler": {
+    "name": "4v4 with Goalkeepers and Target Players",
+    "field": "Per pitch 30 × 25 m, a small goal on each end line, a target player on each sideline",
+    "material": "2 small goals per pitch, cones, bibs in 3 colours",
+    "setup": "4v4 plus a goalkeeper each. Two target players on the sidelines always play with the team in possession.",
+    "rules": [
+      "The target players have 2 touches and may not enter the pitch.",
+      "A goal after a pass from a target player counts double.",
+      "Every 3 minutes target players, goalkeepers and outfield players swap, no fixed positions.",
+      "Keep deciding: dribble yourself or play via the target player?"
+    ],
+    "easier": "Four target players (two on each side), bigger pitch.",
+    "harder": "Target players only 1 touch, goals only from the 6 m zone.",
+    "questions": ["When is a pass to the target player worth it?", "Where is the space when the target player has the ball?"]
   }
 }

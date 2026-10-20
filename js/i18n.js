@@ -43,10 +43,11 @@ const STRINGS = {
     themeAuto: 'Automatisch (Wochenrotation)',
     footer: 'Grundlage: Horst Weins Funino und die DFB-Spielformen im Kinderfußball. Feldmaße sind Richtwerte.',
     summaryTitle: 'KW {week} · {age} · Schwerpunkt: {theme}',
-    summaryLine: '{sessions} × {minutes} min · {players} Kinder · {level}. Für Spielform und Abschlussspiel: <strong>{fields}</strong> ({field}), {goals} Minitore.',
+    summaryLine: '{sessions} × {minutes} min · {players} Kinder · {level}. Für die Spielblöcke: <strong>{fields}</strong> ({field}), {goals} Minitore.',
     field1: '1 Feld',
     fieldN: '{n} Felder',
     training: 'Training {n}',
+    playHour: 'Spielstunde {n}',
     harderStep: ' · eine Stufe schwerer',
     before: 'vorher',
     arrival: 'Ankommen',
@@ -75,10 +76,12 @@ const STRINGS = {
     structClosingText: 'Lob und Rückmeldung, Teamruf, gemeinsam aufräumen, jedes Kind einzeln verabschieden.',
     principles: 'Grundsätze für Trainer',
     ritualChoice: 'Rituale zur Auswahl',
-    hintAufwaermen: 'Spielerisch warm werden mit vielen Ballkontakten (Fangspiele, Dribbelspiele).',
-    hintUebung: 'Den Schwerpunkt üben, erst ohne, dann mit Gegner. Kurze Wartezeiten.',
-    hintSpielform: 'Kleine Spiele (1 gegen 1 bis 4 gegen 4) mit Sonderregeln für den Schwerpunkt, mehrere Felder.',
+    hintAufwaermen: 'Lauf-, Fang- und Staffelspiele, Ballschule mit verschiedenen Bällen, leichte Dribbelaufgaben.',
+    hintUebung: 'Den Schwerpunkt spielerisch üben, mit und ohne Gegenspieler, mit beiden Füßen und vielen Wiederholungen. Kurze Wartezeiten.',
+    hintSpielform: 'Kleine, freie Spiele ohne feste Positionen (F: 1 gegen 1 bis 3 gegen 3, E: bis 4 gegen 4, auch mit Torwart), mehrere Felder.',
     hintAbschluss: 'Funino nach den Regeln unten, Gewinner steigen auf, Verlierer ab.',
+    structBambini: 'Bambini (G-Jugend): Spielstunde statt Training. Aktivierung – Spielen – Spielen – Spielen, in Gleichzahl, keine isolierte Technikschulung, nur kurze Tor- und Dribbel-Challenges zwischen den Spielen. Am besten in eine Geschichte verpacken.',
+    structSource: 'Nach der DFB-Entwicklungstabelle Kinder (Kindertrainer-Zertifikat): mehr Spielen als Üben.',
     rulesTitle: 'Funino-Grundregeln',
     formatsTitle: 'Formate nach Altersklasse (DFB)',
     format: 'Format',
@@ -130,10 +133,11 @@ const STRINGS = {
     themeAuto: 'Automatic (weekly rotation)',
     footer: 'Based on Horst Wein’s Funino and the DFB children’s soccer formats. Field sizes are guidelines.',
     summaryTitle: 'Week {week} · {age} · Focus: {theme}',
-    summaryLine: '{sessions} × {minutes} min · {players} kids · {level}. For game forms and the final game: <strong>{fields}</strong> ({field}), {goals} mini goals.',
+    summaryLine: '{sessions} × {minutes} min · {players} kids · {level}. For the game blocks: <strong>{fields}</strong> ({field}), {goals} mini goals.',
     field1: '1 field',
     fieldN: '{n} fields',
     training: 'Session {n}',
+    playHour: 'Play hour {n}',
     harderStep: ' · one step harder',
     before: 'before',
     arrival: 'Arrival',
@@ -162,10 +166,12 @@ const STRINGS = {
     structClosingText: 'Praise and feedback, team call, tidy up together, say goodbye to every child individually.',
     principles: 'Principles for coaches',
     ritualChoice: 'Rituals to choose from',
-    hintAufwaermen: 'Warm up playfully with lots of ball contacts (tag games, dribbling games).',
-    hintUebung: 'Practise the focus, first without and then with an opponent. Short waiting times.',
-    hintSpielform: 'Small games (1v1 to 4v4) with special rules for the focus, several fields.',
+    hintAufwaermen: 'Running, tag and relay games, ball school with different balls, easy dribbling tasks.',
+    hintUebung: 'Practise the focus playfully, with and without an opponent, with both feet and many repetitions. Short waiting times.',
+    hintSpielform: 'Small, free games without fixed positions (F: 1v1 to 3v3, E: up to 4v4, also with a goalkeeper), several fields.',
     hintAbschluss: 'Funino with the rules below, winners move up, losers move down.',
+    structBambini: 'Bambini (G youth): a play hour instead of training. Activation – Play – Play – Play, with even numbers, no isolated technique drills, only short goal and dribbling challenges between the games. Ideally wrapped in a story.',
+    structSource: 'Based on the DFB development table for children (children’s coach certificate): more playing than practising.',
     rulesTitle: 'Funino basic rules',
     formatsTitle: 'Formats by age group (DFB)',
     format: 'Format',
@@ -213,7 +219,7 @@ const CONFIG_EN = {
     },
   },
   levels: {
-    1: { label: 'Beginner', hint: 'More space, extra players, little pressure, few rules.' },
+    1: { label: 'Beginner', hint: 'More space, little pressure, few rules. Extra players only from F youth on, Bambini play with even numbers.' },
     2: { label: 'Intermediate', hint: 'Standard form: even numbers, semi-active to active opponent.' },
     3: { label: 'Advanced', hint: 'Less space and time, active opponent, extra rules.' },
   },
@@ -228,10 +234,13 @@ const CONFIG_EN = {
     koordination: 'Coordination & movement',
   },
   phases: {
-    aufwaermen: 'Warm-up game',
-    uebung: 'Exercise',
-    spielform: 'Game form',
-    abschluss: 'Final game (Funino)',
+    aufwaermen: 'Activation',
+    spielform: 'Play I',
+    uebung: 'Practice (in-between block)',
+    abschluss: 'Play II (Funino)',
+  },
+  phaseLabels: {
+    G: { spielform: 'Play I', uebung: 'Play II (challenges)', abschluss: 'Play III (Funino)' },
   },
   rules: [
     'No goalkeeper, 4 mini goals: each team attacks two goals and defends two.',
@@ -288,7 +297,13 @@ const en = () => lang === 'en';
 export const ageGroup = (id) => (en() ? { ...AGE_GROUPS[id], ...CONFIG_EN.ages[id] } : AGE_GROUPS[id]);
 export const level = (id) => (en() ? { ...LEVELS[id], ...CONFIG_EN.levels[id] } : LEVELS[id]);
 export const themeLabel = (id) => (en() ? CONFIG_EN.themes[id] : THEMES[id]);
-export const phaseLabel = (id) => (en() ? CONFIG_EN.phases[id] : PHASES.find((p) => p.id === id)?.label ?? id);
+// Phasenname, für Bambini mit eigenen Bezeichnungen (dort gibt es keinen Übungsblock).
+export function phaseLabel(id, age = null) {
+  const special = en() ? CONFIG_EN.phaseLabels[age]?.[id] : AGE_GROUPS[age]?.phaseLabels?.[id];
+  return special ?? (en() ? CONFIG_EN.phases[id] : PHASES.find((p) => p.id === id)?.label ?? id);
+}
+
+export const sessionTitle = (n, age) => t(AGE_GROUPS[age]?.sessionKey ?? 'training', { n });
 export const funinoRules = () => (en() ? CONFIG_EN.rules : FUNINO_RULES);
 
 // Übung oder Ritual in der aktuellen Sprache (fehlende Übersetzungen fallen auf Deutsch zurück).
