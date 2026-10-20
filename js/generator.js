@@ -84,16 +84,18 @@ function pick(candidates, theme, used, rng) {
  * @param {number} opts.week Kalenderwoche
  * @param {number} [opts.players] Anzahl Kinder
  * @param {number} [opts.variant] Zum Neu-Mischen
+ * @param {boolean} [opts.rituals=true] Begrüßungs- und Abschlusskreis einplanen; ohne sie bekommen die Phasen die Zeit
  * @param {object} [rituals] Rituale (data/rituals.json) für Ankommen, Begrüßungs- und Abschlusskreis
  */
 export function generatePlan(exercises, opts, rituals = null) {
   const { age, level, sessions, minutes, week, players, variant = 0 } = opts;
+  const withRituals = opts.rituals !== false;
   const group = AGE_GROUPS[age];
   if (!group) throw new Error(`Unbekannte Altersklasse: ${age}`);
   const theme = !opts.theme || opts.theme === 'auto' ? themeForWeek(age, week) : opts.theme;
   const rng = createRng(hashSeed(age, level, sessions, minutes, theme, week, players ?? '', variant));
   const candidates = suitableExercises(exercises, { age, level, players });
-  const phaseMinutes = splitMinutes(minutes - RITUAL_MINUTES.opening - RITUAL_MINUTES.closing);
+  const phaseMinutes = splitMinutes(withRituals ? minutes - RITUAL_MINUTES.opening - RITUAL_MINUTES.closing : minutes);
   const used = new Set();
   const usedRituals = new Set();
   const ritual = (kind) => {
@@ -120,12 +122,15 @@ export function generatePlan(exercises, opts, rituals = null) {
       if (exercise) used.add(exercise.id);
       return { phase: phase.id, label: phase.label, minutes: phaseMinutes[i], exercise, variation: variationFor(sessionLevel) };
     });
+    // Rituale immer auswürfeln, damit die Übungsauswahl mit und ohne Rituale gleich bleibt.
+    const opening = { minutes: RITUAL_MINUTES.opening, arrival: ritual('arrival'), circle: ritual('opening') };
+    const closing = { minutes: RITUAL_MINUTES.closing, circle: ritual('closing') };
     plan.push({
       number: s + 1,
       level: sessionLevel,
-      opening: { minutes: RITUAL_MINUTES.opening, arrival: ritual('arrival'), circle: ritual('opening') },
+      opening: withRituals ? opening : null,
       blocks,
-      closing: { minutes: RITUAL_MINUTES.closing, circle: ritual('closing') },
+      closing: withRituals ? closing : null,
     });
   }
 
@@ -137,8 +142,19 @@ export function generatePlan(exercises, opts, rituals = null) {
     theme,
     minutes,
     players: players ?? null,
+    rituals: withRituals,
     fields,
     miniGoals: fields * 4,
     sessions: plan,
   };
+}
+
+// Ablauf einer Einheit als Liste von Schritten mit Minuten, z. B. für den Trainingsmodus mit Timer.
+// kind ist 'opening', 'closing' oder die Phasen-ID; Ankommen läuft vor Beginn und hat keinen eigenen Schritt.
+export function sessionSteps(session) {
+  const steps = [];
+  if (session.opening) steps.push({ kind: 'opening', minutes: session.opening.minutes, ritual: session.opening.circle });
+  for (const b of session.blocks) steps.push({ kind: b.phase, minutes: b.minutes, block: b });
+  if (session.closing) steps.push({ kind: 'closing', minutes: session.closing.minutes, ritual: session.closing.circle });
+  return steps;
 }

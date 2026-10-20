@@ -197,7 +197,7 @@ body {
 
 @media print {
   body { background: #fff; color: #000; font-size: 12px; }
-  .site-header, .controls, .hint, .tabs, .site-footer, .header-buttons { display: none; }
+  .site-header, .controls, .hint, .tabs, .site-footer, .header-buttons, .start-area, .trainer { display: none; }
   .session { break-inside: avoid-page; border-color: #999; }
   .block { background: #fff; border: 1px solid #ccc; border-left-width: 4px; }
   summary { list-style: none; }
@@ -209,3 +209,47 @@ body {
 .tag-ritual { background: var(--ritual-bg); color: var(--ritual-ink); }
 .structure { padding-left: 20px; }
 .structure li { margin-bottom: 8px; }
+
+/* Rituale abschaltbar */
+.controls label.check { flex-direction: row; align-items: center; gap: 8px; color: var(--text); font-weight: 500; align-self: end; padding-bottom: 8px; }
+.controls label.check input { width: 18px; height: 18px; accent-color: var(--accent); margin: 0; }
+
+/* Start-Button unter dem Plan */
+.start-area { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; justify-content: center; margin: 24px 0 8px; }
+.start-area label { display: flex; flex-direction: column; gap: 4px; font-size: 0.85rem; font-weight: 600; color: var(--muted); }
+.start-area select { font: inherit; color: var(--text); background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 10px; }
+.start-button {
+  font: inherit; font-size: 1.15rem; font-weight: 700; cursor: pointer; border: 0; border-radius: 12px;
+  padding: 14px 28px; background: var(--accent); color: var(--accent-ink); min-width: min(100%, 320px);
+}
+.start-button:hover { filter: brightness(1.08); }
+
+/* Trainingsmodus (Vollbild) */
+body.training { overflow: hidden; }
+.trainer { position: fixed; inset: 0; z-index: 100; background: var(--bg); color: var(--text); overflow-y: auto; }
+.trainer-inner { max-width: 760px; margin: 0 auto; padding: 16px 16px 40px; border-top: 6px solid var(--phase-c, var(--accent)); }
+.trainer-inner.ritual { --phase-c: #e0578a; }
+.trainer-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.trainer-step { margin: 0; color: var(--muted); font-size: 0.9rem; }
+.trainer-close { font: inherit; font-size: 1.2rem; background: transparent; color: var(--text); border: 1px solid var(--border); border-radius: 999px; width: 40px; height: 40px; cursor: pointer; flex: none; }
+.trainer-progress { height: 6px; background: var(--base); border-radius: 999px; overflow: hidden; margin: 12px 0; }
+.trainer-progress span { display: block; height: 100%; width: 0; background: var(--phase-c, var(--accent)); transition: width 0.25s linear; }
+.trainer-phase { margin: 12px 0 0; color: var(--muted); font-weight: 600; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center; }
+.trainer-name { margin: 4px 0 0; text-align: center; font-size: 1.6rem; line-height: 1.25; }
+.trainer-clock { margin: 8px 0 0; text-align: center; font-size: clamp(4.5rem, 24vw, 9rem); font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.trainer-clock.overtime { color: var(--accent-text); }
+.trainer-overtime { margin: 0; text-align: center; color: var(--accent-text); font-weight: 600; }
+.trainer-controls { display: grid; grid-template-columns: 1fr 1fr 1.4fr; gap: 8px; margin: 20px 0 12px; }
+.trainer-controls button {
+  font: inherit; font-weight: 700; padding: 14px 10px; border-radius: 12px; cursor: pointer;
+  border: 1px solid var(--accent-text); background: var(--surface); color: var(--accent-text);
+}
+.trainer-controls button.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.trainer-controls button:disabled { opacity: 0.4; cursor: default; }
+.trainer-next { text-align: center; color: var(--muted); margin: 0 0 16px; }
+.trainer-details { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 12px; }
+.trainer-details summary { cursor: pointer; font-weight: 600; }
+.trainer-details .ex-body { padding: 4px 0 0; }
+.trainer-done { text-align: center; padding-top: 15vh; }
+.trainer-done .trainer-controls { grid-template-columns: minmax(0, 320px); justify-content: center; }
+.focus-note { margin: 8px 0; padding: 8px 10px; border-radius: 8px; background: var(--base); border-left: 4px solid var(--accent); }
