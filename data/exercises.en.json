@@ -818,5 +818,185 @@
     "easier": "The waiting pair comes on after 3 seconds, bigger goals.",
     "harder": "Two goals per side, a goal only counts after a one-two or a won 1v1.",
     "questions": ["How do you switch on straight away after a goal?", "When do you pass, when do you go yourself?"]
+  },
+  "aw-rondo-5v2": {
+    "name": "Rondo 5v2 with Transition to Mini Goals",
+    "field": "Square 12 × 12 m, a mini goal outside on two sides (5 m away)",
+    "material": "Balls, cones, 2 mini goals per group, bibs",
+    "setup": "Groups of seven: five players on the edge of the square, two ball hunters in the middle.",
+    "rules": [
+      "The five keep the ball with 2 touches at most. 10 passes in a row score a point.",
+      "If the hunters win the ball, they counter at once on one of the two mini goals.",
+      "The five switch and have 5 seconds to win the ball back or stop the goal.",
+      "Whoever lost the ball goes into the middle, the hunter who has been in longest comes out."
+    ],
+    "easier": "3 touches, square 14 × 14 m, mini goals further away.",
+    "harder": "1 touch only, only 3 seconds of counter-pressing, mini goals closer to the square.",
+    "questions": ["Who is closest after losing the ball and presses straight away?", "How do you open your body so you can play both ways?"]
+  },
+  "aw-passviereck": {
+    "name": "Passing Square with Turning and a Change of Pace",
+    "field": "Square 15 × 15 m, a cone at each corner",
+    "material": "1–3 balls per square, 4 cones",
+    "setup": "Five to six players per square, two at the starting corner.",
+    "rules": [
+      "A passes along the ground to the next corner. B first moves away from the cone, then comes towards the ball.",
+      "B receives with the back foot, turns and drives the ball towards the next corner with a change of pace (slow, then fast).",
+      "Then B passes on. Everyone follows their pass to the next corner.",
+      "Change direction every 90 seconds. Once it runs smoothly, add a second ball."
+    ],
+    "easier": "No turning, stopping the ball allowed, smaller square.",
+    "harder": "Receive and turn in one touch, a passive opponent behind each corner, three balls at once.",
+    "questions": ["Why do you move away first and then come to the ball?", "Which foot do you receive with so you can turn straight away?"]
+  },
+  "ue-1v1-defensive": {
+    "name": "Defending 1v1: Approach, Stance, Show Wide",
+    "field": "Several lanes 15 × 12 m, on the end line a cone gate in the middle and one on each side",
+    "material": "Balls with the defender, cones",
+    "setup": "Pairs in each lane. The defender stands with the ball on the end line, the attacker opposite on the start line.",
+    "rules": [
+      "The defender passes to the attacker and approaches at once: fast first, then braking with short steps just before the opponent.",
+      "Side-on stance with one foot forward, so the attacker has to go wide.",
+      "The attacker dribbles through a cone gate: the middle gate scores 2 points, the side gates 1 point.",
+      "If the defender wins the ball, they counter over the start line (1 point). Swap roles after every action and rest briefly."
+    ],
+    "easier": "The attacker only walks with the ball up to halfway, narrower middle gate.",
+    "harder": "The pass goes diagonally to the attacker's side, wider lane, the attacker has a support player at the side for a one-two.",
+    "questions": ["When do you brake as you approach?", "Which foot do you put forward so the opponent has to go wide?"]
+  },
+  "ue-kopfball-duell": {
+    "name": "Heading Duel in Pairs",
+    "field": "Several fields 10 × 8 m, a cone gate (4 m) at each end",
+    "material": "Under-15s: light balls, under-17s and under-19s: normal balls, cones",
+    "setup": "Groups of three: a thrower at the side, two players duelling in the middle.",
+    "rules": [
+      "The thrower lobs the ball high between the two players.",
+      "Both jump for the header: take off from one foot, arms for balance, no elbows into the opponent.",
+      "Whoever heads the ball first gets a point, a header into the opponent's cone gate scores 2.",
+      "Short series: 5 headers per player at most, then rotate. Up to the under-15s only with a light ball."
+    ],
+    "easier": "Head from standing without an opponent, thrower closer.",
+    "harder": "3 m run-up, less accurate throws, after the header it carries on as a 1v1 on the ground.",
+    "questions": ["When do you take off so you meet the ball at its highest point?", "How do you use your arms without fouling?"]
+  },
+  "ue-doppelpass-abschluss": {
+    "name": "One-Two and Finish under Time Pressure",
+    "field": "25 × 20 m in front of a youth goal with a keeper, two support players left and right on the edge of the box",
+    "material": "1 youth goal, balls at the start line, cones, bibs",
+    "setup": "Shooters stand with a ball on the start line, about 25 m from goal. One support player stands left, one right.",
+    "rules": [
+      "The shooter dribbles, passes to a support player and runs in behind.",
+      "The support player plays it straight back into the run (one-two).",
+      "Finish no later than 4 seconds after the first pass. A chaser starts from the start line when the support player passes.",
+      "Alternate left and right, new support players after 6 turns."
+    ],
+    "easier": "No chaser, one touch to set up the shot is allowed.",
+    "harder": "The chaser starts on the first pass, first-time finishes only, goals in the far corner count double.",
+    "questions": ["Where do you run after your pass so the return comes into your stride?", "When do you finish first time, when do you take another touch?"]
+  },
+  "ue-sprint-parcours": {
+    "name": "Sprint and Change-of-Direction Course with a Finish",
+    "field": "30 × 20 m in front of a youth goal with a keeper, two identical courses side by side",
+    "material": "1 youth goal, cones or poles, balls with the coach",
+    "setup": "Two players start at the same time on two mirrored courses: a burst, a slalom with sharp changes of direction, a short backwards run.",
+    "rules": [
+      "On the signal both run their course as fast as they can.",
+      "At the end the coach plays a ball between the two: whoever gets there first shoots, the other defends.",
+      "6 to 8 seconds of effort, then at least 45 seconds of rest (walking, not standing).",
+      "6 to 8 runs per player, swap starting positions and sides."
+    ],
+    "easier": "No duel: each player gets their own ball to finish.",
+    "harder": "Change of direction on the coach's colour signal, a finish with the weaker foot counts double.",
+    "questions": ["How do you lower your body before changing direction?", "Why is the rest between sprints so important?"]
+  },
+  "sf-aufbau-pressing": {
+    "name": "Building Out against the Press",
+    "field": "40 × 25 m with a halfway line, a youth goal with a keeper, three cone gates (3 m) on the halfway line, 2 mini goals opposite",
+    "material": "1 youth goal, 2 mini goals, cones, balls with the keeper, bibs",
+    "setup": "Blue builds out with the keeper and three players against two red pressers. A fourth blue and two red players wait in the other half.",
+    "rules": [
+      "The keeper starts, the three build-up players work themselves free against the two pressers.",
+      "If a blue player dribbles through a cone gate on the halfway line, that scores a point. Then everyone plays on 4v4: blue on the mini goals, red on the youth goal.",
+      "If red wins the ball in the first phase, red attacks the youth goal straight away (a goal counts double).",
+      "The teams swap roles after 4 rounds."
+    ],
+    "easier": "Only one red player presses until the first pass, wider cone gates.",
+    "harder": "3+GK v 3, build-up players 2 touches at most, only one pass back to the keeper allowed.",
+    "questions": ["Where do you offer yourself so the keeper can find you safely?", "When do you dribble forward, when do you pass on?"]
+  },
+  "sf-pressing-ausloeser": {
+    "name": "Spotting Pressing Triggers",
+    "field": "40 × 25 m with a halfway line, 2 youth goals",
+    "material": "2 youth goals, cones, balls behind the goals, bibs",
+    "setup": "4+GK v 4+GK. The team without the ball first waits behind the halfway line.",
+    "rules": [
+      "The defending team may only press together into the opponents' half when a trigger comes: a back pass, a pass to the keeper, a heavy first touch or an opponent turning their back to the field.",
+      "The player closest to the ball calls \"Now!\" and presses, the others push up behind.",
+      "Winning the ball in the opponents' half within 6 seconds of the call: the next goal counts double.",
+      "Pressing without a trigger: free kick to the team in possession."
+    ],
+    "easier": "Only one trigger (back pass), slightly smaller field.",
+    "harder": "The team in possession scores a point for 6 passes in its own half, pressing only within 2 seconds of the trigger.",
+    "questions": ["Which situation invites you to press?", "Who presses, who pushes up, who covers?"]
+  },
+  "sf-3v3-wandspieler": {
+    "name": "3v3 with Target Players in Depth",
+    "field": "35 × 25 m, 2 youth goals, a depth zone (6 m) in front of each goal",
+    "material": "2 youth goals, cones, balls behind the goals, bibs",
+    "setup": "3v3 in midfield. Each team has a target player in the depth zone in front of the opponents' goal.",
+    "rules": [
+      "A goal only counts if the team's own target player has been played in first.",
+      "The target player has their back to goal: they lay it off (2 touches at most) or turn and shoot if nobody follows.",
+      "Only one defender may follow the target player into the depth zone.",
+      "After every round another player becomes the target player."
+    ],
+    "easier": "The target player may not be challenged.",
+    "harder": "Target player 1 touch only, a goal from a lay-off and first-time shot counts double.",
+    "questions": ["How do you protect the ball with an opponent behind you?", "How do you tell whether you can turn or have to lay it off?"]
+  },
+  "ab-zwei-linien": {
+    "name": "Defending Two Lines",
+    "field": "35 × 25 m, an end zone (5 m deep) at each end",
+    "material": "Cones, balls at the side, bibs",
+    "setup": "4v4. Each team defends the end zone behind it.",
+    "rules": [
+      "A player dribbles over the line into the opponents' end zone: 1 point.",
+      "A player is found in the end zone with a pass in behind and controls it there: 2 points. They may only run into the zone once the pass has been played.",
+      "The defending team holds its line: one player challenges the ball, the others squeeze together and cover the space behind.",
+      "After a point the other team starts from its own end."
+    ],
+    "easier": "Deeper end zones, a joker always plays for the team in possession.",
+    "harder": "Only passes in behind score, end zones only 3 m deep, 3 touches per player.",
+    "questions": ["Who challenges the ball, who covers behind?", "How can you tell a pass in behind is coming?"]
+  },
+  "ab-4v4-neutraler": {
+    "name": "4v4 with a Neutral Player",
+    "field": "35 × 25 m, 2 youth goals",
+    "material": "2 youth goals, cones, balls behind the goals, bibs (a separate colour for the neutral player)",
+    "setup": "4v4 with keepers. A neutral player always plays for the team in possession, which makes it 5 v 4.",
+    "rules": [
+      "The neutral player has 2 touches at most and does not score.",
+      "A goal after a one-two with the neutral player counts double.",
+      "The team without the ball defends compactly while outnumbered and steers the opponents wide.",
+      "After every round another player becomes the neutral player."
+    ],
+    "easier": "Two neutral players (6 v 4), neutral players 3 touches.",
+    "harder": "Neutral player 1 touch only, after every ball win the neutral player must be found first.",
+    "questions": ["Where is the free player when you are five?", "How do you defend with four against five?"]
+  },
+  "ab-halbfeldflanken": {
+    "name": "Crosses from the Half-Space",
+    "field": "35 × 30 m, 2 youth goals, in the attacking half a half-space zone (8 × 8 m) on the left and right about 20 m from goal",
+    "material": "2 youth goals, cones, balls at the halfway line, bibs",
+    "setup": "Three attackers start with the ball at the halfway line against two defenders and the keeper.",
+    "rules": [
+      "A goal only counts if the ball was crossed into the box from a half-space zone first: header, first time or after a touch.",
+      "The attackers fill the box: near post, far post, edge of the box.",
+      "If the defenders win the ball, they counter on the goal opposite.",
+      "Attackers and defenders swap after 4 attacks. For under-15s, headers only in short series."
+    ],
+    "easier": "Low crosses allowed too, defenders may only enter the box after the cross.",
+    "harder": "First-time finishes after the cross only, a third defender joins after 6 seconds.",
+    "questions": ["Who goes to the near post, who to the far post, who stays at the edge of the box?", "When do you cross early from the half-space instead of going to the byline?"]
   }
 }

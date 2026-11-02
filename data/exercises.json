@@ -290,6 +290,46 @@
     "harder": "Keine Rettungsinseln, Feld kleiner, wer den Ball verliert, macht 5 Sohlenzieher.",
     "questions": ["Wo ist gerade der meiste freie Raum?", "Wie behältst du Ball und Fänger gleichzeitig im Blick?"]
   },
+  {
+    "id": "aw-rondo-5v2",
+    "name": "Rondo 5 gegen 2 mit Umschalten auf Minitore",
+    "phase": "aufwaermen",
+    "ages": ["C", "B", "A"],
+    "themes": ["passen", "umschalten", "orientierung"],
+    "players": { "min": 7, "max": 21 },
+    "field": "Quadrat 12 × 12 m, außen an zwei Seiten je ein Minitor (5 m Abstand)",
+    "material": "Bälle, Hütchen, 2 Minitore pro Gruppe, Leibchen",
+    "setup": "Gruppen zu siebt: fünf Spieler am Rand des Quadrats, zwei Balljäger in der Mitte.",
+    "rules": [
+      "Die Fünf halten den Ball mit höchstens 2 Kontakten. 10 Pässe in Folge ergeben einen Punkt.",
+      "Erobern die Balljäger den Ball, kontern sie sofort auf eines der beiden Minitore.",
+      "Die Fünf schalten um und haben 5 Sekunden, um den Ball zurückzuerobern oder das Tor zu verhindern.",
+      "Wer den Ball verloren hat, geht mit in die Mitte, der Balljäger mit den meisten Einsätzen geht raus."
+    ],
+    "easier": "3 Kontakte, Quadrat 14 × 14 m, Minitore weiter weg.",
+    "harder": "Nur 1 Kontakt, nur 3 Sekunden Gegenpressing, Minitore näher am Quadrat.",
+    "questions": ["Wer steht nach einem Ballverlust am nächsten und läuft sofort an?", "Wie öffnest du deinen Körper, damit du in beide Richtungen spielen kannst?"]
+  },
+  {
+    "id": "aw-passviereck",
+    "name": "Passviereck mit Aufdrehen und Tempowechsel",
+    "phase": "aufwaermen",
+    "ages": ["D", "C", "B", "A"],
+    "themes": ["passen", "orientierung", "athletik"],
+    "players": { "min": 5, "max": 20 },
+    "field": "Viereck 15 × 15 m, ein Hütchen an jeder Ecke",
+    "material": "1–3 Bälle pro Viereck, 4 Hütchen",
+    "setup": "Fünf bis sechs Spieler pro Viereck, an der Startecke stehen zwei.",
+    "rules": [
+      "A passt flach zur nächsten Ecke. B löst sich erst kurz vom Hütchen weg und kommt dann dem Ball entgegen.",
+      "B nimmt mit dem hinteren Fuß an, dreht auf und treibt den Ball mit einem Tempowechsel (langsam, dann schnell) Richtung nächste Ecke.",
+      "Danach passt B weiter. Jeder läuft seinem Pass zur nächsten Ecke hinterher.",
+      "Alle 90 Sekunden die Richtung wechseln. Läuft es sauber, kommt ein zweiter Ball dazu."
+    ],
+    "easier": "Ohne Aufdrehen, Ball stoppen erlaubt, Viereck kleiner.",
+    "harder": "Annahme und Aufdrehen in einem Kontakt, hinter jeder Ecke ein passiver Gegenspieler, drei Bälle gleichzeitig.",
+    "questions": ["Warum gehst du erst weg vom Ball und kommst dann entgegen?", "Mit welchem Fuß nimmst du an, damit du sofort aufdrehen kannst?"]
+  },
 
   {
     "id": "ue-zwei-tore-1v1",
@@ -571,6 +611,90 @@
     "easier": "Verteidiger starten einen Schritt hinter den Angreifern.",
     "harder": "Zwei Umschaltmomente erlaubt, Konter nur 5 Sekunden.",
     "questions": ["Was ist das Erste, das du nach dem Ballgewinn machst?", "Wer stört nach dem Ballverlust den Ballführenden?"]
+  },
+  {
+    "id": "ue-1v1-defensive",
+    "name": "1 gegen 1 verteidigen: Anlaufen, Stellung, Abdrängen",
+    "phase": "uebung",
+    "ages": ["D", "C", "B", "A"],
+    "themes": ["verteidigen", "1v1"],
+    "players": { "min": 4, "max": 20 },
+    "goalkeepers": 0,
+    "field": "Mehrere Gassen 15 × 12 m, auf der Grundlinie ein Hütchentor in der Mitte und je eines an den Seiten",
+    "material": "Bälle beim Verteidiger, Hütchen",
+    "setup": "Paare pro Gasse. Der Verteidiger steht mit Ball auf der Grundlinie, der Angreifer gegenüber an der Startlinie.",
+    "rules": [
+      "Der Verteidiger passt zum Angreifer und läuft sofort an: erst schnell, kurz vor dem Gegner mit kleinen Schritten abbremsen.",
+      "Seitliche Stellung, ein Fuß vorne, so dass der Angreifer zur Seite ausweichen muss.",
+      "Der Angreifer dribbelt durch ein Hütchentor: das mittlere Tor zählt 2 Punkte, die seitlichen 1 Punkt.",
+      "Erobert der Verteidiger den Ball, kontert er über die Startlinie (1 Punkt). Nach jeder Aktion Rollen tauschen und kurz pausieren."
+    ],
+    "easier": "Angreifer dribbelt bis zur Mitte nur im Schritttempo, mittleres Tor schmaler.",
+    "harder": "Pass kommt schräg auf die Seite des Angreifers, Gasse breiter, der Angreifer hat einen Anspieler an der Seite für einen Doppelpass.",
+    "questions": ["Wann bremst du beim Anlaufen ab?", "Welchen Fuß stellst du vor, damit der Gegner zur Seite muss?"]
+  },
+  {
+    "id": "ue-kopfball-duell",
+    "name": "Kopfball-Duell im Paar",
+    "phase": "uebung",
+    "ages": ["C", "B", "A"],
+    "themes": ["kopfball", "1v1"],
+    "players": { "min": 3, "max": 15 },
+    "goalkeepers": 0,
+    "field": "Mehrere Felder 10 × 8 m, an jedem Ende ein Hütchentor (4 m)",
+    "material": "C-Jugend: Leichtbälle, B- und A-Jugend: normale Bälle, Hütchen",
+    "setup": "Dreiergruppen: ein Werfer an der Seite, zwei Spieler im Duell in der Mitte.",
+    "rules": [
+      "Der Werfer wirft den Ball hoch zwischen die beiden Spieler.",
+      "Beide springen zum Kopfball: einbeinig abspringen, Arme zur Balance, kein Ellbogen gegen den Gegner.",
+      "Wer den Ball zuerst köpft, bekommt einen Punkt, ein Kopfball ins gegnerische Hütchentor zählt 2.",
+      "Kurze Serien: höchstens 5 Kopfbälle pro Spieler, dann wird gewechselt. Bis zur C-Jugend nur mit Leichtball."
+    ],
+    "easier": "Ohne Gegner aus dem Stand köpfen, Werfer näher.",
+    "harder": "Anlauf von 3 m, ungenauere Würfe, nach dem Kopfball geht es 1 gegen 1 am Boden weiter.",
+    "questions": ["Wann springst du ab, damit du den Ball am höchsten Punkt triffst?", "Wie setzt du deine Arme ein, ohne zu foulen?"]
+  },
+  {
+    "id": "ue-doppelpass-abschluss",
+    "name": "Doppelpass und Abschluss unter Zeitdruck",
+    "phase": "uebung",
+    "ages": ["D", "C", "B", "A"],
+    "themes": ["torschuss", "passen"],
+    "players": { "min": 6, "max": 16 },
+    "goalkeepers": 1,
+    "field": "25 × 20 m vor einem Jugendtor mit Torwart, zwei Anspieler links und rechts an der Strafraumkante",
+    "material": "1 Jugendtor, Bälle an der Startlinie, Hütchen, Leibchen",
+    "setup": "Schützen stehen mit Ball an der Startlinie, etwa 25 m vor dem Tor. Je ein Anspieler steht links und rechts.",
+    "rules": [
+      "Der Schütze dribbelt an, passt zu einem Anspieler und startet in die Tiefe.",
+      "Der Anspieler legt direkt in den Lauf zurück (Doppelpass).",
+      "Abschluss spätestens 4 Sekunden nach dem ersten Pass. Mit dem Pass des Anspielers startet ein Verfolger von der Startlinie.",
+      "Abwechselnd links und rechts, nach 6 Durchgängen neue Anspieler."
+    ],
+    "easier": "Ohne Verfolger, Abschluss mit einem Kontakt Vorbereitung erlaubt.",
+    "harder": "Verfolger startet schon mit dem ersten Pass, Abschluss nur direkt, Treffer ins lange Eck zählen doppelt.",
+    "questions": ["Wohin läufst du nach deinem Pass, damit der Rückpass in deinen Lauf kommt?", "Wann schließt du direkt ab, wann nimmst du noch einen Kontakt?"]
+  },
+  {
+    "id": "ue-sprint-parcours",
+    "name": "Sprint- und Richtungswechsel-Parcours mit Abschluss",
+    "phase": "uebung",
+    "ages": ["C", "B", "A"],
+    "themes": ["athletik", "torschuss", "koordination"],
+    "players": { "min": 4, "max": 16 },
+    "goalkeepers": 1,
+    "field": "30 × 20 m vor einem Jugendtor mit Torwart, zwei gleiche Parcours nebeneinander",
+    "material": "1 Jugendtor, Hütchen oder Stangen, Bälle beim Trainer",
+    "setup": "Zwei Spieler starten gleichzeitig auf zwei gespiegelten Parcours: Antritt, Slalom mit scharfen Richtungswechseln, kurzer Rückwärtslauf.",
+    "rules": [
+      "Auf Signal durchlaufen beide ihren Parcours so schnell wie möglich.",
+      "Am Ende spielt der Trainer einen Ball zwischen die beiden: Wer zuerst dran ist, schließt ab, der andere verteidigt.",
+      "Belastung 6 bis 8 Sekunden, danach mindestens 45 Sekunden Pause (gehen, nicht stehen).",
+      "6 bis 8 Läufe pro Spieler, Startpositionen und Seiten wechseln."
+    ],
+    "easier": "Ohne Duell: Jeder bekommt seinen eigenen Ball zum Abschluss.",
+    "harder": "Richtungswechsel auf Farbsignal des Trainers, Abschluss nur mit dem schwachen Fuß zählt doppelt.",
+    "questions": ["Wie senkst du deinen Körper vor dem Richtungswechsel?", "Warum ist die Pause zwischen den Sprints so wichtig?"]
   },
 
   {
@@ -910,6 +1034,78 @@
     "harder": "Ein Verteidiger darf in die Flügelzone folgen, Tore nur mit dem ersten Kontakt nach der Flanke.",
     "questions": ["Wohin laufen die Mitspieler, wenn jemand in der Flügelzone ist?", "Wann ist die flache Hereingabe besser als die hohe Flanke?"]
   },
+  {
+    "id": "sf-aufbau-pressing",
+    "name": "Aufbauen gegen Pressing",
+    "phase": "spielform",
+    "ages": ["C", "B", "A"],
+    "themes": ["passen", "orientierung", "umschalten"],
+    "players": { "min": 8, "max": 20 },
+    "family": "ueberzahl",
+    "format": "3+TW gegen 2, danach 4 gegen 4",
+    "goalkeepers": 1,
+    "blocks": { "count": 6, "minutes": 3, "rest": 1 },
+    "field": "40 × 25 m mit Mittellinie, ein Jugendtor mit Torwart, an der Mittellinie drei Hütchentore (3 m), gegenüber 2 Minitore",
+    "material": "1 Jugendtor, 2 Minitore, Hütchen, Bälle beim Torwart, Leibchen",
+    "setup": "Blau baut mit Torwart und drei Spielern gegen zwei rote Pressingspieler auf. Ein vierter blauer und zwei rote Spieler warten in der anderen Hälfte.",
+    "rules": [
+      "Der Torwart eröffnet, die drei Aufbauspieler spielen sich gegen die zwei Pressingspieler frei.",
+      "Dribbelt ein blauer Spieler durch ein Hütchentor an der Mittellinie, gibt es einen Punkt. Danach spielen alle 4 gegen 4 weiter: Blau auf die Minitore, Rot auf das Jugendtor.",
+      "Erobert Rot den Ball schon in der ersten Phase, greift Rot sofort das Jugendtor an (Tor zählt doppelt).",
+      "Nach 4 Durchgängen tauschen die Teams die Rollen."
+    ],
+    "easier": "Bis zum ersten Pass presst nur ein roter Spieler, Hütchentore breiter.",
+    "harder": "3+TW gegen 3, Aufbauspieler höchstens 2 Kontakte, ein Pass zurück zum Torwart ist nur einmal erlaubt.",
+    "questions": ["Wo bietest du dich an, damit der Torwart dich sicher anspielen kann?", "Wann dribbelst du an, wann spielst du weiter?"]
+  },
+  {
+    "id": "sf-pressing-ausloeser",
+    "name": "Pressing-Auslöser erkennen",
+    "phase": "spielform",
+    "ages": ["C", "B", "A"],
+    "themes": ["verteidigen", "umschalten", "orientierung"],
+    "players": { "min": 10, "max": 16 },
+    "family": "gleichzahl",
+    "format": "4+TW gegen 4+TW",
+    "goalkeepers": 2,
+    "blocks": { "count": 5, "minutes": 4, "rest": 2 },
+    "field": "40 × 25 m mit Mittellinie, 2 Jugendtore",
+    "material": "2 Jugendtore, Hütchen, Bälle hinter den Toren, Leibchen",
+    "setup": "4+TW gegen 4+TW. Das Team ohne Ball wartet zunächst hinter der Mittellinie.",
+    "rules": [
+      "Das verteidigende Team darf erst gemeinsam in die gegnerische Hälfte pressen, wenn ein Auslöser kommt: Rückpass, Pass zum Torwart, ein Ball springt bei der Annahme weg oder ein Gegner dreht sich mit dem Rücken zum Feld.",
+      "Der Spieler am nächsten zum Ball ruft „Jetzt!“, läuft an, die anderen schieben nach.",
+      "Ballgewinn in der gegnerischen Hälfte innerhalb von 6 Sekunden nach dem Ruf: Ein Tor danach zählt doppelt.",
+      "Pressing ohne Auslöser: Freistoß für das Team in Ballbesitz."
+    ],
+    "easier": "Nur ein Auslöser (Rückpass), Feld etwas kleiner.",
+    "harder": "Das Team in Ballbesitz bekommt einen Punkt für 6 Pässe in der eigenen Hälfte, Pressing nur innerhalb von 2 Sekunden nach dem Auslöser.",
+    "questions": ["Welche Situation lädt euch zum Pressing ein?", "Wer läuft an, wer schiebt nach, wer sichert ab?"]
+  },
+  {
+    "id": "sf-3v3-wandspieler",
+    "name": "3 gegen 3 mit Wandspielern in der Tiefe",
+    "phase": "spielform",
+    "ages": ["B", "A"],
+    "themes": ["passen", "1v1", "torschuss"],
+    "players": { "min": 10, "max": 16 },
+    "family": "anspieler",
+    "format": "3 gegen 3 + 2 Wandspieler + 2 TW",
+    "goalkeepers": 2,
+    "blocks": { "count": 6, "minutes": 3, "rest": 1 },
+    "field": "35 × 25 m, 2 Jugendtore, vor jedem Tor eine Tiefenzone (6 m)",
+    "material": "2 Jugendtore, Hütchen, Bälle hinter den Toren, Leibchen",
+    "setup": "3 gegen 3 im Mittelfeld. Jedes Team hat einen Wandspieler in der Tiefenzone vor dem gegnerischen Tor.",
+    "rules": [
+      "Ein Tor zählt nur, wenn vorher der eigene Wandspieler angespielt wurde.",
+      "Der Wandspieler steht mit dem Rücken zum Tor: Er legt ab (höchstens 2 Kontakte) oder dreht auf und schießt, wenn ihm niemand folgt.",
+      "Nur ein Verteidiger darf dem Wandspieler in die Tiefenzone folgen.",
+      "Nach jedem Durchgang wechselt ein anderer Spieler in die Wand."
+    ],
+    "easier": "Der Wandspieler darf nicht angegriffen werden.",
+    "harder": "Wandspieler nur 1 Kontakt, ein Tor nach Ablage und Direktschuss zählt doppelt.",
+    "questions": ["Wie schützt du den Ball, wenn der Gegner in deinem Rücken ist?", "Woran erkennst du, ob du aufdrehen kannst oder ablegen musst?"]
+  },
 
   {
     "id": "ab-funino-grundspiel",
@@ -1161,5 +1357,77 @@
     "easier": "Wartendes Paar erst nach 3 Sekunden, Tore größer.",
     "harder": "Zwei Tore pro Seite, Tor zählt nur nach einem Doppelpass oder einem gewonnenen 1 gegen 1.",
     "questions": ["Wie schaltet ihr nach einem Tor sofort um?", "Wann spielst du ab, wann gehst du selbst?"]
+  },
+  {
+    "id": "ab-zwei-linien",
+    "name": "Zwei Linien verteidigen",
+    "phase": "abschluss",
+    "ages": ["D", "C", "B", "A"],
+    "themes": ["verteidigen", "passen", "orientierung"],
+    "players": { "min": 8, "max": 20 },
+    "family": "linie",
+    "format": "4 gegen 4",
+    "goalkeepers": 0,
+    "blocks": { "count": 5, "minutes": 4, "rest": 2 },
+    "field": "35 × 25 m, an beiden Enden eine Endzone (5 m tief)",
+    "material": "Hütchen, Bälle am Rand, Leibchen",
+    "setup": "4 gegen 4. Jedes Team verteidigt die Endzone hinter sich.",
+    "rules": [
+      "Ein Spieler dribbelt über die Linie in die gegnerische Endzone: 1 Punkt.",
+      "Ein Spieler wird mit einem Pass in die Tiefe in der Endzone angespielt und nimmt den Ball dort an: 2 Punkte. Er darf erst in die Zone starten, wenn der Pass gespielt ist.",
+      "Das verteidigende Team hält seine Linie: einer greift den Ball an, die anderen schieben zusammen und sichern die Tiefe.",
+      "Nach einem Punkt startet das andere Team vom eigenen Ende."
+    ],
+    "easier": "Endzonen tiefer, ein Joker spielt immer mit dem Team in Ballbesitz.",
+    "harder": "Nur Pässe in die Tiefe zählen, Endzonen nur 3 m tief, 3 Kontakte pro Spieler.",
+    "questions": ["Wer läuft den Ball an, wer sichert hinten ab?", "Woran erkennst du, dass gleich ein Pass in die Tiefe kommt?"]
+  },
+  {
+    "id": "ab-4v4-neutraler",
+    "name": "4 gegen 4 mit Neutralem",
+    "phase": "abschluss",
+    "ages": ["D", "C", "B", "A"],
+    "themes": ["passen", "orientierung", "torschuss"],
+    "players": { "min": 11, "max": 20 },
+    "family": "ueberzahl",
+    "format": "4 gegen 4 + 1 Neutraler + 2 TW",
+    "goalkeepers": 2,
+    "blocks": { "count": 5, "minutes": 4, "rest": 2 },
+    "field": "35 × 25 m, 2 Jugendtore",
+    "material": "2 Jugendtore, Hütchen, Bälle hinter den Toren, Leibchen (eine eigene Farbe für den Neutralen)",
+    "setup": "4 gegen 4 mit Torwarten. Ein neutraler Spieler spielt immer mit dem Team in Ballbesitz, so entsteht eine 5-gegen-4-Überzahl.",
+    "rules": [
+      "Der Neutrale hat höchstens 2 Kontakte und schießt keine Tore.",
+      "Ein Tor nach einem Doppelpass mit dem Neutralen zählt doppelt.",
+      "Das Team ohne Ball verteidigt in Unterzahl kompakt und lenkt den Gegner nach außen.",
+      "Nach jedem Durchgang wird ein anderer Spieler Neutraler."
+    ],
+    "easier": "Zwei Neutrale (6 gegen 4), Neutrale 3 Kontakte.",
+    "harder": "Neutraler nur 1 Kontakt, nach jedem Ballgewinn muss der Neutrale zuerst angespielt werden.",
+    "questions": ["Wo ist der freie Spieler, wenn ihr zu fünft seid?", "Wie verteidigt ihr zu viert gegen fünf?"]
+  },
+  {
+    "id": "ab-halbfeldflanken",
+    "name": "Halbfeldflanken-Spiel",
+    "phase": "abschluss",
+    "ages": ["C", "B", "A"],
+    "themes": ["flanken", "torschuss", "kopfball"],
+    "players": { "min": 7, "max": 14 },
+    "family": "ueberzahl",
+    "format": "3+TW gegen 2+TW",
+    "goalkeepers": 2,
+    "blocks": { "count": 5, "minutes": 4, "rest": 2 },
+    "field": "35 × 30 m, 2 Jugendtore, in der Angriffshälfte links und rechts eine Halbfeldzone (8 × 8 m) etwa 20 m vor dem Tor",
+    "material": "2 Jugendtore, Hütchen, Bälle an der Mittellinie, Leibchen",
+    "setup": "Drei Angreifer starten mit Ball an der Mittellinie gegen zwei Verteidiger und den Torwart.",
+    "rules": [
+      "Ein Tor zählt nur, wenn der Ball vorher aus einer Halbfeldzone in den Strafraum geflankt wurde: per Kopf, direkt oder nach Annahme.",
+      "Die Angreifer besetzen den Strafraum: erster Pfosten, zweiter Pfosten, Rückraum.",
+      "Gewinnen die Verteidiger den Ball, kontern sie auf das Tor gegenüber.",
+      "Nach 4 Angriffen tauschen Angreifer und Verteidiger. In der C-Jugend Kopfbälle nur in kurzen Serien."
+    ],
+    "easier": "Flanke auch flach erlaubt, Verteidiger dürfen erst nach der Flanke in den Strafraum.",
+    "harder": "Nur Direktabschlüsse nach der Flanke, nach 6 Sekunden kommt ein dritter Verteidiger dazu.",
+    "questions": ["Wer läuft zum ersten Pfosten, wer zum zweiten, wer bleibt im Rückraum?", "Wann flankst du früh aus dem Halbfeld, statt bis zur Grundlinie zu gehen?"]
   }
 ]
