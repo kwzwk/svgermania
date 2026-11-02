@@ -317,3 +317,18 @@ body.training { overflow: hidden; }
   .pick .add { flex: 1; }
   .custom-actions .start-button { width: 100%; }
 }
+
+/* Trainingstage, Spieltag, Block, Ankerspiel, Torhüter-Station, Aufgaben für zu Hause */
+.weekdays span { padding: 8px 2px; font-size: 0.85rem; }
+.segmented input:disabled + span { opacity: 0.45; text-decoration: line-through; cursor: not-allowed; }
+.block-note { margin: -8px 0 16px; font-size: 0.92rem; }
+.tag-anchor { background: var(--base); color: var(--text); border: 1px solid var(--phase-spielform); }
+.tag-load { background: var(--harder); color: var(--harder-ink); }
+.tag-recovery { background: var(--easier); color: var(--easier-ink); }
+.load-note { margin: 0 0 12px; padding: 8px 10px; border-radius: 8px; background: var(--base); border-left: 4px solid var(--phase-aufwaermen); font-size: 0.92rem; }
+.keeper-station { margin: 8px 0 0 12px; padding-left: 10px; border-left: 3px solid var(--phase-uebung); }
+.keeper-station > summary { cursor: pointer; font-weight: 600; padding: 6px 0; }
+.home-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+.home-card h3 { margin: 0 0 8px; }
+.home-card ul { margin: 8px 0 0; padding-left: 20px; }
+.home-card li { margin-bottom: 6px; }

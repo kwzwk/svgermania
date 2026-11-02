@@ -45,11 +45,7 @@
           <div id="levels" class="segmented"></div>
         </fieldset>
         <label><span data-i18n="sessions">Einheiten pro Woche</span>
-          <select name="sessions">
-            <option value="1">1</option>
-            <option value="2" selected>2</option>
-            <option value="3">3</option>
-          </select>
+          <select name="sessions" id="sessions"></select>
         </label>
         <label><span data-i18n="minutes">Dauer (Minuten)</span>
           <select name="minutes" id="minutes"></select>
@@ -59,6 +55,13 @@
         </label>
         <label id="keepers-field" hidden><span data-i18n="keepers">Torhüter</span>
           <input type="number" name="keepers" min="0" max="4" value="1">
+        </label>
+        <fieldset class="levels days">
+          <legend data-i18n="days">Trainingstage</legend>
+          <div id="days" class="segmented weekdays"></div>
+        </fieldset>
+        <label id="match-field" hidden><span data-i18n="matchDay">Spieltag</span>
+          <select name="match" id="match"></select>
         </label>
         <label class="wide"><span data-i18n="theme">Schwerpunkt</span>
           <select name="theme" id="theme"></select>

@@ -1,0 +1,185 @@
+{
+ "id": "tw-hohe-baelle",
+ "name": "TW: Hohe Bälle und Absprung",
+ "fps": 12.5,
+ "duration": 6.4,
+ "field": {
+  "w": 10,
+  "h": 10,
+  "margin": 2
+ },
+ "goals": [
+  {
+   "x": 5,
+   "y": 0,
+   "side": "top",
+   "kind": "small"
+  }
+ ],
+ "teams": {
+  "gk": {
+   "color": "#1fa463",
+   "letter": "T"
+  },
+  "co": {
+   "color": "#e67e22",
+   "letter": "C"
+  }
+ },
+ "players": [
+  {
+   "id": "G",
+   "team": "gk",
+   "path": [
+    [
+     0,
+     5,
+     2.4
+    ],
+    [
+     0.8,
+     5,
+     2.4
+    ],
+    [
+     1.5,
+     4.2,
+     1.6
+    ],
+    [
+     2.6,
+     4.2,
+     1.6
+    ],
+    [
+     3.4,
+     5,
+     2.4
+    ],
+    [
+     4.2,
+     5,
+     2.4
+    ],
+    [
+     4.9,
+     5.8,
+     1.0
+    ],
+    [
+     5.6,
+     5.8,
+     1.0
+    ],
+    [
+     6.2,
+     5,
+     2.4
+    ]
+   ],
+   "face": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "C",
+   "team": "co",
+   "path": [
+    [
+     0,
+     5,
+     9
+    ]
+   ],
+   "face": [
+    0,
+    -1
+   ]
+  }
+ ],
+ "balls": [
+  {
+   "keys": [
+    {
+     "t": 0,
+     "on": "C",
+     "fx": "hand"
+    },
+    {
+     "t": 0.4,
+     "on": "C",
+     "fx": "hand"
+    },
+    {
+     "t": 1.45,
+     "x": 4.2,
+     "y": 1.4,
+     "lob": true
+    },
+    {
+     "t": 1.5,
+     "on": "G",
+     "fx": "hand"
+    },
+    {
+     "t": 2.4,
+     "on": "G",
+     "fx": "hand"
+    },
+    {
+     "t": 3.4,
+     "on": "C",
+     "fx": "hand"
+    },
+    {
+     "t": 3.8,
+     "on": "C",
+     "fx": "hand"
+    },
+    {
+     "t": 4.9,
+     "x": 5.8,
+     "y": -0.5,
+     "lob": true
+    },
+    {
+     "t": 5.6,
+     "x": 6.6,
+     "y": -1.2
+    },
+    {
+     "t": 6.4,
+     "on": "C",
+     "fx": "hand"
+    }
+   ]
+  }
+ ],
+ "captions": [
+  {
+   "from": 0,
+   "to": 3.2,
+   "de": "Knie hoch, Ball vor dem Kopf fangen",
+   "en": "Knee up, catch in front of the head"
+  },
+  {
+   "from": 3.2,
+   "to": 6.4,
+   "de": "Über den Kopf: zurück und über die Latte lenken",
+   "en": "Over your head: back and tip it over the bar"
+  }
+ ],
+ "legend": [
+  {
+   "team": "gk",
+   "de": "Torwart",
+   "en": "Keeper"
+  },
+  {
+   "team": "co",
+   "de": "Co-Trainer",
+   "en": "Co-coach"
+  }
+ ]
+}

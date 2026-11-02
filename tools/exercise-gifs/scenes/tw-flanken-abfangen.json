@@ -1,0 +1,216 @@
+{
+ "id": "tw-flanken-abfangen",
+ "name": "TW: Flanken abfangen",
+ "fps": 12.5,
+ "duration": 7.0,
+ "field": {
+  "w": 22,
+  "h": 18,
+  "margin": 2
+ },
+ "goals": [
+  {
+   "x": 11,
+   "y": 0,
+   "side": "top",
+   "kind": "small"
+  }
+ ],
+ "lines": [
+  [
+   3,
+   16,
+   19,
+   16
+  ],
+  [
+   3,
+   0,
+   3,
+   16
+  ],
+  [
+   19,
+   0,
+   19,
+   16
+  ]
+ ],
+ "teams": {
+  "gk": {
+   "color": "#1fa463",
+   "letter": "T"
+  },
+  "co": {
+   "color": "#e67e22",
+   "letter": "C"
+  },
+  "bl": {
+   "color": "#2f6fd6"
+  }
+ },
+ "players": [
+  {
+   "id": "G",
+   "team": "gk",
+   "path": [
+    [
+     0,
+     12.5,
+     1.2
+    ],
+    [
+     1.4,
+     12.5,
+     1.2
+    ],
+    [
+     2.4,
+     10.5,
+     4.0
+    ],
+    [
+     3.6,
+     10.5,
+     4.0
+    ],
+    [
+     5.5,
+     12.5,
+     1.2
+    ]
+   ],
+   "face": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "C",
+   "team": "co",
+   "path": [
+    [
+     0,
+     20.5,
+     10
+    ]
+   ],
+   "face": [
+    -1,
+    0
+   ]
+  },
+  {
+   "id": "A",
+   "team": "bl",
+   "path": [
+    [
+     0,
+     13,
+     11
+    ],
+    [
+     1.4,
+     12,
+     8
+    ],
+    [
+     2.4,
+     10,
+     5.6
+    ],
+    [
+     3.6,
+     10.5,
+     7.5
+    ],
+    [
+     6.5,
+     13,
+     11
+    ]
+   ],
+   "face": [
+    0,
+    -1
+   ]
+  }
+ ],
+ "balls": [
+  {
+   "keys": [
+    {
+     "t": 0,
+     "on": "C"
+    },
+    {
+     "t": 0.8,
+     "on": "C"
+    },
+    {
+     "t": 2.3,
+     "x": 10.5,
+     "y": 3.6,
+     "lob": true
+    },
+    {
+     "t": 2.4,
+     "on": "G",
+     "fx": "hand"
+    },
+    {
+     "t": 3.8,
+     "on": "G",
+     "fx": "hand"
+    },
+    {
+     "t": 5.6,
+     "x": 20.3,
+     "y": 10.4,
+     "lob": true
+    },
+    {
+     "t": 6.9,
+     "on": "C"
+    }
+   ]
+  }
+ ],
+ "captions": [
+  {
+   "from": 0,
+   "to": 2.0,
+   "de": "Früh beurteilen, laut \"Torwart!\" rufen",
+   "en": "Judge it early, call \"Keeper!\" loudly"
+  },
+  {
+   "from": 2.0,
+   "to": 4.0,
+   "de": "Knie hoch, am höchsten Punkt fangen",
+   "en": "Knee up, catch at the highest point"
+  },
+  {
+   "from": 4.0,
+   "to": 7.0,
+   "de": "Zurück auf die Grundposition",
+   "en": "Back to the starting position"
+  }
+ ],
+ "legend": [
+  {
+   "team": "gk",
+   "de": "Torwart",
+   "en": "Keeper"
+  },
+  {
+   "team": "co",
+   "de": "Flanke (Co-Trainer)",
+   "en": "Crosser (co-coach)"
+  },
+  {
+   "team": "bl",
+   "de": "Stürmer",
+   "en": "Striker"
+  }
+ ]
+}

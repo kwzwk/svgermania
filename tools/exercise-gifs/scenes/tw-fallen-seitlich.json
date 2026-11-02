@@ -1,0 +1,180 @@
+{
+ "id": "tw-fallen-seitlich",
+ "name": "TW: Seitliches Fallen",
+ "fps": 12.5,
+ "duration": 7.0,
+ "field": {
+  "w": 10,
+  "h": 9,
+  "margin": 2
+ },
+ "goals": [
+  {
+   "x": 5,
+   "y": 0,
+   "side": "top",
+   "kind": "small"
+  }
+ ],
+ "cones": [
+  [
+   2.4,
+   1.6
+  ],
+  [
+   7.6,
+   1.6
+  ]
+ ],
+ "teams": {
+  "gk": {
+   "color": "#1fa463",
+   "letter": "T"
+  },
+  "co": {
+   "color": "#e67e22",
+   "letter": "C"
+  }
+ },
+ "players": [
+  {
+   "id": "G",
+   "team": "gk",
+   "path": [
+    [
+     0,
+     5,
+     1.6
+    ],
+    [
+     1.0,
+     5,
+     1.6
+    ],
+    [
+     1.4,
+     3.1,
+     1.6
+    ],
+    [
+     2.6,
+     3.1,
+     1.6
+    ],
+    [
+     3.3,
+     5,
+     1.6
+    ],
+    [
+     4.5,
+     5,
+     1.6
+    ],
+    [
+     4.9,
+     6.9,
+     1.6
+    ],
+    [
+     6.1,
+     6.9,
+     1.6
+    ],
+    [
+     6.8,
+     5,
+     1.6
+    ]
+   ],
+   "face": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "C",
+   "team": "co",
+   "path": [
+    [
+     0,
+     5,
+     8
+    ]
+   ],
+   "face": [
+    0,
+    -1
+   ]
+  }
+ ],
+ "balls": [
+  {
+   "keys": [
+    {
+     "t": 0,
+     "on": "C"
+    },
+    {
+     "t": 0.5,
+     "on": "C"
+    },
+    {
+     "t": 1.4,
+     "on": "G",
+     "fx": "hand"
+    },
+    {
+     "t": 2.4,
+     "on": "G",
+     "fx": "hand"
+    },
+    {
+     "t": 3.2,
+     "on": "C",
+     "fx": "hand"
+    },
+    {
+     "t": 4.0,
+     "on": "C"
+    },
+    {
+     "t": 4.9,
+     "on": "G",
+     "fx": "hand"
+    },
+    {
+     "t": 5.9,
+     "on": "G",
+     "fx": "hand"
+    }
+   ]
+  }
+ ],
+ "captions": [
+  {
+   "from": 0,
+   "to": 3.4,
+   "de": "Seitlich fallen, Ball mit beiden Händen sichern",
+   "en": "Dive to the side, secure the ball with both hands"
+  },
+  {
+   "from": 3.4,
+   "to": 7.0,
+   "de": "Sofort aufstehen, andere Seite",
+   "en": "Up again at once, other side"
+  }
+ ],
+ "legend": [
+  {
+   "team": "gk",
+   "de": "Torwart",
+   "en": "Keeper"
+  },
+  {
+   "team": "co",
+   "de": "Co-Trainer",
+   "en": "Co-coach"
+  }
+ ]
+}

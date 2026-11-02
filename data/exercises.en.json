@@ -998,5 +998,167 @@
     "easier": "Low crosses allowed too, defenders may only enter the box after the cross.",
     "harder": "First-time finishes after the cross only, a third defender joins after 6 seconds.",
     "questions": ["Who goes to the near post, who to the far post, who stays at the edge of the box?", "When do you cross early from the half-space instead of going to the byline?"]
+  },
+  "tw-grundstellung-fangen": {
+    "name": "GK: Set Position and Catching",
+    "field": "In front of goal, shooting point 8–12 m",
+    "material": "Goal, 6–10 balls, 2 cones",
+    "setup": "A co-coach or teammate shoots from 8–12 m; the keeper stands in the set position between the posts.",
+    "rules": [
+      "Before each shot: get set, small hop (split step) as the shooter draws back.",
+      "Low balls: scoop catch, body behind the ball. Mid-height: basket catch. High: W catch in front of the head.",
+      "After each catch, return the ball to the shooter straight away (roll or throw).",
+      "3 series of 8 shots, 1 minute rest between series."
+    ],
+    "easier": "Shots from the hands, medium power, always at the body.",
+    "harder": "Shots from the ground, alternating left and right of the body, a second shooter follows up.",
+    "questions": [
+      "When do you split-step: when the shooter draws back or when the ball is already flying?",
+      "Where are your hands before the shot comes?"
+    ]
+  },
+  "tw-fallen-seitlich": {
+    "name": "GK: Diving to the Side",
+    "field": "In front of goal, soft ground",
+    "material": "Goal, balls, 2 cones as targets next to the keeper",
+    "setup": "The keeper kneels or stands side-on in front of goal; the co-coach plays balls from 5–8 m beside them.",
+    "rules": [
+      "Start from kneeling: fall to the side, secure the ball with both hands, land on the side of the body, not the elbow.",
+      "Then from a squat, then from standing.",
+      "After the dive, get up at once and back into the set position.",
+      "3 × 5 repetitions per side, weaker side first."
+    ],
+    "easier": "Only from kneeling, the ball is rolled slowly.",
+    "harder": "Mid-height ball, straight after the dive a second ball to the other side.",
+    "questions": [
+      "Which leg takes the first step towards the ball?",
+      "Which side of the body touches the ground first?"
+    ]
+  },
+  "tw-1v1-herauslaufen": {
+    "name": "GK: 1v1 Against the Striker",
+    "field": "Penalty area, strikers start 25 m from goal",
+    "material": "Goal, balls, cones",
+    "setup": "A field player dribbles alone at goal from 25 m. The keeper narrows the angle and defends the 1v1.",
+    "rules": [
+      "The keeper comes out while the striker pushes the ball far ahead and stops in the set position when they keep it close.",
+      "Stay low, hands down at the sides, don't go down too early.",
+      "Spread (block) only from close range, otherwise stay on your feet.",
+      "6–8 duels, rotate strikers. Works well when the field players practise shooting in the intermediate block."
+    ],
+    "easier": "Striker must come from the side, smaller angle.",
+    "harder": "A second striker runs alongside, square pass allowed.",
+    "questions": [
+      "When do you come out and when do you stay?",
+      "How can you tell the striker is about to shoot?"
+    ]
+  },
+  "tw-flanken-abfangen": {
+    "name": "GK: Claiming Crosses",
+    "field": "Penalty area, crossing position wide, level with the box",
+    "material": "Goal, balls, 2 cones",
+    "setup": "A co-coach or player crosses from the side into the box; the keeper catches or punches.",
+    "rules": [
+      "Starting position for crosses: in the half of the goal towards the near post, body open to the pitch.",
+      "Judge the ball early, call \"Keeper!\" or \"Away!\" loudly.",
+      "Take off with one knee up, catch at the highest point. Under pressure, punch it away to the side.",
+      "2 × 8 crosses from each side."
+    ],
+    "easier": "Crosses thrown by hand, no opponent.",
+    "harder": "A field player stands in the six-yard box to head and disrupt.",
+    "questions": [
+      "When do you call, and what do you call?",
+      "When do you catch and when do you punch?"
+    ]
+  },
+  "tw-spieleroeffnung": {
+    "name": "GK: Distribution by Hand and Foot",
+    "field": "Half pitch, two target stations left and right (cone gates 2 m)",
+    "material": "Goal, balls, 4 cones",
+    "setup": "The keeper receives the ball (catch or back pass) and distributes straight away to one of the two stations.",
+    "rules": [
+      "After a catch: look quickly, then roll (short), overarm throw (medium) or kick from the hands (long).",
+      "After a back pass: stand open, control with the foot, pass to the free side with the second touch.",
+      "After the catch the co-coach calls \"left\" or \"right\" and the keeper reacts.",
+      "10 distributions per technique, both feet."
+    ],
+    "easier": "No call, the keeper picks the side.",
+    "harder": "A striker presses after the catch and blocks one side.",
+    "questions": [
+      "Where do you look before the ball reaches you?",
+      "When is a quick throw better than a long kick?"
+    ]
+  },
+  "tw-reaktion": {
+    "name": "GK: Short-Range Reactions",
+    "field": "Six-yard box, shooter at 6–8 m",
+    "material": "Goal, balls, 2 poles or a teammate as a screen",
+    "setup": "The co-coach shoots from close range; a pole or teammate between ball and keeper blocks the view.",
+    "rules": [
+      "Keeper in the set position, weight on the balls of the feet.",
+      "The shooter shoots past the screen; the keeper only reacts when they see the ball.",
+      "Parry to the side rather than forwards when a catch isn't possible.",
+      "4 series of 6 shots, full recovery in between. Quality over quantity."
+    ],
+    "easier": "No screen, shots from 10 m.",
+    "harder": "Rebounds: a second player follows up and the keeper must be ready again at once.",
+    "questions": [
+      "Where do you parry the ball if you can't catch it?",
+      "How do you stay ready for the second ball after the first?"
+    ]
+  },
+  "tw-winkel-stellung": {
+    "name": "GK: Positioning and Angles",
+    "field": "Semicircle of 5 cones 16–18 m from goal",
+    "material": "Goal, balls, 5 cones, rope or string (optional)",
+    "setup": "Five shooting positions in a semicircle. The co-coach changes position and the keeper resets each time.",
+    "rules": [
+      "The keeper stands on the imaginary line between ball and centre of the goal, slightly off the line.",
+      "Reset with small side steps, set position before the shot.",
+      "The co-coach only shoots once the keeper is set; brief feedback on position after each shot.",
+      "Each position twice, then in random order."
+    ],
+    "easier": "The shooter waits until the keeper calls \"ready\".",
+    "harder": "Passes between two shooters, shot after the first or second touch.",
+    "questions": [
+      "Where is the line between the ball and the centre of the goal?",
+      "How far off your line do you stand when the ball is close, and when it is far away?"
+    ]
+  },
+  "tw-rueckpass-druck": {
+    "name": "GK: Back Pass Under Pressure",
+    "field": "Penalty area and the space in front, 2 cone gates (2 m) wide at the edge of the box",
+    "material": "Goal, balls, 4 cones, bibs",
+    "setup": "A defender plays the ball back to the keeper while a striker presses at the same time. The keeper solves it with their feet.",
+    "rules": [
+      "The keeper offers themselves off to the side of the goal, never right in front of it.",
+      "Control away from the striker, then pass through one of the cone gates or play long.",
+      "If it gets too tight: clear it safely and far. No hands on a deliberate back pass.",
+      "8–10 situations, the striker always starts a little earlier."
+    ],
+    "easier": "The striker only starts when the ball reaches the keeper.",
+    "harder": "Two strikers: one presses the keeper, one blocks the short pass.",
+    "questions": [
+      "Where do you stand so you don't receive right in front of your goal?",
+      "When do you play out short and when do you go long?"
+    ]
+  },
+  "tw-hohe-baelle": {
+    "name": "GK: High Balls and Take-Off",
+    "field": "In front of goal, 6–10 m",
+    "material": "Goal, balls, 1 hurdle or pole (optional)",
+    "setup": "The co-coach throws or plays high balls over and beside the keeper.",
+    "rules": [
+      "Take off from one leg; the other knee comes up for protection.",
+      "Catch the ball in front of the head (W catch), arms extended.",
+      "Over the head: side-step backwards, then tip it over the bar.",
+      "3 × 6 balls, switch sides."
+    ],
+    "easier": "Balls from the hands, straight up, without moving.",
+    "harder": "First save a low ball, get up, then the high ball straight away.",
+    "questions": [
+      "Which leg do you take off from when the ball comes from the left?",
+      "When do you tip it over the bar instead of catching it?"
+    ]
   }
 }

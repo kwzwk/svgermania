@@ -1,0 +1,249 @@
+{
+ "id": "tw-winkel-stellung",
+ "name": "TW: Stellungsspiel und Winkel",
+ "fps": 12.5,
+ "duration": 8.0,
+ "field": {
+  "w": 26,
+  "h": 20,
+  "margin": 2
+ },
+ "goals": [
+  {
+   "x": 13,
+   "y": 0,
+   "side": "top",
+   "kind": "small"
+  }
+ ],
+ "cones": [
+  [
+   3,
+   13
+  ],
+  [
+   6.5,
+   17
+  ],
+  [
+   13,
+   18.5
+  ],
+  [
+   19.5,
+   17
+  ],
+  [
+   23,
+   13
+  ]
+ ],
+ "dashed": [
+  [
+   13,
+   0,
+   3,
+   13
+  ],
+  [
+   13,
+   0,
+   23,
+   13
+  ]
+ ],
+ "teams": {
+  "gk": {
+   "color": "#1fa463",
+   "letter": "T"
+  },
+  "co": {
+   "color": "#e67e22",
+   "letter": "C"
+  }
+ },
+ "players": [
+  {
+   "id": "G",
+   "team": "gk",
+   "path": [
+    [
+     0,
+     10.6,
+     1.6
+    ],
+    [
+     1.6,
+     10.6,
+     1.6
+    ],
+    [
+     2.4,
+     13,
+     2.4
+    ],
+    [
+     4.0,
+     13,
+     2.4
+    ],
+    [
+     4.8,
+     15.4,
+     1.6
+    ],
+    [
+     6.4,
+     15.4,
+     1.6
+    ],
+    [
+     7.6,
+     10.6,
+     1.6
+    ]
+   ],
+   "face": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "C",
+   "team": "co",
+   "path": [
+    [
+     0,
+     3,
+     13
+    ],
+    [
+     1.0,
+     3,
+     13
+    ],
+    [
+     2.2,
+     13,
+     18.5
+    ],
+    [
+     3.2,
+     13,
+     18.5
+    ],
+    [
+     4.6,
+     23,
+     13
+    ],
+    [
+     5.8,
+     23,
+     13
+    ],
+    [
+     7.6,
+     3,
+     13
+    ]
+   ],
+   "face": [
+    0,
+    -1
+   ]
+  }
+ ],
+ "balls": [
+  {
+   "keys": [
+    {
+     "t": 0,
+     "on": "C"
+    },
+    {
+     "t": 1.0,
+     "on": "C"
+    },
+    {
+     "t": 1.5,
+     "on": "G",
+     "fx": "hand"
+    },
+    {
+     "t": 1.9,
+     "on": "G",
+     "fx": "hand"
+    },
+    {
+     "t": 2.2,
+     "on": "C"
+    },
+    {
+     "t": 3.2,
+     "on": "C"
+    },
+    {
+     "t": 3.7,
+     "on": "G",
+     "fx": "hand"
+    },
+    {
+     "t": 4.1,
+     "on": "G",
+     "fx": "hand"
+    },
+    {
+     "t": 4.6,
+     "on": "C"
+    },
+    {
+     "t": 5.8,
+     "on": "C"
+    },
+    {
+     "t": 6.3,
+     "on": "G",
+     "fx": "hand"
+    },
+    {
+     "t": 6.7,
+     "on": "G",
+     "fx": "hand"
+    }
+   ]
+  }
+ ],
+ "captions": [
+  {
+   "from": 0,
+   "to": 2.6,
+   "de": "Auf der Linie zwischen Ball und Tormitte",
+   "en": "On the line between ball and centre of goal"
+  },
+  {
+   "from": 2.6,
+   "to": 5.4,
+   "de": "Kleine Seitschritte, neu stellen",
+   "en": "Small side steps to reset"
+  },
+  {
+   "from": 5.4,
+   "to": 8.0,
+   "de": "Erst stehen, dann kommt der Schuss",
+   "en": "Set first, then the shot comes"
+  }
+ ],
+ "legend": [
+  {
+   "team": "gk",
+   "de": "Torwart",
+   "en": "Keeper"
+  },
+  {
+   "team": "co",
+   "de": "Schütze",
+   "en": "Shooter"
+  }
+ ]
+}

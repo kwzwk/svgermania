@@ -1429,5 +1429,227 @@
     "easier": "Flanke auch flach erlaubt, Verteidiger dürfen erst nach der Flanke in den Strafraum.",
     "harder": "Nur Direktabschlüsse nach der Flanke, nach 6 Sekunden kommt ein dritter Verteidiger dazu.",
     "questions": ["Wer läuft zum ersten Pfosten, wer zum zweiten, wer bleibt im Rückraum?", "Wann flankst du früh aus dem Halbfeld, statt bis zur Grundlinie zu gehen?"]
+  },
+  {
+    "id": "tw-grundstellung-fangen",
+    "name": "TW: Grundstellung und Fangen",
+    "phase": "uebung",
+    "role": "keeper",
+    "ages": ["D", "C", "B", "A"],
+    "themes": ["torschuss", "koordination"],
+    "players": { "min": 1, "max": 3 },
+    "goalkeepers": 1,
+    "field": "Vor dem Tor, Schusspunkt 8–12 m",
+    "material": "Tor, 6–10 Bälle, 2 Hütchen",
+    "setup": "Co-Trainer oder Mitspieler schießt aus 8–12 m, der Torwart steht in Grundstellung zwischen den Pfosten.",
+    "rules": [
+      "Vor jedem Schuss: Grundstellung einnehmen, kleiner Hüpfer (Split-Step), wenn der Schütze ausholt.",
+      "Flache Bälle: Schaufelgriff, Körper hinter den Ball. Halbhohe: Korbgriff. Hohe: W-Griff vor dem Kopf.",
+      "Nach jedem Fang den Ball sofort zum Schützen zurückspielen (rollen oder werfen).",
+      "3 Serien zu 8 Schüssen, zwischen den Serien 1 Minute Pause."
+    ],
+    "easier": "Schüsse aus der Hand, mittlere Härte, immer auf den Körper.",
+    "harder": "Schüsse vom Boden, abwechselnd links und rechts vom Körper, ein zweiter Schütze schießt nach.",
+    "questions": [
+      "Wann machst du den Split-Step: wenn der Schütze ausholt oder wenn der Ball schon fliegt?",
+      "Wo sind deine Hände, bevor der Schuss kommt?"
+    ]
+  },
+  {
+    "id": "tw-fallen-seitlich",
+    "name": "TW: Seitliches Fallen",
+    "phase": "uebung",
+    "role": "keeper",
+    "ages": ["D", "C", "B", "A"],
+    "themes": ["torschuss", "athletik"],
+    "players": { "min": 1, "max": 3 },
+    "goalkeepers": 1,
+    "field": "Vor dem Tor, weicher Untergrund",
+    "material": "Tor, Bälle, 2 Hütchen als Ziel neben dem Torwart",
+    "setup": "Der Torwart kniet oder steht seitlich vor dem Tor, der Co-Trainer spielt Bälle aus 5–8 m neben ihn.",
+    "rules": [
+      "Erst aus dem Knien: zur Seite fallen, Ball mit beiden Händen sichern, auf der Körperseite landen, nicht auf dem Ellenbogen.",
+      "Dann aus der Hocke, dann aus dem Stand.",
+      "Nach dem Fallen sofort aufstehen und wieder Grundstellung.",
+      "Je Seite 3 × 5 Wiederholungen, die schwache Seite zuerst."
+    ],
+    "easier": "Nur aus dem Knien, Ball kommt langsam gerollt.",
+    "harder": "Ball halbhoch, nach dem Fallen sofort einen zweiten Ball zur anderen Seite.",
+    "questions": [
+      "Mit welchem Bein machst du den ersten Schritt zum Ball?",
+      "Welche Körperseite berührt zuerst den Boden?"
+    ]
+  },
+  {
+    "id": "tw-1v1-herauslaufen",
+    "name": "TW: 1 gegen 1 gegen den Stürmer",
+    "phase": "uebung",
+    "role": "keeper",
+    "ages": ["D", "C", "B", "A"],
+    "themes": ["1v1", "torschuss"],
+    "players": { "min": 2, "max": 5 },
+    "goalkeepers": 1,
+    "field": "Strafraum, Start der Stürmer 25 m vor dem Tor",
+    "material": "Tor, Bälle, Hütchen",
+    "setup": "Ein Feldspieler dribbelt von 25 m allein auf das Tor zu. Der Torwart verkürzt den Winkel und verteidigt das 1 gegen 1.",
+    "rules": [
+      "Torwart läuft heraus, solange der Stürmer den Ball weit vorlegt, und stoppt in Grundstellung, wenn er den Ball eng führt.",
+      "Niedrig bleiben, Hände seitlich unten, nicht zu früh abtauchen.",
+      "Breit machen (Block) nur aus kurzer Distanz, sonst stehen bleiben.",
+      "6–8 Duelle, Stürmer wechseln. Gut geeignet, wenn die Feldspieler im Zwischenblock Torschuss üben."
+    ],
+    "easier": "Stürmer muss von der Seite kommen, kleinerer Winkel.",
+    "harder": "Ein zweiter Stürmer läuft mit, Querpass erlaubt.",
+    "questions": [
+      "Wann läufst du heraus, wann bleibst du stehen?",
+      "Woran erkennst du, dass der Stürmer gleich schießt?"
+    ]
+  },
+  {
+    "id": "tw-flanken-abfangen",
+    "name": "TW: Flanken abfangen",
+    "phase": "uebung",
+    "role": "keeper",
+    "ages": ["D", "C", "B", "A"],
+    "themes": ["flanken", "kopfball"],
+    "players": { "min": 2, "max": 5 },
+    "goalkeepers": 1,
+    "field": "Strafraum, Flankenposition seitlich auf Höhe des Strafraums",
+    "material": "Tor, Bälle, 2 Hütchen",
+    "setup": "Ein Co-Trainer oder Spieler flankt von der Seite in den Strafraum, der Torwart fängt oder faustet.",
+    "rules": [
+      "Grundposition bei Flanken: in der Torhälfte zum ersten Pfosten hin, Körper offen zum Spielfeld.",
+      "Ball früh beurteilen, laut \"Torwart!\" oder \"Weg!\" rufen.",
+      "Mit einem Knie hoch abspringen, am höchsten Punkt fangen. Unter Druck fausten, zur Seite weg.",
+      "2 × 8 Flanken von jeder Seite."
+    ],
+    "easier": "Flanken aus der Hand geworfen, ohne Gegenspieler.",
+    "harder": "Ein Feldspieler steht zum Kopfball im Fünfmeterraum und stört.",
+    "questions": ["Wann rufst du, und was rufst du?", "Wann fängst du, wann faustest du?"]
+  },
+  {
+    "id": "tw-spieleroeffnung",
+    "name": "TW: Spieleröffnung mit Hand und Fuß",
+    "phase": "uebung",
+    "role": "keeper",
+    "ages": ["D", "C", "B", "A"],
+    "themes": ["passen", "umschalten"],
+    "players": { "min": 2, "max": 4 },
+    "goalkeepers": 1,
+    "field": "Halbes Feld, zwei Anspielstationen rechts und links (Hütchentore 2 m)",
+    "material": "Tor, Bälle, 4 Hütchen",
+    "setup": "Der Torwart bekommt den Ball (Fang oder Rückpass) und eröffnet sofort zu einer der beiden Stationen.",
+    "rules": [
+      "Nach dem Fang: schnell schauen, dann Abrollen (kurz), Schlagwurf (mittel) oder Abschlag (weit).",
+      "Nach einem Rückpass: offen stehen, mit dem Fuß annehmen, mit dem zweiten Kontakt zur freien Seite passen.",
+      "Der Co-Trainer ruft nach dem Fang \"links\" oder \"rechts\", der Torwart reagiert.",
+      "10 Eröffnungen je Technik, beide Füße."
+    ],
+    "easier": "Ohne Zuruf, der Torwart wählt die Seite.",
+    "harder": "Ein Stürmer läuft nach dem Fang an und stellt eine Seite zu.",
+    "questions": [
+      "Wohin schaust du, bevor der Ball bei dir ist?",
+      "Wann ist ein schneller Abwurf besser als ein weiter Abschlag?"
+    ]
+  },
+  {
+    "id": "tw-reaktion",
+    "name": "TW: Reaktion auf kurze Distanz",
+    "phase": "uebung",
+    "role": "keeper",
+    "ages": ["D", "C", "B", "A"],
+    "themes": ["athletik", "torschuss"],
+    "players": { "min": 1, "max": 3 },
+    "goalkeepers": 1,
+    "field": "Torraum, Schütze 6–8 m",
+    "material": "Tor, Bälle, 2 Stangen oder ein Mitspieler als Sichtblock",
+    "setup": "Der Co-Trainer schießt aus kurzer Distanz, eine Stange oder ein Mitspieler steht zwischen Ball und Torwart und nimmt die Sicht.",
+    "rules": [
+      "Torwart in Grundstellung, Gewicht auf den Fußballen.",
+      "Der Schütze schießt am Sichtblock vorbei, der Torwart reagiert erst, wenn er den Ball sieht.",
+      "Abwehren zur Seite statt nach vorn, wenn Fangen nicht geht.",
+      "4 Serien zu 6 Schüssen, volle Erholung dazwischen. Qualität vor Menge."
+    ],
+    "easier": "Ohne Sichtblock, Schüsse aus 10 m.",
+    "harder": "Abpraller: Ein zweiter Spieler staubt ab, der Torwart muss sofort wieder bereit sein.",
+    "questions": [
+      "Wohin wehrst du den Ball ab, wenn du ihn nicht fangen kannst?",
+      "Wie bleibst du nach dem ersten Ball bereit für den zweiten?"
+    ]
+  },
+  {
+    "id": "tw-winkel-stellung",
+    "name": "TW: Stellungsspiel und Winkel",
+    "phase": "uebung",
+    "role": "keeper",
+    "ages": ["D", "C", "B", "A"],
+    "themes": ["orientierung", "verteidigen"],
+    "players": { "min": 2, "max": 4 },
+    "goalkeepers": 1,
+    "field": "Halbkreis aus 5 Hütchen 16–18 m vor dem Tor",
+    "material": "Tor, Bälle, 5 Hütchen, Seil oder Schnur (optional)",
+    "setup": "Fünf Schusspositionen im Halbkreis. Der Co-Trainer wechselt die Position, der Torwart stellt sich jedes Mal neu.",
+    "rules": [
+      "Torwart stellt sich auf die gedachte Linie zwischen Ball und Tormitte, etwas vor der Linie.",
+      "Mit kleinen Seitschritten neu stellen, Grundstellung vor dem Schuss.",
+      "Co-Trainer schießt erst, wenn der Torwart steht; nach dem Schuss kurze Rückmeldung zur Position.",
+      "Jede Position zweimal, dann in zufälliger Reihenfolge."
+    ],
+    "easier": "Schütze wartet, bis der Torwart \"fertig\" ruft.",
+    "harder": "Pässe zwischen zwei Schützen, Schuss nach dem ersten oder zweiten Kontakt.",
+    "questions": [
+      "Wo ist die Linie zwischen Ball und Tormitte?",
+      "Wie weit stehst du vor der Linie, wenn der Ball nah ist, und wie weit, wenn er weit weg ist?"
+    ]
+  },
+  {
+    "id": "tw-rueckpass-druck",
+    "name": "TW: Rückpass unter Druck",
+    "phase": "uebung",
+    "role": "keeper",
+    "ages": ["D", "C", "B", "A"],
+    "themes": ["passen", "umschalten", "orientierung"],
+    "players": { "min": 3, "max": 5 },
+    "goalkeepers": 1,
+    "field": "Strafraum und Raum davor, 2 Hütchentore (2 m) auf Höhe der Strafraumgrenze außen",
+    "material": "Tor, Bälle, 4 Hütchen, Leibchen",
+    "setup": "Ein Verteidiger spielt den Ball zurück zum Torwart, ein Stürmer läuft gleichzeitig an. Der Torwart löst die Situation mit dem Fuß.",
+    "rules": [
+      "Torwart bietet sich seitlich versetzt zum Tor an, nie direkt davor.",
+      "Annahme weg vom Stürmer, dann Pass durch eines der Hütchentore oder langer Ball.",
+      "Wird es zu eng: sicher weit wegschlagen. Keine Hand bei absichtlichem Rückpass.",
+      "8–10 Situationen, der Stürmer startet immer etwas früher."
+    ],
+    "easier": "Stürmer startet erst, wenn der Ball beim Torwart ist.",
+    "harder": "Zwei Stürmer, einer läuft den Torwart an, einer stellt den kurzen Pass zu.",
+    "questions": [
+      "Wo stellst du dich hin, damit du nicht direkt vor dem Tor annimmst?",
+      "Wann spielst du flach heraus, wann schlägst du lang?"
+    ]
+  },
+  {
+    "id": "tw-hohe-baelle",
+    "name": "TW: Hohe Bälle und Absprung",
+    "phase": "uebung",
+    "role": "keeper",
+    "ages": ["D", "C", "B", "A"],
+    "themes": ["kopfball", "koordination", "flanken"],
+    "players": { "min": 1, "max": 3 },
+    "goalkeepers": 1,
+    "field": "Vor dem Tor, 6–10 m",
+    "material": "Tor, Bälle, 1 Hürde oder Stange (optional)",
+    "setup": "Der Co-Trainer wirft oder spielt hohe Bälle über und neben den Torwart.",
+    "rules": [
+      "Absprung von einem Bein, das andere Knie geht hoch und schützt.",
+      "Ball vor dem Kopf fangen (W-Griff), Arme lang.",
+      "Über den Kopf: rückwärts im Seitschritt, dann über die Latte lenken.",
+      "3 × 6 Bälle, Seiten wechseln."
+    ],
+    "easier": "Bälle aus der Hand, gerade nach oben, ohne Laufen.",
+    "harder": "Erst einen flachen Ball halten, aufstehen, dann sofort der hohe Ball.",
+    "questions": [
+      "Mit welchem Bein springst du ab, wenn der Ball von links kommt?",
+      "Wann lenkst du über die Latte, statt zu fangen?"
+    ]
   }
 ]
