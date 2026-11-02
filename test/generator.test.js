@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
-import { AGE_GROUPS, LEVELS, PHASES, THEMES, SESSION_LENGTHS, RITUAL_MINUTES, ritualMinutes } from '../js/config.js';
+import { AGE_GROUPS, LEVELS, PHASES, THEMES, SESSION_LENGTHS, RITUAL_MINUTES, maxSessions, ritualMinutes } from '../js/config.js';
 import { generatePlan, sessionSteps, splitMinutes, suitableExercises, themeForWeek, isoWeek } from '../js/generator.js';
 
 const exercises = JSON.parse(readFileSync(new URL('../data/exercises.json', import.meta.url)));
@@ -291,5 +291,52 @@ test('youth catalog covers every theme of each youth age group', () => {
     if (group.stage !== 'youth') continue;
     for (const phase of PHASES) assert.ok(exercises.some((e) => e.phase === phase.id && e.ages.includes(age)), `${age}: ${phase.id}`);
     for (const theme of group.themes) assert.ok(exercises.filter((e) => e.ages.includes(age) && e.themes.includes(theme)).length >= 2, `${age}: ${theme}`);
+  }
+});
+
+test('session caps: kids up to 3, youth up to 4 (D), 5 (C) and 6 (B, A)', () => {
+  assert.deepEqual(Object.keys(AGE_GROUPS).map((a) => maxSessions(a)), [3, 3, 3, 4, 5, 6, 6]);
+  assert.equal(generatePlan(exercises, { age: 'F', level: 2, sessions: 6, minutes: 75, week: 1 }).sessions.length, 3);
+  assert.equal(generatePlan(exercises, { age: 'A', level: 2, sessions: 9, minutes: 90, week: 1 }).sessions.length, 6);
+  assert.equal(generatePlan(exercises, { age: 'C', level: 2, sessions: 0, minutes: 90, week: 1 }).sessions.length, 1);
+});
+
+test('many sessions per week: variety, no back-to-back repeats, prevention levels and net play', () => {
+  for (const age of Object.keys(AGE_GROUPS)) {
+    const max = maxSessions(age);
+    for (const level of [1, 2, 3]) {
+      for (const [players, keepers] of [[10, 1], [16, 0], [16, 2]]) {
+        for (const week of [3, 17, 40]) {
+          const opts = { age, level, sessions: max, minutes: 90, week, players, keepers: AGE_GROUPS[age].stage === 'youth' ? keepers : undefined };
+          const plan = generatePlan(exercises, opts, rituals);
+          const tag = `${age}/${level}/${players}/${keepers}/${week}`;
+          assert.equal(plan.sessions.length, max, tag);
+          const ids = plan.sessions.flatMap((s) => s.blocks.map((b) => b.exercise.id));
+          // Keine Wiederholung, solange die Phase noch unbenutzte Übungen hat.
+          for (const [i, phase] of PHASES.entries()) {
+            const picked = plan.sessions.map((s) => s.blocks[i].exercise.id);
+            const all = suitableExercises(exercises, { age, level, players }).filter((ex) => ex.phase === phase.id);
+            const fit = all.filter((ex) => opts.keepers == null || (ex.goalkeepers ?? 0) <= opts.keepers);
+            const pool = new Set((fit.length ? fit : all).map((ex) => ex.id));
+            assert.equal(new Set(picked).size, Math.min(picked.length, pool.size), `${tag} ${phase.id}: too many repeats ${picked}`);
+          }
+          for (let s = 1; s < plan.sessions.length; s++) {
+            const prev = new Set(plan.sessions[s - 1].blocks.map((b) => b.exercise.id));
+            for (const b of plan.sessions[s].blocks) assert.ok(!prev.has(b.exercise.id), `${tag}: ${b.exercise.id} twice in a row`);
+            assert.notEqual(plan.sessions[s].opening.circle.id, plan.sessions[s - 1].opening.circle.id, `${tag}: same opening ritual twice in a row`);
+          }
+          assert.ok(ids.length === max * PHASES.length);
+          for (const s of plan.sessions) {
+            assert.ok(s.level >= 1 && s.level <= 3);
+            const warm = s.blocks[0];
+            if (AGE_GROUPS[age].prevention) assert.ok(warm.preventionLevel >= 1 && warm.preventionLevel <= 3, tag);
+          }
+          if (plan.minNetPlay) {
+            const two = generatePlan(exercises, { ...opts, sessions: 2 }, rituals);
+            assert.ok(plan.netPlay > two.netPlay, `${tag}: net play should grow with sessions`);
+          }
+        }
+      }
+    }
   }
 });

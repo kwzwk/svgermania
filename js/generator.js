@@ -1,6 +1,6 @@
 // Wochenplan-Generator. Reine Funktionen ohne DOM, damit sie im Browser und in Node-Tests laufen.
 
-import { AGE_GROUPS, PHASES, NET_PLAY_SHARE, ritualMinutes } from './config.js';
+import { AGE_GROUPS, PHASES, NET_PLAY_SHARE, maxSessions, ritualMinutes } from './config.js';
 
 // Kleiner deterministischer Zufallsgenerator (mulberry32), damit ein Plan reproduzierbar ist.
 export function createRng(seed) {
@@ -71,9 +71,18 @@ export function variationFor(level) {
   return level <= 1 ? 'easier' : level >= 3 ? 'harder' : 'base';
 }
 
-function pick(candidates, theme, used, rng) {
+// used: Map Übung -> Anzahl Einsätze in der Woche; previous: Übungen der vorigen Einheit.
+// Erst unbenutzte Übungen; ist der Vorrat erschöpft (viele Einheiten pro Woche), die am seltensten
+// benutzten, und möglichst keine aus der direkt vorigen Einheit.
+function pick(candidates, theme, used, rng, previous = new Set()) {
   const fresh = candidates.filter((ex) => !used.has(ex.id));
-  const pool = fresh.length ? fresh : candidates;
+  let pool = fresh;
+  if (!pool.length && candidates.length) {
+    const notLast = candidates.filter((ex) => !previous.has(ex.id));
+    const base = notLast.length ? notLast : candidates;
+    const least = Math.min(...base.map((ex) => used.get(ex.id) ?? 0));
+    pool = base.filter((ex) => (used.get(ex.id) ?? 0) === least);
+  }
   if (!pool.length) return null;
   const weights = pool.map((ex) => (ex.themes.includes(theme) ? 4 : 1));
   let r = rng() * weights.reduce((s, w) => s + w, 0);
@@ -88,9 +97,9 @@ function pick(candidates, theme, used, rng) {
  * Erstellt einen Wochenplan.
  * @param {object[]} exercises Übungsdatenbank (data/exercises.json)
  * @param {object} opts
- * @param {'G'|'F'|'E'} opts.age Altersklasse
+ * @param {'G'|'F'|'E'|'D'|'C'|'B'|'A'} opts.age Altersklasse
  * @param {1|2|3} opts.level Niveau der Mannschaft
- * @param {number} opts.sessions Trainingseinheiten pro Woche
+ * @param {number} opts.sessions Trainingseinheiten pro Woche (1 bis maxSessions der Altersklasse)
  * @param {number} opts.minutes Dauer einer Einheit
  * @param {string} [opts.theme] Schwerpunkt oder 'auto' (Rotation nach Kalenderwoche)
  * @param {number} opts.week Kalenderwoche
@@ -101,10 +110,11 @@ function pick(candidates, theme, used, rng) {
  * @param {object} [rituals] Rituale (data/rituals.json) für Ankommen, Begrüßungs- und Abschlusskreis
  */
 export function generatePlan(exercises, opts, rituals = null) {
-  const { age, level, sessions, minutes, week, players, keepers, variant = 0 } = opts;
+  const { age, level, minutes, week, players, keepers, variant = 0 } = opts;
   const withRituals = opts.rituals !== false;
   const group = AGE_GROUPS[age];
   if (!group) throw new Error(`Unbekannte Altersklasse: ${age}`);
+  const sessions = Math.min(Math.max(1, Math.floor(opts.sessions) || 1), maxSessions(age));
   // Präventions-Aufwärmen: in der Jugend standardmäßig an, ersetzt die Übung der Aktivierung.
   const prevention = opts.prevention !== false && group.prevention ? group.prevention : null;
   const theme = !opts.theme || opts.theme === 'auto' ? themeForWeek(age, week) : opts.theme;
@@ -119,15 +129,20 @@ export function generatePlan(exercises, opts, rituals = null) {
   };
   const rm = ritualMinutes(age);
   const phaseMinutes = splitMinutes(withRituals ? minutes - rm.opening - rm.closing : minutes, group.phaseShares, group.stage === 'youth');
-  const used = new Set();
+  const used = new Map();
+  let previous = new Set();
   const usedRituals = new Set();
+  const lastRitual = {};
   const ritual = (kind) => {
     const pool = (rituals?.[kind] ?? []).filter((r) => r.ages.includes(age));
     const fresh = pool.filter((r) => !usedRituals.has(r.id));
-    const list = fresh.length ? fresh : pool;
+    // Alle schon dran gewesen (viele Einheiten): nicht dasselbe Ritual wie in der Einheit davor.
+    const again = pool.filter((r) => r.id !== lastRitual[kind]);
+    const list = fresh.length ? fresh : again.length ? again : pool;
     if (!list.length) return null;
     const item = list[Math.floor(rng() * list.length)];
     usedRituals.add(item.id);
+    lastRitual[kind] = item.id;
     return item;
   };
 
@@ -141,12 +156,14 @@ export function generatePlan(exercises, opts, rituals = null) {
         theme,
         used,
         rng,
+        previous,
       );
-      if (exercise) used.add(exercise.id);
+      if (exercise) used.set(exercise.id, (used.get(exercise.id) ?? 0) + 1);
       const block = { phase: phase.id, label: phase.label, minutes: phaseMinutes[i], exercise, variation: variationFor(sessionLevel) };
       if (prevention && phase.id === 'aufwaermen') Object.assign(block, { prevention, preventionLevel: sessionLevel });
       return block;
     });
+    previous = new Set(blocks.map((b) => b.exercise?.id).filter(Boolean));
     // Rituale immer auswürfeln, damit die Übungsauswahl mit und ohne Rituale gleich bleibt.
     const opening = { minutes: rm.opening, arrival: ritual('arrival'), circle: ritual('opening') };
     const closing = { minutes: rm.closing, circle: ritual('closing') };

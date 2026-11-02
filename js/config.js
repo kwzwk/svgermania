@@ -4,6 +4,7 @@
 export const AGE_GROUPS = {
   G: {
     id: 'G',
+    maxSessions: 3,
     label: 'G-Jugend / Bambini (U6–U7)',
     short: 'G-Jugend',
     format: '2 gegen 2 oder 3 gegen 3',
@@ -21,6 +22,7 @@ export const AGE_GROUPS = {
   },
   F: {
     id: 'F',
+    maxSessions: 3,
     label: 'F-Jugend (U8–U9)',
     short: 'F-Jugend',
     format: '3 gegen 3 (empfohlen) oder 5 gegen 5',
@@ -35,6 +37,7 @@ export const AGE_GROUPS = {
   },
   E: {
     id: 'E',
+    maxSessions: 3,
     label: 'E-Jugend (U10–U11)',
     short: 'E-Jugend',
     format: '5 gegen 5 oder 7 gegen 7 (im Training oft 3 gegen 3 / 4 gegen 4)',
@@ -51,6 +54,7 @@ export const AGE_GROUPS = {
   // Zwischenblock 15 – Spielblock 30, im Training höchstens 4+TW gegen 4+TW (plus bis zu 2 Anspieler).
   D: {
     id: 'D',
+    maxSessions: 4,
     stage: 'youth',
     // Präventions-Aufwärmen in der Aktivierung (FIFA 11+ Kids unter 14, sonst FIFA 11+).
     prevention: '11plus-kids',
@@ -71,6 +75,7 @@ export const AGE_GROUPS = {
   },
   C: {
     id: 'C',
+    maxSessions: 5,
     stage: 'youth',
     prevention: '11plus',
     label: 'C-Jugend (U14–U15)',
@@ -90,6 +95,7 @@ export const AGE_GROUPS = {
   },
   B: {
     id: 'B',
+    maxSessions: 6,
     stage: 'youth',
     prevention: '11plus',
     label: 'B-Jugend (U16–U17)',
@@ -110,6 +116,7 @@ export const AGE_GROUPS = {
   },
   A: {
     id: 'A',
+    maxSessions: 6,
     stage: 'youth',
     prevention: '11plus',
     label: 'A-Jugend (U18–U19)',
@@ -170,6 +177,10 @@ export const RITUAL_MINUTES = { opening: 5, closing: 5 };
 // Jugend: kurze Team- und Nachbesprechung statt Kreis, damit die Spielblöcke nicht schrumpfen.
 export const RITUAL_MINUTES_YOUTH = { opening: 3, closing: 3 };
 export const ritualMinutes = (age) => (AGE_GROUPS[age]?.stage === 'youth' ? RITUAL_MINUTES_YOUTH : RITUAL_MINUTES);
+
+// Höchstzahl Einheiten pro Woche je Altersklasse. Kinder bleiben bei 3 (DFB: Spaß und Vielseitigkeit,
+// daneben andere Sportarten), die Jugend darf bis an Leistungszentrums-Umfänge heran (D 4, C 5, B/A 6).
+export const maxSessions = (age) => AGE_GROUPS[age]?.maxSessions ?? 3;
 
 export const SESSION_LENGTHS = [45, 60, 75, 90, 105];
 
