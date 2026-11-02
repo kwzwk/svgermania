@@ -47,7 +47,48 @@ export const AGE_GROUPS = {
     defaultMinutes: 90,
     themes: ['finten', '1v1', 'passen', 'orientierung', 'torschuss', 'umschalten', 'dribbling'],
   },
+  // Jugend nach der DFB-"Trainingsphilosophie Deutschland" (2024): Aktivierung 15 – Spielblock 30 –
+  // Zwischenblock 15 – Spielblock 30, im Training höchstens 4+TW gegen 4+TW (plus bis zu 2 Anspieler).
+  D: {
+    id: 'D',
+    stage: 'youth',
+    label: 'D-Jugend (U12–U13)',
+    short: 'D-Jugend',
+    format: 'Wettspiel 7 gegen 7 (regional auch 9 gegen 9). Im Training 1 gegen 1 bis 4+TW gegen 4+TW',
+    playersPerField: 10, // 4+TW gegen 4+TW
+    field: 'Hybridfeld ca. 33 × 25 m (doppelter Strafraum)',
+    fieldSize: { w: 25, l: 33 },
+    goals: 'Pro Feld ein Jugendtor (5 × 2 m) mit Torwart und 2 Minitore',
+    matchLength: '2 × 30 Minuten, bis zu 9 Spieler, Tore bis 5 × 2 m',
+    ball: 'Größe 4 (Ultraleicht, 350 g) im Wettspiel',
+    defaultMinutes: 90,
+    minNetPlay: 48,
+    themes: ['1v1', 'dribbling', 'finten', 'torschuss', 'passen', 'umschalten', 'orientierung', 'flanken'],
+    phaseLabels: { spielform: 'Spielblock 1', uebung: 'Zwischenblock', abschluss: 'Spielblock 2' },
+    phaseShares: [1 / 6, 1 / 3, 1 / 6, 1 / 3],
+  },
+  C: {
+    id: 'C',
+    stage: 'youth',
+    label: 'C-Jugend (U14–U15)',
+    short: 'C-Jugend',
+    format: 'Wettspiel meist 11 gegen 11 (7 bis 11 Spieler). Im Training 1 gegen 1 bis 4+TW gegen 4+TW',
+    playersPerField: 10,
+    field: 'Hybridfeld ca. 33 × 25 m (doppelter Strafraum)',
+    fieldSize: { w: 25, l: 33 },
+    goals: 'Pro Feld ein Jugendtor mit Torwart und 2 Minitore',
+    matchLength: '2 × 35 Minuten, Großfeld mit Abseits',
+    ball: 'Größe 5, Leichtbälle fürs Kopfballtraining',
+    defaultMinutes: 90,
+    minNetPlay: 48,
+    themes: ['1v1', 'passen', 'umschalten', 'verteidigen', 'torschuss', 'flanken', 'orientierung', 'kopfball'],
+    phaseLabels: { spielform: 'Spielblock 1', uebung: 'Zwischenblock', abschluss: 'Spielblock 2' },
+    phaseShares: [1 / 6, 1 / 3, 1 / 6, 1 / 3],
+  },
 };
+
+// Netto-Spielzeit im Spielblock: Durchgänge von 3–4 Minuten mit 1–2 Minuten Pause (DFB), also etwa zwei Drittel.
+export const NET_PLAY_SHARE = 2 / 3;
 
 // Das Niveau ändert nicht das Spielformat, sondern dreht an den "Stellschrauben"
 // (Raum, Überzahl, Gegnerdruck, Regeln, Zeit).
@@ -66,6 +107,10 @@ export const THEMES = {
   orientierung: 'Orientierung & Spielverlagerung',
   umschalten: 'Umschalten',
   koordination: 'Koordination & Bewegung',
+  flanken: 'Flanken & Flugbälle',
+  verteidigen: 'Verteidigen im Verbund',
+  kopfball: 'Kopfball (mit Leichtball)',
+  athletik: 'Schnelligkeit & Athletik',
 };
 
 // DFB-Trainingsstruktur: Aktivierung – Spielen – Üben – Spielen (mehr Spielen als Üben).
@@ -80,7 +125,7 @@ export const PHASES = [
 // Feste Rituale am Anfang und Ende jeder Einheit (Minuten). Ankommen läuft vor dem offiziellen Beginn.
 export const RITUAL_MINUTES = { opening: 5, closing: 5 };
 
-export const SESSION_LENGTHS = [45, 60, 75, 90];
+export const SESSION_LENGTHS = [45, 60, 75, 90, 105];
 
 export const FUNINO_RULES = [
   'Kein Torwart, 4 Minitore: jedes Team greift zwei Tore an und verteidigt zwei.',

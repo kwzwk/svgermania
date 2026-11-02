@@ -98,6 +98,12 @@ body {
 .theme-toggle:hover { background: rgba(255, 255, 255, 0.25); }
 .theme-toggle:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
 .tagline { margin: 4px 0 16px; opacity: 0.85; }
+.stage-switch { display: inline-flex; margin: 14px 0 12px; border: 1px solid rgba(255, 255, 255, 0.5); border-radius: 999px; overflow: hidden; }
+.stage-switch button { font: inherit; font-size: 0.92rem; font-weight: 600; padding: 6px 14px; border: 0; background: transparent; color: inherit; cursor: pointer; }
+.stage-switch button[aria-pressed="true"] { background: var(--bg); color: var(--text); }
+.stage-switch button:focus-visible { outline: 2px solid currentColor; outline-offset: -3px; }
+.net-play { margin: -8px 0 16px; font-size: 0.92rem; }
+.net-play.low { color: var(--accent-text); font-weight: 600; }
 .tabs { display: flex; gap: 4px; overflow-x: auto; }
 .tab {
   border: 0; background: transparent; color: inherit; font: inherit; font-weight: 600;
@@ -110,6 +116,7 @@ body {
   background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px;
 }
 .controls label, .controls legend { display: flex; flex-direction: column; gap: 4px; font-size: 0.85rem; font-weight: 600; color: var(--muted); }
+.controls label[hidden] { display: none; }
 .controls select, .controls input[type="number"] {
   font: inherit; color: var(--text); background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px;
 }
@@ -198,7 +205,7 @@ body {
 
 @media print {
   body { background: #fff; color: #000; font-size: 12px; }
-  .site-header, .controls, .hint, .tabs, .site-footer, .header-buttons, .start-area, .trainer { display: none; }
+  .stage-switch, .site-header, .controls, .hint, .tabs, .site-footer, .header-buttons, .start-area, .trainer { display: none; }
   .session { break-inside: avoid-page; border-color: #999; }
   .block { background: #fff; border: 1px solid #ccc; border-left-width: 4px; }
   summary { list-style: none; }

@@ -180,3 +180,47 @@ test('English translations cover all strings, config and data', async () => {
     }
   }
 });
+
+// ---------- Jugend (D, C) ----------
+
+const youthAges = Object.keys(AGE_GROUPS).filter((a) => AGE_GROUPS[a].stage === 'youth');
+
+test('youth age groups exist with DFB session shares', () => {
+  assert.deepEqual(youthAges, ['D', 'C']);
+  for (const a of youthAges) {
+    assert.deepEqual(splitMinutes(90, AGE_GROUPS[a].phaseShares, true), [15, 30, 15, 30]);
+    assert.equal(AGE_GROUPS[a].minNetPlay, 48);
+  }
+});
+
+test('youth plans reach the DFB minimum net play with two 90 min sessions', () => {
+  for (const age of youthAges) {
+    for (const level of [1, 2, 3]) {
+      const plan = generatePlan(exercises, { age, level, sessions: 2, minutes: 90, players: 16, keepers: 1, theme: 'auto', week: 10 }, rituals);
+      assert.equal(plan.stage, 'youth');
+      assert.ok(plan.netPlay >= plan.minNetPlay, `${age}/${level}: ${plan.netPlay} < ${plan.minNetPlay}`);
+      const [a, s1, z, s2] = plan.sessions[0].blocks.filter((b) => b.exercise || b.phase).filter((b) => !b.ritual).map((b) => b.minutes);
+      assert.ok(s1 >= 25 && s2 >= 25 && a <= 15 && z <= 15, `${age}: ${[a, s1, z, s2]}`);
+    }
+  }
+});
+
+test('keeper filter: no exercise needs more keepers than available', () => {
+  for (const age of youthAges) {
+    const pool = suitableExercises(exercises, { age, level: 2, players: 16, keepers: 0 });
+    assert.ok(pool.every((ex) => (ex.goalkeepers ?? 0) === 0));
+    for (const phase of PHASES) assert.ok(pool.some((ex) => ex.phase === phase.id), `${age}: no ${phase.id} without keepers`);
+  }
+});
+
+test('youth exercise fields are valid', () => {
+  for (const ex of exercises) {
+    if (ex.family) assert.ok(['gleichzahl', 'anspieler', 'linie', 'ueberzahl'].includes(ex.family), `${ex.id}: family`);
+    if (ex.goalkeepers != null) assert.ok(Number.isInteger(ex.goalkeepers) && ex.goalkeepers >= 0 && ex.goalkeepers <= 2, `${ex.id}: goalkeepers`);
+    if (ex.blocks) for (const k of ['count', 'minutes', 'rest']) assert.ok(ex.blocks[k] > 0, `${ex.id}: blocks.${k}`);
+    if (ex.format) {
+      // DFB: im Training nie größer als 4+TW gegen 4+TW.
+      for (const n of ex.format.match(/\d+(?=\s*\+?\s*(TW)?\s*(gegen|v))/g) ?? []) assert.ok(Number(n) <= 4, `${ex.id}: ${ex.format}`);
+    }
+  }
+});

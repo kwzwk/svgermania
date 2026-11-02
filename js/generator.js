@@ -1,6 +1,6 @@
 // Wochenplan-Generator. Reine Funktionen ohne DOM, damit sie im Browser und in Node-Tests laufen.
 
-import { AGE_GROUPS, PHASES, RITUAL_MINUTES } from './config.js';
+import { AGE_GROUPS, PHASES, RITUAL_MINUTES, NET_PLAY_SHARE } from './config.js';
 
 // Kleiner deterministischer Zufallsgenerator (mulberry32), damit ein Plan reproduzierbar ist.
 export function createRng(seed) {
@@ -38,21 +38,31 @@ export function themeForWeek(ageId, week) {
 }
 
 // Verteilt die Trainingszeit auf die Phasen (Spielen – Üben – Spielen), gerundet auf 5 Minuten.
-export function splitMinutes(total) {
-  // Abrunden, damit der Rest dem Abschlussspiel (Funino) zugutekommt.
-  const blocks = PHASES.map((p) => Math.max(5, Math.floor((total * p.share) / 5) * 5));
+// shares: Anteile je Phase, z. B. für die Jugend 15/30/15/30 nach der DFB-Trainingsphilosophie.
+export function splitMinutes(total, shares = PHASES.map((p) => p.share), nearest = false) {
+  // Kinder: abrunden, damit der Rest dem letzten Spielblock zugutekommt.
+  // Jugend (nearest): auf 5 Minuten runden, damit beide Spielblöcke etwa gleich lang sind.
+  const snap = nearest ? Math.round : Math.floor;
+  const blocks = shares.map((share) => Math.max(5, snap((total * share) / 5) * 5));
   const diff = total - blocks.reduce((s, m) => s + m, 0);
   blocks[blocks.length - 1] += diff;
   return blocks;
 }
 
-export function suitableExercises(exercises, { age, level, players }) {
+export function suitableExercises(exercises, { age, level, players, keepers }) {
   return exercises.filter(
     (ex) =>
       ex.ages.includes(age) &&
       (!ex.levels || ex.levels.includes(level)) &&
-      (!players || ex.players.min <= players),
+      (!players || ex.players.min <= players) &&
+      (keepers == null || (ex.goalkeepers ?? 0) <= keepers),
   );
+}
+
+// Netto-Spielzeit pro Spieler in den beiden Spielblöcken einer Woche (DFB: Durchgänge mit Pausen).
+export function netPlayMinutes(sessions) {
+  const play = sessions.flatMap((s) => s.blocks).filter((b) => b.phase === 'spielform' || b.phase === 'abschluss');
+  return Math.round(play.reduce((sum, b) => sum + b.minutes, 0) * NET_PLAY_SHARE);
 }
 
 function variationFor(level) {
@@ -83,19 +93,27 @@ function pick(candidates, theme, used, rng) {
  * @param {string} [opts.theme] Schwerpunkt oder 'auto' (Rotation nach Kalenderwoche)
  * @param {number} opts.week Kalenderwoche
  * @param {number} [opts.players] Anzahl Kinder
+ * @param {number} [opts.keepers] Anzahl Torhüter; Spielformen, die mehr brauchen, entfallen (nur wenn Ersatz da ist)
  * @param {number} [opts.variant] Zum Neu-Mischen
  * @param {boolean} [opts.rituals=true] Begrüßungs- und Abschlusskreis einplanen; ohne sie bekommen die Phasen die Zeit
  * @param {object} [rituals] Rituale (data/rituals.json) für Ankommen, Begrüßungs- und Abschlusskreis
  */
 export function generatePlan(exercises, opts, rituals = null) {
-  const { age, level, sessions, minutes, week, players, variant = 0 } = opts;
+  const { age, level, sessions, minutes, week, players, keepers, variant = 0 } = opts;
   const withRituals = opts.rituals !== false;
   const group = AGE_GROUPS[age];
   if (!group) throw new Error(`Unbekannte Altersklasse: ${age}`);
   const theme = !opts.theme || opts.theme === 'auto' ? themeForWeek(age, week) : opts.theme;
   const rng = createRng(hashSeed(age, level, sessions, minutes, theme, week, players ?? '', variant));
   const candidates = suitableExercises(exercises, { age, level, players });
-  const phaseMinutes = splitMinutes(withRituals ? minutes - RITUAL_MINUTES.opening - RITUAL_MINUTES.closing : minutes);
+  // Torhüter-Filter nur anwenden, wenn für die Phase dann noch etwas übrig bleibt.
+  const keeperOk = (ex) => keepers == null || (ex.goalkeepers ?? 0) <= keepers;
+  const phasePool = (phaseId) => {
+    const all = candidates.filter((ex) => ex.phase === phaseId);
+    const fit = all.filter(keeperOk);
+    return fit.length ? fit : all;
+  };
+  const phaseMinutes = splitMinutes(withRituals ? minutes - RITUAL_MINUTES.opening - RITUAL_MINUTES.closing : minutes, group.phaseShares, group.stage === 'youth');
   const used = new Set();
   const usedRituals = new Set();
   const ritual = (kind) => {
@@ -114,7 +132,7 @@ export function generatePlan(exercises, opts, rituals = null) {
     const sessionLevel = Math.min(3, level + (s > 0 ? 1 : 0));
     const blocks = PHASES.map((phase, i) => {
       const exercise = pick(
-        candidates.filter((ex) => ex.phase === phase.id),
+        phasePool(phase.id),
         theme,
         used,
         rng,
@@ -137,11 +155,15 @@ export function generatePlan(exercises, opts, rituals = null) {
   const fields = players ? Math.max(1, Math.ceil(players / group.playersPerField)) : 1;
   return {
     age,
+    stage: group.stage ?? 'kids',
     level,
     week,
     theme,
     minutes,
     players: players ?? null,
+    keepers: keepers ?? null,
+    netPlay: netPlayMinutes(plan),
+    minNetPlay: group.minNetPlay ?? null,
     rituals: withRituals,
     fields,
     miniGoals: fields * 4,

@@ -1,11 +1,13 @@
 # Funino-Wochenplaner (SV Germania)
 
-Ein Werkzeug für Kindertrainer: Altersklasse und Niveau wählen, und man bekommt einen Wochenplan mit Übungen nach dem Funino-Prinzip (Spielen – Üben – Spielen).
+Ein Werkzeug für Kinder- und Jugendtrainer: Altersklasse und Niveau wählen, und man bekommt einen Wochenplan mit Übungen. Im Kinderfußball (G- bis E-Jugend) nach dem Funino-Prinzip (Spielen – Üben – Spielen), in der D- und C-Jugend nach der DFB-„Trainingsphilosophie Deutschland“ (Aktivierung – Spielblock – Zwischenblock – Spielblock).
 
 Live: https://svgermania.geyen.org
 
 ## Was es kann
 
+- **Kinder / Jugend**: Ein Umschalter im Kopf wechselt zwischen Kinderfußball (G, F, E) und Jugendfußball (D, C). Titel, Altersklassen, Katalog und die Seite „Ablauf & Regeln“ folgen der Wahl.
+- **Jugend (D, C)**: Einheiten im Verhältnis 15/30/15/30 Minuten (bei 90 min), Spielformen nie größer als 4+TW gegen 4+TW (plus bis zu 2 Anspieler), Durchgänge von 3–4 min mit Pause. Ein Feld „Torhüter“ blendet Übungen aus, die mehr Torhüter brauchen. Der Plan zeigt die geschätzte Netto-Spielzeit pro Spieler und Woche und warnt unter dem DFB-Mindestwert von 48 Minuten.
 - **Wochenplan**: Altersklasse (G-, F-, E-Jugend), Niveau (Einsteiger, Fortgeschritten, Könner), Einheiten pro Woche, Dauer, Anzahl Kinder, Schwerpunkt und Kalenderwoche einstellen.
 - **Fester Ablauf jeder Einheit**: Ankommen (jedes Kind wird persönlich begrüßt), Begrüßungskreis mit einem Ritual zum Ankommen und Kennenlernen, dann nach der DFB-Entwicklungstabelle Aktivierung, Spielen I, Üben und Spielen II (Funino), zum Schluss ein Abschlusskreis mit Lob, Teamruf und Verabschiedung. Die Rituale wechseln von Einheit zu Einheit und passen zur Altersklasse.
 - **Bambini-Spielstunde**: Für die G-Jugend gibt es keinen Übungsblock, sondern Aktivierung – Spielen – Spielen – Spielen mit kurzen Challenges, in Gleichzahl und ohne isolierte Technikschulung.
@@ -26,7 +28,7 @@ Eine statische Website ohne Build-Schritt und ohne Backend.
 | Datei | Inhalt |
 |---|---|
 | `index.html`, `css/style.css` | Oberfläche |
-| `js/config.js` | Altersklassen, Niveaus, Schwerpunkte, Phasen, Funino-Regeln |
+| `js/config.js` | Altersklassen (mit `stage` kids/youth), Niveaus, Schwerpunkte, Phasen, Funino-Regeln |
 | `js/generator.js` | Plan-Generator (reine Funktionen, auch in Node testbar) |
 | `js/app.js` | Formular, Darstellung, Katalog |
 | `data/exercises.json` | Übungsdatenbank |
@@ -68,6 +70,17 @@ Einen Eintrag in `data/exercises.json` ergänzen:
 }
 ```
 
+Für die Jugend (D, C) gibt es optional:
+
+```json
+  "family": "gleichzahl | anspieler | linie | ueberzahl",
+  "format": "4+TW gegen 4+TW",
+  "goalkeepers": 1,
+  "blocks": { "count": 4, "minutes": 4, "rest": 1 }
+```
+
+`family` ist eine der vier DFB-Spielfamilien, `goalkeepers` die Zahl der nötigen Torhüter (der Generator filtert danach), `blocks` die Durchgänge (Anzahl, Minuten netto, Pause).
+
 Rituale werden genauso in `data/rituals.json` ergänzt (`arrival`, `opening` oder `closing`, jeweils mit `id`, `name`, `ages`, `steps`, `tip`).
 
 Neue Übungen und Rituale brauchen auch einen englischen Eintrag in `data/exercises.en.json` bzw. `data/rituals.en.json` (gleiche `id`); `npm test` prüft das.
@@ -80,7 +93,7 @@ Jeder statische Webserver reicht: einfach den Repository-Inhalt ausliefern. Für
 
 ## Grundlage
 
-Horst Weins Funino und die DFB-Spielformen im Kinderfußball (verbindlich seit 2024/25). Feldmaße sind Richtwerte. Die Übungen sind eigene Beschreibungen, angelehnt an gängige Spielformen.
+Horst Weins Funino und die DFB-Spielformen im Kinderfußball (verbindlich seit 2024/25), für die D- und C-Jugend die DFB-„Trainingsphilosophie Deutschland“ (2024) und die DFB-Jugendordnung. Feldmaße sind Richtwerte. Die Übungen sind eigene Beschreibungen, angelehnt an gängige Spielformen.
 
 ## Docker
 

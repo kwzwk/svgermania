@@ -25,6 +25,12 @@ let rituals = null;
 let variant = 0;
 let currentPlan = null;
 
+// Bereich: Kinderfußball (G–E, Funino) oder Jugendfußball (D, C nach der DFB-Trainingsphilosophie).
+const stageOf = (age) => AGE_GROUPS[age]?.stage ?? 'kids';
+const agesOf = (st) => Object.keys(AGE_GROUPS).filter((id) => stageOf(id) === st);
+const DEFAULT_AGE = { kids: 'F', youth: 'D' };
+let stage = 'kids';
+
 // ---------- Zustand <-> URL, damit ein Plan per Link geteilt werden kann ----------
 
 function readState() {
@@ -35,7 +41,8 @@ function readState() {
     level: LEVELS[q.get('level')] ? Number(q.get('level')) : 1,
     sessions: clamp(Number(q.get('sessions')) || 2, 1, 3),
     minutes: SESSION_LENGTHS.includes(Number(q.get('minutes'))) ? Number(q.get('minutes')) : AGE_GROUPS[age].defaultMinutes,
-    players: clamp(Number(q.get('players')) || 12, 2, 40),
+    players: clamp(Number(q.get('players')) || (stageOf(age) === 'youth' ? 16 : 12), 2, 40),
+    keepers: clamp(Number(q.get('keepers') ?? 1), 0, 4),
     theme: THEMES[q.get('theme')] ? q.get('theme') : 'auto',
     week: clamp(Number(q.get('week')) || isoWeek(), 1, 53),
     variant: Number(q.get('v')) || 0,
@@ -45,6 +52,7 @@ function readState() {
 
 function writeState(s) {
   const q = new URLSearchParams({ age: s.age, level: s.level, sessions: s.sessions, minutes: s.minutes, players: s.players, theme: s.theme, week: s.week });
+  if (s.keepers != null) q.set('keepers', s.keepers);
   if (s.variant) q.set('v', s.variant);
   if (!s.rituals) q.set('rituals', '0');
   if (getLang() !== 'de') q.set('lang', getLang());
@@ -58,8 +66,17 @@ function clamp(n, lo, hi) {
 // ---------- Statische Texte ----------
 
 function applyStaticTexts() {
-  document.title = t('title');
+  const youth = stage === 'youth';
+  document.title = t(youth ? 'titleYouth' : 'title');
   for (const el of document.querySelectorAll('[data-i18n]')) el.textContent = t(el.dataset.i18n);
+  $('h1[data-i18n="title"]').textContent = t(youth ? 'titleYouth' : 'title');
+  $('.tagline').textContent = t(youth ? 'taglineYouth' : 'tagline');
+  $('#players-label').textContent = t(youth ? 'playersYouth' : 'players');
+  $('#keepers-field').hidden = !youth;
+  $('.site-footer p').textContent = t(youth ? 'footerYouth' : 'footer');
+  const sw = $('#stage-switch');
+  sw.setAttribute('aria-label', t('stageLabel'));
+  for (const b of sw.querySelectorAll('button')) b.setAttribute('aria-pressed', String(b.dataset.stage === stage));
   const langBtn = $('#lang-toggle');
   langBtn.textContent = t('langButton');
   langBtn.title = t('langTitle');
@@ -69,7 +86,7 @@ function applyStaticTexts() {
 // ---------- Formular ----------
 
 function fillForm(state) {
-  $('#age').innerHTML = Object.keys(AGE_GROUPS).map((id) => option(id, ageGroup(id).label, id === state.age)).join('');
+  $('#age').innerHTML = agesOf(stage).map((id) => option(id, ageGroup(id).label, id === state.age)).join('');
   $('#minutes').innerHTML = SESSION_LENGTHS.map((m) => option(m, `${m} min`, m === state.minutes)).join('');
   $('#levels').innerHTML = Object.keys(LEVELS)
     .map((id) => `<label><input type="radio" name="level" value="${id}"${Number(id) === state.level ? ' checked' : ''}><span>${esc(levelInfo(id).label)}</span></label>`)
@@ -77,6 +94,7 @@ function fillForm(state) {
   const form = $('#plan-form');
   form.sessions.value = state.sessions;
   form.players.value = state.players;
+  form.keepers.value = state.keepers ?? 1;
   form.week.value = state.week;
   form.rituals.checked = state.rituals;
   fillThemes(state.age, state.theme);
@@ -98,8 +116,26 @@ function bindForm() {
     render();
   });
   $('#print').addEventListener('click', () => window.print());
+  $('#stage-switch').addEventListener('click', (e) => {
+    const next = e.target.closest('[data-stage]')?.dataset.stage;
+    if (next && next !== stage) switchStage(next);
+  });
   // Beim Drucken alle Übungen aufklappen.
   window.addEventListener('beforeprint', () => document.querySelectorAll('#plan details').forEach((d) => (d.open = true)));
+}
+
+function switchStage(next) {
+  stage = next;
+  const age = DEFAULT_AGE[next];
+  const state = { ...formState(), age, minutes: AGE_GROUPS[age].defaultMinutes, theme: 'auto', players: next === 'youth' ? 16 : 12 };
+  variant = 0;
+  applyStaticTexts();
+  fillForm(state);
+  $('#cat-age').value = '';
+  fillCatalogFilters();
+  renderCatalog();
+  renderRules();
+  render();
 }
 
 function fillThemes(age, current) {
@@ -116,6 +152,7 @@ function formState() {
     sessions: Number(f.sessions.value),
     minutes: Number(f.minutes.value),
     players: clamp(Number(f.players.value) || 12, 2, 40),
+    keepers: stageOf(f.age.value) === 'youth' ? clamp(Number(f.keepers.value) || 0, 0, 4) : undefined,
     theme: f.theme.value,
     week: clamp(Number(f.week.value) || isoWeek(), 1, 53),
     variant,
@@ -134,19 +171,26 @@ function render() {
   const group = ageGroup(plan.age);
   const fields = plan.fields === 1 ? t('field1') : t('fieldN', { n: plan.fields });
 
+  const youth = plan.stage === 'youth';
+  const netLow = youth && plan.minNetPlay && plan.netPlay < plan.minNetPlay;
+  const netPlay = youth && plan.minNetPlay
+    ? `<p class="net-play${netLow ? ' low' : ''}">${esc(t('netPlay', { net: plan.netPlay, min: plan.minNetPlay }))}${netLow ? ` ${esc(t('netPlayLow', { min: plan.minNetPlay }))}` : ''}<br><span class="muted">${esc(t('fieldSplitHint'))}</span></p>`
+    : '';
   $('#plan').innerHTML = `
     <div class="plan-summary">
       <h2>${esc(t('summaryTitle', { week: plan.week, age: group.short, theme: themeLabel(plan.theme) }))}</h2>
-      <p>${t('summaryLine', {
+      <p>${t(youth ? 'summaryLineYouth' : 'summaryLine', {
         sessions: plan.sessions.length,
         minutes: plan.minutes,
         players: plan.players,
+        keepers: plan.keepers ?? 0,
         level: esc(levelInfo(plan.level).label),
         fields,
         field: esc(group.field),
         goals: plan.miniGoals,
       })}</p>
     </div>
+    ${netPlay}
     ${plan.sessions.map((s) => renderSession(s, plan)).join('')}`;
   currentPlan = plan;
   fillStartSessions(plan);
@@ -230,6 +274,9 @@ function renderExerciseBody(ex, variation) {
         <dt>${esc(t('fieldLabel'))}</dt><dd>${esc(ex.field)}</dd>
         <dt>${esc(t('material'))}</dt><dd>${esc(ex.material)}</dd>
         <dt>${esc(t('playersLabel'))}</dt><dd>${ex.players.min}–${ex.players.max}</dd>
+        ${ex.format ? `<dt>${esc(t('formatLabel'))}</dt><dd>${esc(ex.format)}</dd>` : ''}
+        ${ex.goalkeepers ? `<dt>${esc(t('keepersNeeded'))}</dt><dd>${ex.goalkeepers}</dd>` : ''}
+        ${ex.blocks ? `<dt>${esc(t('blocksLabel'))}</dt><dd>${esc(t('blocksValue', ex.blocks))}</dd>` : ''}
         <dt>${esc(t('setup'))}</dt><dd>${esc(ex.setup)}</dd>
       </dl>
       <h4>${esc(t('procedure'))}</h4>
@@ -249,8 +296,9 @@ function fillCatalogFilters() {
   const keep = (id) => $(id).value;
   const [age, phase, theme] = [keep('#cat-age'), keep('#cat-phase'), keep('#cat-theme')];
   const all = option('', t('all'));
-  $('#cat-age').innerHTML = all + Object.keys(AGE_GROUPS).map((id) => option(id, ageGroup(id).short, id === age)).join('');
-  $('#cat-phase').innerHTML = all + PHASES.map((p) => option(p.id, phaseLabel(p.id), p.id === phase)).join('');
+  $('#cat-age').innerHTML = all + agesOf(stage).map((id) => option(id, ageGroup(id).short, id === age)).join('');
+  const phaseAge = stage === 'youth' ? 'D' : null;
+  $('#cat-phase').innerHTML = all + PHASES.map((p) => option(p.id, phaseLabel(p.id, phaseAge), p.id === phase)).join('');
   $('#cat-theme').innerHTML = all + Object.keys(THEMES).map((id) => option(id, themeLabel(id), id === theme)).join('');
 }
 
@@ -258,8 +306,10 @@ function renderCatalog() {
   const age = $('#cat-age').value;
   const phase = $('#cat-phase').value;
   const theme = $('#cat-theme').value;
-  const list = exercises.filter((ex) => (!age || ex.ages.includes(age)) && (!phase || ex.phase === phase) && (!theme || ex.themes.includes(theme)));
-  $('#cat-count').textContent = t('catCount', { n: list.length, total: exercises.length });
+  const stageAges = agesOf(stage);
+  const inStage = exercises.filter((ex) => ex.ages.some((a) => stageAges.includes(a)));
+  const list = inStage.filter((ex) => (!age || ex.ages.includes(age)) && (!phase || ex.phase === phase) && (!theme || ex.themes.includes(theme)));
+  $('#cat-count').textContent = t('catCount', { n: list.length, total: inStage.length });
   $('#catalog').innerHTML = list
     .map(localizeExercise)
     .map(
@@ -267,7 +317,7 @@ function renderCatalog() {
       <details class="card">
         <summary>
           <span class="name">${esc(ex.name)}</span>
-          <span class="muted">${esc(phaseLabel(ex.phase))} · ${esc(ex.ages.map((a) => ageGroup(a).short).join(', '))}</span>
+          <span class="muted">${esc(phaseLabel(ex.phase, stage === 'youth' ? 'D' : null))} · ${esc(ex.ages.map((a) => ageGroup(a).short).join(', '))}</span>
         </summary>
         ${renderExerciseBody(ex, 'base')}
       </details>`,
@@ -277,7 +327,29 @@ function renderCatalog() {
 
 // ---------- Ablauf & Regeln ----------
 
+// Hybridfeld der Jugend: ein Jugendtor auf der einen, zwei Minitore auf der anderen Seite.
+function youthFieldSvg(group) {
+  const { w, l } = group.fieldSize;
+  const s = 10;
+  const W = l * s;
+  const H = w * s;
+  const pad = 20;
+  const box = 8 * s;
+  const mini = 2 * s;
+  return `
+    <svg class="field" viewBox="0 0 ${W + pad * 2} ${H + pad * 2}" role="img" aria-label="${esc(group.field)}">
+      <rect class="pitch" x="${pad}" y="${pad}" width="${W}" height="${H}"/>
+      <rect class="zone" x="${pad}" y="${pad + H / 2 - box}" width="${11 * s}" height="${box * 2}"/>
+      <line class="line" x1="${pad + W / 2}" y1="${pad}" x2="${pad + W / 2}" y2="${pad + H}"/>
+      <rect class="goal" x="${pad - 8}" y="${pad + H / 2 - 25}" width="8" height="50"/>
+      <rect class="goal" x="${pad + W}" y="${pad + H * 0.25 - mini / 2}" width="8" height="${mini}"/>
+      <rect class="goal" x="${pad + W}" y="${pad + H * 0.75 - mini / 2}" width="8" height="${mini}"/>
+      <text x="${pad + W / 2}" y="${pad + H + 15}" text-anchor="middle">${esc(t('approx'))} ${l} × ${w} m</text>
+    </svg>`;
+}
+
 function fieldSvg(group) {
+  if (group.stage === 'youth') return youthFieldSvg(group);
   const { w, l } = group.fieldSize;
   const s = 10;
   const W = l * s;
@@ -305,17 +377,21 @@ const PHASE_HINT_KEYS = { aufwaermen: 'hintAufwaermen', uebung: 'hintUebung', sp
 function renderStructure() {
   if (!rituals) return '';
   const texts = ritualTexts(rituals);
+  const youth = stage === 'youth';
+  const hint = (id) => t(youth ? `hintYouth${id[0].toUpperCase()}${id.slice(1)}` : PHASE_HINT_KEYS[id]);
   const steps = [
     [t('structArrival'), t('structArrivalText')],
     [`${t('openingCircle')} (${RITUAL_MINUTES.opening} min)`, t('structOpeningText')],
-    ...PHASES.map((p) => [phaseLabel(p.id), t(PHASE_HINT_KEYS[p.id])]),
+    ...PHASES.map((p) => [phaseLabel(p.id, youth ? 'D' : null), hint(p.id)]),
     [`${t('closingCircle')} (${RITUAL_MINUTES.closing} min)`, t('structClosingText')],
   ];
+  const stageAges = agesOf(stage);
   return `
     <h2>${esc(t('structureTitle'))}</h2>
-    <p>${esc(t('structSource'))}</p>
+    <p>${esc(t(youth ? 'structSourceYouth' : 'structSource'))}</p>
     <ol class="structure">${steps.map(([title, d]) => `<li><strong>${esc(title)}</strong><br>${esc(d)}</li>`).join('')}</ol>
-    <p class="dial">${esc(t('structBambini'))}</p>
+    ${youth ? '' : `<p class="dial">${esc(t('structBambini'))}</p>`}
+    ${youth ? `<h3>${esc(t('youthPrinciplesTitle'))}</h3><ul class="rules">${t('youthPrinciples').split('|').map((p) => `<li>${esc(p)}</li>`).join('')}</ul>` : ''}
     <h3>${esc(t('principles'))}</h3>
     <ul class="rules">${texts.principles.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>
     <h3>${esc(t('ritualChoice'))}</h3>
@@ -326,6 +402,7 @@ function renderStructure() {
         <article class="card">
           <h3>${esc(title)}</h3>
           <ul>${rituals[kind]
+            .filter((raw) => raw.ages.some((a) => stageAges.includes(a)))
             .map((raw) => localizeRitual(kind, raw))
             .map((r) => `<li>${esc(r.name)} <span class="muted">(${esc(r.ages.map((a) => ageGroup(a).short).join(', '))})</span></li>`)
             .join('')}</ul>
@@ -338,11 +415,11 @@ function renderStructure() {
 function renderRules() {
   $('#rules').innerHTML = `
     ${renderStructure()}
-    <h2>${esc(t('rulesTitle'))}</h2>
-    <ul class="rules">${funinoRules().map((r) => `<li>${esc(r)}</li>`).join('')}</ul>
+    ${stage === 'youth' ? '' : `<h2>${esc(t('rulesTitle'))}</h2>
+    <ul class="rules">${funinoRules().map((r) => `<li>${esc(r)}</li>`).join('')}</ul>`}
     <h2>${esc(t('formatsTitle'))}</h2>
     <div class="age-cards">
-      ${Object.keys(AGE_GROUPS)
+      ${agesOf(stage)
         .map(ageGroup)
         .map(
           (g) => `
@@ -353,7 +430,8 @@ function renderRules() {
             <dt>${esc(t('format'))}</dt><dd>${esc(g.format)}</dd>
             <dt>${esc(t('fieldLabel'))}</dt><dd>${esc(g.field)}</dd>
             <dt>${esc(t('goals'))}</dt><dd>${esc(g.goals)}</dd>
-            <dt>${esc(t('scoring'))}</dt><dd>${esc(g.shootingZone)}</dd>
+            ${g.shootingZone ? `<dt>${esc(t('scoring'))}</dt><dd>${esc(g.shootingZone)}</dd>` : ''}
+            ${g.matchLength ? `<dt>${esc(t('matchLength'))}</dt><dd>${esc(g.matchLength)}</dd>` : ''}
             <dt>${esc(t('ball'))}</dt><dd>${esc(g.ball)}</dd>
           </dl>
         </article>`,
@@ -632,6 +710,8 @@ async function main() {
   rituals = rit;
   setTranslations(exEn, ritEn);
   const state = readState();
+  stage = stageOf(state.age);
+  applyStaticTexts();
   variant = state.variant;
   fillForm(state);
   bindForm();

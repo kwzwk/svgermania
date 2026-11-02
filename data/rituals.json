@@ -22,7 +22,7 @@
     {
       "id": "an-begruessung-eingang",
       "name": "Persönliche Begrüßung am Eingang",
-      "ages": ["G", "F", "E"],
+      "ages": ["G", "F", "E", "D", "C"],
       "steps": [
         "Der Trainer steht am Platzeingang und begrüßt jedes Kind mit Namen und Abklatschen.",
         "Eine kurze persönliche Frage: \"Wie war dein Tag?\" oder \"Hast du am Wochenende gespielt?\"",
@@ -55,7 +55,7 @@
     {
       "id": "an-kapitaen-aufbau",
       "name": "Kapitän des Tages hilft beim Aufbau",
-      "ages": ["F", "E"],
+      "ages": ["F", "E", "D", "C"],
       "steps": [
         "Jedes Kind wird mit Namen begrüßt.",
         "Der Kapitän des Tages (reihum, jedes Kind kommt dran) hilft beim Aufbau und verteilt Leibchen.",
@@ -68,7 +68,7 @@
     {
       "id": "kr-stimmungsdaumen",
       "name": "Stimmungsdaumen",
-      "ages": ["G", "F", "E"],
+      "ages": ["G", "F", "E", "D", "C"],
       "steps": [
         "Jedes Kind zeigt mit dem Daumen, wie es ihm heute geht: hoch, Mitte oder runter.",
         "Wer mag, sagt einen Satz dazu.",
@@ -90,7 +90,7 @@
     {
       "id": "kr-highlight",
       "name": "Mein Highlight der Woche",
-      "ages": ["F", "E"],
+      "ages": ["F", "E", "D", "C"],
       "steps": [
         "Reihum erzählt jedes Kind in einem Satz etwas Schönes aus seiner Woche.",
         "Der Trainer erzählt auch eins.",
@@ -112,7 +112,7 @@
     {
       "id": "kr-frage-der-woche",
       "name": "Frage der Woche",
-      "ages": ["F", "E"],
+      "ages": ["F", "E", "D", "C"],
       "steps": [
         "Der Trainer stellt eine Frage zum Schwerpunkt (z. B. \"Wann ist es besser zu dribbeln als zu passen?\").",
         "Zwei oder drei Kinder antworten.",
@@ -136,7 +136,7 @@
     {
       "id": "ab-lob-runde",
       "name": "Lob-Runde",
-      "ages": ["G", "F", "E"],
+      "ages": ["G", "F", "E", "D", "C"],
       "steps": [
         "Im Kreis: Der Trainer lobt jedes Kind für eine konkrete Sache aus dem Training.",
         "Daumen-Feedback: Wie hat euch das Training gefallen?"
@@ -146,7 +146,7 @@
     {
       "id": "ab-beste-aktion",
       "name": "Meine beste Aktion",
-      "ages": ["F", "E"],
+      "ages": ["F", "E", "D", "C"],
       "steps": [
         "Zwei oder drei Kinder erzählen ihre beste Aktion des Tages.",
         "Die Frage der Woche aufgreifen: Was habt ihr herausgefunden?",
@@ -157,7 +157,7 @@
     {
       "id": "ab-fairplay-kind",
       "name": "Fairplay-Kind des Tages",
-      "ages": ["G", "F", "E"],
+      "ages": ["G", "F", "E", "D", "C"],
       "steps": [
         "Die Kinder schlagen vor, wer heute besonders fair oder hilfsbereit war.",
         "Das Kind bekommt einen Applaus und darf den Teamruf anstimmen."
@@ -178,7 +178,7 @@
     {
       "id": "ab-ausblick",
       "name": "Ausblick und Termine",
-      "ages": ["F", "E"],
+      "ages": ["F", "E", "D", "C"],
       "steps": [
         "Kurzes Feedback: Was hat heute gut geklappt?",
         "Ausblick auf das nächste Training oder den Spieltag (Treffpunkt, Uhrzeit).",
