@@ -18,7 +18,7 @@ Live: https://scg.geyen.org
 - **Fester Ablauf jeder Einheit**: Ankommen (jedes Kind wird persönlich begrüßt), Begrüßungskreis mit einem Ritual zum Ankommen und Kennenlernen, dann nach der DFB-Entwicklungstabelle Aktivierung, Spielen I, Üben und Spielen II (Funino), zum Schluss ein Abschlusskreis mit Lob, Teamruf und Verabschiedung. Die Rituale wechseln von Einheit zu Einheit und passen zur Altersklasse.
 - **Bambini-Spielstunde**: Für die G-Jugend gibt es keinen Übungsblock, sondern Aktivierung – Spielen – Spielen – Spielen mit kurzen Challenges, in Gleichzahl und ohne isolierte Technikschulung.
 - **Rituale abschaltbar**: Ohne Haken bei „Rituale einplanen“ entfallen Begrüßungs- und Abschlusskreis, die Zeit geht an die Übungsphasen.
-- **Eigener Plan**: Im Tab „Eigener Plan“ stellt man eine Einheit selbst aus den vorhandenen Übungen zusammen: Übungen hinzufügen (Filter nach Phase und Schwerpunkt), Minuten anpassen, Reihenfolge mit ↑/↓ ändern. Rituale (Ankommen, Begrüßungs- und Abschlusskreis bzw. Team- und Nachbesprechung) lassen sich ein- und ausschalten und einzeln auswählen. Der ganze Plan steckt im Link (`#custom?...`), „Link teilen“ öffnet auf dem Handy das Teilen-Menü, sonst wird kopiert. Drucken und Trainingsmodus funktionieren wie beim Wochenplan.
+- **Eigener Plan**: Im Tab „Eigener Plan“ stellt man eine Einheit selbst aus den vorhandenen Übungen zusammen: Übungen hinzufügen (Filter nach Phase und Schwerpunkt), dazu das Präventions-Aufwärmen als eigener Baustein (FIFA 11+ Kids für F bis D, FIFA 11+ für C bis A; im Link als `prev-11plus-kids` bzw. `prev-11plus`, die Stufe folgt dem Niveau), Minuten anpassen, Reihenfolge mit ↑/↓ ändern. Rituale (Ankommen, Begrüßungs- und Abschlusskreis bzw. Team- und Nachbesprechung) lassen sich ein- und ausschalten und einzeln auswählen. Der ganze Plan steckt im Link (`#custom?...`), „Link teilen“ öffnet auf dem Handy das Teilen-Menü, sonst wird kopiert. Drucken und Trainingsmodus funktionieren wie beim Wochenplan.
 - **Trainingsmodus**: „Training jetzt starten“ unter dem Plan führt im Vollbild Schritt für Schritt durch die gewählte Einheit, mit Countdown pro Übung, Signal (Ton und Vibration) bei Ablauf, Pause, Zurück und Nächste Übung. Das Display bleibt dabei an.
 - **Niveau als Stellschraube**: Das Niveau ändert nicht das Spielformat, sondern zeigt für jede Übung die leichtere oder schwerere Variante. Über den Drei-Wochen-Block geht es eine Stufe schwerer (siehe oben).
 - **Schwerpunkt pro Block**: automatisch alle drei Wochen neu nach Kalenderwoche oder fest gewählt.
@@ -26,7 +26,8 @@ Live: https://scg.geyen.org
 - **Hell / Dunkel / Automatisch** per Knopf oben rechts, die Wahl wird im Browser gespeichert.
 - **Logo**: eine Datei `img/logo.svg` erscheint oben links (siehe `img/README.md`).
 - **Teilen und Drucken**: Alle Einstellungen stehen in der URL. "Drucken" klappt alle Übungen auf.
-- **Übungskatalog** mit Filtern und eine Seite mit dem **Ablauf einer Einheit**, den **Funino-Regeln** und DFB-Formaten je Altersklasse.
+- **Übungskatalog** mit allen Übungen, unabhängig von der gewählten Altersklasse, mit Filtern nach Bereich (Kinderfußball, Jugend, Torhüter), Altersklasse, Phase und Schwerpunkt.
+- **Ablauf & Regeln**: Ablauf einer Einheit, Funino-Regeln und DFB-Formate je Altersklasse. Ein Schalter oben wechselt zwischen Kinderfußball und Jugend, ohne den Wochenplan umzustellen.
 
 ## Aufbau
 

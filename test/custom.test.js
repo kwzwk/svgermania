@@ -74,3 +74,19 @@ test('suggested minutes follow the phase shares', () => {
     }
   }
 });
+
+test('the prevention warm-up can be added to a custom plan and survives the link', async () => {
+  const { PREVENTION_ITEMS, preventionItemsFor } = await import('../js/custom.js');
+  const prevention = JSON.parse(readFileSync(new URL('../data/prevention.json', import.meta.url)));
+  for (const { program } of Object.values(PREVENTION_ITEMS)) assert.ok(prevention.programs.some((p) => p.id === program), program);
+  assert.deepEqual(preventionItemsFor('G'), []);
+  assert.deepEqual(preventionItemsFor('E'), ['prev-11plus-kids']);
+  assert.deepEqual(preventionItemsFor('A'), ['prev-11plus']);
+  const state = fixRituals({ ...emptyCustom('C'), level: 3, items: [{ id: 'prev-11plus', minutes: 20 }, { id: 'sf-wellen', minutes: 15 }] }, rituals);
+  const back = decodeCustom(encodeCustom(state), exercises, rituals);
+  assert.deepEqual(back.items, state.items);
+  const session = buildSession(back, exercises, rituals);
+  assert.deepEqual(session.blocks[0], { id: 'prev-11plus', phase: 'aufwaermen', minutes: 20, exercise: null, prevention: '11plus', preventionLevel: 3, variation: 'harder' });
+  assert.equal(totalMinutes(back).total, 35 + ritualMinutes('C').opening + ritualMinutes('C').closing);
+  assert.deepEqual(sessionSteps(session).map((st) => st.kind).slice(1, 3), ['aufwaermen', 'spielform']);
+});

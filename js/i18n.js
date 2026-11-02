@@ -185,6 +185,10 @@ const STRINGS = {
     loadRecoveryNote: 'Tag nach dem Spiel: Wer lange gespielt hat, macht locker mit (kurze Durchgänge, mehr Pause, keine Sprints). Wer wenig gespielt hat, trainiert normal mit.',
     afterMatchNote: 'Erste Einheit nach dem Spiel: In der Teambesprechung eine Szene aus dem Spiel aufgreifen und die Brücke zum Schwerpunkt schlagen.',
     homeTitle: 'Für zu Hause und den Bolzplatz',
+    area: 'Bereich',
+    stageKidsShort: 'Kinderfußball (G–E)',
+    stageYouthShort: 'Jugend (D–A)',
+    preventionTag: 'Verletzungsprävention',
   },
   en: {
     title: 'Training Week Planner',
@@ -365,6 +369,10 @@ const STRINGS = {
     loadRecoveryNote: 'Day after the match: players who played a lot take it easy (short rounds, more rest, no sprints). Players who played little train as normal.',
     afterMatchNote: 'First session after the match: bring up one scene from the match in the team talk and link it to the focus.',
     homeTitle: 'At home and in the cage',
+    area: 'Area',
+    stageKidsShort: 'Kids (U6–U11)',
+    stageYouthShort: 'Youth (U12–U19)',
+    preventionTag: 'Injury prevention',
   },
 };
 

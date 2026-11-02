@@ -131,6 +131,9 @@
 
     <section id="view-catalog" class="view" hidden>
       <div class="controls compact">
+        <label><span data-i18n="area">Bereich</span>
+          <select id="cat-stage"></select>
+        </label>
         <label><span data-i18n="age">Altersklasse</span>
           <select id="cat-age"></select>
         </label>
@@ -146,6 +149,10 @@
     </section>
 
     <section id="view-rules" class="view" hidden>
+      <fieldset class="levels rules-stage">
+        <legend class="visually-hidden" data-i18n="area">Bereich</legend>
+        <div id="rules-stage" class="segmented"></div>
+      </fieldset>
       <div id="rules"></div>
     </section>
   </main>
