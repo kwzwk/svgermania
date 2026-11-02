@@ -7,7 +7,7 @@ export const LANGS = ['de', 'en'];
 
 const STRINGS = {
   de: {
-    title: 'Funino-Wochenplaner',
+    title: 'Trainings-Wochenplaner',
     tagline: 'Kinderfußball nach dem Prinzip Spielen – Üben – Spielen',
     tabPlan: 'Wochenplan',
     tabCatalog: 'Übungen',
@@ -96,7 +96,7 @@ const STRINGS = {
     langButton: 'EN',
     langTitle: 'Switch to English',
     loadError: 'Die Übungen konnten nicht geladen werden ({msg}). Die Seite muss über einen Webserver geöffnet werden, nicht als Datei.',
-    titleYouth: 'Jugend-Trainingsplaner',
+    titleYouth: 'Trainings-Wochenplaner',
     taglineYouth: 'D- bis A-Jugend nach der DFB-Trainingsphilosophie: Aktivierung – Spielblock – Zwischenblock – Spielblock',
     stageKids: 'Kinderfußball',
     stageYouth: 'Jugendfußball',
@@ -121,7 +121,7 @@ const STRINGS = {
     youthPrinciples: 'Freude, Intensität und Wiederholung in jeder Minute.|Mindestens 48 Minuten netto in kleinen Spielformen pro Spieler und Woche (ab U17: 32 Minuten).|Auf mehreren Feldern gleichzeitig spielen, damit niemand wartet.|Felder nach Entwicklungsstand einteilen, ab der C-Jugend auch nach Positionen.|Große Spielformen und gegnerorientierte Taktik gehören nicht ins Training dieser Altersklassen.|Kopfball bis zur C-Jugend nur mit Leicht- oder Schaumstoffbällen, auch danach ohne lange Wiederholungsserien.',
   },
   en: {
-    title: 'Funino Weekly Planner',
+    title: 'Training Week Planner',
     tagline: 'Kids’ soccer following Play – Practise – Play',
     tabPlan: 'Weekly plan',
     tabCatalog: 'Exercises',
@@ -210,7 +210,7 @@ const STRINGS = {
     langButton: 'DE',
     langTitle: 'Auf Deutsch wechseln',
     loadError: 'The exercises could not be loaded ({msg}). The page must be opened through a web server, not as a file.',
-    titleYouth: 'Youth Training Planner',
+    titleYouth: 'Training Week Planner',
     taglineYouth: 'D to A youth following the DFB training philosophy: activation – game block – in-between block – game block',
     stageKids: 'Kids’ soccer',
     stageYouth: 'Youth soccer',

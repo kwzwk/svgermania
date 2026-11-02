@@ -1,8 +1,8 @@
-# Funino-Wochenplaner (SV Germania)
+# Trainings-Wochenplaner (SV Germania)
 
 Ein Werkzeug für Kinder- und Jugendtrainer: Altersklasse und Niveau wählen, und man bekommt einen Wochenplan mit Übungen. Im Kinderfußball (G- bis E-Jugend) nach dem Funino-Prinzip (Spielen – Üben – Spielen), in der D- bis A-Jugend nach der DFB-„Trainingsphilosophie Deutschland“ (Aktivierung – Spielblock – Zwischenblock – Spielblock).
 
-Live: https://svgermania.geyen.org
+Live: https://scg.geyen.org
 
 ## Was es kann
 
@@ -89,7 +89,7 @@ Neue Übungen und Rituale brauchen auch einen englischen Eintrag in `data/exerci
 
 ## Hosting
 
-Jeder statische Webserver reicht: einfach den Repository-Inhalt ausliefern. Für GitHub Pages liegt eine `CNAME`-Datei für `svgermania.geyen.org` bei. Dafür in den Repository-Einstellungen unter Pages "Deploy from a branch" mit `main` / `(root)` wählen und beim DNS-Anbieter einen CNAME-Eintrag `svgermania` → `kwzwk.github.io` anlegen.
+Jeder statische Webserver reicht: einfach den Repository-Inhalt ausliefern. Für GitHub Pages liegt eine `CNAME`-Datei für `scg.geyen.org` bei. Dafür in den Repository-Einstellungen unter Pages "Deploy from a branch" mit `main` / `(root)` wählen und beim DNS-Anbieter einen CNAME-Eintrag `svgermania` → `kwzwk.github.io` anlegen.
 
 ## Grundlage
 
@@ -107,7 +107,7 @@ docker compose up -d          # nutzt docker-compose.yml
 docker run -d --name svgermania --restart unless-stopped -p 127.0.0.1:8080:8080 ghcr.io/kwzwk/svgermania:latest
 ```
 
-Im Reverse Proxy `svgermania.geyen.org` auf `http://<server>:8080` weiterleiten. Updates holen mit `docker compose pull && docker compose up -d` (oder automatisch mit Watchtower).
+Im Reverse Proxy `scg.geyen.org` auf `http://<server>:8080` weiterleiten. Updates holen mit `docker compose pull && docker compose up -d` (oder automatisch mit Watchtower).
 
 Falls das Paket auf GitHub privat ist: entweder unter *Package settings* auf "Public" stellen oder auf dem Server mit `docker login ghcr.io` und einem Token mit `read:packages` anmelden.
 

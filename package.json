@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Funino-Wochenplaner für Kindertrainer (statische Website)",
+  "description": "Trainings-Wochenplaner für Kinder- und Jugendtrainer (statische Website)",
   "scripts": {
     "test": "node --test test/*.test.js",
     "start": "python3 -m http.server 8080"
