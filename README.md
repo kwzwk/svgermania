@@ -84,7 +84,11 @@ Horst Weins Funino und die DFB-Spielformen im Kinderfußball (verbindlich seit 2
 
 ## Docker
 
-Bei jedem Push auf `main` baut GitHub Actions automatisch ein Image (amd64 und arm64) und veröffentlicht es als `ghcr.io/kwzwk/svgermania:latest`. Tags `v*` erzeugen zusätzlich Versions-Tags.
+Bei jedem Push auf `main` baut GitHub Actions automatisch ein Image (amd64 und arm64) und veröffentlicht es als `ghcr.io/kwzwk/svgermania:latest`. Tags `v*` erzeugen zusätzlich Versions-Tags und ein GitHub-Release. Ein Tag mit Varianten-Suffix wie `v1.0.0-u11` liefert `:1.0.0-u11` und `:u11-latest`; der Release-Titel ist die Nachricht des annotierten Tags:
+
+```sh
+git tag -a v1.0.0-u11 -m "1.0 (u11)" && git push origin v1.0.0-u11
+```
 
 Der Container liefert die Seite mit nginx auf Port **8080** aus (ohne Root), mit Healthcheck unter `/healthz`.
 
