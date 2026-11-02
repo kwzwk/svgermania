@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 import { AGE_GROUPS, LEVELS, PHASES, THEMES, SESSION_LENGTHS, RITUAL_MINUTES, ritualMinutes } from '../js/config.js';
-import { generatePlan, sessionSteps, splitMinutes, suitableExercises, themeForWeek, isoWeek } from '../js/generator.js';
+import { generatePlan, sessionSteps, splitMinutes, suitableExercises, themeForWeek, isoWeek, blockOf, trainingDays, matchLoad, maxSessions, homeChallenges } from '../js/generator.js';
 
 const exercises = JSON.parse(readFileSync(new URL('../data/exercises.json', import.meta.url)));
 const rituals = JSON.parse(readFileSync(new URL('../data/rituals.json', import.meta.url)));
@@ -110,11 +110,11 @@ test('every session opens and closes with age-appropriate rituals, varied within
   }
 });
 
-test('plan respects age group, level and has no repeats within a week', () => {
+test('plan respects age group, level and repeats only the anchor game within a week', () => {
   for (const age of Object.keys(AGE_GROUPS)) {
     for (const level of [1, 2, 3]) {
       const plan = generatePlan(exercises, { age, level, sessions: 2, minutes: 60, week: 12, players: 10 });
-      const ids = plan.sessions.flatMap((s) => s.blocks.map((b) => b.exercise.id));
+      const ids = plan.sessions.flatMap((s) => s.blocks.filter((b) => !b.anchor).map((b) => b.exercise.id));
       assert.equal(new Set(ids).size, ids.length, `${age}/${level}: repeated exercise`);
       for (const s of plan.sessions) {
         assert.equal(s.blocks.length, PHASES.length);
@@ -133,14 +133,22 @@ test('plan is deterministic and variant reshuffles', () => {
   assert.ok(variants.size > 1);
 });
 
-test('second session steps difficulty up', () => {
-  const plan = generatePlan(exercises, { age: 'E', level: 1, sessions: 2, minutes: 90, week: 1 });
+test('difficulty steps up across the three-week block', () => {
+  const levels = (week) => generatePlan(exercises, { age: 'E', level: 1, sessions: 2, minutes: 90, week }).sessions.map((s) => s.level);
+  assert.deepEqual(levels(1), [1, 1]); // Woche 1: Niveau der Mannschaft
+  assert.deepEqual(levels(2), [1, 2]); // Woche 2: ab der 2. Einheit schwerer
+  assert.deepEqual(levels(3), [2, 2]); // Woche 3: durchgehend schwerer
+  assert.deepEqual(levels(4), [1, 1]); // neuer Block, neuer Schwerpunkt
+  const plan = generatePlan(exercises, { age: 'E', level: 1, sessions: 2, minutes: 90, week: 2 });
   assert.equal(plan.sessions[0].blocks[0].variation, 'easier');
   assert.equal(plan.sessions[1].blocks[0].variation, 'base');
+  assert.deepEqual(generatePlan(exercises, { age: 'E', level: 3, sessions: 2, minutes: 90, week: 3 }).sessions.map((s) => s.level), [3, 3]);
 });
 
-test('weekly theme rotates and explicit theme wins', () => {
-  assert.notEqual(themeForWeek('F', 1), themeForWeek('F', 2));
+test('theme holds for a three-week block, then rotates; explicit theme wins', () => {
+  assert.deepEqual([1, 2, 3, 4, 6, 7].map((w) => blockOf(w).week), [1, 2, 3, 1, 3, 1]);
+  assert.equal(themeForWeek('F', 1), themeForWeek('F', 3));
+  assert.notEqual(themeForWeek('F', 3), themeForWeek('F', 4));
   assert.equal(generatePlan(exercises, { age: 'F', level: 2, sessions: 1, minutes: 60, week: 5, theme: 'torschuss' }).theme, 'torschuss');
 });
 
@@ -292,4 +300,107 @@ test('youth catalog covers every theme of each youth age group', () => {
     for (const phase of PHASES) assert.ok(exercises.some((e) => e.phase === phase.id && e.ages.includes(age)), `${age}: ${phase.id}`);
     for (const theme of group.themes) assert.ok(exercises.filter((e) => e.ages.includes(age) && e.themes.includes(theme)).length >= 2, `${age}: ${theme}`);
   }
+});
+
+// ---------- Ankerspiel, Trainingstage, Spieltag, Umfang, Torhüter ----------
+
+test('anchor game stays the same across all sessions and weeks of a block', () => {
+  for (const age of Object.keys(AGE_GROUPS)) {
+    const opts = { age, level: 2, sessions: maxSessions(age), minutes: AGE_GROUPS[age].defaultMinutes, players: 14, keepers: 1 };
+    const anchors = [10, 11, 12].flatMap((week) => generatePlan(exercises, { ...opts, week }).sessions.map((s) => s.blocks.find((b) => b.phase === 'spielform')));
+    assert.ok(anchors.every((b) => b.anchor && b.exercise), `${age}: anchor flag`);
+    assert.equal(new Set(anchors.map((b) => b.exercise.id)).size, 1, `${age}: anchor changes within the block`);
+    // Andere Dauer oder Einheitenzahl ändert das Ankerspiel nicht.
+    const other = generatePlan(exercises, { ...opts, week: 11, sessions: 1, minutes: 60 }).sessions[0].blocks[1].exercise.id;
+    assert.equal(other, anchors[0].exercise.id, `${age}: anchor depends on minutes or sessions`);
+  }
+  const ids = new Set([1, 4, 7, 10, 13, 16].map((week) => generatePlan(exercises, { age: 'C', level: 2, sessions: 2, minutes: 90, week, players: 16 }).sessions[0].blocks[1].exercise.id));
+  assert.ok(ids.size > 1, 'anchor never changes between blocks');
+});
+
+test('weekly sessions are capped by age group', () => {
+  assert.deepEqual(Object.keys(AGE_GROUPS).map(maxSessions), [2, 2, 3, 3, 4, 5, 5]);
+  for (const age of Object.keys(AGE_GROUPS)) {
+    const plan = generatePlan(exercises, { age, level: 2, sessions: 5, minutes: 60, week: 1 });
+    assert.equal(plan.sessions.length, maxSessions(age), age);
+    assert.equal(plan.weeklyMinutes, maxSessions(age) * 60);
+  }
+  // Bis zu fünf Einheiten ohne doppelte Übung (außer dem Ankerspiel).
+  const plan = generatePlan(exercises, { age: 'A', level: 2, sessions: 5, minutes: 90, week: 20, players: 18, keepers: 2 });
+  assert.ok(plan.sessions.every((s) => s.blocks.every((b) => b.exercise)));
+});
+
+test('training days follow the match day, explicit days win', () => {
+  assert.deepEqual(trainingDays(2), [2, 4]);
+  assert.deepEqual(trainingDays(2, null, 6), [2, 4]); // Spiel Samstag: Dienstag, Donnerstag
+  assert.deepEqual(trainingDays(3, null, 6), [1, 3, 5]);
+  assert.deepEqual(trainingDays(5, null, 6), [1, 2, 4, 5, 7]); // Sonntag = Tag nach dem Spiel
+  assert.deepEqual(trainingDays(3, null, 7), [2, 4, 6]); // Spiel Sonntag
+  assert.deepEqual(trainingDays(2, [5, 1]), [1, 5]);
+  assert.deepEqual(trainingDays(2, [1, 6], 6), [2, 4], 'training on match day falls back to defaults');
+  assert.deepEqual(trainingDays(3, [1, 2]), [1, 3, 5], 'wrong count falls back to defaults');
+  for (let m = 1; m <= 7; m++) for (let n = 1; n <= 5; n++) assert.ok(!trainingDays(n, null, m).includes(m), `${n} sessions, match ${m}`);
+  assert.deepEqual(matchLoad(5, 6), { load: 'sharp', before: 1, after: 6 });
+  assert.deepEqual(matchLoad(7, 6), { load: 'recovery', before: 6, after: 1 });
+  assert.equal(matchLoad(3, 6).load, 'normal');
+  assert.equal(matchLoad(3, null).load, 'normal');
+});
+
+test('match day sets the load: no step-up the day before or after, first session after the match flagged', () => {
+  const base = { age: 'B', level: 2, sessions: 4, minutes: 90, players: 16, keepers: 1, week: 2, match: 6 };
+  const plan = generatePlan(exercises, { ...base, days: [1, 2, 4, 5] }, rituals);
+  assert.deepEqual(plan.sessions.map((s) => s.load), ['normal', 'normal', 'normal', 'sharp']);
+  assert.deepEqual(plan.sessions.map((s) => s.level), [2, 3, 3, 2]);
+  assert.deepEqual(plan.sessions.map((s) => s.afterMatch), [true, false, false, false]);
+  const rec = generatePlan(exercises, { ...base, sessions: 2, days: [2, 7], match: 6, week: 1 }, rituals);
+  assert.deepEqual(rec.sessions.map((s) => [s.day, s.load, s.level]), [[2, 'normal', 2], [7, 'recovery', 1]]);
+  assert.equal(rec.sessions[1].afterMatch, true);
+  // Kinder: kein Spieltag-Einfluss.
+  const kids = generatePlan(exercises, { age: 'E', level: 2, sessions: 2, minutes: 90, week: 2, match: 6 });
+  assert.equal(kids.match, null);
+  assert.ok(kids.sessions.every((s) => s.load === 'normal'));
+});
+
+test('home challenges exist for every theme and stage', () => {
+  const home = JSON.parse(readFileSync(new URL('../data/home.json', import.meta.url)));
+  const ids = new Set();
+  for (const c of [...home.challenges, ...home.freePlay]) {
+    assert.ok(!ids.has(c.id), `duplicate ${c.id}`);
+    ids.add(c.id);
+    assert.ok(c.name.de && c.name.en && c.how.de && c.how.en, `${c.id}: texts`);
+    for (const st of c.stages ?? []) assert.ok(['kids', 'youth'].includes(st), `${c.id}: stage`);
+    for (const th of c.themes ?? []) assert.ok(THEMES[th], `${c.id}: theme ${th}`);
+  }
+  for (const [age, group] of Object.entries(AGE_GROUPS)) {
+    const stage = group.stage ?? 'kids';
+    for (const theme of group.themes) {
+      const list = homeChallenges(home, { stage, theme, week: 5 });
+      assert.equal(list.length, 3, `${age}/${theme}`);
+      assert.ok(list.slice(0, 2).some((c) => c.themes?.includes(theme)), `${age}/${theme}: nothing for the theme`);
+      assert.ok(home.freePlay.includes(list[2]), `${age}/${theme}: free play`);
+      assert.deepEqual(homeChallenges(home, { stage, theme, week: 5 }), list, 'deterministic');
+    }
+  }
+});
+
+test('goalkeeper station runs parallel to the intermediate block in youth', () => {
+  const keeperEx = exercises.filter((ex) => ex.role === 'keeper');
+  assert.ok(keeperEx.length >= 8);
+  for (const ex of keeperEx) {
+    assert.equal(ex.phase, 'uebung', ex.id);
+    assert.ok(ex.ages.every((a) => AGE_GROUPS[a].stage === 'youth'), `${ex.id}: youth only`);
+  }
+  for (const age of youthAges) {
+    const plan = generatePlan(exercises, { age, level: 2, sessions: 2, minutes: 90, week: 4, players: 16, keepers: 2 });
+    for (const s of plan.sessions) {
+      const z = s.blocks.find((b) => b.phase === 'uebung');
+      assert.ok(z.keeper?.role === 'keeper' && z.keeper.ages.includes(age), `${age}: keeper station`);
+      for (const b of s.blocks) assert.notEqual(b.exercise.role, 'keeper', `${age}: keeper exercise for the whole team`);
+    }
+    assert.notEqual(plan.sessions[0].blocks[2].keeper.id, plan.sessions[1].blocks[2].keeper.id, `${age}: same keeper drill twice`);
+    const none = generatePlan(exercises, { age, level: 2, sessions: 2, minutes: 90, week: 4, players: 16, keepers: 0 });
+    assert.ok(none.sessions.every((s) => s.blocks.every((b) => !b.keeper)), `${age}: station without keepers`);
+  }
+  const kids = generatePlan(exercises, { age: 'E', level: 2, sessions: 2, minutes: 90, week: 4, keepers: 1 });
+  assert.ok(kids.sessions.every((s) => s.blocks.every((b) => !b.keeper)));
 });

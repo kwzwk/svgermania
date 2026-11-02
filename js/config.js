@@ -4,6 +4,8 @@
 export const AGE_GROUPS = {
   G: {
     id: 'G',
+    // Höchstzahl Einheiten pro Woche: Kinder spielen zusätzlich frei, ab der C-Jugend mehr Training.
+    maxSessions: 2,
     label: 'G-Jugend / Bambini (U6–U7)',
     short: 'G-Jugend',
     format: '2 gegen 2 oder 3 gegen 3',
@@ -21,6 +23,8 @@ export const AGE_GROUPS = {
   },
   F: {
     id: 'F',
+    // Höchstzahl Einheiten pro Woche: Kinder spielen zusätzlich frei, ab der C-Jugend mehr Training.
+    maxSessions: 2,
     label: 'F-Jugend (U8–U9)',
     short: 'F-Jugend',
     format: '3 gegen 3 (empfohlen) oder 5 gegen 5',
@@ -35,6 +39,8 @@ export const AGE_GROUPS = {
   },
   E: {
     id: 'E',
+    // Höchstzahl Einheiten pro Woche: Kinder spielen zusätzlich frei, ab der C-Jugend mehr Training.
+    maxSessions: 3,
     label: 'E-Jugend (U10–U11)',
     short: 'E-Jugend',
     format: '5 gegen 5 oder 7 gegen 7 (im Training oft 3 gegen 3 / 4 gegen 4)',
@@ -51,6 +57,8 @@ export const AGE_GROUPS = {
   // Zwischenblock 15 – Spielblock 30, im Training höchstens 4+TW gegen 4+TW (plus bis zu 2 Anspieler).
   D: {
     id: 'D',
+    // Höchstzahl Einheiten pro Woche: Kinder spielen zusätzlich frei, ab der C-Jugend mehr Training.
+    maxSessions: 3,
     stage: 'youth',
     // Präventions-Aufwärmen in der Aktivierung (FIFA 11+ Kids unter 14, sonst FIFA 11+).
     prevention: '11plus-kids',
@@ -71,6 +79,8 @@ export const AGE_GROUPS = {
   },
   C: {
     id: 'C',
+    // Höchstzahl Einheiten pro Woche: Kinder spielen zusätzlich frei, ab der C-Jugend mehr Training.
+    maxSessions: 4,
     stage: 'youth',
     prevention: '11plus',
     label: 'C-Jugend (U14–U15)',
@@ -90,6 +100,8 @@ export const AGE_GROUPS = {
   },
   B: {
     id: 'B',
+    // Höchstzahl Einheiten pro Woche: Kinder spielen zusätzlich frei, ab der C-Jugend mehr Training.
+    maxSessions: 5,
     stage: 'youth',
     prevention: '11plus',
     label: 'B-Jugend (U16–U17)',
@@ -110,6 +122,8 @@ export const AGE_GROUPS = {
   },
   A: {
     id: 'A',
+    // Höchstzahl Einheiten pro Woche: Kinder spielen zusätzlich frei, ab der C-Jugend mehr Training.
+    maxSessions: 5,
     stage: 'youth',
     prevention: '11plus',
     label: 'A-Jugend (U18–U19)',
@@ -172,6 +186,18 @@ export const RITUAL_MINUTES_YOUTH = { opening: 3, closing: 3 };
 export const ritualMinutes = (age) => (AGE_GROUPS[age]?.stage === 'youth' ? RITUAL_MINUTES_YOUTH : RITUAL_MINUTES);
 
 export const SESSION_LENGTHS = [45, 60, 75, 90, 105];
+
+// Ein Schwerpunkt gilt für einen Block von drei Wochen: Woche 1 auf dem gewählten Niveau,
+// Woche 2 ab der zweiten Einheit eine Stufe schwerer, Woche 3 durchgehend eine Stufe schwerer.
+export const BLOCK_WEEKS = 3;
+
+// Wochentage nach ISO (1 = Montag … 7 = Sonntag).
+export const WEEKDAYS = [1, 2, 3, 4, 5, 6, 7];
+export const MAX_SESSIONS = 5;
+// Standard-Trainingstage ohne Spiel, nach Anzahl Einheiten.
+export const DEFAULT_DAYS = { 1: [3], 2: [2, 4], 3: [1, 3, 5], 4: [1, 2, 4, 5], 5: [1, 2, 3, 4, 5] };
+// Mit Spieltag: Abstand der Einheiten zum Spiel in Tagen (vor dem Spiel), nach Anzahl Einheiten.
+export const DAYS_BEFORE_MATCH = { 1: [3], 2: [4, 2], 3: [5, 3, 1], 4: [5, 4, 2, 1], 5: [6, 5, 4, 2, 1] };
 
 export const FUNINO_RULES = [
   'Kein Torwart, 4 Minitore: jedes Team greift zwei Tore an und verteidigt zwei.',

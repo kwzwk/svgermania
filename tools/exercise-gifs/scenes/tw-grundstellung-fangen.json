@@ -1,0 +1,184 @@
+{
+ "id": "tw-grundstellung-fangen",
+ "name": "TW: Grundstellung und Fangen",
+ "fps": 12.5,
+ "duration": 6.4,
+ "field": {
+  "w": 10,
+  "h": 11,
+  "margin": 2
+ },
+ "goals": [
+  {
+   "x": 5,
+   "y": 0,
+   "side": "top",
+   "kind": "small"
+  }
+ ],
+ "cones": [
+  [
+   3,
+   10
+  ],
+  [
+   7,
+   10
+  ]
+ ],
+ "teams": {
+  "gk": {
+   "color": "#1fa463",
+   "letter": "T"
+  },
+  "co": {
+   "color": "#e67e22",
+   "letter": "C"
+  }
+ },
+ "players": [
+  {
+   "id": "G",
+   "team": "gk",
+   "path": [
+    [
+     0,
+     5,
+     1.2
+    ],
+    [
+     0.7,
+     5,
+     1.2
+    ],
+    [
+     0.85,
+     5,
+     1.0
+    ],
+    [
+     1.0,
+     5,
+     1.2
+    ],
+    [
+     3.6,
+     5,
+     1.2
+    ],
+    [
+     4.2,
+     4.1,
+     1.2
+    ],
+    [
+     5.4,
+     4.1,
+     1.2
+    ],
+    [
+     6.0,
+     5,
+     1.2
+    ]
+   ],
+   "face": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "C",
+   "team": "co",
+   "path": [
+    [
+     0,
+     5,
+     10
+    ]
+   ],
+   "face": [
+    0,
+    -1
+   ]
+  }
+ ],
+ "balls": [
+  {
+   "keys": [
+    {
+     "t": 0,
+     "on": "C",
+     "fx": "hand"
+    },
+    {
+     "t": 0.6,
+     "on": "C",
+     "fx": "hand"
+    },
+    {
+     "t": 1.2,
+     "on": "G",
+     "fx": "hand"
+    },
+    {
+     "t": 2.2,
+     "on": "G",
+     "fx": "hand"
+    },
+    {
+     "t": 3.0,
+     "on": "C",
+     "fx": "hand"
+    },
+    {
+     "t": 3.8,
+     "on": "C",
+     "fx": "hand"
+    },
+    {
+     "t": 4.5,
+     "on": "G",
+     "fx": "hand"
+    },
+    {
+     "t": 5.5,
+     "on": "G",
+     "fx": "hand"
+    }
+   ]
+  }
+ ],
+ "captions": [
+  {
+   "from": 0,
+   "to": 1.2,
+   "de": "Split-Step, wenn der Schütze ausholt",
+   "en": "Split step as the shooter draws back"
+  },
+  {
+   "from": 1.2,
+   "to": 3.8,
+   "de": "Fangen, Körper hinter den Ball",
+   "en": "Catch with the body behind the ball"
+  },
+  {
+   "from": 3.8,
+   "to": 6.4,
+   "de": "Zur Seite schieben, fangen, zurückspielen",
+   "en": "Shuffle across, catch, play it back"
+  }
+ ],
+ "legend": [
+  {
+   "team": "gk",
+   "de": "Torwart",
+   "en": "Keeper"
+  },
+  {
+   "team": "co",
+   "de": "Schütze (Co-Trainer)",
+   "en": "Shooter (co-coach)"
+  }
+ ]
+}

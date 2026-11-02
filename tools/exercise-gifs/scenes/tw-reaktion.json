@@ -1,0 +1,187 @@
+{
+ "id": "tw-reaktion",
+ "name": "TW: Reaktion auf kurze Distanz",
+ "fps": 12.5,
+ "duration": 6.4,
+ "field": {
+  "w": 10,
+  "h": 9,
+  "margin": 2
+ },
+ "goals": [
+  {
+   "x": 5,
+   "y": 0,
+   "side": "top",
+   "kind": "small"
+  }
+ ],
+ "poles": [
+  [
+   5,
+   4.2
+  ]
+ ],
+ "teams": {
+  "gk": {
+   "color": "#1fa463",
+   "letter": "T"
+  },
+  "co": {
+   "color": "#e67e22",
+   "letter": "C"
+  }
+ },
+ "players": [
+  {
+   "id": "G",
+   "team": "gk",
+   "path": [
+    [
+     0,
+     5,
+     1.2
+    ],
+    [
+     1.0,
+     5,
+     1.2
+    ],
+    [
+     1.3,
+     6.4,
+     1.2
+    ],
+    [
+     2.2,
+     6.4,
+     1.2
+    ],
+    [
+     3.2,
+     5,
+     1.2
+    ],
+    [
+     4.2,
+     5,
+     1.2
+    ],
+    [
+     4.5,
+     3.6,
+     1.2
+    ],
+    [
+     5.4,
+     3.6,
+     1.2
+    ],
+    [
+     6.2,
+     5,
+     1.2
+    ]
+   ],
+   "face": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "C",
+   "team": "co",
+   "path": [
+    [
+     0,
+     5,
+     8
+    ]
+   ],
+   "face": [
+    0,
+    -1
+   ]
+  }
+ ],
+ "balls": [
+  {
+   "keys": [
+    {
+     "t": 0,
+     "on": "C"
+    },
+    {
+     "t": 0.8,
+     "on": "C"
+    },
+    {
+     "t": 1.3,
+     "on": "G"
+    },
+    {
+     "t": 1.9,
+     "x": 9.3,
+     "y": 2.6
+    },
+    {
+     "t": 3.0,
+     "x": 9.0,
+     "y": 3.0
+    },
+    {
+     "t": 3.8,
+     "on": "C"
+    },
+    {
+     "t": 4.0,
+     "on": "C"
+    },
+    {
+     "t": 4.5,
+     "on": "G"
+    },
+    {
+     "t": 5.1,
+     "x": 0.8,
+     "y": 2.6
+    },
+    {
+     "t": 5.6,
+     "x": 1.0,
+     "y": 3.2
+    },
+    {
+     "t": 6.4,
+     "on": "C"
+    }
+   ]
+  }
+ ],
+ "captions": [
+  {
+   "from": 0,
+   "to": 3.2,
+   "de": "Sichtblock: erst reagieren, wenn der Ball kommt",
+   "en": "Screen: react only when you see the ball"
+  },
+  {
+   "from": 3.2,
+   "to": 6.4,
+   "de": "Zur Seite abwehren, nicht nach vorn",
+   "en": "Parry wide, not back into play"
+  }
+ ],
+ "legend": [
+  {
+   "team": "gk",
+   "de": "Torwart",
+   "en": "Keeper"
+  },
+  {
+   "team": "co",
+   "de": "Schütze",
+   "en": "Shooter"
+  }
+ ]
+}

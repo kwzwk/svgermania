@@ -1,5 +1,5 @@
-import { AGE_GROUPS, LEVELS, THEMES, PHASES, SESSION_LENGTHS, ritualMinutes } from './config.js';
-import { generatePlan, isoWeek, sessionSteps } from './generator.js';
+import { AGE_GROUPS, LEVELS, THEMES, PHASES, SESSION_LENGTHS, WEEKDAYS, ritualMinutes } from './config.js';
+import { generatePlan, isoWeek, sessionSteps, homeChallenges, maxSessions, trainingDays } from './generator.js';
 import { MAX_ITEMS, MAX_MINUTES, buildSession, decodeCustom, defaultMinutes, emptyCustom, encodeCustom, fixRituals, ritualsFor, totalMinutes } from './custom.js';
 import {
   t,
@@ -24,6 +24,7 @@ const option = (value, label, selected = false) => `<option value="${esc(value)}
 let exercises = [];
 let rituals = null;
 let prevention = null;
+let home = null;
 let variant = 0;
 let currentPlan = null;
 
@@ -40,7 +41,9 @@ function readState() {
   return {
     age,
     level: LEVELS[q.get('level')] ? Number(q.get('level')) : 1,
-    sessions: clamp(Number(q.get('sessions')) || 2, 1, 3),
+    sessions: clamp(Number(q.get('sessions')) || 2, 1, maxSessions(age)),
+    days: (q.get('days') ?? '').split(',').filter(Boolean).map(Number),
+    match: clamp(Number(q.get('match')) || 0, 0, 7) || null,
     minutes: SESSION_LENGTHS.includes(Number(q.get('minutes'))) ? Number(q.get('minutes')) : AGE_GROUPS[age].defaultMinutes,
     players: clamp(Number(q.get('players')) || (stageOf(age) === 'youth' ? 16 : 12), 2, 40),
     keepers: clamp(Number(q.get('keepers') ?? 1), 0, 4),
@@ -54,6 +57,8 @@ function readState() {
 
 function writeState(s) {
   const q = new URLSearchParams({ age: s.age, level: s.level, sessions: s.sessions, minutes: s.minutes, players: s.players, theme: s.theme, week: s.week });
+  if (s.days?.length) q.set('days', s.days.join(','));
+  if (s.match) q.set('match', s.match);
   if (s.keepers != null) q.set('keepers', s.keepers);
   if (s.variant) q.set('v', s.variant);
   if (!s.rituals) q.set('rituals', '0');
@@ -77,6 +82,7 @@ function applyStaticTexts() {
   $('#players-label').textContent = t(youth ? 'playersYouth' : 'players');
   $('#keepers-field').hidden = !youth;
   $('#prevention-field').hidden = !youth;
+  $('#match-field').hidden = !youth;
   $('.site-footer p').textContent = t(youth ? 'footerYouth' : 'footer');
   $('#rituals-label').textContent = t(youth ? 'includeRitualsYouth' : 'includeRituals');
   const langBtn = $('#lang-toggle');
@@ -97,7 +103,9 @@ function fillForm(state) {
     .map((id) => `<label><input type="radio" name="level" value="${id}"${Number(id) === state.level ? ' checked' : ''}><span>${esc(levelInfo(id).label)}</span></label>`)
     .join('');
   const form = $('#plan-form');
-  form.sessions.value = state.sessions;
+  fillSessions(state.age, state.sessions);
+  $('#match').innerHTML = option('', t('noMatch'), !state.match) + WEEKDAYS.map((d) => option(d, t(`day${d}`), d === state.match)).join('');
+  fillDays(trainingDays(Number(form.sessions.value), state.days, stageOf(state.age) === 'youth' ? state.match : null), stageOf(state.age) === 'youth' ? state.match : null);
   form.players.value = state.players;
   form.keepers.value = state.keepers ?? 1;
   form.week.value = state.week;
@@ -106,12 +114,44 @@ function fillForm(state) {
   fillThemes(state.age, state.theme);
 }
 
+// Einheiten pro Woche: 1 bis zur Höchstzahl der Altersklasse.
+function fillSessions(age, current) {
+  const max = maxSessions(age);
+  const keep = clamp(Number(current) || 2, 1, max);
+  $('#sessions').innerHTML = Array.from({ length: max }, (_, i) => option(i + 1, String(i + 1), i + 1 === keep)).join('');
+  $('#sessions').title = t('maxSessionsHint', { n: max });
+}
+
+// Trainingstage als Wochentag-Schalter; der Spieltag ist gesperrt.
+function fillDays(days, match) {
+  $('#days').innerHTML = WEEKDAYS.map(
+    (d) => `<label title="${esc(t(`day${d}`))}"><input type="checkbox" name="day" value="${d}"${days.includes(d) ? ' checked' : ''}${d === match ? ' disabled' : ''}><span>${esc(t(`dayShort${d}`))}</span></label>`,
+  ).join('');
+}
+
+const checkedDays = () => [...document.querySelectorAll('#days input[name=day]:checked')].map((el) => Number(el.value));
+const matchValue = () => (stageOf($('#plan-form').age.value) === 'youth' ? Number($('#match').value) || null : null);
+
 function bindForm() {
   const form = $('#plan-form');
   form.addEventListener('change', (e) => {
-    if (e.target.name === 'age') {
+    const name = e.target.name;
+    if (name === 'day') {
+      // Die Tage bestimmen die Zahl der Einheiten; mindestens einer, höchstens die Höchstzahl der Altersklasse.
+      const days = checkedDays();
+      if (!days.length || days.length > maxSessions(form.age.value)) {
+        e.target.checked = !e.target.checked;
+        return;
+      }
+      form.sessions.value = days.length;
+    }
+    if (name === 'age') {
       form.minutes.value = AGE_GROUPS[form.age.value].defaultMinutes;
       fillThemes(form.age.value, form.theme.value);
+      fillSessions(form.age.value, form.sessions.value);
+    }
+    if (['age', 'sessions', 'match'].includes(name)) fillDays(trainingDays(Number(form.sessions.value), null, matchValue()), matchValue());
+    if (name === 'age') {
       const next = stageOf(form.age.value);
       if (next !== stage) switchStage(next);
     }
@@ -154,6 +194,8 @@ function formState() {
     age: f.age.value,
     level: Number(f.querySelector('input[name=level]:checked').value),
     sessions: Number(f.sessions.value),
+    days: checkedDays(),
+    match: matchValue(),
     minutes: Number(f.minutes.value),
     players: clamp(Number(f.players.value) || 12, 2, 40),
     keepers: stageOf(f.age.value) === 'youth' ? clamp(Number(f.keepers.value) || 0, 0, 4) : undefined,
@@ -194,21 +236,42 @@ function render() {
         fields,
         field: esc(group.field),
         goals: plan.miniGoals,
-      })}</p>
+      })} ${esc(t('weeklyTime', { time: formatHours(plan.weeklyMinutes), sessions: plan.sessions.length, minutes: plan.minutes }))}</p>
     </div>
+    <p class="block-note">${esc(t(`blockNote${plan.block.week}`))}</p>
     ${netPlay}
-    ${plan.sessions.map((s) => renderSession(s, plan)).join('')}`;
+    ${plan.sessions.map((s) => renderSession(s, plan)).join('')}
+    ${renderHome(plan)}`;
   currentPlan = plan;
   fillStartSessions(plan);
 }
 
+function formatHours(min) {
+  const h = Math.floor(min / 60);
+  const m = min % 60;
+  return h && m ? `${h} h ${m} min` : h ? `${h} h` : `${m} min`;
+}
+
+// Titel einer Einheit mit Wochentag, z. B. "Training 1 · Dienstag".
+const sessionLabel = (session, age) => `${sessionTitle(session.number, age)}${session.day ? ` · ${t(`day${session.day}`)}` : ''}`;
+
+function loadNote(session) {
+  const notes = [];
+  if (session.load === 'sharp') notes.push(t('loadSharpNote'));
+  if (session.load === 'recovery') notes.push(t('loadRecoveryNote'));
+  if (session.afterMatch) notes.push(t('afterMatchNote'));
+  return notes.length ? `<p class="load-note">${notes.map(esc).join('<br>')}</p>` : '';
+}
+
 function renderSession(session, plan) {
-  const progression = session.number > 1 && session.level > plan.level ? t('harderStep') : '';
+  const progression = session.level > plan.level ? t('harderStep') : session.level < plan.level ? t('easierStep') : '';
   const standard = ritualTexts(rituals, plan.stage)?.standard;
   const youthPlan = plan.stage === 'youth';
+  const loadTag = session.load === 'sharp' ? `<span class="tag tag-load">${esc(t('loadSharp'))}</span>` : session.load === 'recovery' ? `<span class="tag tag-recovery">${esc(t('loadRecovery'))}</span>` : '';
   return `
     <article class="session">
-      <h3>${esc(sessionTitle(session.number, plan.age))}<span class="muted">${esc(progression)}</span></h3>
+      <h3>${esc(sessionLabel(session, plan.age))}<span class="muted">${esc(progression)}</span> ${loadTag}</h3>
+      ${loadNote(session)}
       <ol class="blocks">
         ${session.opening ? renderRitualBlock('arrival', t('before'), t('arrival'), session.opening.arrival) : ''}
         ${session.opening ? renderRitualBlock('opening', `${session.opening.minutes} min`, t(youthPlan ? 'openingYouth' : 'openingCircle'), session.opening.circle, standard?.opening, plan.theme) : ''}
@@ -216,6 +279,18 @@ function renderSession(session, plan) {
         ${session.closing ? renderRitualBlock('closing', `${session.closing.minutes} min`, t(youthPlan ? 'closingYouth' : 'closingCircle'), session.closing.circle, standard?.closing) : ''}
       </ol>
     </article>`;
+}
+
+// Aufgaben für zu Hause und freies Spielen (data/home.json), passend zum Schwerpunkt der Woche.
+function renderHome(plan) {
+  const list = homeChallenges(home, { stage: plan.stage, theme: plan.theme, week: plan.week });
+  if (!list.length) return '';
+  return `
+    <section class="home-card">
+      <h3>${esc(t('homeTitle'))}</h3>
+      <p class="hint">${esc(loc(home.note))}</p>
+      <ul>${list.map((c) => `<li><strong>${esc(loc(c.name))}</strong>: ${esc(loc(c.how))}</li>`).join('')}</ul>
+    </section>`;
 }
 
 function focusNote(theme) {
@@ -293,9 +368,23 @@ function renderBlock(block, age) {
         <span class="time">${block.minutes} min</span>
         <span class="phase">${esc(label)}</span>
         <span class="name">${esc(ex.name)}</span>
+        ${block.anchor ? `<span class="tag tag-anchor">${esc(t('anchor'))}</span>` : ''}
         <span class="tag tag-${block.variation}">${esc(t(block.variation))}</span>
       </summary>
+      ${block.anchor ? `<p class="focus-note">${esc(t('anchorNote'))}</p>` : ''}
       ${renderExerciseBody(ex, block.variation)}
+    </details>
+    ${renderKeeperStation(block)}`;
+}
+
+// Torhüter-Station parallel zum Zwischenblock (nur Jugend mit mindestens einem Torhüter).
+function renderKeeperStation(block) {
+  if (!block.keeper) return '';
+  const kx = localizeExercise(block.keeper);
+  return `
+    <details class="keeper-station">
+      <summary>${esc(t('keeperStation'))}: ${esc(kx.name)}</summary>
+      ${renderExerciseBody(kx, block.variation)}
     </details>`;
 }
 
@@ -359,7 +448,7 @@ function renderCatalog() {
       <details class="card">
         <summary>
           <span class="name">${esc(ex.name)}</span>
-          <span class="muted">${esc(phaseLabel(ex.phase, stage === 'youth' ? 'D' : null))} · ${esc(ex.ages.map((a) => ageGroup(a).short).join(', '))}</span>
+          <span class="muted">${ex.role === 'keeper' ? `${esc(t('keeperRole'))} · ` : ''}${esc(phaseLabel(ex.phase, stage === 'youth' ? 'D' : null))} · ${esc(ex.ages.map((a) => ageGroup(a).short).join(', '))}</span>
         </summary>
         ${renderExerciseBody(ex, 'base')}
       </details>`,
@@ -736,7 +825,7 @@ const trainer = { steps: [], index: 0, endAt: 0, left: 0, paused: false, alerted
 function fillStartSessions(plan) {
   const select = $('#start-session');
   const keep = Number(select.value) || 1;
-  select.innerHTML = plan.sessions.map((s) => option(s.number, sessionTitle(s.number, plan.age), s.number === keep)).join('');
+  select.innerHTML = plan.sessions.map((s) => option(s.number, sessionLabel(s, plan.age), s.number === keep)).join('');
   $('#start-session-label').hidden = plan.sessions.length < 2;
 }
 
@@ -744,7 +833,7 @@ function startTraining() {
   const session = currentPlan?.sessions.find((s) => s.number === Number($('#start-session').value)) ?? currentPlan?.sessions[0];
   if (!session) return;
   const age = currentPlan.age;
-  startSession(session, { age, theme: currentPlan.theme, title: () => sessionTitle(session.number, age), returnTo: '#start-training' });
+  startSession(session, { age, theme: currentPlan.theme, title: () => sessionLabel(session, age), returnTo: '#start-training' });
 }
 
 // Startet den Trainingsmodus für eine Einheit (aus dem Wochenplan oder dem eigenen Plan).
@@ -884,7 +973,7 @@ function renderTrainer() {
   } else if (step.block.prevention && preventionProgram(step.block.prevention)) {
     body = renderPreventionBody(preventionProgram(step.block.prevention), step.block.preventionLevel);
   } else if (step.block.exercise) {
-    body = renderExerciseBody(localizeExercise(step.block.exercise), step.block.variation);
+    body = renderExerciseBody(localizeExercise(step.block.exercise), step.block.variation) + renderKeeperStation(step.block);
   }
   const tag = step.ritual ? `<span class="tag tag-ritual">${esc(t('ritual'))}</span>` : `<span class="tag tag-${step.block.variation}">${esc(t(step.block.variation))}</span>`;
   box.innerHTML = `
@@ -1013,6 +1102,7 @@ async function main() {
   const [ex, rit, exEn, ritEn] = await Promise.all(files.map((f) => fetch(`data/${f}`).then((r) => r.json())));
   // Optional: ohne die Datei bleibt die Aktivierung eine normale Übung.
   prevention = await fetch('data/prevention.json').then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  home = await fetch('data/home.json').then((r) => (r.ok ? r.json() : null)).catch(() => null);
   exercises = ex;
   rituals = rit;
   setTranslations(exEn, ritEn);

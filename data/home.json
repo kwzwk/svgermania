@@ -1,0 +1,432 @@
+{
+  "note": {
+    "de": "Training allein reicht nicht: Viele spätere Spitzenspieler haben als Kinder und Jugendliche zusätzlich sehr viel frei gespielt. Diese Aufgaben sind freiwillig und sollen Spaß machen, kein Pflichtprogramm.",
+    "en": "Training alone is not enough: many players who later reach the top played a great deal of free football as children and teenagers. These tasks are optional and meant to be fun, not compulsory homework."
+  },
+  "challenges": [
+    {
+      "id": "h-ballzauber",
+      "themes": [
+        "dribbling",
+        "koordination",
+        "finten"
+      ],
+      "name": {
+        "de": "Ballzauber am Fleck",
+        "en": "Ball magic on the spot"
+      },
+      "how": {
+        "de": "Jeden Tag 5 Minuten: Ball mit der Sohle vor und zurück, seitlich, um den Standfuß. Erst mit dem starken, dann mit dem schwachen Fuß.",
+        "en": "5 minutes every day: roll the ball forwards and back with the sole, sideways, around your standing foot. Strong foot first, then the weaker one."
+      }
+    },
+    {
+      "id": "h-schwacher-fuss",
+      "themes": [
+        "dribbling",
+        "passen",
+        "torschuss"
+      ],
+      "name": {
+        "de": "Woche des schwachen Fußes",
+        "en": "Weaker-foot week"
+      },
+      "how": {
+        "de": "Eine Woche lang alles zuerst mit dem schwachen Fuß: an die Wand passen, dribbeln, schießen. Zähle, wie oft es klappt.",
+        "en": "For one week, do everything with your weaker foot first: pass against a wall, dribble, shoot. Count how often it works."
+      }
+    },
+    {
+      "id": "h-wandpass",
+      "themes": [
+        "passen"
+      ],
+      "name": {
+        "de": "Wand-Pässe",
+        "en": "Wall passes"
+      },
+      "how": {
+        "de": "An eine Wand passen und den Ball mit einem Kontakt zurückspielen. Wer schafft 20 in Folge ohne Fehler? Links und rechts abwechseln.",
+        "en": "Pass against a wall and play it back first time. Who can do 20 in a row without a mistake? Alternate left and right."
+      }
+    },
+    {
+      "id": "h-annahme-aufdrehen",
+      "themes": [
+        "passen",
+        "orientierung"
+      ],
+      "stages": [
+        "youth"
+      ],
+      "name": {
+        "de": "Annahme und Aufdrehen an der Wand",
+        "en": "Receive and turn at the wall"
+      },
+      "how": {
+        "de": "An die Wand passen, vor der Annahme über die Schulter schauen, mit dem hinteren Fuß annehmen und in die andere Richtung aufdrehen. 3 × 20 Wiederholungen.",
+        "en": "Pass against the wall, check over your shoulder before the ball arrives, receive with the back foot and turn the other way. 3 × 20 repetitions."
+      }
+    },
+    {
+      "id": "h-schulterblick",
+      "themes": [
+        "orientierung"
+      ],
+      "stages": [
+        "kids"
+      ],
+      "name": {
+        "de": "Schulterblick-Spiel",
+        "en": "Shoulder-check game"
+      },
+      "how": {
+        "de": "Mit einem Elternteil: Du dribbelst, sie halten hinter dir Finger hoch. Du schaust kurz über die Schulter und rufst die Zahl, ohne den Ball zu verlieren.",
+        "en": "With a parent: you dribble while they hold up fingers behind you. Glance over your shoulder and call the number without losing the ball."
+      }
+    },
+    {
+      "id": "h-slalom",
+      "themes": [
+        "dribbling",
+        "koordination"
+      ],
+      "stages": [
+        "kids"
+      ],
+      "name": {
+        "de": "Schuh-Slalom",
+        "en": "Shoe slalom"
+      },
+      "how": {
+        "de": "Stelle 6 Schuhe oder Flaschen in eine Reihe und dribble durch, nur mit der Innenseite, nur mit der Außenseite, dann auf Zeit.",
+        "en": "Put 6 shoes or bottles in a row and dribble through: inside of the foot only, outside only, then against the clock."
+      }
+    },
+    {
+      "id": "h-jonglieren",
+      "themes": [
+        "koordination",
+        "kopfball"
+      ],
+      "name": {
+        "de": "Jonglier-Rekord",
+        "en": "Juggling record"
+      },
+      "how": {
+        "de": "Jeden Tag den eigenen Rekord im Hochhalten jagen. Kinder dürfen den Ball nach jedem Kontakt einmal aufspringen lassen.",
+        "en": "Chase your own juggling record every day. Younger kids may let the ball bounce once after each touch."
+      }
+    },
+    {
+      "id": "h-finten-spiegel",
+      "themes": [
+        "finten",
+        "1v1"
+      ],
+      "name": {
+        "de": "Drei Finten vor dem Spiegel",
+        "en": "Three feints in front of the mirror"
+      },
+      "how": {
+        "de": "Übe drei Finten (z. B. Übersteiger, Körpertäuschung, Schere) langsam, dann schnell, jeweils mit beiden Füßen. Zeig sie im nächsten Training.",
+        "en": "Practise three feints (e.g. step-over, body feint, scissors) slowly, then fast, each with both feet. Show them at the next session."
+      }
+    },
+    {
+      "id": "h-1v1-freund",
+      "themes": [
+        "1v1",
+        "verteidigen"
+      ],
+      "name": {
+        "de": "1 gegen 1 mit einem Freund",
+        "en": "1v1 with a friend"
+      },
+      "how": {
+        "de": "Zwei Schuhpaare als Tore, 10 Schritte auseinander. Spielt 1 gegen 1, nach jedem Tor wechselt der Ballbesitz. Wer zuerst 10 Tore hat.",
+        "en": "Two pairs of shoes as goals, 10 steps apart. Play 1v1; possession changes after every goal. First to 10 wins."
+      }
+    },
+    {
+      "id": "h-torschuss-ecken",
+      "themes": [
+        "torschuss"
+      ],
+      "name": {
+        "de": "Ecken treffen",
+        "en": "Hit the corners"
+      },
+      "how": {
+        "de": "Markiere an einer Wand oder einem Tor zwei Ecken. 10 Schüsse links, 10 rechts, mit Innenseite und Spann. Notiere deine Treffer.",
+        "en": "Mark two corners on a wall or goal. 10 shots left, 10 right, with the inside of the foot and the laces. Write down your hits."
+      }
+    },
+    {
+      "id": "h-volley",
+      "themes": [
+        "torschuss",
+        "flanken"
+      ],
+      "stages": [
+        "youth"
+      ],
+      "name": {
+        "de": "Volley aus der Hand",
+        "en": "Volleys from your hands"
+      },
+      "how": {
+        "de": "Ball aus der Hand fallen lassen und volley an die Wand schießen, sauber getroffen statt hart. 3 × 10 je Fuß.",
+        "en": "Drop the ball from your hands and volley it against a wall, clean rather than hard. 3 × 10 with each foot."
+      }
+    },
+    {
+      "id": "h-flugball",
+      "themes": [
+        "flanken",
+        "passen"
+      ],
+      "stages": [
+        "youth"
+      ],
+      "name": {
+        "de": "Flugbälle auf ein Ziel",
+        "en": "Long balls on target"
+      },
+      "how": {
+        "de": "Aus 20 bis 30 m Flugbälle in einen Kreis oder zu einem Partner spielen. Wie viele landen ohne Aufsetzer im Ziel?",
+        "en": "Play long balls from 20 to 30 m into a circle or to a partner. How many land in the target without bouncing?"
+      }
+    },
+    {
+      "id": "h-kopfball-leicht",
+      "themes": [
+        "kopfball"
+      ],
+      "stages": [
+        "youth"
+      ],
+      "name": {
+        "de": "Kopfball mit leichtem Ball",
+        "en": "Heading with a light ball"
+      },
+      "how": {
+        "de": "Nur mit einem weichen Leichtball oder Ballon: aus der Hand hochwerfen und mit der Stirn zurückköpfen, Augen offen. Höchstens 10 Kopfbälle am Tag.",
+        "en": "Only with a soft light ball or a balloon: toss it up and head it back with your forehead, eyes open. No more than 10 headers a day."
+      }
+    },
+    {
+      "id": "h-sprint-start",
+      "themes": [
+        "athletik",
+        "umschalten"
+      ],
+      "stages": [
+        "youth"
+      ],
+      "name": {
+        "de": "Reaktionsstarts",
+        "en": "Reaction starts"
+      },
+      "how": {
+        "de": "Mit Partner: Auf Zuruf oder Klatschen aus dem Liegen, Sitzen oder Rückwärtslaufen 10 m sprinten. 6 bis 8 Sprints, dazwischen ganz erholen.",
+        "en": "With a partner: on a call or clap, sprint 10 m from lying, sitting or jogging backwards. 6 to 8 sprints with full rest in between."
+      }
+    },
+    {
+      "id": "h-kraft",
+      "themes": [
+        "athletik"
+      ],
+      "stages": [
+        "youth"
+      ],
+      "name": {
+        "de": "Kraft mit dem eigenen Körper",
+        "en": "Bodyweight strength"
+      },
+      "how": {
+        "de": "Zweimal pro Woche: 3 Runden aus 10 Kniebeugen, 8 Ausfallschritten je Bein, 30 s Unterarmstütz und 6 Nordic-Hamstrings mit Partner. Sauber vor schnell.",
+        "en": "Twice a week: 3 rounds of 10 squats, 8 lunges per leg, 30 s plank and 6 Nordic hamstrings with a partner. Clean before fast."
+      }
+    },
+    {
+      "id": "h-umschalten-ball",
+      "themes": [
+        "umschalten"
+      ],
+      "stages": [
+        "kids"
+      ],
+      "name": {
+        "de": "Schnapp den Ball",
+        "en": "Grab the ball"
+      },
+      "how": {
+        "de": "Mit Geschwistern oder Freunden: Ein Ball liegt zwischen zwei Toren. Auf Zuruf rennen beide los, wer ihn hat, greift an, der andere verteidigt sofort.",
+        "en": "With siblings or friends: a ball lies between two goals. On a call both run; whoever gets it attacks, the other defends straight away."
+      }
+    },
+    {
+      "id": "h-umschalten-mini",
+      "themes": [
+        "umschalten",
+        "verteidigen"
+      ],
+      "stages": [
+        "youth"
+      ],
+      "name": {
+        "de": "Ballverlust, sofort zurück",
+        "en": "Lose it, win it back"
+      },
+      "how": {
+        "de": "Bei jedem Kick mit Freunden: Nach Ballverlust zählst du laut bis 5 und versuchst in dieser Zeit, den Ball zurückzuerobern.",
+        "en": "Whenever you play with friends: after losing the ball, count out loud to 5 and try to win it back in that time."
+      }
+    },
+    {
+      "id": "h-verteidigen-abdraengen",
+      "themes": [
+        "verteidigen",
+        "1v1"
+      ],
+      "stages": [
+        "youth"
+      ],
+      "name": {
+        "de": "Abdrängen üben",
+        "en": "Practise jockeying"
+      },
+      "how": {
+        "de": "Mit einem Partner: Er dribbelt auf dich zu, du bleibst seitlich stehen, drängst ihn auf seinen schwachen Fuß und greifst erst an, wenn der Ball springt.",
+        "en": "With a partner: they dribble at you, you stay side-on, push them onto their weaker foot and only tackle when the ball gets away from them."
+      }
+    },
+    {
+      "id": "h-video-szene",
+      "themes": [
+        "orientierung",
+        "verteidigen",
+        "umschalten"
+      ],
+      "stages": [
+        "youth"
+      ],
+      "name": {
+        "de": "Eine Szene aus dem Profifußball",
+        "en": "One scene from pro football"
+      },
+      "how": {
+        "de": "Schau dir ein Spiel deiner Position an und achte 10 Minuten nur auf einen Spieler: Wann schaut er sich um, wo steht er ohne Ball? Erzähl im Training davon.",
+        "en": "Watch a match and follow one player in your position for 10 minutes: when do they look around, where do they stand without the ball? Tell us at training."
+      }
+    },
+    {
+      "id": "h-balance",
+      "themes": [
+        "koordination",
+        "athletik"
+      ],
+      "stages": [
+        "kids"
+      ],
+      "name": {
+        "de": "Storch auf dem Ball",
+        "en": "Stork on the ball"
+      },
+      "how": {
+        "de": "Auf einem Bein stehen und mit dem anderen Fuß den Ball auf der Sohle hin und her rollen. Wer schafft 30 Sekunden pro Bein?",
+        "en": "Stand on one leg and roll the ball back and forth under the other sole. Who can manage 30 seconds per leg?"
+      }
+    },
+    {
+      "id": "h-dribbel-zeit",
+      "themes": [
+        "dribbling",
+        "1v1"
+      ],
+      "stages": [
+        "youth"
+      ],
+      "name": {
+        "de": "Tempo-Dribbling mit Richtungswechsel",
+        "en": "Speed dribble with turns"
+      },
+      "how": {
+        "de": "Zwei Markierungen 10 m auseinander: hin dribbeln, Drehung (Cruyff, Sohle, Innenseite), zurück. 6 Läufe auf Zeit, jeden mit einer anderen Drehung.",
+        "en": "Two markers 10 m apart: dribble there, turn (Cruyff, sole, inside), come back. 6 timed runs, a different turn each time."
+      }
+    },
+    {
+      "id": "h-torschuss-kids",
+      "themes": [
+        "torschuss",
+        "dribbling"
+      ],
+      "stages": [
+        "kids"
+      ],
+      "name": {
+        "de": "Dosen-Schießen",
+        "en": "Can shooting"
+      },
+      "how": {
+        "de": "Stelle leere Dosen oder Flaschen auf und schieße sie aus 5 Schritten um. Dann aus dem Dribbling, dann mit dem schwachen Fuß.",
+        "en": "Set up empty cans or bottles and knock them over from 5 steps. Then from a dribble, then with your weaker foot."
+      }
+    }
+  ],
+  "freePlay": [
+    {
+      "id": "f-bolzplatz",
+      "name": {
+        "de": "Freies Spielen auf dem Bolzplatz",
+        "en": "Free play at the cage or park"
+      },
+      "how": {
+        "de": "Mindestens einmal diese Woche ohne Trainer kicken: Bolzplatz, Schulhof, Garten. Ihr macht die Regeln, ihr wählt die Teams.",
+        "en": "At least once this week, play without a coach: cage, schoolyard, garden. You make the rules, you pick the teams."
+      }
+    },
+    {
+      "id": "f-mixed-age",
+      "name": {
+        "de": "Mit Älteren und Jüngeren spielen",
+        "en": "Play with older and younger kids"
+      },
+      "how": {
+        "de": "Spielt diese Woche einmal mit Geschwistern, Nachbarn oder Kindern aus anderen Jahrgängen. Gegen Ältere lernt man, sich zu behaupten, mit Jüngeren übernimmt man Verantwortung.",
+        "en": "Play once this week with siblings, neighbours or kids from other years. Against older ones you learn to hold your own; with younger ones you take responsibility."
+      }
+    },
+    {
+      "id": "f-anderer-sport",
+      "stages": [
+        "kids"
+      ],
+      "name": {
+        "de": "Ein anderer Sport",
+        "en": "Another sport"
+      },
+      "how": {
+        "de": "Probiert diese Woche etwas anderes: Basketball, Klettern, Hockey, Schwimmen oder Fangen spielen. Vielseitige Bewegung macht auch im Fußball geschickter.",
+        "en": "Try something different this week: basketball, climbing, hockey, swimming or tag. All-round movement makes you nimbler in football too."
+      }
+    },
+    {
+      "id": "f-futsal",
+      "stages": [
+        "youth"
+      ],
+      "name": {
+        "de": "Futsal oder Straßenfußball",
+        "en": "Futsal or street football"
+      },
+      "how": {
+        "de": "Ein Kick auf kleinem Raum mit wenigen Spielern, z. B. Futsal in der Halle oder 3 gegen 3 im Käfig. Viele Ballkontakte, schnelle Entscheidungen, keine Anweisungen.",
+        "en": "A game in a small space with few players, e.g. futsal indoors or 3v3 in a cage. Lots of touches, quick decisions, no instructions."
+      }
+    }
+  ]
+}

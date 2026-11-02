@@ -1,0 +1,195 @@
+{
+ "id": "tw-1v1-herauslaufen",
+ "name": "TW: 1 gegen 1 gegen den Stürmer",
+ "fps": 12.5,
+ "duration": 7.0,
+ "field": {
+  "w": 18,
+  "h": 24,
+  "margin": 2
+ },
+ "goals": [
+  {
+   "x": 9,
+   "y": 0,
+   "side": "top",
+   "kind": "small"
+  }
+ ],
+ "lines": [
+  [
+   2,
+   16.5,
+   16,
+   16.5
+  ]
+ ],
+ "cones": [
+  [
+   9,
+   23
+  ]
+ ],
+ "teams": {
+  "gk": {
+   "color": "#1fa463",
+   "letter": "T"
+  },
+  "bl": {
+   "color": "#2f6fd6"
+  }
+ },
+ "players": [
+  {
+   "id": "G",
+   "team": "gk",
+   "path": [
+    [
+     0,
+     9,
+     1.2
+    ],
+    [
+     1.0,
+     9,
+     1.2
+    ],
+    [
+     2.6,
+     9,
+     5.5
+    ],
+    [
+     3.4,
+     9,
+     6.6
+    ],
+    [
+     4.4,
+     9,
+     6.6
+    ],
+    [
+     6.4,
+     9,
+     1.2
+    ]
+   ],
+   "face": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "S",
+   "team": "bl",
+   "path": [
+    [
+     0,
+     9,
+     23
+    ],
+    [
+     1.0,
+     9,
+     19
+    ],
+    [
+     2.6,
+     9,
+     12.5
+    ],
+    [
+     3.3,
+     9,
+     9.0
+    ],
+    [
+     3.6,
+     9,
+     8.8
+    ],
+    [
+     5.0,
+     10.5,
+     15
+    ],
+    [
+     6.6,
+     9,
+     22
+    ]
+   ],
+   "face": [
+    0,
+    -1
+   ]
+  }
+ ],
+ "balls": [
+  {
+   "keys": [
+    {
+     "t": 0,
+     "on": "S"
+    },
+    {
+     "t": 3.3,
+     "on": "S"
+    },
+    {
+     "t": 3.6,
+     "on": "G",
+     "fx": "hand"
+    },
+    {
+     "t": 4.6,
+     "on": "G",
+     "fx": "hand"
+    },
+    {
+     "t": 5.8,
+     "x": 9,
+     "y": 21.5,
+     "lob": true
+    },
+    {
+     "t": 6.9,
+     "on": "S"
+    }
+   ]
+  }
+ ],
+ "captions": [
+  {
+   "from": 0,
+   "to": 2.6,
+   "de": "Herauslaufen, solange der Ball weit vorliegt",
+   "en": "Come out while the ball is far from the striker"
+  },
+  {
+   "from": 2.6,
+   "to": 4.6,
+   "de": "Grundstellung, niedrig bleiben, nicht zu früh abtauchen",
+   "en": "Get set, stay low, don't go down too early"
+  },
+  {
+   "from": 4.6,
+   "to": 7.0,
+   "de": "Nächster Stürmer",
+   "en": "Next striker"
+  }
+ ],
+ "legend": [
+  {
+   "team": "gk",
+   "de": "Torwart",
+   "en": "Keeper"
+  },
+  {
+   "team": "bl",
+   "de": "Stürmer",
+   "en": "Striker"
+  }
+ ]
+}
