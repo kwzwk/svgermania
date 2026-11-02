@@ -7,6 +7,14 @@
     "Konkret loben (\"Toll, wie du hochgeschaut hast\"), Fehler sind erlaubt.",
     "Trinkpause zwischen den Phasen, alle spielen gleich viel, niemand wartet lange."
   ],
+  "principlesYouth": [
+    "Jeder Spieler wird mit Namen begrüßt und am Ende verabschiedet.",
+    "Feste Struktur: Ankommen, Teambesprechung, Aktivierung – Spielblock – Zwischenblock – Spielblock, Nachbesprechung.",
+    "Kurz erklären, dann spielen. Coaching in den Pausen zwischen den Durchgängen.",
+    "Fragen statt Anweisungen: Die Spieler finden Lösungen selbst und begründen sie.",
+    "Konkret loben, Fehler gehören zum Lernen.",
+    "Verantwortung übergeben: Kapitän, Aufbau-Team, Mannschaftsrat."
+  ],
   "standard": {
     "opening": [
       "Alle stehen im Kreis, der Trainer auf Augenhöhe (in die Hocke gehen).",
@@ -18,11 +26,22 @@
       "Jedes Kind einzeln verabschieden (Abklatschen, Name, ein lobender Satz)."
     ]
   },
+  "standardYouth": {
+    "opening": [
+      "Kurz zusammenkommen, alle sehen den Trainer.",
+      "Schwerpunkt der Woche in einem Satz nennen."
+    ],
+    "closing": [
+      "Teamruf: \"1, 2, 3 – Germania!\"",
+      "Gemeinsam abbauen, das Aufbau-Team kontrolliert.",
+      "Jeden Spieler mit Handschlag verabschieden."
+    ]
+  },
   "arrival": [
     {
       "id": "an-begruessung-eingang",
       "name": "Persönliche Begrüßung am Eingang",
-      "ages": ["G", "F", "E", "D", "C", "B", "A"],
+      "ages": ["G", "F", "E", "D"],
       "steps": [
         "Der Trainer steht am Platzeingang und begrüßt jedes Kind mit Namen und Abklatschen.",
         "Eine kurze persönliche Frage: \"Wie war dein Tag?\" oder \"Hast du am Wochenende gespielt?\"",
@@ -55,20 +74,42 @@
     {
       "id": "an-kapitaen-aufbau",
       "name": "Kapitän des Tages hilft beim Aufbau",
-      "ages": ["F", "E", "D", "C", "B", "A"],
+      "ages": ["F", "E", "D"],
       "steps": [
         "Jedes Kind wird mit Namen begrüßt.",
         "Der Kapitän des Tages (reihum, jedes Kind kommt dran) hilft beim Aufbau und verteilt Leibchen.",
         "Die anderen spielen frei auf die Minitore."
       ],
       "tip": "Eine Liste führen, damit jedes Kind gleich oft Kapitän ist."
+    },
+    {
+      "id": "an-handschlag-check",
+      "name": "Handschlag und kurzer Check-in",
+      "ages": ["C", "B", "A"],
+      "steps": [
+        "Der Trainer begrüßt jeden Spieler mit Handschlag und Namen.",
+        "Kurze Frage: Wie fit bist du heute? Schule, Belastung, Schmerzen?",
+        "Danach Ball holen und in Zweiergruppen locker passen, bis alle da sind."
+      ],
+      "tip": "Wer angeschlagen ist, meldet sich hier. Belastung für heute gleich anpassen."
+    },
+    {
+      "id": "an-aufbau-team",
+      "name": "Aufbau-Team",
+      "ages": ["C", "B", "A"],
+      "steps": [
+        "Zwei Spieler (wechselnd) bekommen die Feldskizze der Einheit und bauen die Felder auf.",
+        "Die anderen spielen Rondo 4 gegen 1, bis die Felder stehen.",
+        "Das Aufbau-Team meldet dem Trainer: Felder fertig."
+      ],
+      "tip": "Verantwortung übertragen: Die Skizze vorher als Foto in die Teamgruppe schicken."
     }
   ],
   "opening": [
     {
       "id": "kr-stimmungsdaumen",
       "name": "Stimmungsdaumen",
-      "ages": ["G", "F", "E", "D", "C", "B", "A"],
+      "ages": ["G", "F", "E", "D"],
       "steps": [
         "Jedes Kind zeigt mit dem Daumen, wie es ihm heute geht: hoch, Mitte oder runter.",
         "Wer mag, sagt einen Satz dazu.",
@@ -90,7 +131,7 @@
     {
       "id": "kr-highlight",
       "name": "Mein Highlight der Woche",
-      "ages": ["F", "E", "D", "C", "B", "A"],
+      "ages": ["F", "E", "D"],
       "steps": [
         "Reihum erzählt jedes Kind in einem Satz etwas Schönes aus seiner Woche.",
         "Der Trainer erzählt auch eins.",
@@ -112,7 +153,7 @@
     {
       "id": "kr-frage-der-woche",
       "name": "Frage der Woche",
-      "ages": ["F", "E", "D", "C", "B", "A"],
+      "ages": ["F", "E", "D"],
       "steps": [
         "Der Trainer stellt eine Frage zum Schwerpunkt (z. B. \"Wann ist es besser zu dribbeln als zu passen?\").",
         "Zwei oder drei Kinder antworten.",
@@ -130,13 +171,46 @@
         "Gemeinsamer Teamruf zum Start."
       ],
       "tip": "Reihum vergeben, damit jedes Kind einmal im Mittelpunkt steht."
+    },
+    {
+      "id": "tb-ziel-der-einheit",
+      "name": "Ziel der Einheit",
+      "ages": ["C", "B", "A"],
+      "steps": [
+        "Der Trainer nennt das Ziel der Einheit in einem Satz und woran man erkennt, dass es klappt.",
+        "Ein Spieler wiederholt das Ziel in eigenen Worten.",
+        "Teamruf, dann direkt in die Aktivierung."
+      ],
+      "tip": "Ein Ziel, nicht drei. In den Pausen zwischen den Durchgängen darauf zurückkommen."
+    },
+    {
+      "id": "tb-szene-letztes-spiel",
+      "name": "Szene aus dem letzten Spiel",
+      "ages": ["C", "B", "A"],
+      "steps": [
+        "Der Trainer zeigt eine Szene aus dem letzten Spiel (Taktiktafel, Foto oder kurzes Video).",
+        "Frage an die Mannschaft: Was hätten wir hier noch machen können?",
+        "Zwei oder drei Spieler antworten, im Training wird die Lösung ausprobiert."
+      ],
+      "tip": "Gelungene Szenen genauso nutzen wie Fehler, und keine Einzelnen vorführen."
+    },
+    {
+      "id": "tb-kapitaen-eroeffnet",
+      "name": "Der Kapitän eröffnet",
+      "ages": ["C", "B", "A"],
+      "steps": [
+        "Der Kapitän (oder der Mannschaftsrat) eröffnet: Stimmung im Team, Organisatorisches.",
+        "Der Trainer ergänzt nur das Ziel der Einheit.",
+        "Der Kapitän gibt den Teamruf vor."
+      ],
+      "tip": "Vorher kurz mit dem Kapitän absprechen. Ab der B-Jugend regelmäßig, das stärkt die Selbstorganisation."
     }
   ],
   "closing": [
     {
       "id": "ab-lob-runde",
       "name": "Lob-Runde",
-      "ages": ["G", "F", "E", "D", "C", "B", "A"],
+      "ages": ["G", "F", "E", "D"],
       "steps": [
         "Im Kreis: Der Trainer lobt jedes Kind für eine konkrete Sache aus dem Training.",
         "Daumen-Feedback: Wie hat euch das Training gefallen?"
@@ -146,7 +220,7 @@
     {
       "id": "ab-beste-aktion",
       "name": "Meine beste Aktion",
-      "ages": ["F", "E", "D", "C", "B", "A"],
+      "ages": ["F", "E", "D"],
       "steps": [
         "Zwei oder drei Kinder erzählen ihre beste Aktion des Tages.",
         "Die Frage der Woche aufgreifen: Was habt ihr herausgefunden?",
@@ -157,7 +231,7 @@
     {
       "id": "ab-fairplay-kind",
       "name": "Fairplay-Kind des Tages",
-      "ages": ["G", "F", "E", "D", "C"],
+      "ages": ["G", "F", "E", "D"],
       "steps": [
         "Die Kinder schlagen vor, wer heute besonders fair oder hilfsbereit war.",
         "Das Kind bekommt einen Applaus und darf den Teamruf anstimmen."
@@ -185,6 +259,28 @@
         "Kapitän für das nächste Mal bestimmen."
       ],
       "tip": "Termine zusätzlich den Eltern mitgeben."
+    },
+    {
+      "id": "nb-zwei-fragen",
+      "name": "Zwei Fragen zur Reflexion",
+      "ages": ["C", "B", "A"],
+      "steps": [
+        "Was hat heute gut funktioniert?",
+        "Was nehmen wir mit ins nächste Spiel?",
+        "Erst antworten die Spieler, der Trainer fasst am Ende in einem Satz zusammen."
+      ],
+      "tip": "Spieler zuerst, Trainer zuletzt. Lieber zwei gute Antworten als eine lange Rede."
+    },
+    {
+      "id": "nb-feedback-paare",
+      "name": "Feedback in Paaren",
+      "ages": ["C", "B", "A"],
+      "steps": [
+        "Je zwei Spieler geben sich eine Minute lang Feedback: ein konkretes Lob und einen Tipp.",
+        "Zwei Paare erzählen der Mannschaft, was sie sich gesagt haben.",
+        "Teamruf."
+      ],
+      "tip": "Konkret bleiben (\"Dein Aufdrehen im zweiten Spielblock war stark\"), Paare jede Woche neu mischen."
     }
   ]
 }

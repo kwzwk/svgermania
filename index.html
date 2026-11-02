@@ -25,10 +25,6 @@
           <button type="button" class="theme-toggle" id="theme-toggle">Automatisch</button>
         </div>
       </div>
-      <div class="stage-switch" role="group" id="stage-switch">
-        <button type="button" data-stage="kids" data-i18n="stageKids">Kinderfußball</button>
-        <button type="button" data-stage="youth" data-i18n="stageYouth">Jugendfußball</button>
-      </div>
       <nav class="tabs" aria-label="Bereiche">
         <button class="tab" data-view="plan" aria-current="page" data-i18n="tabPlan">Wochenplan</button>
         <button class="tab" data-view="catalog" data-i18n="tabCatalog">Übungen</button>
@@ -40,7 +36,7 @@
   <main class="wrap">
     <section id="view-plan" class="view">
       <form id="plan-form" class="controls">
-        <label><span data-i18n="age">Altersklasse</span>
+        <label class="wide"><span data-i18n="age">Altersklasse</span>
           <select name="age" id="age"></select>
         </label>
         <fieldset class="levels">
@@ -63,13 +59,13 @@
         <label id="keepers-field" hidden><span data-i18n="keepers">Torhüter</span>
           <input type="number" name="keepers" min="0" max="4" value="1">
         </label>
-        <label><span data-i18n="theme">Schwerpunkt</span>
+        <label class="wide"><span data-i18n="theme">Schwerpunkt</span>
           <select name="theme" id="theme"></select>
         </label>
         <label><span data-i18n="week">Kalenderwoche</span>
           <input type="number" name="week" min="1" max="53">
         </label>
-        <label class="check"><input type="checkbox" name="rituals" checked> <span data-i18n="includeRituals">Rituale einplanen</span></label>
+        <label class="check"><input type="checkbox" name="rituals" checked> <span id="rituals-label" data-i18n="includeRituals">Rituale einplanen</span></label>
         <div class="actions">
           <button type="button" id="shuffle" data-i18n="shuffle">Neu mischen</button>
           <button type="button" id="print" data-i18n="print">Drucken</button>

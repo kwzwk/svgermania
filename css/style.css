@@ -98,10 +98,6 @@ body {
 .theme-toggle:hover { background: rgba(255, 255, 255, 0.25); }
 .theme-toggle:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
 .tagline { margin: 4px 0 16px; opacity: 0.85; }
-.stage-switch { display: inline-flex; margin: 14px 0 12px; border: 1px solid rgba(255, 255, 255, 0.5); border-radius: 999px; overflow: hidden; }
-.stage-switch button { font: inherit; font-size: 0.92rem; font-weight: 600; padding: 6px 14px; border: 0; background: transparent; color: inherit; cursor: pointer; }
-.stage-switch button[aria-pressed="true"] { background: var(--bg); color: var(--text); }
-.stage-switch button:focus-visible { outline: 2px solid currentColor; outline-offset: -3px; }
 .net-play { margin: -8px 0 16px; font-size: 0.92rem; }
 .net-play.low { color: var(--accent-text); font-weight: 600; }
 .tabs { display: flex; gap: 4px; overflow-x: auto; }
@@ -199,13 +195,23 @@ body {
 .site-footer { color: var(--muted); font-size: 0.85rem; padding-top: 16px; padding-bottom: 32px; }
 
 @media (max-width: 560px) {
-  .levels { grid-column: auto; }
+  /* Kopf kompakt: kleinerer Titel, Untertitel höchstens zwei Zeilen, Tabs ohne Abschneiden. */
+  .site-header { padding-top: 14px; margin-bottom: 16px; }
+  .site-header h1 { font-size: 1.25rem; }
+  .tagline { font-size: 0.85rem; margin-bottom: 10px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .tabs { gap: 0; }
+  .tab { padding: 9px 10px; font-size: 0.92rem; }
+  /* Formular zweispaltig, damit der Plan früher beginnt. */
+  .controls { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-flow: dense; gap: 10px 12px; padding: 12px; }
+  .controls select, .controls input[type="number"] { min-width: 0; width: 100%; }
+  .controls .wide, .levels, .controls label.check, .actions { grid-column: 1 / -1; }
+  .levels { grid-column: 1 / -1; }
   .block-head .phase { min-width: 0; }
 }
 
 @media print {
   body { background: #fff; color: #000; font-size: 12px; }
-  .stage-switch, .site-header, .controls, .hint, .tabs, .site-footer, .header-buttons, .start-area, .trainer { display: none; }
+  .site-header, .controls, .hint, .tabs, .site-footer, .header-buttons, .start-area, .trainer { display: none; }
   .session { break-inside: avoid-page; border-color: #999; }
   .block { background: #fff; border: 1px solid #ccc; border-left-width: 4px; }
   summary { list-style: none; }

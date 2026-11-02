@@ -21,6 +21,8 @@ const STRINGS = {
     week: 'Kalenderwoche',
     shuffle: 'Neu mischen',
     includeRituals: 'Rituale einplanen (Begrüßungs- und Abschlusskreis)',
+    includeRitualsYouth: 'Rituale einplanen (Team- und Nachbesprechung)',
+    levelHintYouth1: 'Mehr Raum, Überzahl für die Angreifer, wenige Zusatzregeln.',
     startWhich: 'Einheit',
     focusOfWeek: 'Schwerpunkt der Woche',
     startTraining: '▶ Training jetzt starten',
@@ -54,6 +56,8 @@ const STRINGS = {
     arrival: 'Ankommen',
     openingCircle: 'Begrüßungskreis',
     closingCircle: 'Abschlusskreis',
+    openingYouth: 'Teambesprechung',
+    closingYouth: 'Nachbesprechung',
     ritual: 'Ritual',
     tip: 'Tipp',
     noExercise: 'keine passende Übung',
@@ -75,6 +79,9 @@ const STRINGS = {
     structArrivalText: 'Jedes Kind wird persönlich mit Namen begrüßt, dann sofort Ball und freies Spiel.',
     structOpeningText: 'Im Kreis zusammenkommen, ein kurzes Ritual zum Ankommen und Kennenlernen, Schwerpunkt vorstellen, Teamruf.',
     structClosingText: 'Lob und Rückmeldung, Teamruf, gemeinsam aufräumen, jedes Kind einzeln verabschieden.',
+    structArrivalTextYouth: 'Jeder Spieler wird mit Handschlag und Namen begrüßt, kurzer Check (Schule, Belastung, Verletzungen), dann Ball und lockeres Passen.',
+    structOpeningTextYouth: 'Kurz zusammenkommen: Ziel der Einheit in einem Satz, gern vom Kapitän eröffnet.',
+    structClosingTextYouth: 'Die Spieler reflektieren selbst, Ausblick aufs Spiel, Teamruf, gemeinsam abbauen, jeden verabschieden.',
     principles: 'Grundsätze für Trainer',
     ritualChoice: 'Rituale zur Auswahl',
     hintAufwaermen: 'Lauf-, Fang- und Staffelspiele, Ballschule mit verschiedenen Bällen, leichte Dribbelaufgaben.',
@@ -100,7 +107,6 @@ const STRINGS = {
     taglineYouth: 'D- bis A-Jugend nach der DFB-Trainingsphilosophie: Aktivierung – Spielblock – Zwischenblock – Spielblock',
     stageKids: 'Kinderfußball',
     stageYouth: 'Jugendfußball',
-    stageLabel: 'Bereich wählen',
     keepers: 'Torhüter',
     playersYouth: 'Anzahl Spieler',
     summaryLineYouth: '{sessions} × {minutes} min · {players} Spieler · {keepers} Torhüter · {level}. Für die Spielblöcke: <strong>{fields}</strong> ({field}), je Feld ein Tor mit Torwart und 2 Minitore.',
@@ -135,6 +141,8 @@ const STRINGS = {
     week: 'Calendar week',
     shuffle: 'Shuffle',
     includeRituals: 'Include rituals (welcome and closing circle)',
+    includeRitualsYouth: 'Include rituals (team talk and debrief)',
+    levelHintYouth1: 'More space, extra attackers, few extra rules.',
     startWhich: 'Session',
     focusOfWeek: 'Focus of the week',
     startTraining: '▶ Start training now',
@@ -168,6 +176,8 @@ const STRINGS = {
     arrival: 'Arrival',
     openingCircle: 'Welcome circle',
     closingCircle: 'Closing circle',
+    openingYouth: 'Team talk',
+    closingYouth: 'Debrief',
     ritual: 'Ritual',
     tip: 'Tip',
     noExercise: 'no matching exercise',
@@ -189,6 +199,9 @@ const STRINGS = {
     structArrivalText: 'Every child is welcomed personally by name, then gets a ball straight away and plays freely.',
     structOpeningText: 'Come together in a circle, a short ritual to arrive and get to know each other, introduce the focus, team call.',
     structClosingText: 'Praise and feedback, team call, tidy up together, say goodbye to every child individually.',
+    structArrivalTextYouth: 'Every player is greeted with a handshake and by name, a quick check (school, workload, injuries), then a ball and easy passing.',
+    structOpeningTextYouth: 'A short huddle: the goal of the session in one sentence, ideally opened by the captain.',
+    structClosingTextYouth: 'Players reflect themselves, look ahead to the match, team call, pack up together, say goodbye to everyone.',
     principles: 'Principles for coaches',
     ritualChoice: 'Rituals to choose from',
     hintAufwaermen: 'Running, tag and relay games, ball school with different balls, easy dribbling tasks.',
@@ -214,7 +227,6 @@ const STRINGS = {
     taglineYouth: 'D to A youth following the DFB training philosophy: activation – game block – in-between block – game block',
     stageKids: 'Kids’ soccer',
     stageYouth: 'Youth soccer',
-    stageLabel: 'Choose section',
     keepers: 'Goalkeepers',
     playersYouth: 'Number of players',
     summaryLineYouth: '{sessions} × {minutes} min · {players} players · {keepers} goalkeepers · {level}. For the game blocks: <strong>{fields}</strong> ({field}), each with a goal, a goalkeeper and 2 mini goals.',
@@ -402,9 +414,10 @@ export const funinoRules = () => (en() ? CONFIG_EN.rules : FUNINO_RULES);
 export const localizeExercise = (ex) => (en() && exercisesEn[ex.id] ? { ...ex, ...exercisesEn[ex.id] } : ex);
 export const localizeRitual = (kind, item) => (item && en() && ritualsEn?.[kind]?.[item.id] ? { ...item, ...ritualsEn[kind][item.id] } : item);
 
-export function ritualTexts(rituals) {
-  if (!en() || !ritualsEn) return rituals;
-  return { ...rituals, principles: ritualsEn.principles, standard: ritualsEn.standard };
+export function ritualTexts(rituals, stage = 'kids') {
+  const src = en() && ritualsEn ? { ...rituals, ...ritualsEn } : rituals;
+  if (stage !== 'youth' || !src.principlesYouth) return { ...rituals, principles: src.principles, standard: src.standard };
+  return { ...rituals, principles: src.principlesYouth, standard: src.standardYouth };
 }
 
 // Für Tests: Schlüssel beider Sprachen.

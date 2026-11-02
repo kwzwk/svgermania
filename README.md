@@ -6,8 +6,8 @@ Live: https://scg.geyen.org
 
 ## Was es kann
 
-- **Kinder / Jugend**: Ein Umschalter im Kopf wechselt zwischen Kinderfußball (G, F, E) und Jugendfußball (D, C, B, A). Titel, Altersklassen, Katalog und die Seite „Ablauf & Regeln“ folgen der Wahl.
-- **Jugend (D bis A)**: Einheiten im Verhältnis 15/30/15/30 Minuten (bei 90 min), Spielformen nie größer als 4+TW gegen 4+TW (plus bis zu 2 Anspieler), Durchgänge von 3–4 min mit Pause. Ein Feld „Torhüter“ blendet Übungen aus, die mehr Torhüter brauchen. Der Plan zeigt die geschätzte Netto-Spielzeit pro Spieler und Woche und warnt unter dem DFB-Mindestwert (48 Minuten, in der A-Jugend 32 Minuten).
+- **Kinder / Jugend**: Die Altersklasse entscheidet: Die Liste ist gruppiert in Kinderfußball (G, F, E) und Jugendfußball (D, C, B, A). Untertitel, Torhüter-Feld, Katalog und die Seite „Ablauf & Regeln“ folgen der gewählten Altersklasse.
+- **Jugend (D bis A)**: Einheiten im Verhältnis 15/30/15/30 Minuten (bei 90 min), Spielformen nie größer als 4+TW gegen 4+TW (plus bis zu 2 Anspieler), Durchgänge von 3–4 min mit Pause. Ein Feld „Torhüter“ blendet Übungen aus, die mehr Torhüter brauchen. Statt Begrüßungs- und Abschlusskreis gibt es eine kurze Teambesprechung und Nachbesprechung (je 3 Minuten), ab der C-Jugend mit eigenen Ritualen, die die Spieler selbst führen (Ziel der Einheit, Szene aus dem letzten Spiel, Reflexion, Feedback in Paaren). Der Plan zeigt die geschätzte Netto-Spielzeit pro Spieler und Woche und warnt unter dem DFB-Mindestwert (48 Minuten, in der A-Jugend 32 Minuten).
 - **Wochenplan**: Altersklasse (G-, F-, E-Jugend), Niveau (Einsteiger, Fortgeschritten, Könner), Einheiten pro Woche, Dauer, Anzahl Kinder, Schwerpunkt und Kalenderwoche einstellen.
 - **Fester Ablauf jeder Einheit**: Ankommen (jedes Kind wird persönlich begrüßt), Begrüßungskreis mit einem Ritual zum Ankommen und Kennenlernen, dann nach der DFB-Entwicklungstabelle Aktivierung, Spielen I, Üben und Spielen II (Funino), zum Schluss ein Abschlusskreis mit Lob, Teamruf und Verabschiedung. Die Rituale wechseln von Einheit zu Einheit und passen zur Altersklasse.
 - **Bambini-Spielstunde**: Für die G-Jugend gibt es keinen Übungsblock, sondern Aktivierung – Spielen – Spielen – Spielen mit kurzen Challenges, in Gleichzahl und ohne isolierte Technikschulung.
@@ -81,7 +81,7 @@ Für die Jugend (D bis A) gibt es optional:
 
 `family` ist eine der vier DFB-Spielfamilien, `goalkeepers` die Zahl der nötigen Torhüter (der Generator filtert danach), `blocks` die Durchgänge (Anzahl, Minuten netto, Pause).
 
-Rituale werden genauso in `data/rituals.json` ergänzt (`arrival`, `opening` oder `closing`, jeweils mit `id`, `name`, `ages`, `steps`, `tip`).
+Rituale werden genauso in `data/rituals.json` ergänzt (`arrival`, `opening` oder `closing`, jeweils mit `id`, `name`, `ages`, `steps`, `tip`). Für die Jugend gelten `principlesYouth` und `standardYouth` statt `principles` und `standard`.
 
 Neue Übungen und Rituale brauchen auch einen englischen Eintrag in `data/exercises.en.json` bzw. `data/rituals.en.json` (gleiche `id`); `npm test` prüft das.
 

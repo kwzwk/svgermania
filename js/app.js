@@ -1,4 +1,4 @@
-import { AGE_GROUPS, LEVELS, THEMES, PHASES, SESSION_LENGTHS, RITUAL_MINUTES } from './config.js';
+import { AGE_GROUPS, LEVELS, THEMES, PHASES, SESSION_LENGTHS, ritualMinutes } from './config.js';
 import { generatePlan, isoWeek, sessionSteps } from './generator.js';
 import {
   t,
@@ -28,7 +28,6 @@ let currentPlan = null;
 // Bereich: Kinderfußball (G–E, Funino) oder Jugendfußball (D, C nach der DFB-Trainingsphilosophie).
 const stageOf = (age) => AGE_GROUPS[age]?.stage ?? 'kids';
 const agesOf = (st) => Object.keys(AGE_GROUPS).filter((id) => stageOf(id) === st);
-const DEFAULT_AGE = { kids: 'F', youth: 'D' };
 let stage = 'kids';
 
 // ---------- Zustand <-> URL, damit ein Plan per Link geteilt werden kann ----------
@@ -74,9 +73,7 @@ function applyStaticTexts() {
   $('#players-label').textContent = t(youth ? 'playersYouth' : 'players');
   $('#keepers-field').hidden = !youth;
   $('.site-footer p').textContent = t(youth ? 'footerYouth' : 'footer');
-  const sw = $('#stage-switch');
-  sw.setAttribute('aria-label', t('stageLabel'));
-  for (const b of sw.querySelectorAll('button')) b.setAttribute('aria-pressed', String(b.dataset.stage === stage));
+  $('#rituals-label').textContent = t(youth ? 'includeRitualsYouth' : 'includeRituals');
   const langBtn = $('#lang-toggle');
   langBtn.textContent = t('langButton');
   langBtn.title = t('langTitle');
@@ -86,7 +83,10 @@ function applyStaticTexts() {
 // ---------- Formular ----------
 
 function fillForm(state) {
-  $('#age').innerHTML = agesOf(stage).map((id) => option(id, ageGroup(id).label, id === state.age)).join('');
+  // Eine Liste für alle Altersklassen, gruppiert nach Kinder- und Jugendfußball.
+  $('#age').innerHTML = ['kids', 'youth']
+    .map((st) => `<optgroup label="${esc(t(st === 'kids' ? 'stageKids' : 'stageYouth'))}">${agesOf(st).map((id) => option(id, ageGroup(id).label, id === state.age)).join('')}</optgroup>`)
+    .join('');
   $('#minutes').innerHTML = SESSION_LENGTHS.map((m) => option(m, `${m} min`, m === state.minutes)).join('');
   $('#levels').innerHTML = Object.keys(LEVELS)
     .map((id) => `<label><input type="radio" name="level" value="${id}"${Number(id) === state.level ? ' checked' : ''}><span>${esc(levelInfo(id).label)}</span></label>`)
@@ -106,6 +106,8 @@ function bindForm() {
     if (e.target.name === 'age') {
       form.minutes.value = AGE_GROUPS[form.age.value].defaultMinutes;
       fillThemes(form.age.value, form.theme.value);
+      const next = stageOf(form.age.value);
+      if (next !== stage) switchStage(next);
     }
     variant = 0;
     render();
@@ -116,19 +118,15 @@ function bindForm() {
     render();
   });
   $('#print').addEventListener('click', () => window.print());
-  $('#stage-switch').addEventListener('click', (e) => {
-    const next = e.target.closest('[data-stage]')?.dataset.stage;
-    if (next && next !== stage) switchStage(next);
-  });
   // Beim Drucken alle Übungen aufklappen.
   window.addEventListener('beforeprint', () => document.querySelectorAll('#plan details').forEach((d) => (d.open = true)));
 }
 
+// Wechsel zwischen Kinder- und Jugendfußball, ausgelöst durch die Wahl der Altersklasse.
 function switchStage(next) {
   stage = next;
-  const age = DEFAULT_AGE[next];
-  const state = { ...formState(), age, minutes: AGE_GROUPS[age].defaultMinutes, theme: 'auto', players: next === 'youth' ? 16 : 12 };
-  variant = 0;
+  const prev = formState();
+  const state = { ...prev, minutes: AGE_GROUPS[prev.age].defaultMinutes, players: next === 'youth' ? 16 : 12 };
   applyStaticTexts();
   fillForm(state);
   $('#cat-age').value = '';
@@ -166,7 +164,8 @@ function render() {
   const state = formState();
   writeState(state);
   const lvl = levelInfo(state.level);
-  $('#level-hint').textContent = `${lvl.label}: ${lvl.hint}`;
+  const hintKey = `levelHintYouth${state.level}`;
+  $('#level-hint').textContent = `${lvl.label}: ${stageOf(state.age) === 'youth' && t(hintKey) !== hintKey ? t(hintKey) : lvl.hint}`;
   const plan = generatePlan(exercises, state, rituals);
   const group = ageGroup(plan.age);
   const fields = plan.fields === 1 ? t('field1') : t('fieldN', { n: plan.fields });
@@ -198,15 +197,16 @@ function render() {
 
 function renderSession(session, plan) {
   const progression = session.number > 1 && session.level > plan.level ? t('harderStep') : '';
-  const standard = ritualTexts(rituals)?.standard;
+  const standard = ritualTexts(rituals, plan.stage)?.standard;
+  const youthPlan = plan.stage === 'youth';
   return `
     <article class="session">
       <h3>${esc(sessionTitle(session.number, plan.age))}<span class="muted">${esc(progression)}</span></h3>
       <ol class="blocks">
         ${session.opening ? renderRitualBlock('arrival', t('before'), t('arrival'), session.opening.arrival) : ''}
-        ${session.opening ? renderRitualBlock('opening', `${session.opening.minutes} min`, t('openingCircle'), session.opening.circle, standard?.opening, plan.theme) : ''}
+        ${session.opening ? renderRitualBlock('opening', `${session.opening.minutes} min`, t(youthPlan ? 'openingYouth' : 'openingCircle'), session.opening.circle, standard?.opening, plan.theme) : ''}
         ${session.blocks.map((b) => `<li class="block phase-${b.phase}">${renderBlock(b, plan.age)}</li>`).join('')}
-        ${session.closing ? renderRitualBlock('closing', `${session.closing.minutes} min`, t('closingCircle'), session.closing.circle, standard?.closing) : ''}
+        ${session.closing ? renderRitualBlock('closing', `${session.closing.minutes} min`, t(youthPlan ? 'closingYouth' : 'closingCircle'), session.closing.circle, standard?.closing) : ''}
       </ol>
     </article>`;
 }
@@ -376,14 +376,18 @@ const PHASE_HINT_KEYS = { aufwaermen: 'hintAufwaermen', uebung: 'hintUebung', sp
 
 function renderStructure() {
   if (!rituals) return '';
-  const texts = ritualTexts(rituals);
   const youth = stage === 'youth';
+  const texts = ritualTexts(rituals, stage);
+  const rm = ritualMinutes(youth ? 'D' : 'F');
+  const openLabel = t(youth ? 'openingYouth' : 'openingCircle');
+  const closeLabel = t(youth ? 'closingYouth' : 'closingCircle');
+  const st = (key) => t(youth ? `${key}Youth` : key);
   const hint = (id) => t(youth ? `hintYouth${id[0].toUpperCase()}${id.slice(1)}` : PHASE_HINT_KEYS[id]);
   const steps = [
-    [t('structArrival'), t('structArrivalText')],
-    [`${t('openingCircle')} (${RITUAL_MINUTES.opening} min)`, t('structOpeningText')],
+    [t('structArrival'), st('structArrivalText')],
+    [`${openLabel} (${rm.opening} min)`, st('structOpeningText')],
     ...PHASES.map((p) => [phaseLabel(p.id, youth ? 'D' : null), hint(p.id)]),
-    [`${t('closingCircle')} (${RITUAL_MINUTES.closing} min)`, t('structClosingText')],
+    [`${closeLabel} (${rm.closing} min)`, st('structClosingText')],
   ];
   const stageAges = agesOf(stage);
   return `
@@ -396,7 +400,7 @@ function renderStructure() {
     <ul class="rules">${texts.principles.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>
     <h3>${esc(t('ritualChoice'))}</h3>
     <div class="age-cards">
-      ${[['arrival', t('arrival')], ['opening', t('openingCircle')], ['closing', t('closingCircle')]]
+      ${[['arrival', t('arrival')], ['opening', openLabel], ['closing', closeLabel]]
         .map(
           ([kind, title]) => `
         <article class="card">
@@ -555,7 +559,8 @@ async function keepScreenOn() {
 function stepTitle(step) {
   if (step.kind === 'opening' || step.kind === 'closing') {
     const item = localizeRitual(step.kind, step.ritual);
-    return { label: t(step.kind === 'opening' ? 'openingCircle' : 'closingCircle'), name: item?.name ?? '' };
+    const y = stageOf(trainer.age) === 'youth';
+    return { label: t(step.kind === 'opening' ? (y ? 'openingYouth' : 'openingCircle') : y ? 'closingYouth' : 'closingCircle'), name: item?.name ?? '' };
   }
   const ex = step.block.exercise && localizeExercise(step.block.exercise);
   return { label: phaseLabel(step.kind, trainer.age), name: ex ? ex.name : t('noExercise') };
@@ -577,7 +582,7 @@ function renderTrainer() {
   const step = trainer.steps[trainer.index];
   const { label, name } = stepTitle(step);
   const next = trainer.steps[trainer.index + 1];
-  const standard = ritualTexts(rituals)?.standard;
+  const standard = ritualTexts(rituals, stageOf(trainer.age))?.standard;
   let body = '';
   if (step.ritual) {
     const item = localizeRitual(step.kind, step.ritual);
