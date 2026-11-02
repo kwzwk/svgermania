@@ -1,0 +1,33 @@
+{
+  "id": "ue-kopfball-leichtball",
+  "name": "Kopfball-Spiel mit Leichtball",
+  "duration": 8,
+  "fps": 12.5,
+  "field": {"w": 8, "h": 12, "margin": 2},
+  "goals": [
+    {"x": 4, "y": 0, "side": "top", "kind": "mini", "w": 3},
+    {"x": 4, "y": 12, "side": "bottom", "kind": "mini", "w": 3}
+  ],
+  "teams": {
+    "blue": {"color": "#2f6fd6"},
+    "red": {"color": "#d6452f"}
+  },
+  "players": [
+    {"id": "B1", "team": "blue", "path": [[0, 2, 8], [1.2, 2, 6], [2.4, 3.5, 2.5], [2.8, 3.6, 2.8], [4, 2.5, 6], [7, 2, 8]], "highlight": [[2.3, 2.8]]},
+    {"id": "B2", "team": "blue", "path": [[0, 6, 7], [1.2, 6, 5], [1.8, 6, 4.8], [3, 6, 6], [6, 6, 7]]},
+    {"id": "R1", "team": "red", "path": [[0, 5, 4], [1.2, 4.5, 4], [2.4, 5, 3], [3.2, 4.5, 3.2], [4.0, 4, 3.5], [5, 3, 6], [6.2, 3, 8.6], [7, 4, 5]], "highlight": [[6.1, 6.6]]},
+    {"id": "R2", "team": "red", "path": [[0, 2.5, 3], [2.4, 2, 3.5], [4, 6, 5], [5.2, 6.5, 8.5], [6.2, 5, 9.5], [7.4, 3, 4]]}
+  ],
+  "balls": [
+    {"color": "#ffe08a", "show": [[0, 7.0]], "keys": [{"t": 0, "on": "B1", "fx": "hand"}, {"t": 0.4, "on": "B1", "fx": "hand"}, {"t": 1.2, "on": "B2", "fx": "hand", "lob": true}, {"t": 1.8, "on": "B2", "fx": "hand"}, {"t": 2.4, "on": "B1", "lob": true}, {"t": 2.7, "x": 4, "y": -0.3}, {"t": 3.2, "on": "R1", "fx": "hand"}, {"t": 4.0, "on": "R1", "fx": "hand"}, {"t": 5.2, "on": "R2", "fx": "hand", "lob": true}, {"t": 5.6, "on": "R2", "fx": "hand"}, {"t": 6.2, "on": "R1", "lob": true}, {"t": 6.5, "x": 4, "y": 12.3}]}
+  ],
+  "captions": [
+    {"from": 0, "to": 1.8, "de": "Werfen, fangen, werfen: mit Ball nicht laufen", "en": "Throw, catch, throw: no running with the ball"},
+    {"from": 1.8, "to": 3.2, "de": "Tor nur per Kopfball nach Zuwurf", "en": "Goals only by header after a throw"},
+    {"from": 3.2, "to": 8, "de": "Leichtball, höchstens 5 Minuten", "en": "Light ball, 5 minutes max"}
+  ],
+  "legend": [
+    {"team": "blue", "de": "Blau", "en": "Blue"},
+    {"team": "red", "de": "Rot", "en": "Red"}
+  ]
+}

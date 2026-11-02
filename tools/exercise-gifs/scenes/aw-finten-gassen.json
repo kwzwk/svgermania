@@ -1,0 +1,37 @@
+{
+  "id": "aw-finten-gassen",
+  "name": "Finten-Gassen",
+  "duration": 8,
+  "fps": 12.5,
+  "field": {"w": 13, "h": 17, "margin": 2, "outline": false},
+  "rects": [
+    {"x": 0, "y": 0, "w": 5, "h": 16.2, "fill": "#ffffff14"},
+    {"x": 8, "y": 0, "w": 5, "h": 16.2, "fill": "#ffffff14"}
+  ],
+  "cones": [[2.5, 16], [2.5, 8], [2.5, 0], [10.5, 16], [10.5, 8], [10.5, 0]],
+  "teams": {
+    "blue": {"color": "#2f6fd6"},
+    "red": {"color": "#d6452f"}
+  },
+  "players": [
+    {"id": "A1", "team": "blue", "path": [[0, 2.5, 15], [1.6, 2.5, 9.5], [2.0, 1.3, 8.3], [2.3, 3.4, 7.4], [3.6, 2.5, 1.2], [4.0, 2.5, 0.7], [4.3, 2.5, 1.4], [5.6, 2.5, 6.6], [5.9, 3.7, 7.8], [6.2, 1.6, 8.8], [7.4, 2.5, 14.5]], "highlight": [[1.9, 2.5]]},
+    {"id": "A2", "team": "red", "path": [[0, 1.0, 16.6]], "face": [0, -1]},
+    {"id": "B1", "team": "blue", "path": [[0.0, 10.5, 0.7], [0.3, 10.5, 1.4], [1.6, 10.5, 6.6], [1.9, 11.7, 7.8], [2.2, 9.6, 8.8], [3.4, 10.5, 14.5], [4, 10.5, 15], [5.6, 10.5, 9.5], [6.0, 9.3, 8.3], [6.3, 11.4, 7.4], [7.6, 10.5, 1.2]], "highlight": [[5.9, 6.5]]},
+    {"id": "B2", "team": "red", "path": [[0, 9.0, 16.6]], "face": [0, -1]}
+  ],
+  "balls": [
+    {"keys": [{"t": 0, "on": "A1"}, {"t": 4, "on": "A1"}]},
+    {"keys": [{"t": 0, "on": "A2", "fx": "sole"}, {"t": 4, "on": "A2", "fx": "sole"}]},
+    {"keys": [{"t": 0, "on": "B1"}, {"t": 4, "on": "B1"}]},
+    {"keys": [{"t": 0, "on": "B2", "fx": "sole"}, {"t": 4, "on": "B2", "fx": "sole"}]}
+  ],
+  "captions": [
+    {"from": 0, "to": 2.4, "de": "Zum mittleren Hütchen dribbeln, dort Finte", "en": "Dribble to the middle cone, feint there"},
+    {"from": 2.4, "to": 4.4, "de": "Antritt bis zum Ende, mit der Sohle abdrehen", "en": "Accelerate to the end, turn with the sole"},
+    {"from": 4.4, "to": 8, "de": "Mit anderer Finte zurück, Partner arbeitet am Start", "en": "Back with another feint, partner works at the start"}
+  ],
+  "legend": [
+    {"team": "blue", "de": "Spieler 1", "en": "Player 1"},
+    {"team": "red", "de": "Partner", "en": "Partner"}
+  ]
+}

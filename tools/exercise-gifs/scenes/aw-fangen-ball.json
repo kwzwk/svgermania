@@ -1,0 +1,40 @@
+{
+  "id": "aw-fangen-ball",
+  "name": "Fangen mit Ball am Fuß",
+  "duration": 10,
+  "fps": 12.5,
+  "field": {"w": 20, "h": 25, "margin": 3},
+  "rects": [
+    {"x": 0, "y": 0, "w": 2.5, "h": 2.5, "fill": "#ffffff30"},
+    {"x": 17.5, "y": 0, "w": 2.5, "h": 2.5, "fill": "#ffffff30"},
+    {"x": 0, "y": 22.5, "w": 2.5, "h": 2.5, "fill": "#ffffff30"},
+    {"x": 17.5, "y": 22.5, "w": 2.5, "h": 2.5, "fill": "#ffffff30"}
+  ],
+  "teams": {
+    "blue": {"color": "#2f6fd6"},
+    "catcher": {"color": "#d6452f", "bib": "#ffd23f"}
+  },
+  "players": [
+    {"id": "C", "team": "catcher", "path": [[0, 10, 14], [1.5, 6, 8], [2.8, 3.6, 4.2], [3.3, 4, 5], [5, 9, 12], [6.5, 13.4, 17.2], [7.2, 14, 18], [8.5, 12, 16]]},
+    {"id": "D1", "team": "blue", "path": [[0, 7, 9], [1.5, 4, 5.5], [2.8, 1.2, 1.2], [5.5, 1.2, 1.2], [7, 5, 6], [8.5, 7, 9]], "highlight": [[2.8, 5.0]]},
+    {"id": "D2", "team": "blue", "path": [[0, 15, 13], [3, 12, 12], [5, 13, 15], [6.5, 14.3, 17.8], [7.5, 17, 20], [9, 15, 13]], "highlight": [[6.4, 7.6]]},
+    {"id": "D3", "team": "blue", "path": [[0, 4, 20], [3, 8, 22], [6, 4, 18], [9, 6, 20]]},
+    {"id": "D4", "team": "blue", "path": [[0, 16, 5], [3, 13, 3], [6, 17, 7], [9, 15, 4]]}
+  ],
+  "balls": [
+    {"keys": [{"t": 0, "on": "C"}, {"t": 5, "on": "C"}]},
+    {"keys": [{"t": 0, "on": "D1"}, {"t": 5, "on": "D1"}]},
+    {"keys": [{"t": 0, "on": "D2"}, {"t": 5, "on": "D2"}]},
+    {"keys": [{"t": 0, "on": "D3"}, {"t": 5, "on": "D3"}]},
+    {"keys": [{"t": 0, "on": "D4"}, {"t": 5, "on": "D4"}]}
+  ],
+  "captions": [
+    {"from": 0, "to": 2.8, "de": "Fänger dribbelt und schlägt mit der Hand ab", "en": "The catcher dribbles and tags with the hand"},
+    {"from": 2.8, "to": 5.5, "de": "In der Rettungsinsel 3 Sekunden sicher", "en": "Safe for 3 seconds on a rescue island"},
+    {"from": 5.5, "to": 10, "de": "Abgeschlagen: wird Fänger und bekommt das Leibchen", "en": "Tagged: becomes catcher and takes the bib"}
+  ],
+  "legend": [
+    {"team": "catcher", "de": "Fänger", "en": "Catcher"},
+    {"team": "blue", "de": "Dribbler", "en": "Dribblers"}
+  ]
+}

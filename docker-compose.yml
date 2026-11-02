@@ -1,4 +1,4 @@
-# Beispiel für den Server. Der Reverse Proxy leitet svgermania.geyen.org auf Port 8080 weiter.
+# Beispiel für den Server. Der Reverse Proxy leitet scg.geyen.org auf Port 8080 weiter.
 services:
   svgermania:
     image: ghcr.io/kwzwk/svgermania:latest

@@ -1,0 +1,32 @@
+{
+  "id": "aw-schattendribbling",
+  "name": "Schattendribbling mit Antritt",
+  "duration": 10,
+  "fps": 12.5,
+  "field": {"w": 20, "h": 20, "margin": 3},
+  "cones": [[0, 9], [0, 11], [20, 9], [20, 11]],
+  "teams": {
+    "blue": {"color": "#2f6fd6"},
+    "red": {"color": "#d6452f"}
+  },
+  "players": [
+    {"id": "L", "team": "blue", "path": [[0, 10, 14], [1.5, 6, 11], [3, 9, 6], [4.5, 14, 8], [6, 11, 11], [7.6, 20.8, 10], [8.4, 21.2, 10]], "highlight": [[7.6, 8.8]]},
+    {"id": "S", "team": "red", "path": [[0, 10.5, 15.8], [2.1, 6.5, 12.5], [3.6, 8.0, 7.5], [5.1, 13, 8.8], [6.2, 11.5, 12.0], [7.9, -0.8, 10], [8.6, -1.2, 10.2]]}
+  ],
+  "balls": [
+    {"keys": [{"t": 0, "on": "L"}, {"t": 5, "on": "L"}]},
+    {"keys": [{"t": 0, "on": "S"}, {"t": 5, "on": "S"}]}
+  ],
+  "signals": [
+    {"from": 6.0, "to": 7.2, "color": "#ffd23f", "de": "Pfiff", "en": "Whistle"}
+  ],
+  "captions": [
+    {"from": 0, "to": 6.0, "de": "Der Schatten macht alles nach", "en": "The shadow copies everything"},
+    {"from": 6.0, "to": 8.0, "de": "Pfiff: beide sprinten zu ihrem Hütchentor", "en": "Whistle: both sprint to their cone gate"},
+    {"from": 8.0, "to": 10, "de": "Wer zuerst durch ist, bekommt den Punkt", "en": "Whoever is through first gets the point"}
+  ],
+  "legend": [
+    {"team": "blue", "de": "Führt", "en": "Leader"},
+    {"team": "red", "de": "Schatten", "en": "Shadow"}
+  ]
+}

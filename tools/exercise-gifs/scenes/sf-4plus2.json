@@ -1,0 +1,51 @@
+{
+  "id": "sf-4plus2",
+  "name": "4+2 gegen 4+2 mit Wandspielern",
+  "duration": 10,
+  "fps": 12.5,
+  "field": {"w": 25, "h": 30, "margin": 3},
+  "lines": [[0, 15, 25, 15]],
+  "goals": [
+    {"x": 12.5, "y": 0, "side": "top", "kind": "small"},
+    {"x": 12.5, "y": 30, "side": "bottom", "kind": "small"}
+  ],
+  "teams": {
+    "blue": {"color": "#2f6fd6"},
+    "red": {"color": "#d6452f"},
+    "gk": {"color": "#1fa463"}
+  },
+  "players": [
+    {"id": "B1", "team": "blue", "path": [[0, 12, 22], [0.6, 12, 21], [2, 10, 17], [4, 11, 12], [6, 12, 18], [8, 12, 22]]},
+    {"id": "B2", "team": "blue", "path": [[0, 5, 16], [1.2, 5, 14], [1.8, 5.5, 12], [3, 6, 9], [6, 5, 15], [9, 5, 16]]},
+    {"id": "B3", "team": "blue", "path": [[0, 17, 14], [2, 14, 10], [3.2, 10.5, 6], [3.6, 11, 5.5], [5, 14, 10], [8, 17, 14]]},
+    {"id": "B4", "team": "blue", "path": [[0, 19, 20], [3, 20, 12], [6, 19, 18], [9, 19, 20]]},
+    {"id": "W1", "team": "blue", "path": [[0, 6, -1.6]], "letter": "W", "face": [0, 1], "highlight": [[2.3, 2.8]]},
+    {"id": "W2", "team": "blue", "path": [[0, 19, -1.6]], "letter": "W", "face": [0, 1]},
+    {"id": "R1", "team": "red", "path": [[0, 10, 8], [2, 8, 8], [4, 10, 9], [5.5, 11, 9], [6.2, 14, 14], [8, 13, 14], [9.5, 10, 8]]},
+    {"id": "R2", "team": "red", "path": [[0, 15, 6], [3, 13, 6], [5, 15, 12], [7.8, 15, 24], [8.2, 14.5, 25], [9.5, 15, 6]]},
+    {"id": "R3", "team": "red", "path": [[0, 6, 10], [2, 6, 7], [5, 7, 14], [8, 8, 22], [9.5, 6, 10]]},
+    {"id": "R4", "team": "red", "path": [[0, 19, 10], [3, 18, 8], [6, 20, 16], [9, 19, 10]]},
+    {"id": "W3", "team": "red", "path": [[0, 6, 31.6]], "letter": "W", "face": [0, -1]},
+    {"id": "W4", "team": "red", "path": [[0, 19, 31.6]], "letter": "W", "face": [0, -1], "highlight": [[7.1, 7.6]]},
+    {"id": "G1", "team": "gk", "path": [[0, 12.5, 1.3], [3.4, 13, 1.3], [3.8, 14, 1.1], [4.4, 12.5, 1.3]]},
+    {"id": "G2", "team": "gk", "path": [[0, 12.5, 28.7], [8.0, 13, 28.7], [8.4, 14, 28.9], [9, 12.5, 28.7]]}
+  ],
+  "balls": [
+    {"show": [[0, 8.8]], "keys": [{"t": 0, "on": "B1"}, {"t": 0.6, "on": "B1"}, {"t": 1.2, "on": "B2"}, {"t": 1.8, "on": "B2"}, {"t": 2.4, "on": "W1"}, {"t": 2.6, "on": "W1"}, {"t": 3.2, "on": "B3"}, {"t": 3.4, "on": "B3"}, {"t": 3.8, "x": 14, "y": -0.3}, {"t": 4.4, "on": "G1", "fx": "hand"}, {"t": 5.2, "on": "G1", "fx": "hand"}, {"t": 6.0, "on": "R1", "lob": true}, {"t": 6.4, "on": "R1"}, {"t": 7.2, "on": "W4"}, {"t": 7.4, "on": "W4"}, {"t": 7.8, "on": "R2"}, {"t": 8.0, "on": "R2"}, {"t": 8.4, "on": "G2", "fx": "hand"}]}
+  ],
+  "signals": [
+    {"from": 3.8, "to": 5.2, "color": "#ffd23f", "de": "Tor x2", "en": "Goal x2"}
+  ],
+  "captions": [
+    {"from": 0, "to": 2.4, "de": "4 gegen 4, Wandspieler neben dem gegnerischen Tor", "en": "4 v 4, wall players beside the opposing goal"},
+    {"from": 2.4, "to": 3.8, "de": "Ablage vom Wandspieler, Abschluss", "en": "Lay-off from the wall player, finish"},
+    {"from": 3.8, "to": 5.5, "de": "Tor nach Ablage zählt doppelt", "en": "A goal after a lay-off counts double"},
+    {"from": 5.5, "to": 10, "de": "Wandspieler: höchstens 2 Kontakte, kein Torschuss", "en": "Wall players: 2 touches max, no shooting"}
+  ],
+  "legend": [
+    {"team": "blue", "de": "Blau", "en": "Blue"},
+    {"team": "red", "de": "Rot", "en": "Red"},
+    {"team": "gk", "de": "Torwart", "en": "Keeper"},
+    {"team": "blue", "de": "W = Wandspieler", "en": "W = wall player"}
+  ]
+}

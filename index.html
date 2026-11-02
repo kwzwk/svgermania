@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Funino-Wochenplaner</title>
-  <meta name="description" content="Wochenpläne mit Funino-Übungen für G-, F- und E-Jugend, passend zu Alter und Niveau der Kinder.">
+  <title>Trainings-Wochenplaner</title>
+  <meta name="description" content="Wochenpläne mit Funino-Übungen für G-, F- und E-Jugend und kleinen Spielformen für D- und C-Jugend, passend zu Alter und Niveau.">
   <script>
     // Gespeichertes Farbschema vor dem ersten Zeichnen setzen, damit nichts aufblitzt.
     try { const t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
@@ -17,13 +17,17 @@
       <div class="header-top">
         <img class="logo" src="img/logo.svg" alt="Logo" onerror="this.remove()">
         <div class="titles">
-          <h1 data-i18n="title">Funino-Wochenplaner</h1>
+          <h1 data-i18n="title">Trainings-Wochenplaner</h1>
           <p class="tagline" data-i18n="tagline">Kinderfußball nach dem Prinzip Spielen – Üben – Spielen</p>
         </div>
         <div class="header-buttons">
           <button type="button" class="theme-toggle" id="lang-toggle">EN</button>
           <button type="button" class="theme-toggle" id="theme-toggle">Automatisch</button>
         </div>
+      </div>
+      <div class="stage-switch" role="group" id="stage-switch">
+        <button type="button" data-stage="kids" data-i18n="stageKids">Kinderfußball</button>
+        <button type="button" data-stage="youth" data-i18n="stageYouth">Jugendfußball</button>
       </div>
       <nav class="tabs" aria-label="Bereiche">
         <button class="tab" data-view="plan" aria-current="page" data-i18n="tabPlan">Wochenplan</button>
@@ -53,8 +57,11 @@
         <label><span data-i18n="minutes">Dauer (Minuten)</span>
           <select name="minutes" id="minutes"></select>
         </label>
-        <label><span data-i18n="players">Anzahl Kinder</span>
+        <label><span id="players-label" data-i18n="players">Anzahl Kinder</span>
           <input type="number" name="players" min="2" max="40" value="12">
+        </label>
+        <label id="keepers-field" hidden><span data-i18n="keepers">Torhüter</span>
+          <input type="number" name="keepers" min="0" max="4" value="1">
         </label>
         <label><span data-i18n="theme">Schwerpunkt</span>
           <select name="theme" id="theme"></select>

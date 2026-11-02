@@ -510,5 +510,313 @@
     "easier": "Four target players (two on each side), bigger pitch.",
     "harder": "Target players only 1 touch, goals only from the 6 m zone.",
     "questions": ["When is a pass to the target player worth it?", "Where is the space when the target player has the ball?"]
+  },
+  "aw-finten-gassen": {
+    "name": "Feint Lanes",
+    "field": "One lane 15 × 5 m per pair with three cones (start, middle, end)",
+    "material": "1 ball per pair, 3 cones per lane",
+    "setup": "Pairs with one ball each, every pair has its own lane. No queue: the partner keeps working with the ball at the start.",
+    "rules": [
+      "Player 1 dribbles to the middle cone, does a feint there and accelerates to the end.",
+      "At the end, stop the ball with the sole, turn (cut back) and return with a different feint.",
+      "At the start, the partner drags the ball back and forth with the inside and the sole.",
+      "Swap tasks after 45 seconds, feints free to choose."
+    ],
+    "easier": "Set the feint (step-over, scissors), longer lane, free pace.",
+    "harder": "Weaker foot only, change of pace after every feint, partner points the turning direction with a hand.",
+    "questions": ["When do you have to get faster after the feint?", "Which feint works for you with both feet?"]
+  },
+  "aw-pass-lauf-abc": {
+    "name": "Pass, Run, Ball Hunters",
+    "field": "25 × 25 m, 4 mini goals on the sides",
+    "material": "2 balls per group of 5, bibs in 4 colours, 4 mini goals",
+    "setup": "Groups of four or five, each group in one bib colour with two balls. All groups move in the area at the same time.",
+    "rules": [
+      "Within the group, pass one ball along the ground and throw the second ball by hand.",
+      "Whoever passed runs a running-drill task to the edge and back (heel flicks, high knees, side steps, cross steps).",
+      "When the coach calls a colour, that group becomes ball hunters: in 60 seconds they play as many other balls as possible into the mini goals.",
+      "Anyone who has lost both balls helps the hunters."
+    ],
+    "easier": "Only one ball per group, hunters for 30 seconds only.",
+    "harder": "2 touches only, weaker foot only, two hunter groups at once.",
+    "questions": ["Where do you look before the ball comes to you?", "How do you protect your balls as a group when the hunters come?"]
+  },
+  "aw-schattendribbling": {
+    "name": "Shadow Dribbling with a Sprint",
+    "field": "20 × 20 m, 2 cone gates (2 m wide) per pair on opposite sides",
+    "material": "1 ball per player, cones",
+    "setup": "Pairs, both with a ball. One leads, the other is the shadow and stays close behind.",
+    "rules": [
+      "The leader dribbles with changes of direction and pace, the shadow copies everything.",
+      "On the whistle both sprint with the ball to their cone gate: first one through gets a point.",
+      "Then swap roles. One round lasts about 40 seconds."
+    ],
+    "easier": "No sprint at the end, just copy.",
+    "harder": "On the whistle the shadow must reach the leader's gate, whistle without warning, weaker foot only in the sprint.",
+    "questions": ["How do you spot early where your partner is going?", "Which touch gets you away fastest after the whistle?"]
+  },
+  "aw-fangen-ball": {
+    "name": "Tag with the Ball at Your Feet",
+    "field": "20 × 25 m, 4 safe islands (2 × 2 m) in the corners",
+    "material": "1 ball per player except the taggers, bibs, cones",
+    "setup": "Everyone dribbles in the area. 2–3 taggers also dribble and hold a bib in their hand.",
+    "rules": [
+      "The taggers try to tag dribblers with their free hand without losing their own ball.",
+      "Whoever is tagged becomes a tagger and takes the bib.",
+      "You are safe on an island for 3 seconds, but only one player per island.",
+      "Short break after 90 seconds, then a new round."
+    ],
+    "easier": "Taggers without a ball, more safe islands.",
+    "harder": "No safe islands, smaller area, losing your ball means 5 sole rolls.",
+    "questions": ["Where is the most free space right now?", "How do you keep the ball and the taggers in view at the same time?"]
+  },
+  "sf-hybrid-4v4": {
+    "name": "4+GK v 4 on the Hybrid Field",
+    "field": "33 × 25 m (double penalty area): a youth goal with a keeper on one side, 2 mini goals on the other",
+    "material": "1 youth goal, 2 mini goals, ball depot next to the mini goals, bibs",
+    "setup": "One team attacks the youth goal, the other defends and counters on the two mini goals.",
+    "rules": [
+      "Every attack starts with a ball from the depot between the mini goals.",
+      "If the defending team wins the ball, it counters on the mini goals.",
+      "The attacking right switches after every round (4 minutes).",
+      "A goal after a won 1v1 counts double."
+    ],
+    "easier": "Attackers get a joker (5v4), counter goals only by dribbling into the mini goal.",
+    "harder": "Narrower field, counter goal must come within 6 seconds, goals only right after a feint.",
+    "questions": ["When do you take on the 1v1, when do you pass?", "What do you do in the first second after losing the ball?"]
+  },
+  "sf-3v3-angriffsrecht": {
+    "name": "3v3 with Switching Attack Rights",
+    "field": "25 × 20 m, one youth goal with a keeper, a target player on the opposite end line",
+    "material": "1 youth goal, cones, balls with the keeper, bibs",
+    "setup": "Only one goal: whoever has the ball must first get it to the target player on the end line before attacking the goal.",
+    "rules": [
+      "The attacking team plays through the target player and then attacks the goal.",
+      "If the other team wins the ball, it must first find the target player, then it may attack.",
+      "After a goal or the ball going out, the keeper restarts.",
+      "Change the target player after every round."
+    ],
+    "easier": "Instead of a target player, a dribble line: dribbling over the line unlocks the attack.",
+    "harder": "Target player 1 touch only, after a goal the same team must start again through the target player, offside from the halfway line.",
+    "questions": ["How quickly do you reach the target player after winning the ball?", "Where do you stand when your teammate is looking for the target player?"]
+  },
+  "sf-4plus2": {
+    "name": "4+2 v 4+2 with Wall Players",
+    "field": "Hexagon about 30 × 25 m with a youth goal at each end",
+    "material": "2 youth goals, cones, balls behind the goals, bibs",
+    "setup": "4v4 in the field. Each team has two wall players next to the opponents' goal who may lay the ball back.",
+    "rules": [
+      "Wall players have at most 2 touches and may not shoot themselves.",
+      "After a pass to a wall player, all field players move up immediately.",
+      "A goal after a wall player's lay-off counts double.",
+      "After every round, two field players swap with the wall players."
+    ],
+    "easier": "Wall players play for both teams (extra players in possession), wider field.",
+    "harder": "Wall players 1 touch only, move the wall players to the touchlines, first-time goals only.",
+    "questions": ["When is the long ball to the wall player better than the short pass?", "Where do you run after the wall player gets the ball?"]
+  },
+  "sf-3v2-konter": {
+    "name": "3v2 with Counters on Mini Goals",
+    "field": "20 × 25 m, 2 mini goals side by side on one end (target), a 2 m counter line opposite",
+    "material": "2 mini goals, cones, balls with the coach, bibs",
+    "setup": "Three attackers start at the counter line, two defenders in front of the mini goals.",
+    "rules": [
+      "The attackers try to score against the two defenders.",
+      "If the defenders win the ball, they may dribble over the counter line: one point for them.",
+      "After each action the next attack starts right away with a new ball.",
+      "Swap roles after every round."
+    ],
+    "easier": "Defenders only active after the first pass, attackers have 12 seconds.",
+    "harder": "A third defender chases from behind (3v2+1), attack only 8 seconds.",
+    "questions": ["How do you tie up one defender so your teammate gets free?", "When is the right moment for the pass?"]
+  },
+  "sf-2v2-minitore": {
+    "name": "2v2 on Four Mini Goals",
+    "field": "Several fields 15 × 12 m, 2 mini goals on each end line",
+    "material": "4 mini goals per field, balls at the side, bibs",
+    "setup": "On each field two pairs play against each other, each pair attacks two mini goals.",
+    "rules": [
+      "Play on all four mini goals, each team defends two.",
+      "After a goal a new ball comes in from the side straight away, no break.",
+      "After every round the winners move up a field, the losers down one."
+    ],
+    "easier": "Bigger field, goals allowed from further away.",
+    "harder": "Goals only by dribbling through the mini goal, smaller field.",
+    "questions": ["Which goal is open right now?", "How do you help your partner when they are in a 1v1?"]
+  },
+  "sf-fluegelzonen": {
+    "name": "4v4 with Wing Zones",
+    "field": "35 × 30 m with a 5 m wing zone along both touchlines, 2 youth goals",
+    "material": "2 youth goals, cones for the zones, balls, bibs",
+    "setup": "4+GK v 4+GK. Nobody may tackle in the wing zones.",
+    "rules": [
+      "Whoever dribbles into a wing zone is free there and can cross in peace.",
+      "A goal after a cross counts double, a header or volley goal triple.",
+      "Only one player per attack may enter the wing zone."
+    ],
+    "easier": "Wider crossing zone, the cross may also be played low behind the defence.",
+    "harder": "One defender may follow into the wing zone, goals only with the first touch after the cross.",
+    "questions": ["Where do your teammates run when someone is in the wing zone?", "When is the low cross better than the high one?"]
+  },
+  "ue-flanken-wettbewerb": {
+    "name": "Crossing Competition in Threes",
+    "field": "25 × 20 m, a goal on each end line, crossing positions on both sides",
+    "material": "2 goals (youth or mini goals), lots of balls, cones",
+    "setup": "Teams of three in the positions passer, crosser and finisher. Two teams work at the same time on the two goals.",
+    "rules": [
+      "The passer plays to the crosser, who takes the ball to the end line.",
+      "The crosser crosses to the two teammates running in.",
+      "Goals only count first time. The teams count themselves.",
+      "After every action everyone rotates one position, swap sides after 4 minutes."
+    ],
+    "easier": "2 touches allowed after the cross, low cross allowed.",
+    "harder": "A passive defender in the box, goals only with the weaker foot.",
+    "questions": ["When do you have to start your run into the box to reach the cross?", "Where do you cross when two teammates are coming?"]
+  },
+  "ue-ablage-abschluss": {
+    "name": "Finishing after a Lay-off",
+    "field": "Two starting points 20 m in front of a goal, a lay-off player in between",
+    "material": "1 goal with a keeper, lots of balls, cones",
+    "setup": "Two short lines of at most three players. One player stands as the lay-off player 15 m in front of the goal.",
+    "rules": [
+      "Pass to the lay-off player, who lays it off sideways or back.",
+      "Finish first time or with one touch, alternating left and right.",
+      "The shooter becomes the lay-off player, the lay-off player fetches the ball and joins a line.",
+      "Competition: which line scores more in 3 minutes?"
+    ],
+    "easier": "Finish with two touches, lay-off player closer to goal.",
+    "harder": "A defender chases after the pass, only first-time finishes count.",
+    "questions": ["Which foot do you receive with so you can shoot straight away?", "Where do you aim when the keeper is far off the line?"]
+  },
+  "ue-sprint-duell": {
+    "name": "Sprint into a 1v1",
+    "field": "Several lanes 25 × 12 m, 2 mini goals at each end",
+    "material": "Balls in the middle of each lane, 2 mini goals per lane, cones",
+    "setup": "Two players lie or sit next to each other at the start line, the ball lies 10 m in front of them.",
+    "rules": [
+      "On the signal both sprint to the ball.",
+      "Whoever gets the ball first attacks, the other defends.",
+      "Score in one of the two mini goals. Then both walk back easily (rest).",
+      "Change the starting position: lying on the front, on the back, facing away from the ball."
+    ],
+    "easier": "Ball closer, defender starts a step later.",
+    "harder": "The coach rolls the ball diagonally, after winning the ball the defender may counter to the start line.",
+    "questions": ["How do you get away fastest from lying on your front?", "What do you do if you get to the ball too late?"]
+  },
+  "ue-kopfball-leichtball": {
+    "name": "Heading Game with a Light Ball",
+    "field": "Several fields 12 × 8 m with small goals or cone goals",
+    "material": "Light or foam balls (not a match ball), cones",
+    "setup": "2v2 per field. The ball is only thrown by hand. Keep it short, no series with many repetitions (DFB recommendation).",
+    "rules": [
+      "Throw, catch, throw: goals only count as a header after a throw.",
+      "Whoever has the ball may not run, only pass (throw).",
+      "5 minutes at most, then back to playing with the feet."
+    ],
+    "easier": "Goals also by volley, throw from 3 m.",
+    "harder": "Header goals only on the move, slightly bigger field.",
+    "questions": ["Which part of your forehead hits the ball best?", "Why keep your eyes open when heading?"]
+  },
+  "ue-flugball-zonen": {
+    "name": "Long Balls over the Middle Zone",
+    "field": "Three zones in a row: 15 × 15 m, a 10 m middle zone, 15 × 15 m",
+    "material": "Balls, cones, bibs",
+    "setup": "3 players in each outer zone, 1–2 interceptors in the middle zone.",
+    "rules": [
+      "One group passes in its zone until a long ball over the middle zone is on.",
+      "The other group receives the long ball and keeps it in its zone.",
+      "Interceptors may only jump and intercept in the middle zone.",
+      "If a ball is intercepted, the player who made the bad pass swaps into the middle zone."
+    ],
+    "easier": "No interceptors, the ball may bounce once.",
+    "harder": "Long ball after at most 3 passes, first touch into space.",
+    "questions": ["How do you see that a long ball is on?", "Which body part controls the high ball best?"]
+  },
+  "ue-2v2-umschalten": {
+    "name": "2v2 with Transition",
+    "field": "20 × 20 m, a goal with a keeper on one side, 2 mini goals with a dribble line in between opposite",
+    "material": "1 goal, 2 mini goals, cones, balls with the coach",
+    "setup": "Pairs stand at the mini goals. The coach plays the ball to an attacking pair.",
+    "rules": [
+      "The pair attacks the goal with the keeper in a 2v2.",
+      "If the defenders win the ball, they counter on the mini goals or dribble over the line in between.",
+      "One transition at most, then a new ball. Swap roles after every action."
+    ],
+    "easier": "Defenders start a step behind the attackers.",
+    "harder": "Two transitions allowed, counter only 5 seconds.",
+    "questions": ["What is the first thing you do after winning the ball?", "Who pressures the ball carrier after losing it?"]
+  },
+  "ab-linie-verteidigen": {
+    "name": "4v4: Defend a Line",
+    "field": "33 × 25 m (double penalty area) with a halfway line, youth goal with a keeper, 2 mini goals with a ball depot opposite",
+    "material": "1 youth goal, 2 mini goals, cones, lots of balls, bibs",
+    "setup": "Both teams of four line up as a back line at halfway. A target player starts from the ball depot.",
+    "rules": [
+      "The target player passes to the attackers, who attack the goal with the keeper.",
+      "For the defending back four: only one player may leave the line and press, the others shift.",
+      "Winning the ball: counter on the mini goals.",
+      "After a goal, a save or the ball going out, 1 minute of free 4v4, then a new round. The halfway line is the offside line."
+    ],
+    "easier": "No offside, the line may release two players.",
+    "harder": "Attackers have 10 seconds, a counter goal counts double.",
+    "questions": ["Who steps out, who covers?", "How do you shift when the ball goes wide?"]
+  },
+  "ab-sechseck-anspieler": {
+    "name": "Hexagon Game with Deep Target Players",
+    "field": "Hexagon about 33 × 25 m (corner cones moved in), 2 youth goals",
+    "material": "2 youth goals, cones, balls behind the goals, bibs",
+    "setup": "4v4 in the hexagon. Each team has two target players diagonally deep on the opponents' sides.",
+    "rules": [
+      "Target players have 2 touches and only play for their team.",
+      "Goals count once, double after a cross from a target player.",
+      "After every round the target players swap into the field."
+    ],
+    "easier": "Target players for both teams, goals after a target-player pass count double.",
+    "harder": "Target players 1 touch only, a goal only counts if a target player was involved.",
+    "questions": ["When is the target player the best option?", "How do you use the width when the middle is closed?"]
+  },
+  "ab-unterzahl-4v3": {
+    "name": "4v3: Defending Outnumbered",
+    "field": "30 × 25 m, youth goal with a keeper, 2 mini goals opposite",
+    "material": "1 youth goal, 2 mini goals, balls, bibs",
+    "setup": "Four attackers against three defenders and a keeper. The fourth defender waits at the mini goal and comes on after every round.",
+    "rules": [
+      "The attackers have 15 seconds to finish.",
+      "The defenders steer the attack wide and protect the middle.",
+      "Winning the ball: counter on the mini goals, worth double.",
+      "Swap roles after every round."
+    ],
+    "easier": "20 seconds to attack, defenders may use the keeper as a teammate.",
+    "harder": "Attack only 10 seconds, after winning the ball another attacker joins from behind.",
+    "questions": ["Who do you leave free when outnumbered, and why?", "When is it worth doubling up on the ball carrier?"]
+  },
+  "ab-turnier-4v4": {
+    "name": "4v4 Tournament with Promotion and Relegation",
+    "field": "Several fields 30 × 20 m side by side, 2 mini goals on each end line",
+    "material": "4 mini goals per field, balls at the side, bibs",
+    "setup": "Two teams of four play on each field. The fields are ranked from field 1 (top) to the last one.",
+    "rules": [
+      "Play on all four mini goals, no keeper.",
+      "After every round the winners move up a field, the losers down one.",
+      "A draw is decided by a quick 1v1.",
+      "The players count their own goals."
+    ],
+    "easier": "With a joker who always plays for the team in possession.",
+    "harder": "Goals only by dribbling through the mini goal, only 3 touches in a row.",
+    "questions": ["Which goal is open right now?", "What took you up the fields today?"]
+  },
+  "ab-2v2-dauer": {
+    "name": "Continuous 2v2",
+    "field": "Several fields 20 × 15 m, a mini goal or cone goal on each end line",
+    "material": "2 mini goals per field, balls at the side, bibs",
+    "setup": "Three pairs per field: two play, one waits at the side with a ball.",
+    "rules": [
+      "Whoever concedes a goal leaves the field. The waiting pair attacks straight away with a new ball.",
+      "The winners stay and change direction.",
+      "Every pair counts its goals."
+    ],
+    "easier": "The waiting pair comes on after 3 seconds, bigger goals.",
+    "harder": "Two goals per side, a goal only counts after a one-two or a won 1v1.",
+    "questions": ["How do you switch on straight away after a goal?", "When do you pass, when do you go yourself?"]
   }
 }

@@ -1,0 +1,41 @@
+{
+  "id": "sf-3v2-konter",
+  "name": "3 gegen 2 mit Konter auf Minitore",
+  "duration": 12,
+  "fps": 12.5,
+  "field": {"w": 20, "h": 25, "margin": 3},
+  "goals": [
+    {"x": 6, "y": 0, "side": "top", "kind": "mini"},
+    {"x": 14, "y": 0, "side": "top", "kind": "mini"}
+  ],
+  "cones": [[9, 25], [11, 25]],
+  "dashed": [[9, 25, 11, 25]],
+  "teams": {
+    "blue": {"color": "#2f6fd6"},
+    "red": {"color": "#d6452f"}
+  },
+  "players": [
+    {"id": "B1", "team": "blue", "path": [[0, 10, 22], [1.0, 10, 18], [1.6, 10, 16.5], [4.4, 10, 22.5], [5.8, 10, 15.5], [6.2, 10.5, 15], [8, 10, 21], [10, 10, 22]]},
+    {"id": "B2", "team": "blue", "path": [[0, 4, 20], [1.6, 4, 12.5], [2.2, 4, 11.5], [4, 4, 14], [7, 5, 14], [10, 4, 20]]},
+    {"id": "B3", "team": "blue", "path": [[0, 16, 20], [1.5, 16, 12], [2.8, 15, 6.5], [3.2, 14.5, 5], [5, 16, 12], [7.5, 16, 16], [10, 16, 20]]},
+    {"id": "R1", "team": "red", "path": [[0, 8, 6], [2, 6, 9], [3, 9, 6], [5, 10, 10], [6.0, 10, 14.3], [8.2, 10, 25.6], [8.8, 10, 26], [10, 9, 18]], "highlight": [[8.0, 9.4]]},
+    {"id": "R2", "team": "red", "path": [[0, 12, 5], [2, 13, 6], [2.8, 14, 5], [4, 12, 6], [6, 11, 10], [9, 12, 7]]}
+  ],
+  "balls": [
+    {"show": [[0, 3.9]], "keys": [{"t": 0, "on": "B1"}, {"t": 1.0, "on": "B1"}, {"t": 1.6, "on": "B2"}, {"t": 2.2, "on": "B2"}, {"t": 2.8, "on": "B3"}, {"t": 3.2, "on": "B3"}, {"t": 3.6, "x": 14, "y": -0.3}]},
+    {"show": [[4.2, 8.8]], "keys": [{"t": 4.4, "on": "B1"}, {"t": 6.0, "on": "B1"}, {"t": 6.2, "on": "R1"}, {"t": 8.4, "on": "R1"}]}
+  ],
+  "signals": [
+    {"from": 8.2, "to": 9.6, "color": "#d6452f", "de": "Punkt", "en": "Point"}
+  ],
+  "captions": [
+    {"from": 0, "to": 3.9, "de": "3 gegen 2 auf die Minitore", "en": "3 v 2 on the mini goals"},
+    {"from": 3.9, "to": 6.2, "de": "Nächster Angriff sofort mit neuem Ball", "en": "Next attack right away with a new ball"},
+    {"from": 6.2, "to": 9.0, "de": "Ballgewinn: über die Konterlinie dribbeln", "en": "Ball won: dribble over the counter line"},
+    {"from": 9.0, "to": 12, "de": "Punkt für die Verteidiger, später Rollen tauschen", "en": "Point for the defenders, swap roles later"}
+  ],
+  "legend": [
+    {"team": "blue", "de": "Angreifer", "en": "Attackers"},
+    {"team": "red", "de": "Verteidiger", "en": "Defenders"}
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "id": "ab-unterzahl-4v3",
+  "name": "4 gegen 3: In Unterzahl verteidigen",
+  "duration": 11,
+  "fps": 12.5,
+  "field": {"w": 25, "h": 30, "margin": 3},
+  "goals": [
+    {"x": 12.5, "y": 0, "side": "top", "kind": "small"},
+    {"x": 6, "y": 30, "side": "bottom", "kind": "mini"},
+    {"x": 19, "y": 30, "side": "bottom", "kind": "mini"}
+  ],
+  "teams": {
+    "blue": {"color": "#2f6fd6"},
+    "red": {"color": "#d6452f"},
+    "gk": {"color": "#1fa463"}
+  },
+  "players": [
+    {"id": "B1", "team": "blue", "path": [[0, 12.5, 20], [0.6, 12.5, 19], [3, 12, 16], [6, 12, 18], [9, 12.5, 20]]},
+    {"id": "B2", "team": "blue", "path": [[0, 5, 15], [1.4, 4.5, 13], [1.9, 4.5, 12.5], [3.5, 5, 10], [6, 5, 14], [9, 5, 15]]},
+    {"id": "B3", "team": "blue", "path": [[0, 20, 15], [2.6, 21, 10], [3.2, 21.5, 9], [4.2, 22, 6], [4.6, 21.5, 6.2], [6, 20, 10], [9, 20, 15]]},
+    {"id": "B4", "team": "blue", "path": [[0, 12, 9], [3, 14, 8], [4.4, 15, 7], [6, 13, 10], [9, 12, 9]]},
+    {"id": "R1", "team": "red", "path": [[0, 8, 8], [1.6, 6, 10], [2.8, 10, 8], [4, 12, 7], [6, 9, 9], [9, 8, 8]]},
+    {"id": "R2", "team": "red", "path": [[0, 12.5, 6], [2.8, 15, 6], [4.2, 18, 5.5], [4.6, 19.5, 5.8], [5.2, 18, 10], [6.4, 18.5, 22], [7.0, 18.7, 27], [7.6, 18, 28], [10.5, 12.5, 6]], "highlight": [[4.5, 5.2]]},
+    {"id": "R3", "team": "red", "path": [[0, 17, 8], [2.6, 19.5, 9], [3.2, 20, 8], [4.2, 21, 5], [6, 18, 9], [10, 17, 8]]},
+    {"id": "R4", "team": "red", "path": [[0, 8.5, 32]], "face": [0, -1]},
+    {"id": "G", "team": "gk", "path": [[0, 12.5, 1.3], [3, 14, 1.3], [5, 12.5, 1.3]]}
+  ],
+  "balls": [
+    {"show": [[0, 7.8]], "keys": [{"t": 0, "on": "B1"}, {"t": 0.6, "on": "B1"}, {"t": 1.4, "on": "B2"}, {"t": 1.9, "on": "B2"}, {"t": 2.6, "on": "B3"}, {"t": 4.2, "on": "B3"}, {"t": 4.6, "on": "R2"}, {"t": 7.0, "on": "R2"}, {"t": 7.3, "x": 19, "y": 30.3}]}
+  ],
+  "signals": [
+    {"from": 7.3, "to": 8.8, "color": "#d6452f", "de": "Tor x2", "en": "Goal x2"}
+  ],
+  "captions": [
+    {"from": 0, "to": 2.6, "de": "4 gegen 3: 15 Sekunden bis zum Abschluss", "en": "4 v 3: 15 seconds to finish"},
+    {"from": 2.6, "to": 4.6, "de": "Verteidiger lenken nach außen, Zentrum zu", "en": "Defenders show outside, close the centre"},
+    {"from": 4.6, "to": 7.8, "de": "Ballgewinn: Konter auf die Minitore zählt doppelt", "en": "Ball won: a counter goal counts double"},
+    {"from": 7.8, "to": 11, "de": "Der vierte Verteidiger wechselt ein", "en": "The fourth defender rotates in"}
+  ],
+  "legend": [
+    {"team": "blue", "de": "Angreifer", "en": "Attackers"},
+    {"team": "red", "de": "Verteidiger", "en": "Defenders"},
+    {"team": "gk", "de": "Torwart", "en": "Keeper"}
+  ]
+}
