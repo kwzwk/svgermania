@@ -162,6 +162,9 @@ export const PHASES = [
 
 // Feste Rituale am Anfang und Ende jeder Einheit (Minuten). Ankommen läuft vor dem offiziellen Beginn.
 export const RITUAL_MINUTES = { opening: 5, closing: 5 };
+// Jugend: kurze Team- und Nachbesprechung statt Kreis, damit die Spielblöcke nicht schrumpfen.
+export const RITUAL_MINUTES_YOUTH = { opening: 3, closing: 3 };
+export const ritualMinutes = (age) => (AGE_GROUPS[age]?.stage === 'youth' ? RITUAL_MINUTES_YOUTH : RITUAL_MINUTES);
 
 export const SESSION_LENGTHS = [45, 60, 75, 90, 105];
 

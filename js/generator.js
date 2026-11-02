@@ -1,6 +1,6 @@
 // Wochenplan-Generator. Reine Funktionen ohne DOM, damit sie im Browser und in Node-Tests laufen.
 
-import { AGE_GROUPS, PHASES, RITUAL_MINUTES, NET_PLAY_SHARE } from './config.js';
+import { AGE_GROUPS, PHASES, NET_PLAY_SHARE, ritualMinutes } from './config.js';
 
 // Kleiner deterministischer Zufallsgenerator (mulberry32), damit ein Plan reproduzierbar ist.
 export function createRng(seed) {
@@ -40,10 +40,12 @@ export function themeForWeek(ageId, week) {
 // Verteilt die Trainingszeit auf die Phasen (Spielen – Üben – Spielen), gerundet auf 5 Minuten.
 // shares: Anteile je Phase, z. B. für die Jugend 15/30/15/30 nach der DFB-Trainingsphilosophie.
 export function splitMinutes(total, shares = PHASES.map((p) => p.share), nearest = false) {
-  // Kinder: abrunden, damit der Rest dem letzten Spielblock zugutekommt.
-  // Jugend (nearest): auf 5 Minuten runden, damit beide Spielblöcke etwa gleich lang sind.
+  // Kinder: auf 5 Minuten abrunden, der Rest geht an den letzten Spielblock.
+  // Jugend (nearest): auf ganze Minuten runden, damit beide Spielblöcke gleich lang bleiben
+  // (90 min mit Team- und Nachbesprechung: 14/28/14/28).
+  const step = nearest ? 1 : 5;
   const snap = nearest ? Math.round : Math.floor;
-  const blocks = shares.map((share) => Math.max(5, snap((total * share) / 5) * 5));
+  const blocks = shares.map((share) => Math.max(5, snap((total * share) / step) * step));
   const diff = total - blocks.reduce((s, m) => s + m, 0);
   blocks[blocks.length - 1] += diff;
   return blocks;
@@ -113,7 +115,8 @@ export function generatePlan(exercises, opts, rituals = null) {
     const fit = all.filter(keeperOk);
     return fit.length ? fit : all;
   };
-  const phaseMinutes = splitMinutes(withRituals ? minutes - RITUAL_MINUTES.opening - RITUAL_MINUTES.closing : minutes, group.phaseShares, group.stage === 'youth');
+  const rm = ritualMinutes(age);
+  const phaseMinutes = splitMinutes(withRituals ? minutes - rm.opening - rm.closing : minutes, group.phaseShares, group.stage === 'youth');
   const used = new Set();
   const usedRituals = new Set();
   const ritual = (kind) => {
@@ -141,8 +144,8 @@ export function generatePlan(exercises, opts, rituals = null) {
       return { phase: phase.id, label: phase.label, minutes: phaseMinutes[i], exercise, variation: variationFor(sessionLevel) };
     });
     // Rituale immer auswürfeln, damit die Übungsauswahl mit und ohne Rituale gleich bleibt.
-    const opening = { minutes: RITUAL_MINUTES.opening, arrival: ritual('arrival'), circle: ritual('opening') };
-    const closing = { minutes: RITUAL_MINUTES.closing, circle: ritual('closing') };
+    const opening = { minutes: rm.opening, arrival: ritual('arrival'), circle: ritual('opening') };
+    const closing = { minutes: rm.closing, circle: ritual('closing') };
     plan.push({
       number: s + 1,
       level: sessionLevel,

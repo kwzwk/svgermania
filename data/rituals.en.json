@@ -7,6 +7,14 @@
     "Praise specifically (\"Great how you looked up there\"), mistakes are allowed.",
     "Drinks break between phases, everyone plays the same amount, nobody waits for long."
   ],
+  "principlesYouth": [
+    "Greet every player by name and say goodbye at the end.",
+    "A fixed structure: arrival, team talk, activation – game block – in-between block – game block, debrief.",
+    "Explain briefly, then play. Coach in the breaks between rounds.",
+    "Ask questions instead of giving instructions: players find solutions themselves and explain them.",
+    "Praise specifically, mistakes are part of learning.",
+    "Hand over responsibility: captain, set-up crew, team council."
+  ],
   "standard": {
     "opening": [
       "Everyone stands in a circle, the coach at eye level (crouch down).",
@@ -16,6 +24,17 @@
       "Team call: hands in the middle, \"1, 2, 3 – Germania!\"",
       "Collect the equipment together, every child helps.",
       "Say goodbye to each child individually (high five, their name, one sentence of praise)."
+    ]
+  },
+  "standardYouth": {
+    "opening": [
+      "A short huddle, everyone can see the coach.",
+      "State the focus of the week in one sentence."
+    ],
+    "closing": [
+      "Team call: \"1, 2, 3 – Germania!\"",
+      "Pack up together, the set-up crew checks.",
+      "Say goodbye to every player with a handshake."
     ]
   },
   "arrival": {
@@ -54,6 +73,24 @@
         "The others play freely on the mini goals."
       ],
       "tip": "Keep a list so every child is captain equally often."
+    },
+    "an-handschlag-check": {
+      "name": "Handshake and quick check-in",
+      "steps": [
+        "The coach greets every player with a handshake and by name.",
+        "A quick question: how fit are you today? School, workload, any pain?",
+        "Then grab a ball and pass easily in pairs until everyone has arrived."
+      ],
+      "tip": "Anyone carrying a knock says so here. Adjust their load for today straight away."
+    },
+    "an-aufbau-team": {
+      "name": "Set-up crew",
+      "steps": [
+        "Two players (taking turns) get the sketch of today's fields and set them up.",
+        "The others play a 4 v 1 rondo until the fields are ready.",
+        "The set-up crew reports to the coach: fields ready."
+      ],
+      "tip": "Hand over responsibility: send the sketch to the team chat beforehand."
     }
   },
   "opening": {
@@ -110,6 +147,33 @@
         "Team call together to start."
       ],
       "tip": "Take turns so every child gets to be in the spotlight once."
+    },
+    "tb-ziel-der-einheit": {
+      "name": "Goal of the session",
+      "steps": [
+        "The coach states the goal of the session in one sentence and how you can tell it is working.",
+        "One player repeats the goal in their own words.",
+        "Team call, then straight into the activation."
+      ],
+      "tip": "One goal, not three. Come back to it in the breaks between rounds."
+    },
+    "tb-szene-letztes-spiel": {
+      "name": "A scene from the last match",
+      "steps": [
+        "The coach shows a scene from the last match (tactics board, photo or short clip).",
+        "Question to the team: what else could we have done here?",
+        "Two or three players answer, and the solution is tried out in training."
+      ],
+      "tip": "Use good scenes as often as mistakes, and never single anyone out."
+    },
+    "tb-kapitaen-eroeffnet": {
+      "name": "The captain opens",
+      "steps": [
+        "The captain (or the team council) opens: mood in the team, organisational points.",
+        "The coach only adds the goal of the session.",
+        "The captain leads the team call."
+      ],
+      "tip": "Agree it briefly with the captain beforehand. Do it regularly from B youth on: it builds self-organisation."
     }
   },
   "closing": {
@@ -155,6 +219,24 @@
         "Choose the captain for next time."
       ],
       "tip": "Also give the dates to the parents."
+    },
+    "nb-zwei-fragen": {
+      "name": "Two questions to reflect",
+      "steps": [
+        "What worked well today?",
+        "What do we take into the next match?",
+        "Players answer first, the coach sums up in one sentence at the end."
+      ],
+      "tip": "Players first, coach last. Two good answers beat one long speech."
+    },
+    "nb-feedback-paare": {
+      "name": "Feedback in pairs",
+      "steps": [
+        "Players in pairs give each other one minute of feedback: one specific piece of praise and one tip.",
+        "Two pairs tell the team what they said.",
+        "Team call."
+      ],
+      "tip": "Keep it specific (\"Your turn in the second game block was strong\"), mix the pairs every week."
     }
   }
 }

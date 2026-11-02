@@ -1,4 +1,4 @@
-import { AGE_GROUPS, LEVELS, THEMES, PHASES, SESSION_LENGTHS, RITUAL_MINUTES } from './config.js';
+import { AGE_GROUPS, LEVELS, THEMES, PHASES, SESSION_LENGTHS, ritualMinutes } from './config.js';
 import { generatePlan, isoWeek, sessionSteps } from './generator.js';
 import {
   t,
@@ -198,15 +198,16 @@ function render() {
 
 function renderSession(session, plan) {
   const progression = session.number > 1 && session.level > plan.level ? t('harderStep') : '';
-  const standard = ritualTexts(rituals)?.standard;
+  const standard = ritualTexts(rituals, plan.stage)?.standard;
+  const youthPlan = plan.stage === 'youth';
   return `
     <article class="session">
       <h3>${esc(sessionTitle(session.number, plan.age))}<span class="muted">${esc(progression)}</span></h3>
       <ol class="blocks">
         ${session.opening ? renderRitualBlock('arrival', t('before'), t('arrival'), session.opening.arrival) : ''}
-        ${session.opening ? renderRitualBlock('opening', `${session.opening.minutes} min`, t('openingCircle'), session.opening.circle, standard?.opening, plan.theme) : ''}
+        ${session.opening ? renderRitualBlock('opening', `${session.opening.minutes} min`, t(youthPlan ? 'openingYouth' : 'openingCircle'), session.opening.circle, standard?.opening, plan.theme) : ''}
         ${session.blocks.map((b) => `<li class="block phase-${b.phase}">${renderBlock(b, plan.age)}</li>`).join('')}
-        ${session.closing ? renderRitualBlock('closing', `${session.closing.minutes} min`, t('closingCircle'), session.closing.circle, standard?.closing) : ''}
+        ${session.closing ? renderRitualBlock('closing', `${session.closing.minutes} min`, t(youthPlan ? 'closingYouth' : 'closingCircle'), session.closing.circle, standard?.closing) : ''}
       </ol>
     </article>`;
 }
@@ -376,14 +377,18 @@ const PHASE_HINT_KEYS = { aufwaermen: 'hintAufwaermen', uebung: 'hintUebung', sp
 
 function renderStructure() {
   if (!rituals) return '';
-  const texts = ritualTexts(rituals);
   const youth = stage === 'youth';
+  const texts = ritualTexts(rituals, stage);
+  const rm = ritualMinutes(youth ? 'D' : 'F');
+  const openLabel = t(youth ? 'openingYouth' : 'openingCircle');
+  const closeLabel = t(youth ? 'closingYouth' : 'closingCircle');
+  const st = (key) => t(youth ? `${key}Youth` : key);
   const hint = (id) => t(youth ? `hintYouth${id[0].toUpperCase()}${id.slice(1)}` : PHASE_HINT_KEYS[id]);
   const steps = [
-    [t('structArrival'), t('structArrivalText')],
-    [`${t('openingCircle')} (${RITUAL_MINUTES.opening} min)`, t('structOpeningText')],
+    [t('structArrival'), st('structArrivalText')],
+    [`${openLabel} (${rm.opening} min)`, st('structOpeningText')],
     ...PHASES.map((p) => [phaseLabel(p.id, youth ? 'D' : null), hint(p.id)]),
-    [`${t('closingCircle')} (${RITUAL_MINUTES.closing} min)`, t('structClosingText')],
+    [`${closeLabel} (${rm.closing} min)`, st('structClosingText')],
   ];
   const stageAges = agesOf(stage);
   return `
@@ -396,7 +401,7 @@ function renderStructure() {
     <ul class="rules">${texts.principles.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>
     <h3>${esc(t('ritualChoice'))}</h3>
     <div class="age-cards">
-      ${[['arrival', t('arrival')], ['opening', t('openingCircle')], ['closing', t('closingCircle')]]
+      ${[['arrival', t('arrival')], ['opening', openLabel], ['closing', closeLabel]]
         .map(
           ([kind, title]) => `
         <article class="card">
@@ -555,7 +560,8 @@ async function keepScreenOn() {
 function stepTitle(step) {
   if (step.kind === 'opening' || step.kind === 'closing') {
     const item = localizeRitual(step.kind, step.ritual);
-    return { label: t(step.kind === 'opening' ? 'openingCircle' : 'closingCircle'), name: item?.name ?? '' };
+    const y = stageOf(trainer.age) === 'youth';
+    return { label: t(step.kind === 'opening' ? (y ? 'openingYouth' : 'openingCircle') : y ? 'closingYouth' : 'closingCircle'), name: item?.name ?? '' };
   }
   const ex = step.block.exercise && localizeExercise(step.block.exercise);
   return { label: phaseLabel(step.kind, trainer.age), name: ex ? ex.name : t('noExercise') };
@@ -577,7 +583,7 @@ function renderTrainer() {
   const step = trainer.steps[trainer.index];
   const { label, name } = stepTitle(step);
   const next = trainer.steps[trainer.index + 1];
-  const standard = ritualTexts(rituals)?.standard;
+  const standard = ritualTexts(rituals, stageOf(trainer.age))?.standard;
   let body = '';
   if (step.ritual) {
     const item = localizeRitual(step.kind, step.ritual);

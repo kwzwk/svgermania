@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { AGE_GROUPS, LEVELS, PHASES, THEMES, SESSION_LENGTHS, RITUAL_MINUTES } from '../js/config.js';
+import { AGE_GROUPS, LEVELS, PHASES, THEMES, SESSION_LENGTHS, RITUAL_MINUTES, ritualMinutes } from '../js/config.js';
 import { generatePlan, sessionSteps, splitMinutes, suitableExercises, themeForWeek, isoWeek } from '../js/generator.js';
 
 const exercises = JSON.parse(readFileSync(new URL('../data/exercises.json', import.meta.url)));
@@ -102,8 +102,8 @@ test('every session opens and closes with age-appropriate rituals, varied within
   for (const age of Object.keys(AGE_GROUPS)) {
     const plan = generatePlan(exercises, { age, level: 2, sessions: 2, minutes: 60, week: 3 }, rituals);
     for (const s of plan.sessions) {
-      assert.equal(s.opening.minutes, RITUAL_MINUTES.opening);
-      assert.equal(s.closing.minutes, RITUAL_MINUTES.closing);
+      assert.equal(s.opening.minutes, ritualMinutes(age).opening);
+      assert.equal(s.closing.minutes, ritualMinutes(age).closing);
       for (const r of [s.opening.arrival, s.opening.circle, s.closing.circle]) assert.ok(r && r.ages.includes(age));
     }
     assert.notEqual(plan.sessions[0].opening.circle.id, plan.sessions[1].opening.circle.id);
@@ -224,4 +224,22 @@ test('youth exercise fields are valid', () => {
       for (const n of ex.format.match(/\d+(?=\s*\+?\s*(TW)?\s*(gegen|v))/g) ?? []) assert.ok(Number(n) <= 4, `${ex.id}: ${ex.format}`);
     }
   }
+});
+
+test('youth sessions use short team talks and keep both game blocks equal', () => {
+  assert.equal(ritualMinutes('F'), RITUAL_MINUTES);
+  for (const age of youthAges) {
+    const plan = generatePlan(exercises, { age, level: 2, sessions: 1, minutes: 90, week: 5 }, rituals);
+    const s = plan.sessions[0];
+    assert.equal(s.opening.minutes, 3);
+    assert.equal(s.closing.minutes, 3);
+    assert.deepEqual(s.blocks.map((b) => b.minutes), [14, 28, 14, 28]);
+  }
+  // Kindliche Rituale enden mit der D-Jugend, ab C gibt es eigene.
+  for (const kind of ['arrival', 'opening', 'closing']) {
+    for (const r of rituals[kind]) {
+      if (r.ages.includes('G')) assert.ok(!r.ages.includes('C'), `${r.id}: kids ritual reaches C youth`);
+    }
+  }
+  assert.ok(rituals.principlesYouth.length > 0 && rituals.standardYouth.opening.length > 0);
 });
