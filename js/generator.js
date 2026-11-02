@@ -99,6 +99,12 @@ export function variationFor(level) {
   return level <= 1 ? 'easier' : level >= 3 ? 'harder' : 'base';
 }
 
+// Nur Übungen zum Schwerpunkt, solange es welche gibt; sonst alle (dann gewichtet pick nach Schwerpunkt).
+const onTheme = (pool, theme) => {
+  const fit = pool.filter((ex) => ex.themes.includes(theme));
+  return fit.length ? fit : pool;
+};
+
 function pick(candidates, theme, used, rng) {
   const fresh = candidates.filter((ex) => !used.has(ex.id));
   const pool = fresh.length ? fresh : candidates;
@@ -172,7 +178,7 @@ export function generatePlan(exercises, opts, rituals = null) {
 
   // Ankerspiel: Spielblock 1 bleibt über den ganzen Drei-Wochen-Block gleich, damit die Spieler die Regeln
   // kennen und sich auf die Lösung konzentrieren. Eigener Zufall, unabhängig von Woche, Dauer und Einheiten.
-  const anchor = pick(phasePool('spielform'), theme, new Set(), createRng(hashSeed('anker', age, level, theme, block.index, players ?? '', keepers ?? '', variant)));
+  const anchor = pick(onTheme(phasePool('spielform'), theme), theme, new Set(), createRng(hashSeed('anker', age, level, theme, block.index, players ?? '', keepers ?? '', variant)));
   if (anchor) used.add(anchor.id);
   const usedKeeper = new Set();
   // Erste Einheit nach dem Spiel (für den Bezug zum letzten Spiel in der Teambesprechung).
@@ -188,7 +194,7 @@ export function generatePlan(exercises, opts, rituals = null) {
     let sessionLevel = Math.min(3, blockBase + (block.week === 2 && s > 0 ? 1 : 0));
     if (load === 'sharp') sessionLevel = blockBase;
     if (load === 'recovery') sessionLevel = Math.max(1, blockBase - 1);
-    const keeper = keeperPool.length ? pick(keeperPool.filter((ex) => !ex.levels || ex.levels.includes(sessionLevel)), theme, usedKeeper, rng) : null;
+    const keeper = keeperPool.length ? pick(onTheme(keeperPool.filter((ex) => !ex.levels || ex.levels.includes(sessionLevel)), theme), theme, usedKeeper, rng) : null;
     if (keeper) usedKeeper.add(keeper.id);
     const blocks = PHASES.map((phase, i) => {
       const isAnchor = phase.id === 'spielform' && anchor;

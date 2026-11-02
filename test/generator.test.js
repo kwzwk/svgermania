@@ -404,3 +404,25 @@ test('goalkeeper station runs parallel to the intermediate block in youth', () =
   const kids = generatePlan(exercises, { age: 'E', level: 2, sessions: 2, minutes: 90, week: 4, keepers: 1 });
   assert.ok(kids.sessions.every((s) => s.blocks.every((b) => !b.keeper)));
 });
+
+test('anchor game and keeper drill follow the focus whenever a fitting one exists', () => {
+  for (const age of Object.keys(AGE_GROUPS)) {
+    for (const keepers of [1, 2]) {
+      for (let week = 1; week <= 52; week += 3) {
+        const opts = { age, level: 2, sessions: 2, minutes: 90, week, players: 16, keepers };
+        const plan = generatePlan(exercises, opts);
+        const pool = suitableExercises(exercises, { age, level: 2, players: 16, keepers }).filter((ex) => ex.role !== 'keeper');
+        const fits = pool.some((ex) => ex.phase === 'spielform' && ex.themes.includes(plan.theme));
+        const anchor = plan.sessions[0].blocks[1].exercise;
+        if (fits) assert.ok(anchor.themes.includes(plan.theme), `${age}/KW${week}/${keepers} TW: anchor ${anchor.id} misses ${plan.theme}`);
+        const keeperFits = exercises.some((ex) => ex.role === 'keeper' && ex.ages.includes(age) && ex.themes.includes(plan.theme));
+        for (const s of plan.sessions) {
+          const k = s.blocks.find((b) => b.phase === 'uebung').keeper;
+          if (k && keeperFits && plan.sessions.length <= exercises.filter((ex) => ex.role === 'keeper' && ex.themes.includes(plan.theme)).length) {
+            assert.ok(k.themes.includes(plan.theme), `${age}/KW${week}: keeper ${k.id} misses ${plan.theme}`);
+          }
+        }
+      }
+    }
+  }
+});
