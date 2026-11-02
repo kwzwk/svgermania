@@ -28,7 +28,6 @@ let currentPlan = null;
 // Bereich: Kinderfußball (G–E, Funino) oder Jugendfußball (D, C nach der DFB-Trainingsphilosophie).
 const stageOf = (age) => AGE_GROUPS[age]?.stage ?? 'kids';
 const agesOf = (st) => Object.keys(AGE_GROUPS).filter((id) => stageOf(id) === st);
-const DEFAULT_AGE = { kids: 'F', youth: 'D' };
 let stage = 'kids';
 
 // ---------- Zustand <-> URL, damit ein Plan per Link geteilt werden kann ----------
@@ -74,9 +73,7 @@ function applyStaticTexts() {
   $('#players-label').textContent = t(youth ? 'playersYouth' : 'players');
   $('#keepers-field').hidden = !youth;
   $('.site-footer p').textContent = t(youth ? 'footerYouth' : 'footer');
-  const sw = $('#stage-switch');
-  sw.setAttribute('aria-label', t('stageLabel'));
-  for (const b of sw.querySelectorAll('button')) b.setAttribute('aria-pressed', String(b.dataset.stage === stage));
+  $('#rituals-label').textContent = t(youth ? 'includeRitualsYouth' : 'includeRituals');
   const langBtn = $('#lang-toggle');
   langBtn.textContent = t('langButton');
   langBtn.title = t('langTitle');
@@ -86,7 +83,10 @@ function applyStaticTexts() {
 // ---------- Formular ----------
 
 function fillForm(state) {
-  $('#age').innerHTML = agesOf(stage).map((id) => option(id, ageGroup(id).label, id === state.age)).join('');
+  // Eine Liste für alle Altersklassen, gruppiert nach Kinder- und Jugendfußball.
+  $('#age').innerHTML = ['kids', 'youth']
+    .map((st) => `<optgroup label="${esc(t(st === 'kids' ? 'stageKids' : 'stageYouth'))}">${agesOf(st).map((id) => option(id, ageGroup(id).label, id === state.age)).join('')}</optgroup>`)
+    .join('');
   $('#minutes').innerHTML = SESSION_LENGTHS.map((m) => option(m, `${m} min`, m === state.minutes)).join('');
   $('#levels').innerHTML = Object.keys(LEVELS)
     .map((id) => `<label><input type="radio" name="level" value="${id}"${Number(id) === state.level ? ' checked' : ''}><span>${esc(levelInfo(id).label)}</span></label>`)
@@ -106,6 +106,8 @@ function bindForm() {
     if (e.target.name === 'age') {
       form.minutes.value = AGE_GROUPS[form.age.value].defaultMinutes;
       fillThemes(form.age.value, form.theme.value);
+      const next = stageOf(form.age.value);
+      if (next !== stage) switchStage(next);
     }
     variant = 0;
     render();
@@ -116,19 +118,15 @@ function bindForm() {
     render();
   });
   $('#print').addEventListener('click', () => window.print());
-  $('#stage-switch').addEventListener('click', (e) => {
-    const next = e.target.closest('[data-stage]')?.dataset.stage;
-    if (next && next !== stage) switchStage(next);
-  });
   // Beim Drucken alle Übungen aufklappen.
   window.addEventListener('beforeprint', () => document.querySelectorAll('#plan details').forEach((d) => (d.open = true)));
 }
 
+// Wechsel zwischen Kinder- und Jugendfußball, ausgelöst durch die Wahl der Altersklasse.
 function switchStage(next) {
   stage = next;
-  const age = DEFAULT_AGE[next];
-  const state = { ...formState(), age, minutes: AGE_GROUPS[age].defaultMinutes, theme: 'auto', players: next === 'youth' ? 16 : 12 };
-  variant = 0;
+  const prev = formState();
+  const state = { ...prev, minutes: AGE_GROUPS[prev.age].defaultMinutes, players: next === 'youth' ? 16 : 12 };
   applyStaticTexts();
   fillForm(state);
   $('#cat-age').value = '';
@@ -166,7 +164,8 @@ function render() {
   const state = formState();
   writeState(state);
   const lvl = levelInfo(state.level);
-  $('#level-hint').textContent = `${lvl.label}: ${lvl.hint}`;
+  const hintKey = `levelHintYouth${state.level}`;
+  $('#level-hint').textContent = `${lvl.label}: ${stageOf(state.age) === 'youth' && t(hintKey) !== hintKey ? t(hintKey) : lvl.hint}`;
   const plan = generatePlan(exercises, state, rituals);
   const group = ageGroup(plan.age);
   const fields = plan.fields === 1 ? t('field1') : t('fieldN', { n: plan.fields });

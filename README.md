@@ -6,7 +6,7 @@ Live: https://scg.geyen.org
 
 ## Was es kann
 
-- **Kinder / Jugend**: Ein Umschalter im Kopf wechselt zwischen Kinderfußball (G, F, E) und Jugendfußball (D, C, B, A). Titel, Altersklassen, Katalog und die Seite „Ablauf & Regeln“ folgen der Wahl.
+- **Kinder / Jugend**: Die Altersklasse entscheidet: Die Liste ist gruppiert in Kinderfußball (G, F, E) und Jugendfußball (D, C, B, A). Untertitel, Torhüter-Feld, Katalog und die Seite „Ablauf & Regeln“ folgen der gewählten Altersklasse.
 - **Jugend (D bis A)**: Einheiten im Verhältnis 15/30/15/30 Minuten (bei 90 min), Spielformen nie größer als 4+TW gegen 4+TW (plus bis zu 2 Anspieler), Durchgänge von 3–4 min mit Pause. Ein Feld „Torhüter“ blendet Übungen aus, die mehr Torhüter brauchen. Statt Begrüßungs- und Abschlusskreis gibt es eine kurze Teambesprechung und Nachbesprechung (je 3 Minuten), ab der C-Jugend mit eigenen Ritualen, die die Spieler selbst führen (Ziel der Einheit, Szene aus dem letzten Spiel, Reflexion, Feedback in Paaren). Der Plan zeigt die geschätzte Netto-Spielzeit pro Spieler und Woche und warnt unter dem DFB-Mindestwert (48 Minuten, in der A-Jugend 32 Minuten).
 - **Wochenplan**: Altersklasse (G-, F-, E-Jugend), Niveau (Einsteiger, Fortgeschritten, Könner), Einheiten pro Woche, Dauer, Anzahl Kinder, Schwerpunkt und Kalenderwoche einstellen.
 - **Fester Ablauf jeder Einheit**: Ankommen (jedes Kind wird persönlich begrüßt), Begrüßungskreis mit einem Ritual zum Ankommen und Kennenlernen, dann nach der DFB-Entwicklungstabelle Aktivierung, Spielen I, Üben und Spielen II (Funino), zum Schluss ein Abschlusskreis mit Lob, Teamruf und Verabschiedung. Die Rituale wechseln von Einheit zu Einheit und passen zur Altersklasse.
