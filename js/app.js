@@ -1,4 +1,4 @@
-import { AGE_GROUPS, LEVELS, THEMES, PHASES, SESSION_LENGTHS, ritualMinutes } from './config.js';
+import { AGE_GROUPS, LEVELS, THEMES, PHASES, SESSION_LENGTHS, maxSessions, ritualMinutes } from './config.js';
 import { generatePlan, isoWeek, sessionSteps } from './generator.js';
 import { MAX_ITEMS, MAX_MINUTES, buildSession, decodeCustom, defaultMinutes, emptyCustom, encodeCustom, fixRituals, ritualsFor, totalMinutes } from './custom.js';
 import {
@@ -40,7 +40,7 @@ function readState() {
   return {
     age,
     level: LEVELS[q.get('level')] ? Number(q.get('level')) : 1,
-    sessions: clamp(Number(q.get('sessions')) || 2, 1, 3),
+    sessions: clamp(Number(q.get('sessions')) || 2, 1, maxSessions(age)),
     minutes: SESSION_LENGTHS.includes(Number(q.get('minutes'))) ? Number(q.get('minutes')) : AGE_GROUPS[age].defaultMinutes,
     players: clamp(Number(q.get('players')) || (stageOf(age) === 'youth' ? 16 : 12), 2, 40),
     keepers: clamp(Number(q.get('keepers') ?? 1), 0, 4),
@@ -96,8 +96,8 @@ function fillForm(state) {
   $('#levels').innerHTML = Object.keys(LEVELS)
     .map((id) => `<label><input type="radio" name="level" value="${id}"${Number(id) === state.level ? ' checked' : ''}><span>${esc(levelInfo(id).label)}</span></label>`)
     .join('');
+  fillSessions(state.age, state.sessions);
   const form = $('#plan-form');
-  form.sessions.value = state.sessions;
   form.players.value = state.players;
   form.keepers.value = state.keepers ?? 1;
   form.week.value = state.week;
@@ -112,6 +112,7 @@ function bindForm() {
     if (e.target.name === 'age') {
       form.minutes.value = AGE_GROUPS[form.age.value].defaultMinutes;
       fillThemes(form.age.value, form.theme.value);
+      fillSessions(form.age.value, Number(form.sessions.value));
       const next = stageOf(form.age.value);
       if (next !== stage) switchStage(next);
     }
@@ -142,6 +143,13 @@ function switchStage(next) {
   render();
 }
 
+// Auswahl 1 bis zur Höchstzahl der Altersklasse; ein zu hoher Wert wird auf das Maximum gekürzt.
+function fillSessions(age, current) {
+  const max = maxSessions(age);
+  const keep = clamp(Number(current) || 2, 1, max);
+  $('#sessions').innerHTML = Array.from({ length: max }, (_, i) => option(i + 1, i + 1, i + 1 === keep)).join('');
+}
+
 function fillThemes(age, current) {
   const themes = AGE_GROUPS[age].themes;
   const keep = themes.includes(current) ? current : 'auto';
@@ -153,7 +161,7 @@ function formState() {
   return {
     age: f.age.value,
     level: Number(f.querySelector('input[name=level]:checked').value),
-    sessions: Number(f.sessions.value),
+    sessions: clamp(Number(f.sessions.value) || 2, 1, maxSessions(f.age.value)),
     minutes: Number(f.minutes.value),
     players: clamp(Number(f.players.value) || 12, 2, 40),
     keepers: stageOf(f.age.value) === 'youth' ? clamp(Number(f.keepers.value) || 0, 0, 4) : undefined,
