@@ -67,7 +67,7 @@ export function netPlayMinutes(sessions) {
   return Math.round(play.reduce((sum, b) => sum + b.minutes, 0) * NET_PLAY_SHARE);
 }
 
-function variationFor(level) {
+export function variationFor(level) {
   return level <= 1 ? 'easier' : level >= 3 ? 'harder' : 'base';
 }
 

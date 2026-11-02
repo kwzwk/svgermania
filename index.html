@@ -27,6 +27,7 @@
       </div>
       <nav class="tabs" aria-label="Bereiche">
         <button class="tab" data-view="plan" aria-current="page" data-i18n="tabPlan">Wochenplan</button>
+        <button class="tab" data-view="custom" data-i18n="tabCustom">Eigener Plan</button>
         <button class="tab" data-view="catalog" data-i18n="tabCatalog">Übungen</button>
         <button class="tab" data-view="rules" data-i18n="tabRules">Ablauf &amp; Regeln</button>
       </nav>
@@ -78,6 +79,49 @@
           <select id="start-session"></select>
         </label>
         <button type="button" id="start-training" class="start-button" data-i18n="startTraining">▶ Training jetzt starten</button>
+      </div>
+    </section>
+
+    <section id="view-custom" class="view" hidden>
+      <p class="hint custom-intro" data-i18n="customIntro">Stell eine Einheit selbst aus den vorhandenen Übungen zusammen.</p>
+      <form id="custom-form" class="controls">
+        <label class="wide"><span data-i18n="customTitle">Titel (optional)</span>
+          <input type="text" name="title" maxlength="60" autocomplete="off">
+        </label>
+        <label><span data-i18n="age">Altersklasse</span>
+          <select name="age" id="c-age"></select>
+        </label>
+        <fieldset class="levels">
+          <legend data-i18n="level">Niveau</legend>
+          <div id="c-levels" class="segmented"></div>
+        </fieldset>
+        <label class="check wide"><input type="checkbox" name="rituals"> <span id="c-rituals-label" data-i18n="customRituals">Rituale einbeziehen</span></label>
+        <label class="c-ritual"><span data-i18n="arrival">Ankommen</span><select name="arrival"></select></label>
+        <label class="c-ritual"><span id="c-opening-label">Begrüßungskreis</span><select name="opening"></select></label>
+        <label class="c-ritual"><span id="c-closing-label">Abschlusskreis</span><select name="closing"></select></label>
+      </form>
+      <div id="custom-plan"></div>
+      <div class="custom-actions">
+        <button type="button" id="c-start" class="start-button" data-i18n="startTraining">▶ Training jetzt starten</button>
+        <div class="actions">
+          <button type="button" id="c-share" data-i18n="share">Link teilen</button>
+          <button type="button" id="c-print" data-i18n="print">Drucken</button>
+          <button type="button" id="c-clear" data-i18n="customClear">Leeren</button>
+        </div>
+        <p id="c-share-status" class="hint" role="status"></p>
+      </div>
+      <div class="custom-picker">
+        <h2 data-i18n="customAddTitle">Übungen hinzufügen</h2>
+        <div class="controls compact">
+          <label><span data-i18n="phase">Phase</span>
+            <select id="c-phase"></select>
+          </label>
+          <label><span data-i18n="theme">Schwerpunkt</span>
+            <select id="c-theme"></select>
+          </label>
+        </div>
+        <p id="c-count" class="hint"></p>
+        <div id="c-catalog" class="catalog"></div>
       </div>
     </section>
 
