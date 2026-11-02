@@ -37,6 +37,8 @@ jobs:
           tags: |
             type=raw,value=latest,enable={{is_default_branch}}
             type=semver,pattern={{version}}
+            # v1.0.0-u11 -> u11-latest (Variante aus dem Tag-Suffix)
+            type=match,pattern=^v\d+\.\d+\.\d+-(.+)$,group=1,suffix=-latest
             type=sha,format=short
             type=ref,event=pr
       - uses: docker/build-push-action@v6
@@ -48,3 +50,26 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+  # Bei einem Versions-Tag ein GitHub-Release anlegen. Der Titel kommt aus der
+  # Nachricht des annotierten Tags (z. B. "1.0 (u11)"), sonst aus dem Tag-Namen.
+  release:
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          ref=$(gh api "repos/$REPO/git/ref/tags/$TAG")
+          title="$TAG"
+          if [ "$(jq -r .object.type <<<"$ref")" = tag ]; then
+            msg=$(gh api "repos/$REPO/git/tags/$(jq -r .object.sha <<<"$ref")" --jq .message | head -n1)
+            [ -n "$msg" ] && title="$msg"
+          fi
+          gh release view "$TAG" -R "$REPO" >/dev/null 2>&1 \
+            || gh release create "$TAG" -R "$REPO" --title "$title" --generate-notes --verify-tag
