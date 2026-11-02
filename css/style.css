@@ -113,6 +113,9 @@ body {
 }
 .controls label, .controls legend { display: flex; flex-direction: column; gap: 4px; font-size: 0.85rem; font-weight: 600; color: var(--muted); }
 .controls label[hidden] { display: none; }
+.prevention-part { margin: 12px 0 4px; font-size: 0.95rem; }
+.prevention-list li { margin-bottom: 6px; }
+.prevention-level { color: var(--muted); }
 .controls select, .controls input[type="number"], .controls input[type="text"] {
   font: inherit; color: var(--text); background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px;
 }

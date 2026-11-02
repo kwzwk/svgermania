@@ -23,6 +23,7 @@ const option = (value, label, selected = false) => `<option value="${esc(value)}
 
 let exercises = [];
 let rituals = null;
+let prevention = null;
 let variant = 0;
 let currentPlan = null;
 
@@ -47,6 +48,7 @@ function readState() {
     week: clamp(Number(q.get('week')) || isoWeek(), 1, 53),
     variant: Number(q.get('v')) || 0,
     rituals: q.get('rituals') !== '0',
+    prevention: q.get('prev') !== '0',
   };
 }
 
@@ -55,6 +57,7 @@ function writeState(s) {
   if (s.keepers != null) q.set('keepers', s.keepers);
   if (s.variant) q.set('v', s.variant);
   if (!s.rituals) q.set('rituals', '0');
+  if (s.prevention === false) q.set('prev', '0');
   if (getLang() !== 'de') q.set('lang', getLang());
   history.replaceState(null, '', `?${q}${location.hash}`);
 }
@@ -73,6 +76,7 @@ function applyStaticTexts() {
   $('.tagline').textContent = t(youth ? 'taglineYouth' : 'tagline');
   $('#players-label').textContent = t(youth ? 'playersYouth' : 'players');
   $('#keepers-field').hidden = !youth;
+  $('#prevention-field').hidden = !youth;
   $('.site-footer p').textContent = t(youth ? 'footerYouth' : 'footer');
   $('#rituals-label').textContent = t(youth ? 'includeRitualsYouth' : 'includeRituals');
   const langBtn = $('#lang-toggle');
@@ -98,6 +102,7 @@ function fillForm(state) {
   form.keepers.value = state.keepers ?? 1;
   form.week.value = state.week;
   form.rituals.checked = state.rituals;
+  form.prevention.checked = state.prevention !== false;
   fillThemes(state.age, state.theme);
 }
 
@@ -156,6 +161,7 @@ function formState() {
     week: clamp(Number(f.week.value) || isoWeek(), 1, 53),
     variant,
     rituals: f.rituals.checked,
+    prevention: stageOf(f.age.value) === 'youth' ? f.prevention.checked : undefined,
   };
 }
 
@@ -242,8 +248,43 @@ function renderRitualBlock(kind, time, label, raw, standard = [], theme = null) 
     </li>`;
 }
 
+// Präventions-Aufwärmen (nach FIFA 11+ / 11+ Kids), eigene Kurzbeschreibung aus data/prevention.json.
+const preventionProgram = (id) => prevention?.programs.find((p) => p.id === id) ?? null;
+const loc = (o) => (o ? o[getLang()] ?? o.de : '');
+
+function renderPreventionBody(program, level) {
+  const stufe = clamp(level || 1, 1, 3);
+  return `
+    <div class="ex-body">
+      <p class="dial">${esc(loc(program.note))}</p>
+      ${program.parts
+        .map(
+          (part) => `
+        ${program.parts.length > 1 || part.title ? `<h4 class="prevention-part">${esc(loc(part.title))}</h4>` : ''}
+        <ol class="prevention-list">${part.exercises
+          .map((x) => `<li><strong>${esc(loc(x.name))}</strong>: ${esc(loc(x.how))}${x.levels ? ` <span class="prevention-level">${esc(t('preventionLevel', { n: stufe }))}: ${esc(loc(x.levels[stufe - 1]))}</span>` : ''}</li>`)
+          .join('')}</ol>`,
+        )
+        .join('')}
+      <p class="hint">${esc(loc(prevention.source))}</p>
+    </div>`;
+}
+
 function renderBlock(block, age) {
   const label = phaseLabel(block.phase, age);
+  const prog = block.prevention && preventionProgram(block.prevention);
+  if (prog) {
+    return `
+    <details>
+      <summary class="block-head">
+        <span class="time">${block.minutes} min</span>
+        <span class="phase">${esc(label)}</span>
+        <span class="name">${esc(loc(prog.name))}</span>
+        <span class="tag tag-ritual">${esc(t('preventionLevel', { n: clamp(block.preventionLevel || 1, 1, 3) }))}</span>
+      </summary>
+      ${renderPreventionBody(prog, block.preventionLevel)}
+    </details>`;
+  }
   if (!block.exercise) return `<div class="block-head"><span class="time">${block.minutes} min</span><span>${esc(label)}: ${esc(t('noExercise'))}</span></div>`;
   const ex = localizeExercise(block.exercise);
   return `
@@ -813,6 +854,8 @@ function stepTitle(step) {
     const y = stageOf(trainer.age) === 'youth';
     return { label: t(step.kind === 'opening' ? (y ? 'openingYouth' : 'openingCircle') : y ? 'closingYouth' : 'closingCircle'), name: item?.name ?? '' };
   }
+  const prog = step.block.prevention && preventionProgram(step.block.prevention);
+  if (prog) return { label: phaseLabel(step.kind, trainer.age), name: loc(prog.name) };
   const ex = step.block.exercise && localizeExercise(step.block.exercise);
   return { label: phaseLabel(step.kind, trainer.age), name: ex ? ex.name : t('noExercise') };
 }
@@ -838,6 +881,8 @@ function renderTrainer() {
   if (step.ritual) {
     const item = localizeRitual(step.kind, step.ritual);
     if (item) body = renderRitualBody(item, standard?.[step.kind], trainer.index === 0 ? trainer.theme : null);
+  } else if (step.block.prevention && preventionProgram(step.block.prevention)) {
+    body = renderPreventionBody(preventionProgram(step.block.prevention), step.block.preventionLevel);
   } else if (step.block.exercise) {
     body = renderExerciseBody(localizeExercise(step.block.exercise), step.block.variation);
   }
@@ -966,6 +1011,8 @@ bindLangToggle();
 async function main() {
   const files = ['exercises.json', 'rituals.json', 'exercises.en.json', 'rituals.en.json'];
   const [ex, rit, exEn, ritEn] = await Promise.all(files.map((f) => fetch(`data/${f}`).then((r) => r.json())));
+  // Optional: ohne die Datei bleibt die Aktivierung eine normale Übung.
+  prevention = await fetch('data/prevention.json').then((r) => (r.ok ? r.json() : null)).catch(() => null);
   exercises = ex;
   rituals = rit;
   setTranslations(exEn, ritEn);

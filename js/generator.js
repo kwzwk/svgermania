@@ -105,6 +105,8 @@ export function generatePlan(exercises, opts, rituals = null) {
   const withRituals = opts.rituals !== false;
   const group = AGE_GROUPS[age];
   if (!group) throw new Error(`Unbekannte Altersklasse: ${age}`);
+  // Präventions-Aufwärmen: in der Jugend standardmäßig an, ersetzt die Übung der Aktivierung.
+  const prevention = opts.prevention !== false && group.prevention ? group.prevention : null;
   const theme = !opts.theme || opts.theme === 'auto' ? themeForWeek(age, week) : opts.theme;
   const rng = createRng(hashSeed(age, level, sessions, minutes, theme, week, players ?? '', variant));
   const candidates = suitableExercises(exercises, { age, level, players });
@@ -141,7 +143,9 @@ export function generatePlan(exercises, opts, rituals = null) {
         rng,
       );
       if (exercise) used.add(exercise.id);
-      return { phase: phase.id, label: phase.label, minutes: phaseMinutes[i], exercise, variation: variationFor(sessionLevel) };
+      const block = { phase: phase.id, label: phase.label, minutes: phaseMinutes[i], exercise, variation: variationFor(sessionLevel) };
+      if (prevention && phase.id === 'aufwaermen') Object.assign(block, { prevention, preventionLevel: sessionLevel });
+      return block;
     });
     // Rituale immer auswürfeln, damit die Übungsauswahl mit und ohne Rituale gleich bleibt.
     const opening = { minutes: rm.opening, arrival: ritual('arrival'), circle: ritual('opening') };

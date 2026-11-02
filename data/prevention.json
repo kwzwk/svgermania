@@ -1,0 +1,460 @@
+{
+  "source": {
+    "de": "Eigene Kurzbeschreibung. Vollständige Anleitungen mit Bildern gibt es kostenlos von FIFA und DFB unter „FIFA 11+“ bzw. „11+ Kids“.",
+    "en": "Our own short description. Full instructions with pictures are available free from FIFA and the DFB under “FIFA 11+” and “11+ Kids”."
+  },
+  "programs": [
+    {
+      "id": "11plus-kids",
+      "name": {
+        "de": "Präventions-Aufwärmen (nach FIFA 11+ Kids)",
+        "en": "Injury-prevention warm-up (based on FIFA 11+ Kids)"
+      },
+      "minutes": 15,
+      "note": {
+        "de": "Für Spieler unter 14. Mindestens zweimal pro Woche, jede Übung etwa 2 Minuten. Die Stufe steigt, wenn alle die Übung sauber beherrschen.",
+        "en": "For players under 14. At least twice a week, about 2 minutes per exercise. Move up a level once everyone does the exercise cleanly."
+      },
+      "parts": [
+        {
+          "title": {
+            "de": "Ablauf",
+            "en": "Sequence"
+          },
+          "exercises": [
+            {
+              "name": {
+                "de": "Laufen mit Richtungswechsel",
+                "en": "Running with changes of direction"
+              },
+              "how": {
+                "de": "Zwischen zwei Hütchenreihen hin und zurück: vorwärts, seitwärts, rückwärts, auf Zuruf stoppen und wieder antreten.",
+                "en": "Back and forth between two rows of cones: forwards, sideways, backwards, stop on a call and set off again."
+              },
+              "levels": [
+                {
+                  "de": "Lockeres Tempo, klare Stopps auf beiden Beinen.",
+                  "en": "Easy pace, clear stops on both feet."
+                },
+                {
+                  "de": "Schneller, Stopp auf einem Bein.",
+                  "en": "Faster, stop on one leg."
+                },
+                {
+                  "de": "Richtung kommt erst beim Zuruf, mit Ball am Fuß.",
+                  "en": "Direction only on the call, with a ball at the feet."
+                }
+              ]
+            },
+            {
+              "name": {
+                "de": "Seitsprünge wie ein Eisschnellläufer",
+                "en": "Speed-skater side jumps"
+              },
+              "how": {
+                "de": "Von einem Bein seitlich auf das andere springen und die Landung kurz halten. Knie zeigt über die Fußspitze.",
+                "en": "Jump sideways from one leg onto the other and hold the landing briefly. Knee points over the toes."
+              },
+              "levels": [
+                {
+                  "de": "Kleine Sprünge, zwei Sekunden halten.",
+                  "en": "Small jumps, hold for two seconds."
+                },
+                {
+                  "de": "Weitere Sprünge, sofort weiter.",
+                  "en": "Longer jumps, keep going straight away."
+                },
+                {
+                  "de": "Mit Zuspiel: nach der Landung einen Ball zurückpassen.",
+                  "en": "With a pass: after landing, pass a ball back."
+                }
+              ]
+            },
+            {
+              "name": {
+                "de": "Spinnengang",
+                "en": "Spider crawl"
+              },
+              "how": {
+                "de": "Auf Händen und Füßen vorwärts, seitwärts und rückwärts, der Bauch bleibt oben, Knie berühren den Boden nicht.",
+                "en": "On hands and feet forwards, sideways and backwards, stomach stays up, knees don't touch the ground."
+              },
+              "levels": [
+                {
+                  "de": "Langsam vorwärts.",
+                  "en": "Slowly forwards."
+                },
+                {
+                  "de": "Alle Richtungen, schneller.",
+                  "en": "All directions, faster."
+                },
+                {
+                  "de": "Als Fangspiel zu zweit.",
+                  "en": "As a tag game in pairs."
+                }
+              ]
+            },
+            {
+              "name": {
+                "de": "Einbeinstand mit Ball",
+                "en": "Single-leg stance with a ball"
+              },
+              "how": {
+                "de": "Auf einem Bein stehen, das Knie leicht gebeugt. Den Ball halten oder zuspielen, dann das Bein wechseln.",
+                "en": "Stand on one leg with the knee slightly bent. Hold or pass the ball, then switch legs."
+              },
+              "levels": [
+                {
+                  "de": "Ball mit beiden Händen halten.",
+                  "en": "Hold the ball with both hands."
+                },
+                {
+                  "de": "Ball um den Körper und unter dem Bein durchführen.",
+                  "en": "Move the ball around the body and under the leg."
+                },
+                {
+                  "de": "Ball mit dem Partner zuwerfen, beide auf einem Bein.",
+                  "en": "Throw the ball to a partner, both on one leg."
+                }
+              ]
+            },
+            {
+              "name": {
+                "de": "Liegestütz-Varianten",
+                "en": "Press-up variations"
+              },
+              "how": {
+                "de": "Körper gerade wie ein Brett, Hände unter den Schultern.",
+                "en": "Body straight like a plank, hands under the shoulders."
+              },
+              "levels": [
+                {
+                  "de": "Auf den Knien, langsam ab und auf.",
+                  "en": "On the knees, slowly down and up."
+                },
+                {
+                  "de": "Ganzer Liegestütz.",
+                  "en": "Full press-up."
+                },
+                {
+                  "de": "Liegestütz, dabei abwechselnd eine Hand zur Schulter tippen.",
+                  "en": "Press-up, then tap one hand to the opposite shoulder in turn."
+                }
+              ]
+            },
+            {
+              "name": {
+                "de": "Einbeinsprünge",
+                "en": "Single-leg hops"
+              },
+              "how": {
+                "de": "Auf einem Bein springen und weich landen, das Knie knickt nicht nach innen.",
+                "en": "Hop on one leg and land softly, the knee doesn't collapse inwards."
+              },
+              "levels": [
+                {
+                  "de": "Auf der Stelle, vor und zurück.",
+                  "en": "On the spot, forwards and back."
+                },
+                {
+                  "de": "Seitwärts und diagonal.",
+                  "en": "Sideways and diagonally."
+                },
+                {
+                  "de": "Über eine Linie, mit Drehung.",
+                  "en": "Over a line, with a turn."
+                }
+              ]
+            },
+            {
+              "name": {
+                "de": "Richtig fallen",
+                "en": "Falling safely"
+              },
+              "how": {
+                "de": "Aus dem Hocken seitlich über die Schulter abrollen, nicht mit gestrecktem Arm abfangen.",
+                "en": "From a crouch, roll sideways over the shoulder, don't catch the fall with a straight arm."
+              },
+              "levels": [
+                {
+                  "de": "Aus der Hocke.",
+                  "en": "From a crouch."
+                },
+                {
+                  "de": "Aus dem Stand.",
+                  "en": "From standing."
+                },
+                {
+                  "de": "Aus leichtem Laufen, nach einem Schubser des Partners.",
+                  "en": "From a light run, after a nudge from a partner."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11plus",
+      "name": {
+        "de": "Präventions-Aufwärmen (nach FIFA 11+)",
+        "en": "Injury-prevention warm-up (based on FIFA 11+)"
+      },
+      "minutes": 20,
+      "note": {
+        "de": "Ab 14 Jahren. Volle Fassung etwa 20 Minuten, mindestens zweimal pro Woche. Ist die Aktivierung kürzer, Teil 1 und 3 nur einmal laufen, Teil 2 immer vollständig.",
+        "en": "From age 14. Full version about 20 minutes, at least twice a week. If the activation is shorter, run parts 1 and 3 only once, always do part 2 in full."
+      },
+      "parts": [
+        {
+          "title": {
+            "de": "Teil 1: Laufen (ca. 8 Minuten)",
+            "en": "Part 1: Running (about 8 minutes)"
+          },
+          "exercises": [
+            {
+              "name": {
+                "de": "Lockeres Laufen",
+                "en": "Easy running"
+              },
+              "how": {
+                "de": "Zwei Hütchenreihen im Abstand von etwa 20 m, paarweise locker hin und zurück.",
+                "en": "Two rows of cones about 20 m apart, jog there and back in pairs."
+              }
+            },
+            {
+              "name": {
+                "de": "Hüfte öffnen und schließen",
+                "en": "Hip out and in"
+              },
+              "how": {
+                "de": "Beim Laufen an jedem Hütchen das Knie anheben und nach außen bzw. nach innen drehen.",
+                "en": "While running, lift the knee at each cone and rotate it outwards or inwards."
+              }
+            },
+            {
+              "name": {
+                "de": "Partner umkreisen",
+                "en": "Circling a partner"
+              },
+              "how": {
+                "de": "In der Mitte treffen sich die Partner, umkreisen einander seitwärts und laufen weiter.",
+                "en": "Partners meet in the middle, shuffle sideways around each other and carry on."
+              }
+            },
+            {
+              "name": {
+                "de": "Schulterkontakt",
+                "en": "Shoulder contact"
+              },
+              "how": {
+                "de": "In der Mitte gemeinsam hochspringen und leicht mit der Schulter berühren, beidbeinig landen.",
+                "en": "Jump together in the middle with light shoulder contact, land on both feet."
+              }
+            },
+            {
+              "name": {
+                "de": "Vor und zurück sprinten",
+                "en": "Quick forwards and backwards"
+              },
+              "how": {
+                "de": "Schnell zum zweiten Hütchen, rückwärts zum ersten, wieder vor. Kleine Schritte, Knie leicht gebeugt.",
+                "en": "Quick run to the second cone, backwards to the first, forwards again. Small steps, knees slightly bent."
+              }
+            }
+          ]
+        },
+        {
+          "title": {
+            "de": "Teil 2: Kraft, Sprünge, Gleichgewicht (ca. 10 Minuten)",
+            "en": "Part 2: Strength, jumps, balance (about 10 minutes)"
+          },
+          "exercises": [
+            {
+              "name": {
+                "de": "Unterarmstütz",
+                "en": "Forearm plank"
+              },
+              "how": {
+                "de": "Auf Unterarmen und Fußspitzen, Körper gerade, nicht ins Hohlkreuz.",
+                "en": "On forearms and toes, body straight, don't arch the back."
+              },
+              "levels": [
+                {
+                  "de": "Halten, 3 × 20–30 Sekunden.",
+                  "en": "Hold, 3 × 20–30 seconds."
+                },
+                {
+                  "de": "Abwechselnd ein Bein kurz anheben.",
+                  "en": "Lift one leg briefly in turn."
+                },
+                {
+                  "de": "Ein Bein angehoben halten.",
+                  "en": "Hold one leg raised."
+                }
+              ]
+            },
+            {
+              "name": {
+                "de": "Seitstütz",
+                "en": "Side plank"
+              },
+              "how": {
+                "de": "Auf einem Unterarm, Hüfte oben, Körper in einer Linie. Beide Seiten.",
+                "en": "On one forearm, hips up, body in a line. Both sides."
+              },
+              "levels": [
+                {
+                  "de": "Unteres Knie am Boden.",
+                  "en": "Lower knee on the ground."
+                },
+                {
+                  "de": "Hüfte heben und senken.",
+                  "en": "Raise and lower the hips."
+                },
+                {
+                  "de": "Oberes Bein anheben.",
+                  "en": "Lift the top leg."
+                }
+              ]
+            },
+            {
+              "name": {
+                "de": "Nordische Hamstrings",
+                "en": "Nordic hamstrings"
+              },
+              "how": {
+                "de": "Kniend, ein Partner hält die Fersen. Langsam nach vorn sinken lassen und mit den Händen abfangen.",
+                "en": "Kneeling, a partner holds the heels. Lower forwards slowly and catch yourself with the hands."
+              },
+              "levels": [
+                {
+                  "de": "3–5 Wiederholungen.",
+                  "en": "3–5 repetitions."
+                },
+                {
+                  "de": "7–10 Wiederholungen.",
+                  "en": "7–10 repetitions."
+                },
+                {
+                  "de": "12–15 Wiederholungen.",
+                  "en": "12–15 repetitions."
+                }
+              ]
+            },
+            {
+              "name": {
+                "de": "Einbeinstand",
+                "en": "Single-leg balance"
+              },
+              "how": {
+                "de": "Auf einem Bein stehen, Knie leicht gebeugt, Hüfte gerade.",
+                "en": "Stand on one leg, knee slightly bent, hips level."
+              },
+              "levels": [
+                {
+                  "de": "Ball halten.",
+                  "en": "Hold a ball."
+                },
+                {
+                  "de": "Ball mit dem Partner zuwerfen.",
+                  "en": "Throw a ball to a partner."
+                },
+                {
+                  "de": "Partner schubst leicht, Gleichgewicht halten.",
+                  "en": "Partner nudges lightly, keep your balance."
+                }
+              ]
+            },
+            {
+              "name": {
+                "de": "Kniebeugen",
+                "en": "Squats"
+              },
+              "how": {
+                "de": "Füße hüftbreit, Knie zeigen über die Fußspitzen, langsam runter, zügig hoch.",
+                "en": "Feet hip-width apart, knees over the toes, slowly down, quickly up."
+              },
+              "levels": [
+                {
+                  "de": "Mit Fersenheben.",
+                  "en": "With a heel raise."
+                },
+                {
+                  "de": "Ausfallschritte.",
+                  "en": "Walking lunges."
+                },
+                {
+                  "de": "Einbeinige Kniebeuge.",
+                  "en": "Single-leg squat."
+                }
+              ]
+            },
+            {
+              "name": {
+                "de": "Sprünge",
+                "en": "Jumping"
+              },
+              "how": {
+                "de": "Weich landen, Knie knicken nicht nach innen.",
+                "en": "Land softly, knees don't collapse inwards."
+              },
+              "levels": [
+                {
+                  "de": "Senkrechte Sprünge beidbeinig.",
+                  "en": "Vertical jumps on both legs."
+                },
+                {
+                  "de": "Seitliche Sprünge auf einem Bein.",
+                  "en": "Lateral jumps on one leg."
+                },
+                {
+                  "de": "Kastensprünge in alle Richtungen.",
+                  "en": "Box jumps in all directions."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": {
+            "de": "Teil 3: Laufen (ca. 2 Minuten)",
+            "en": "Part 3: Running (about 2 minutes)"
+          },
+          "exercises": [
+            {
+              "name": {
+                "de": "Steigerungslauf über den Platz",
+                "en": "Build-up run across the pitch"
+              },
+              "how": {
+                "de": "Über etwa 40 m bis auf 75–80 % Tempo steigern, locker zurück.",
+                "en": "Over about 40 m, build up to 75–80 % pace, jog back."
+              }
+            },
+            {
+              "name": {
+                "de": "Laufen mit Sprüngen",
+                "en": "Bounding"
+              },
+              "how": {
+                "de": "Mit hohem Knie in weiten Sprungschritten, weich landen.",
+                "en": "Long bounding strides with a high knee, land softly."
+              }
+            },
+            {
+              "name": {
+                "de": "Antritt mit Richtungswechsel",
+                "en": "Plant and cut"
+              },
+              "how": {
+                "de": "Vier bis fünf Schritte geradeaus, auf dem Außenbein abstoppen und die Richtung wechseln.",
+                "en": "Four or five steps straight, plant on the outside leg and change direction."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
