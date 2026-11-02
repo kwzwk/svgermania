@@ -1,5 +1,6 @@
 import { AGE_GROUPS, LEVELS, THEMES, PHASES, SESSION_LENGTHS, ritualMinutes } from './config.js';
 import { generatePlan, isoWeek, sessionSteps } from './generator.js';
+import { MAX_ITEMS, MAX_MINUTES, buildSession, decodeCustom, defaultMinutes, emptyCustom, encodeCustom, fixRituals, ritualsFor, totalMinutes } from './custom.js';
 import {
   t,
   getLang,
@@ -119,7 +120,7 @@ function bindForm() {
   });
   $('#print').addEventListener('click', () => window.print());
   // Beim Drucken alle Übungen aufklappen.
-  window.addEventListener('beforeprint', () => document.querySelectorAll('#plan details').forEach((d) => (d.open = true)));
+  window.addEventListener('beforeprint', () => document.querySelectorAll('#plan details, #custom-plan details').forEach((d) => (d.open = true)));
 }
 
 // Wechsel zwischen Kinder- und Jugendfußball, ausgelöst durch die Wahl der Altersklasse.
@@ -444,6 +445,249 @@ function renderRules() {
     </div>`;
 }
 
+// ---------- Eigener Plan ----------
+
+let custom = null;
+let lastAdded = null;
+
+const customHash = () => `#custom?${encodeCustom(custom)}`;
+
+function saveCustom() {
+  if (!$('#view-custom').hidden) history.replaceState(null, '', `${location.search}${customHash()}`);
+  try {
+    localStorage.setItem('customPlan', encodeCustom(custom));
+  } catch {
+    // Ohne Speicher bleibt der Plan trotzdem im Link erhalten.
+  }
+}
+
+function ritualLabel(kind, age) {
+  const youth = stageOf(age) === 'youth';
+  if (kind === 'arrival') return t('arrival');
+  return t(kind === 'opening' ? (youth ? 'openingYouth' : 'openingCircle') : youth ? 'closingYouth' : 'closingCircle');
+}
+
+function fillCustomForm() {
+  const form = $('#custom-form');
+  $('#c-age').innerHTML = ['kids', 'youth']
+    .map((st) => `<optgroup label="${esc(t(st === 'kids' ? 'stageKids' : 'stageYouth'))}">${agesOf(st).map((id) => option(id, ageGroup(id).label, id === custom.age)).join('')}</optgroup>`)
+    .join('');
+  $('#c-levels').innerHTML = Object.keys(LEVELS)
+    .map((id) => `<label><input type="radio" name="level" value="${id}"${Number(id) === custom.level ? ' checked' : ''}><span>${esc(levelInfo(id).label)}</span></label>`)
+    .join('');
+  form.title.value = custom.title;
+  form.title.placeholder = t('customTitlePlaceholder');
+  form.rituals.checked = custom.rituals;
+  for (const kind of ['arrival', 'opening', 'closing']) {
+    form[kind].innerHTML = ritualsFor(rituals, kind, custom.age)
+      .map((raw) => localizeRitual(kind, raw))
+      .map((r) => option(r.id, r.name, r.id === custom[kind]))
+      .join('');
+  }
+  $('#c-opening-label').textContent = ritualLabel('opening', custom.age);
+  $('#c-closing-label').textContent = ritualLabel('closing', custom.age);
+  for (const el of form.querySelectorAll('.c-ritual')) el.hidden = !custom.rituals;
+  const keep = (id) => $(id).value;
+  const [phase, theme] = [keep('#c-phase'), keep('#c-theme')];
+  const all = option('', t('all'));
+  $('#c-phase').innerHTML = all + PHASES.map((p) => option(p.id, phaseLabel(p.id, custom.age), p.id === phase)).join('');
+  $('#c-theme').innerHTML = all + AGE_GROUPS[custom.age].themes.map((id) => option(id, themeLabel(id), id === theme)).join('');
+}
+
+function renderCustom() {
+  renderCustomPlan();
+  renderCustomPicker();
+  saveCustom();
+}
+
+function renderCustomPlan() {
+  const session = buildSession(custom, exercises, rituals);
+  const { total, rituals: ritualMin } = totalMinutes(custom);
+  const standard = ritualTexts(rituals, stageOf(custom.age))?.standard;
+  const items = session.blocks
+    .map((b, i) => {
+      const ex = localizeExercise(b.exercise);
+      const btn = (act, label, sym, off) => `<button type="button" data-act="${act}" data-i="${i}" aria-label="${esc(label)}" title="${esc(label)}"${off ? ' disabled' : ''}>${sym}</button>`;
+      return `
+        <li class="block phase-${b.phase} c-item">
+          <div class="c-row">
+            <label class="c-min"><input type="number" inputmode="numeric" min="1" max="${MAX_MINUTES}" value="${b.minutes}" data-i="${i}" aria-label="${esc(t('minutesShort'))}: ${esc(ex.name)}"><span>min</span></label>
+            <div class="c-name"><span class="phase">${esc(phaseLabel(b.phase, custom.age))}</span><span class="name">${esc(ex.name)}</span></div>
+            <div class="c-btns">
+              ${btn('up', t('moveUp'), '↑', i === 0)}${btn('down', t('moveDown'), '↓', i === session.blocks.length - 1)}${btn('remove', t('remove'), '✕', false)}
+            </div>
+          </div>
+          <details>
+            <summary class="c-more">${esc(t('details'))} <span class="tag tag-${b.variation}">${esc(t(b.variation))}</span></summary>
+            ${renderExerciseBody(ex, b.variation)}
+          </details>
+        </li>`;
+    })
+    .join('');
+  const op = session.opening;
+  const cl = session.closing;
+  $('#custom-plan').innerHTML = `
+    <div class="plan-summary">
+      <h2>${esc(custom.title || t('customSession'))}</h2>
+      <p>${esc(ageGroup(custom.age).short)} · ${esc(levelInfo(custom.level).label)} · <strong>${esc(t(custom.rituals ? 'customTotalRituals' : 'customTotal', { total, rituals: ritualMin }))}</strong></p>
+    </div>
+    <article class="session">
+      <ol class="blocks">
+        ${op ? renderRitualBlock('arrival', t('before'), t('arrival'), op.arrival) : ''}
+        ${op ? renderRitualBlock('opening', `${op.minutes} min`, ritualLabel('opening', custom.age), op.circle, standard?.opening) : ''}
+        ${items || `<li class="c-empty">${esc(t('customEmpty'))}</li>`}
+        ${cl ? renderRitualBlock('closing', `${cl.minutes} min`, ritualLabel('closing', custom.age), cl.circle, standard?.closing) : ''}
+      </ol>
+    </article>`;
+  $('#c-start').disabled = !session.blocks.length;
+  $('#c-clear').disabled = !custom.items.length;
+}
+
+function renderCustomPicker() {
+  const phase = $('#c-phase').value;
+  const theme = $('#c-theme').value;
+  const forAge = exercises.filter((ex) => ex.ages.includes(custom.age));
+  const list = forAge.filter((ex) => (!phase || ex.phase === phase) && (!theme || ex.themes.includes(theme)));
+  const counts = new Map();
+  for (const it of custom.items) counts.set(it.id, (counts.get(it.id) ?? 0) + 1);
+  const full = custom.items.length >= MAX_ITEMS;
+  $('#c-count').textContent = `${t('catCount', { n: list.length, total: forAge.length })}${full ? ` · ${t('customFull', { n: MAX_ITEMS })}` : ''}`;
+  $('#c-catalog').innerHTML = list
+    .map(localizeExercise)
+    .map((ex) => {
+      const n = counts.get(ex.id);
+      return `
+      <article class="card pick phase-${ex.phase}">
+        <div class="pick-head">
+          <div class="pick-title">
+            <span class="name">${esc(ex.name)}</span>
+            <span class="muted">${esc(phaseLabel(ex.phase, custom.age))} · ${esc(ex.themes.map(themeLabel).join(', '))}${n ? ` · <strong class="in-plan">${esc(t('customInPlan', { n }))}</strong>` : ''}</span>
+          </div>
+          <button type="button" class="add" data-add="${esc(ex.id)}"${full ? ' disabled' : ''}>${esc(t(lastAdded === ex.id ? 'customAdded' : 'customAdd'))}</button>
+        </div>
+        <details>
+          <summary class="c-more">${esc(t('details'))}</summary>
+          ${renderExerciseBody(ex, 'base')}
+        </details>
+      </article>`;
+    })
+    .join('');
+}
+
+function setCustom(next) {
+  custom = next;
+  renderCustom();
+}
+
+function moveItem(i, delta) {
+  const items = [...custom.items];
+  const j = i + delta;
+  if (j < 0 || j >= items.length) return;
+  [items[i], items[j]] = [items[j], items[i]];
+  setCustom({ ...custom, items });
+}
+
+async function shareCustom() {
+  const lang = getLang() === 'de' ? '' : `?lang=${getLang()}`;
+  const url = `${location.origin}${location.pathname}${lang}${customHash()}`;
+  const status = $('#c-share-status');
+  status.textContent = '';
+  // Auf dem Handy das System-Teilen-Menü, sonst in die Zwischenablage.
+  if (navigator.share && matchMedia('(pointer: coarse)').matches) {
+    try {
+      await navigator.share({ title: custom.title || t('customSession'), url });
+      return;
+    } catch (err) {
+      if (err?.name === 'AbortError') return;
+    }
+  }
+  try {
+    await navigator.clipboard.writeText(url);
+    status.textContent = t('linkCopied');
+  } catch {
+    window.prompt(t('copyLink'), url);
+  }
+}
+
+function bindCustom() {
+  const form = $('#custom-form');
+  form.addEventListener('submit', (e) => e.preventDefault());
+  form.addEventListener('input', (e) => {
+    if (e.target.name !== 'title') return;
+    custom = { ...custom, title: e.target.value };
+    renderCustomPlan();
+    saveCustom();
+  });
+  form.addEventListener('change', (e) => {
+    const name = e.target.name;
+    if (name === 'title') return;
+    let next = { ...custom };
+    if (name === 'age') next = fixRituals({ ...next, age: form.age.value }, rituals);
+    else if (name === 'level') next.level = Number(e.target.value);
+    else if (name === 'rituals') next.rituals = e.target.checked;
+    else if (['arrival', 'opening', 'closing'].includes(name)) next[name] = e.target.value;
+    custom = next;
+    if (name === 'age' || name === 'rituals') fillCustomForm();
+    renderCustom();
+  });
+  $('#custom-plan').addEventListener('click', (e) => {
+    const btn = e.target.closest('button[data-act]');
+    if (!btn) return;
+    const i = Number(btn.dataset.i);
+    if (btn.dataset.act === 'up') moveItem(i, -1);
+    else if (btn.dataset.act === 'down') moveItem(i, 1);
+    else if (btn.dataset.act === 'remove') setCustom({ ...custom, items: custom.items.filter((_, k) => k !== i) });
+  });
+  $('#custom-plan').addEventListener('change', (e) => {
+    if (!e.target.matches('.c-min input')) return;
+    const i = Number(e.target.dataset.i);
+    const minutes = Math.min(MAX_MINUTES, Math.max(1, Math.round(Number(e.target.value)) || 1));
+    setCustom({ ...custom, items: custom.items.map((it, k) => (k === i ? { ...it, minutes } : it)) });
+  });
+  $('#c-catalog').addEventListener('click', (e) => {
+    const btn = e.target.closest('button[data-add]');
+    if (!btn || custom.items.length >= MAX_ITEMS) return;
+    const ex = exercises.find((x) => x.id === btn.dataset.add);
+    if (!ex) return;
+    lastAdded = ex.id;
+    setCustom({ ...custom, items: [...custom.items, { id: ex.id, minutes: defaultMinutes(custom.age, ex.phase) }] });
+    setTimeout(() => {
+      if (lastAdded !== ex.id) return;
+      lastAdded = null;
+      const b = $(`#c-catalog button[data-add="${ex.id}"]`);
+      if (b) b.textContent = t('customAdd');
+    }, 1500);
+  });
+  for (const id of ['#c-phase', '#c-theme']) $(id).addEventListener('change', renderCustomPicker);
+  $('#c-share').addEventListener('click', shareCustom);
+  $('#c-print').addEventListener('click', () => window.print());
+  $('#c-clear').addEventListener('click', () => {
+    if (custom.items.length && window.confirm(t('customClearConfirm'))) setCustom({ ...custom, items: [] });
+  });
+  $('#c-start').addEventListener('click', () => {
+    const session = buildSession(custom, exercises, rituals);
+    if (!session.blocks.length) return;
+    startSession(session, { age: custom.age, title: () => custom.title || t('customSession'), returnTo: '#c-start' });
+  });
+}
+
+function initCustom(fallbackAge) {
+  const hash = location.hash.slice(1);
+  let src = hash.startsWith('custom') ? hash.slice('custom'.length).replace(/^\?/, '') : '';
+  if (!src) {
+    try {
+      src = localStorage.getItem('customPlan') ?? '';
+    } catch {
+      src = '';
+    }
+  }
+  custom = src ? decodeCustom(src, exercises, rituals) : fixRituals(emptyCustom(fallbackAge), rituals);
+  fillCustomForm();
+  bindCustom();
+  renderCustomPlan();
+  renderCustomPicker();
+}
+
 // ---------- Trainingsmodus mit Countdown ----------
 
 const trainer = { steps: [], index: 0, endAt: 0, left: 0, paused: false, alerted: false, timer: null, wakeLock: null, audio: null };
@@ -458,10 +702,17 @@ function fillStartSessions(plan) {
 function startTraining() {
   const session = currentPlan?.sessions.find((s) => s.number === Number($('#start-session').value)) ?? currentPlan?.sessions[0];
   if (!session) return;
+  const age = currentPlan.age;
+  startSession(session, { age, theme: currentPlan.theme, title: () => sessionTitle(session.number, age), returnTo: '#start-training' });
+}
+
+// Startet den Trainingsmodus für eine Einheit (aus dem Wochenplan oder dem eigenen Plan).
+function startSession(session, { age, theme = null, title, returnTo }) {
   trainer.steps = sessionSteps(session).map((st) => ({ ...st, level: session.level }));
-  trainer.session = session.number;
-  trainer.age = currentPlan.age;
-  trainer.theme = currentPlan.theme;
+  trainer.title = title;
+  trainer.returnTo = returnTo;
+  trainer.age = age;
+  trainer.theme = theme;
   // Audio muss in einer Nutzeraktion entsperrt werden (iOS).
   try {
     trainer.audio ??= new (window.AudioContext || window.webkitAudioContext)();
@@ -483,7 +734,7 @@ function stopTraining() {
   document.body.classList.remove('training');
   trainer.wakeLock?.release().catch(() => {});
   trainer.wakeLock = null;
-  $('#start-training').focus();
+  $(trainer.returnTo ?? '#start-training')?.focus();
 }
 
 function goToStep(i) {
@@ -572,7 +823,7 @@ function renderTrainer() {
   if (trainer.index >= total) {
     box.innerHTML = `
       <div class="trainer-inner trainer-done">
-        <p class="trainer-step">${esc(sessionTitle(trainer.session, trainer.age))}</p>
+        <p class="trainer-step">${esc(trainer.title())}</p>
         <h2>${esc(t('trainingDone'))}</h2>
         <p>${esc(t('trainingDoneText'))}</p>
         <div class="trainer-controls"><button type="button" class="primary" data-act="end">${esc(t('close'))}</button></div>
@@ -594,7 +845,7 @@ function renderTrainer() {
   box.innerHTML = `
     <div class="trainer-inner ${step.ritual ? 'ritual' : `phase-${step.kind}`}">
       <div class="trainer-top">
-        <p class="trainer-step">${esc(sessionTitle(trainer.session, trainer.age))} · ${esc(t('stepOf', { n: trainer.index + 1, total }))} · <span id="trainer-total"></span></p>
+        <p class="trainer-step">${esc(trainer.title())} · ${esc(t('stepOf', { n: trainer.index + 1, total }))} · <span id="trainer-total"></span></p>
         <button type="button" class="trainer-close" data-act="end" aria-label="${esc(t('endTraining'))}">✕</button>
       </div>
       <div class="trainer-progress"><span id="trainer-bar"></span></div>
@@ -606,7 +857,7 @@ function renderTrainer() {
       ${next ? `<p class="trainer-next"><strong>${esc(t('upNext'))}:</strong> ${esc(stepTitle(next).name || stepTitle(next).label)} · ${next.minutes} min</p>` : ''}
       <details class="trainer-details" open>
         <summary>${esc(t('procedure'))}</summary>
-        ${trainer.index === 0 && !step.ritual ? focusNote(trainer.theme) : ''}
+        ${trainer.index === 0 && !step.ritual && trainer.theme ? focusNote(trainer.theme) : ''}
         ${body}
       </details>
     </div>`;
@@ -681,6 +932,9 @@ function renderAll() {
   renderCatalog();
   renderRules();
   render();
+  fillCustomForm();
+  renderCustomPlan();
+  renderCustomPicker();
   if (trainer.timer) renderTrainer();
 }
 
@@ -699,7 +953,8 @@ function showView(name) {
     if (tab.dataset.view === name) tab.setAttribute('aria-current', 'page');
     else tab.removeAttribute('aria-current');
   }
-  history.replaceState(null, '', name === 'plan' ? location.search : `${location.search}#${name}`);
+  const hash = name === 'plan' ? '' : name === 'custom' ? customHash() : `#${name}`;
+  history.replaceState(null, '', `${location.search}${hash}`);
 }
 
 setLang(getLang());
@@ -726,9 +981,11 @@ async function main() {
   renderCatalog();
   renderRules();
   render();
+  initCustom(state.age);
   for (const tab of document.querySelectorAll('.tab')) tab.addEventListener('click', () => showView(tab.dataset.view));
   const hash = location.hash.slice(1);
   if (['catalog', 'rules'].includes(hash)) showView(hash);
+  else if (hash.startsWith('custom')) showView('custom');
 }
 
 main().catch((err) => {
