@@ -1,6 +1,6 @@
 import { AGE_GROUPS, LEVELS, THEMES, PHASES, SESSION_LENGTHS, WEEKDAYS, ritualMinutes } from './config.js';
 import { generatePlan, isoWeek, sessionSteps, homeChallenges, maxSessions, trainingDays } from './generator.js';
-import { MAX_ITEMS, MAX_MINUTES, buildSession, decodeCustom, defaultMinutes, emptyCustom, encodeCustom, fixRituals, ritualsFor, totalMinutes } from './custom.js';
+import { MAX_ITEMS, MAX_MINUTES, PREVENTION_ITEMS, buildSession, decodeCustom, defaultMinutes, emptyCustom, encodeCustom, fixRituals, preventionItemsFor, ritualsFor, totalMinutes } from './custom.js';
 import {
   t,
   getLang,
@@ -32,6 +32,8 @@ let currentPlan = null;
 const stageOf = (age) => AGE_GROUPS[age]?.stage ?? 'kids';
 const agesOf = (st) => Object.keys(AGE_GROUPS).filter((id) => stageOf(id) === st);
 let stage = 'kids';
+// Bereich der Seite "Ablauf & Regeln": folgt dem Wochenplan, lässt sich dort aber unabhängig umschalten.
+let rulesStage = null;
 
 // ---------- Zustand <-> URL, damit ein Plan per Link geteilt werden kann ----------
 
@@ -175,9 +177,7 @@ function switchStage(next) {
   const state = { ...prev, minutes: AGE_GROUPS[prev.age].defaultMinutes, players: next === 'youth' ? 16 : 12 };
   applyStaticTexts();
   fillForm(state);
-  $('#cat-age').value = '';
-  fillCatalogFilters();
-  renderCatalog();
+  rulesStage = null;
   renderRules();
   render();
 }
@@ -423,24 +423,44 @@ function renderExerciseBody(ex, variation) {
 
 // ---------- Übungskatalog ----------
 
+// Katalog: immer alle Übungen, Filter nach Bereich (Kinder, Jugend, Torhüter), Altersklasse, Phase und Schwerpunkt.
+const CAT_STAGES = ['kids', 'youth', 'keeper'];
+
+function phaseNames(id) {
+  const kids = phaseLabel(id, 'F');
+  const youth = phaseLabel(id, 'D');
+  return kids === youth ? kids : `${kids} / ${youth}`;
+}
+
+// Phase einer Übung in der Sprache ihres Bereichs (Spielen I im Kinderfußball, Spielblock 1 in der Jugend).
+const exercisePhase = (ex) => phaseLabel(ex.phase, ex.ages.some((a) => stageOf(a) === 'kids') ? 'F' : 'D');
+
 function fillCatalogFilters() {
   const keep = (id) => $(id).value;
-  const [age, phase, theme] = [keep('#cat-age'), keep('#cat-phase'), keep('#cat-theme')];
+  const [area, age, phase, theme] = [keep('#cat-stage'), keep('#cat-age'), keep('#cat-phase'), keep('#cat-theme')];
   const all = option('', t('all'));
-  $('#cat-age').innerHTML = all + agesOf(stage).map((id) => option(id, ageGroup(id).short, id === age)).join('');
-  const phaseAge = stage === 'youth' ? 'D' : null;
-  $('#cat-phase').innerHTML = all + PHASES.map((p) => option(p.id, phaseLabel(p.id, phaseAge), p.id === phase)).join('');
+  const areaLabel = { kids: t('stageKids'), youth: t('stageYouth'), keeper: t('keeperRole') };
+  $('#cat-stage').innerHTML = all + CAT_STAGES.map((st) => option(st, areaLabel[st], st === area)).join('');
+  $('#cat-age').innerHTML = all + ['kids', 'youth']
+    .map((st) => `<optgroup label="${esc(t(st === 'kids' ? 'stageKids' : 'stageYouth'))}">${agesOf(st).map((id) => option(id, ageGroup(id).short, id === age)).join('')}</optgroup>`)
+    .join('');
+  $('#cat-phase').innerHTML = all + PHASES.map((p) => option(p.id, phaseNames(p.id), p.id === phase)).join('');
   $('#cat-theme').innerHTML = all + Object.keys(THEMES).map((id) => option(id, themeLabel(id), id === theme)).join('');
 }
 
+function inArea(ex, area) {
+  if (!area) return true;
+  if (area === 'keeper') return ex.role === 'keeper';
+  return ex.ages.some((a) => stageOf(a) === area);
+}
+
 function renderCatalog() {
+  const area = $('#cat-stage').value;
   const age = $('#cat-age').value;
   const phase = $('#cat-phase').value;
   const theme = $('#cat-theme').value;
-  const stageAges = agesOf(stage);
-  const inStage = exercises.filter((ex) => ex.ages.some((a) => stageAges.includes(a)));
-  const list = inStage.filter((ex) => (!age || ex.ages.includes(age)) && (!phase || ex.phase === phase) && (!theme || ex.themes.includes(theme)));
-  $('#cat-count').textContent = t('catCount', { n: list.length, total: inStage.length });
+  const list = exercises.filter((ex) => inArea(ex, area) && (!age || ex.ages.includes(age)) && (!phase || ex.phase === phase) && (!theme || ex.themes.includes(theme)));
+  $('#cat-count').textContent = t('catCount', { n: list.length, total: exercises.length });
   $('#catalog').innerHTML = list
     .map(localizeExercise)
     .map(
@@ -448,7 +468,7 @@ function renderCatalog() {
       <details class="card">
         <summary>
           <span class="name">${esc(ex.name)}</span>
-          <span class="muted">${ex.role === 'keeper' ? `${esc(t('keeperRole'))} · ` : ''}${esc(phaseLabel(ex.phase, stage === 'youth' ? 'D' : null))} · ${esc(ex.ages.map((a) => ageGroup(a).short).join(', '))}</span>
+          <span class="muted">${ex.role === 'keeper' ? `${esc(t('keeperRole'))} · ` : ''}${esc(exercisePhase(ex))} · ${esc(ex.ages.map((a) => ageGroup(a).short).join(', '))}</span>
         </summary>
         ${renderExerciseBody(ex, 'base')}
       </details>`,
@@ -505,7 +525,7 @@ function fieldSvg(group) {
 
 const PHASE_HINT_KEYS = { aufwaermen: 'hintAufwaermen', uebung: 'hintUebung', spielform: 'hintSpielform', abschluss: 'hintAbschluss' };
 
-function renderStructure() {
+function renderStructure(stage) {
   if (!rituals) return '';
   const youth = stage === 'youth';
   const texts = ritualTexts(rituals, stage);
@@ -548,13 +568,17 @@ function renderStructure() {
 }
 
 function renderRules() {
+  const rs = rulesStage ?? stage;
+  $('#rules-stage').innerHTML = ['kids', 'youth']
+    .map((st) => `<label><input type="radio" name="rules-stage" value="${st}"${st === rs ? ' checked' : ''}><span>${esc(t(st === 'kids' ? 'stageKidsShort' : 'stageYouthShort'))}</span></label>`)
+    .join('');
   $('#rules').innerHTML = `
-    ${renderStructure()}
-    ${stage === 'youth' ? '' : `<h2>${esc(t('rulesTitle'))}</h2>
+    ${renderStructure(rs)}
+    ${rs === 'youth' ? '' : `<h2>${esc(t('rulesTitle'))}</h2>
     <ul class="rules">${funinoRules().map((r) => `<li>${esc(r)}</li>`).join('')}</ul>`}
     <h2>${esc(t('formatsTitle'))}</h2>
     <div class="age-cards">
-      ${agesOf(stage)
+      ${agesOf(rs)
         .map(ageGroup)
         .map(
           (g) => `
@@ -636,7 +660,8 @@ function renderCustomPlan() {
   const standard = ritualTexts(rituals, stageOf(custom.age))?.standard;
   const items = session.blocks
     .map((b, i) => {
-      const ex = localizeExercise(b.exercise);
+      const prog = b.prevention && preventionProgram(b.prevention);
+      const ex = prog ? { name: loc(prog.name) } : localizeExercise(b.exercise);
       const btn = (act, label, sym, off) => `<button type="button" data-act="${act}" data-i="${i}" aria-label="${esc(label)}" title="${esc(label)}"${off ? ' disabled' : ''}>${sym}</button>`;
       return `
         <li class="block phase-${b.phase} c-item">
@@ -648,8 +673,9 @@ function renderCustomPlan() {
             </div>
           </div>
           <details>
-            <summary class="c-more">${esc(t('details'))} <span class="tag tag-${b.variation}">${esc(t(b.variation))}</span></summary>
-            ${renderExerciseBody(ex, b.variation)}
+            ${prog
+              ? `<summary class="c-more">${esc(t('details'))} <span class="tag tag-ritual">${esc(t('preventionLevel', { n: clamp(b.preventionLevel || 1, 1, 3) }))}</span></summary>${renderPreventionBody(prog, b.preventionLevel)}`
+              : `<summary class="c-more">${esc(t('details'))} <span class="tag tag-${b.variation}">${esc(t(b.variation))}</span></summary>${renderExerciseBody(ex, b.variation)}`}
           </details>
         </li>`;
     })
@@ -682,7 +708,31 @@ function renderCustomPicker() {
   for (const it of custom.items) counts.set(it.id, (counts.get(it.id) ?? 0) + 1);
   const full = custom.items.length >= MAX_ITEMS;
   $('#c-count').textContent = `${t('catCount', { n: list.length, total: forAge.length })}${full ? ` · ${t('customFull', { n: MAX_ITEMS })}` : ''}`;
-  $('#c-catalog').innerHTML = list
+  // Präventions-Aufwärmen (FIFA 11+ / 11+ Kids) als eigener Baustein, wenn Phase und Schwerpunkt passen.
+  const prevCards = !theme && (!phase || phase === 'aufwaermen') && prevention
+    ? preventionItemsFor(custom.age)
+        .map((id) => ({ id, prog: preventionProgram(PREVENTION_ITEMS[id].program) }))
+        .filter(({ prog }) => prog)
+        .map(({ id, prog }) => {
+          const n = counts.get(id);
+          return `
+      <article class="card pick phase-aufwaermen">
+        <div class="pick-head">
+          <div class="pick-title">
+            <span class="name">${esc(loc(prog.name))}</span>
+            <span class="muted">${esc(phaseLabel('aufwaermen', custom.age))} · ${esc(t('preventionTag'))}${n ? ` · <strong class="in-plan">${esc(t('customInPlan', { n }))}</strong>` : ''}</span>
+          </div>
+          <button type="button" class="add" data-add="${esc(id)}"${full ? ' disabled' : ''}>${esc(t(lastAdded === id ? 'customAdded' : 'customAdd'))}</button>
+        </div>
+        <details>
+          <summary class="c-more">${esc(t('details'))}</summary>
+          ${renderPreventionBody(prog, custom.level)}
+        </details>
+      </article>`;
+        })
+        .join('')
+    : '';
+  $('#c-catalog').innerHTML = prevCards + list
     .map(localizeExercise)
     .map((ex) => {
       const n = counts.get(ex.id);
@@ -777,7 +827,8 @@ function bindCustom() {
   $('#c-catalog').addEventListener('click', (e) => {
     const btn = e.target.closest('button[data-add]');
     if (!btn || custom.items.length >= MAX_ITEMS) return;
-    const ex = exercises.find((x) => x.id === btn.dataset.add);
+    const id = btn.dataset.add;
+    const ex = PREVENTION_ITEMS[id] ? { id, phase: 'aufwaermen' } : exercises.find((x) => x.id === id);
     if (!ex) return;
     lastAdded = ex.id;
     setCustom({ ...custom, items: [...custom.items, { id: ex.id, minutes: defaultMinutes(custom.age, ex.phase) }] });
@@ -1114,9 +1165,13 @@ async function main() {
   bindForm();
   bindTrainer();
   fillCatalogFilters();
-  for (const id of ['#cat-age', '#cat-phase', '#cat-theme']) $(id).addEventListener('change', renderCatalog);
+  for (const id of ['#cat-stage', '#cat-age', '#cat-phase', '#cat-theme']) $(id).addEventListener('change', renderCatalog);
   renderCatalog();
   renderRules();
+  $('#rules-stage').addEventListener('change', (e) => {
+    rulesStage = e.target.value;
+    renderRules();
+  });
   render();
   initCustom(state.age);
   for (const tab of document.querySelectorAll('.tab')) tab.addEventListener('click', () => showView(tab.dataset.view));

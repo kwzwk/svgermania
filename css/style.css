@@ -332,3 +332,7 @@ body.training { overflow: hidden; }
 .home-card h3 { margin: 0 0 8px; }
 .home-card ul { margin: 8px 0 0; padding-left: 20px; }
 .home-card li { margin-bottom: 6px; }
+
+/* Bereich-Umschalter auf "Ablauf & Regeln" */
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.rules-stage { max-width: 480px; margin: 0 0 16px; }

@@ -12,6 +12,14 @@ const RITUAL_PARAMS = { arrival: 'ra', opening: 'ro', closing: 'rc' };
 
 const clamp = (n, lo, hi) => Math.min(hi, Math.max(lo, n));
 
+// Präventions-Aufwärmen als Baustein im eigenen Plan: Link-ID -> Programm in data/prevention.json.
+// 11+ Kids ist für Kinder bis 13 entwickelt (F bis D), das FIFA 11+ ab 14 (C bis A).
+export const PREVENTION_ITEMS = {
+  'prev-11plus-kids': { program: '11plus-kids', ages: ['F', 'E', 'D'] },
+  'prev-11plus': { program: '11plus', ages: ['C', 'B', 'A'] },
+};
+export const preventionItemsFor = (age) => Object.keys(PREVENTION_ITEMS).filter((id) => PREVENTION_ITEMS[id].ages.includes(age));
+
 export function emptyCustom(age = 'F') {
   return { age: AGE_GROUPS[age] ? age : 'F', level: 2, title: '', rituals: true, arrival: null, opening: null, closing: null, items: [] };
 }
@@ -61,7 +69,7 @@ export function decodeCustom(text, exercises, rituals = null) {
     const id = q.get(RITUAL_PARAMS[kind]);
     state[kind] = rituals ? (rituals[kind]?.some((r) => r.id === id) ? id : null) : id;
   }
-  const known = new Set(exercises.map((ex) => ex.id));
+  const known = new Set([...exercises.map((ex) => ex.id), ...Object.keys(PREVENTION_ITEMS)]);
   state.items = (q.get('x') ?? '')
     .split(',')
     .map((part) => {
@@ -91,9 +99,14 @@ export function buildSession(state, exercises, rituals = null) {
     level: state.level,
     opening: withRituals ? { minutes: rm.opening, arrival: find('arrival'), circle: find('opening') } : null,
     blocks: state.items
-      .map((it) => ({ it, exercise: byId.get(it.id) }))
-      .filter(({ exercise }) => exercise)
-      .map(({ it, exercise }) => ({ phase: exercise.phase, minutes: it.minutes, exercise, variation })),
+      .map((it) => {
+        const prev = PREVENTION_ITEMS[it.id];
+        // Präventions-Aufwärmen: Stufe folgt dem Niveau, wie im Wochenplan.
+        if (prev) return { id: it.id, phase: 'aufwaermen', minutes: it.minutes, exercise: null, prevention: prev.program, preventionLevel: state.level, variation };
+        const exercise = byId.get(it.id);
+        return exercise ? { id: it.id, phase: exercise.phase, minutes: it.minutes, exercise, variation } : null;
+      })
+      .filter(Boolean),
     closing: withRituals ? { minutes: rm.closing, circle: find('closing') } : null,
   };
 }
