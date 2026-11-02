@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { AGE_GROUPS, LEVELS, PHASES, THEMES, SESSION_LENGTHS, RITUAL_MINUTES, ritualMinutes } from '../js/config.js';
 import { generatePlan, sessionSteps, splitMinutes, suitableExercises, themeForWeek, isoWeek } from '../js/generator.js';
 
@@ -276,4 +276,20 @@ test('youth activation uses the prevention warm-up unless switched off', () => {
   }
   assert.equal(AGE_GROUPS.D.prevention, '11plus-kids');
   assert.equal(AGE_GROUPS.A.prevention, '11plus');
+});
+
+test('every exercise has a GIF scene and rendered GIFs in both languages', () => {
+  for (const ex of exercises) {
+    for (const file of [`tools/exercise-gifs/scenes/${ex.id}.json`, `img/exercises/${ex.id}.gif`, `img/exercises/${ex.id}.en.gif`]) {
+      assert.ok(existsSync(new URL(`../${file}`, import.meta.url)), `${ex.id}: ${file}`);
+    }
+  }
+});
+
+test('youth catalog covers every theme of each youth age group', () => {
+  for (const [age, group] of Object.entries(AGE_GROUPS)) {
+    if (group.stage !== 'youth') continue;
+    for (const phase of PHASES) assert.ok(exercises.some((e) => e.phase === phase.id && e.ages.includes(age)), `${age}: ${phase.id}`);
+    for (const theme of group.themes) assert.ok(exercises.filter((e) => e.ages.includes(age) && e.themes.includes(theme)).length >= 2, `${age}: ${theme}`);
+  }
 });

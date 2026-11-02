@@ -1,0 +1,47 @@
+{
+  "id": "ab-halbfeldflanken",
+  "name": "Halbfeldflanken-Spiel",
+  "duration": 9,
+  "fps": 12.5,
+  "field": {"w": 30, "h": 35, "margin": 3},
+  "lines": [[0, 17.5, 30, 17.5], [7, 0, 7, 9], [7, 9, 23, 9], [23, 9, 23, 0]],
+  "rects": [
+    {"x": 4, "y": 11, "w": 6, "h": 6, "fill": "#ffd23f30", "line": false},
+    {"x": 20, "y": 11, "w": 6, "h": 6, "fill": "#ffd23f30", "line": false}
+  ],
+  "goals": [
+    {"x": 15, "y": 0, "side": "top", "kind": "small"},
+    {"x": 15, "y": 35, "side": "bottom", "kind": "small"}
+  ],
+  "teams": {
+    "blue": {"color": "#2f6fd6"},
+    "red": {"color": "#d6452f"},
+    "gk": {"color": "#1fa463"}
+  },
+  "players": [
+    {"id": "A1", "team": "blue", "path": [[0, 8, 19], [1.2, 7.5, 14], [1.5, 7.8, 13.6], [3.5, 13, 11.5], [8.6, 8, 19]], "highlight": [[1.2, 1.6]]},
+    {"id": "A2", "team": "blue", "path": [[0, 15, 19], [1.0, 14, 12], [2.0, 13, 4.5], [3.5, 13, 6], [8.6, 15, 19]]},
+    {"id": "A3", "team": "blue", "path": [[0, 22, 19], [1.0, 21, 12], [2.1, 18.5, 4.2], [2.4, 18, 4], [3.5, 18, 6], [8.6, 22, 19]], "highlight": [[2.1, 2.6]]},
+    {"id": "R1", "team": "red", "path": [[0, 11, 8], [1.2, 11, 7], [2.0, 12.4, 5], [3.5, 12, 6], [8.6, 11, 8]]},
+    {"id": "R2", "team": "red", "path": [[0, 19, 8], [1.2, 19, 7.5], [2.1, 17.4, 5.4], [3.5, 17, 6], [8.6, 19, 8]]},
+    {"id": "G1", "team": "gk", "path": [[0, 15, 1.3], [1.6, 14, 1.3], [2.5, 15.5, 1.3], [2.8, 16.5, 1.1], [3.5, 15, 1.3]]},
+    {"id": "G2", "team": "gk", "path": [[0, 15, 33.7]]}
+  ],
+  "balls": [
+    {"show": [[0, 3.0], [8.6, 9]], "keys": [{"t": 0, "on": "A1"}, {"t": 1.4, "on": "A1"}, {"t": 2.2, "on": "A3", "lob": true}, {"t": 2.6, "x": 16.2, "y": -0.3}, {"t": 8.6, "on": "A1"}]}
+  ],
+  "signals": [
+    {"from": 2.6, "to": 3.8, "color": "#ffd23f", "de": "Tor", "en": "Goal"}
+  ],
+  "captions": [
+    {"from": 0, "to": 1.4, "de": "3 gegen 2+TW: ins Halbfeld dribbeln", "en": "3 v 2+GK: dribble into the half-space"},
+    {"from": 1.4, "to": 2.4, "de": "Flanke aus der Zone in den Strafraum", "en": "Cross from the zone into the box"},
+    {"from": 2.4, "to": 4.0, "de": "Tor zählt nur nach Flanke aus der Zone", "en": "A goal only counts after a cross from the zone"},
+    {"from": 4.0, "to": 9, "de": "Erster Pfosten, zweiter Pfosten, Rückraum", "en": "Near post, far post, edge of the box"}
+  ],
+  "legend": [
+    {"team": "blue", "de": "Angreifer", "en": "Attackers"},
+    {"team": "red", "de": "Verteidiger", "en": "Defenders"},
+    {"team": "gk", "de": "Torwart", "en": "Keeper"}
+  ]
+}
