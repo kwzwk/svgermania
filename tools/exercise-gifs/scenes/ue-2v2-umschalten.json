@@ -1,0 +1,45 @@
+{
+  "id": "ue-2v2-umschalten",
+  "name": "2 gegen 2 mit Umschalten",
+  "duration": 10,
+  "fps": 12.5,
+  "field": {"w": 20, "h": 20, "margin": 3},
+  "goals": [
+    {"x": 10, "y": 0, "side": "top", "kind": "small"},
+    {"x": 4, "y": 20, "side": "bottom", "kind": "mini"},
+    {"x": 16, "y": 20, "side": "bottom", "kind": "mini"}
+  ],
+  "dashed": [[8, 20, 12, 20]],
+  "teams": {
+    "blue": {"color": "#2f6fd6"},
+    "red": {"color": "#d6452f"},
+    "gk": {"color": "#1fa463"},
+    "coach": {"color": "#555b61", "letter": "T"}
+  },
+  "players": [
+    {"id": "T", "team": "coach", "path": [[0, 21.8, 14]], "face": [-1, 0]},
+    {"id": "B1", "team": "blue", "path": [[0, 6, 17], [1.0, 7, 15], [1.6, 7, 13.5], [3, 8, 10], [4.5, 9, 14], [6, 7, 18], [8.5, 6, 17]]},
+    {"id": "B2", "team": "blue", "path": [[0, 13, 17], [1.6, 14, 11], [2.4, 13.5, 8.5], [2.8, 13, 7.6], [4, 12, 10], [6, 13, 16], [9, 13, 17]]},
+    {"id": "R1", "team": "red", "path": [[0, 8, 6], [1.6, 8, 9], [3, 6, 10], [4.0, 6, 12], [5, 8, 17], [5.6, 10, 20.4], [6.2, 10, 21]], "highlight": [[5.4, 6.4]]},
+    {"id": "R2", "team": "red", "path": [[0, 12, 6], [2.4, 13, 7], [2.8, 13, 7.0], [3.4, 12, 9], [5, 12, 13], [7, 12, 10], [9, 12, 6]], "highlight": [[2.8, 3.3]]},
+    {"id": "G", "team": "gk", "path": [[0, 10, 1.3], [2.6, 11, 1.3], [5, 10, 1.3]]}
+  ],
+  "balls": [
+    {"show": [[0, 6.3], [9.6, 10]], "keys": [{"t": 0, "on": "T"}, {"t": 0.3, "on": "T"}, {"t": 1.0, "on": "B1"}, {"t": 1.6, "on": "B1"}, {"t": 2.4, "on": "B2"}, {"t": 2.8, "on": "B2"}, {"t": 3.0, "on": "R2"}, {"t": 3.4, "on": "R2"}, {"t": 4.0, "on": "R1"}, {"t": 5.8, "on": "R1"}]}
+  ],
+  "signals": [
+    {"from": 5.6, "to": 7.0, "color": "#d6452f", "de": "Punkt", "en": "Point"}
+  ],
+  "captions": [
+    {"from": 0, "to": 1.0, "de": "Trainer spielt ein Paar an", "en": "The coach passes to a pair"},
+    {"from": 1.0, "to": 3.0, "de": "2 gegen 2 auf das Tor mit Torwart", "en": "2 v 2 on the goal with keeper"},
+    {"from": 3.0, "to": 6.3, "de": "Ballgewinn: Konter über die Linie oder auf die Minitore", "en": "Ball won: counter over the line or on the mini goals"},
+    {"from": 6.3, "to": 10, "de": "Ein Umschaltmoment, dann Rollentausch", "en": "One transition, then swap roles"}
+  ],
+  "legend": [
+    {"team": "blue", "de": "Angreifer", "en": "Attackers"},
+    {"team": "red", "de": "Verteidiger", "en": "Defenders"},
+    {"team": "gk", "de": "Torwart", "en": "Keeper"},
+    {"team": "coach", "de": "Trainer", "en": "Coach"}
+  ]
+}

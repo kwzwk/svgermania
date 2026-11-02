@@ -1,0 +1,39 @@
+{
+  "id": "ue-flanken-wettbewerb",
+  "name": "Flanken-Wettbewerb in Dreiergruppen",
+  "duration": 8,
+  "fps": 12.5,
+  "field": {"w": 20, "h": 25, "margin": 3},
+  "goals": [
+    {"x": 10, "y": 0, "side": "top", "kind": "small"},
+    {"x": 10, "y": 25, "side": "bottom", "kind": "small"}
+  ],
+  "teams": {
+    "blue": {"color": "#2f6fd6"},
+    "red": {"color": "#d6452f"}
+  },
+  "players": [
+    {"id": "bP", "team": "blue", "path": [[0, 10, 16], [0.4, 10, 16], [2, 10, 14.5], [4, 10, 15], [6, 10, 16]]},
+    {"id": "bW", "team": "blue", "path": [[0, 4, 14], [1.0, 3, 11], [2.4, 2, 3.5], [2.8, 2, 3], [4.5, 3, 8], [6.5, 4, 14]]},
+    {"id": "bA", "team": "blue", "path": [[0, 8, 14], [2.4, 8, 8], [3.4, 9, 3.5], [3.8, 9, 4], [6, 8, 12]]},
+    {"id": "bB", "team": "blue", "path": [[0, 13, 15], [2.4, 12, 9], [3.4, 12.5, 5], [4, 12, 6], [6, 13, 15]]},
+    {"id": "rP", "team": "red", "path": [[0, 10, 10], [2, 10, 9], [4, 10, 9], [4.4, 10, 9], [6, 10, 10.5]]},
+    {"id": "rW", "team": "red", "path": [[0.5, 17, 17], [2.5, 16, 11], [4, 16, 11], [5.0, 17, 14], [6.4, 18, 21.5], [6.8, 18, 22]]},
+    {"id": "rA", "team": "red", "path": [[2, 12, 13], [4, 12, 11], [6.4, 12, 17], [7.4, 11, 21.5], [7.8, 11, 21]]},
+    {"id": "rB", "team": "red", "path": [[0, 8, 19], [2, 7, 10], [4, 7, 10], [6.4, 8, 16], [7.4, 7.5, 20]]}
+  ],
+  "balls": [
+    {"show": [[0, 4.5], [7.5, 8]], "keys": [{"t": 0, "on": "bP"}, {"t": 0.4, "on": "bP"}, {"t": 1.0, "on": "bW"}, {"t": 2.6, "on": "bW"}, {"t": 3.4, "on": "bA", "lob": true}, {"t": 3.7, "x": 10.5, "y": -0.3}]},
+    {"show": [[0, 0.5], [3.5, 8]], "keys": [{"t": 4, "on": "rP"}, {"t": 4.4, "on": "rP"}, {"t": 5.0, "on": "rW"}, {"t": 6.6, "on": "rW"}, {"t": 7.4, "on": "rA", "lob": true}, {"t": 7.7, "x": 9.5, "y": 25.3}]}
+  ],
+  "captions": [
+    {"from": 0, "to": 1.6, "de": "Passgeber spielt den Flankengeber an", "en": "The passer finds the crosser"},
+    {"from": 1.6, "to": 3.4, "de": "Mitnahme zur Grundlinie und Flanke", "en": "Take it to the byline and cross"},
+    {"from": 3.4, "to": 5.0, "de": "Abschluss nur direkt", "en": "Finish first time only"},
+    {"from": 5.0, "to": 8, "de": "Beide Teams gleichzeitig, dann Positionen rotieren", "en": "Both teams at once, then rotate positions"}
+  ],
+  "legend": [
+    {"team": "blue", "de": "Team 1", "en": "Team 1"},
+    {"team": "red", "de": "Team 2", "en": "Team 2"}
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "id": "aw-pass-lauf-abc",
+  "name": "Passen, Laufen, Balljäger",
+  "duration": 10,
+  "fps": 12.5,
+  "field": {"w": 25, "h": 25, "margin": 3},
+  "goals": [
+    {"x": 12.5, "y": 0, "side": "top", "kind": "mini"},
+    {"x": 12.5, "y": 25, "side": "bottom", "kind": "mini"},
+    {"x": 0, "y": 12.5, "side": "left", "kind": "mini"},
+    {"x": 25, "y": 12.5, "side": "right", "kind": "mini"}
+  ],
+  "teams": {
+    "blue": {"color": "#2f6fd6"},
+    "red": {"color": "#d6452f"}
+  },
+  "players": [
+    {"id": "B1", "team": "blue", "path": [[0, 6, 6], [1.2, 1.2, 6], [2.4, 5, 6], [4.6, 6, 6], [5.6, 6, 6.2], [7, 6, 6]], "tail": [[0.3, 2.4]]},
+    {"id": "B2", "team": "blue", "path": [[0, 12, 6], [1.4, 12, 6], [2.6, 12, 1.2], [3.8, 12, 5.5], [6, 12, 6]], "tail": [[1.6, 3.8]]},
+    {"id": "B3", "team": "blue", "path": [[0, 12, 12], [5, 12.5, 11.5]]},
+    {"id": "B4", "team": "blue", "path": [[0, 6, 12], [5, 5.5, 12.5]]},
+    {"id": "R1", "team": "red", "path": [[0, 15, 15], [5.0, 15, 15.5], [6.2, 9.5, 6.0], [7.4, 12, 1.8], [8.0, 12, 2.6]], "highlight": [[5.0, 8.0]]},
+    {"id": "R2", "team": "red", "path": [[0, 19, 15], [5, 19.5, 15.5]]},
+    {"id": "R3", "team": "red", "path": [[0, 19, 21], [5, 18.5, 21.5]]},
+    {"id": "R4", "team": "red", "path": [[0, 15, 21], [5, 15.5, 20.5]]}
+  ],
+  "balls": [
+    {"show": [[0, 8.0], [9.5, 10]], "keys": [{"t": 0, "on": "B1"}, {"t": 0.3, "on": "B1"}, {"t": 1.0, "on": "B2"}, {"t": 1.4, "on": "B2"}, {"t": 2.4, "on": "B3"}, {"t": 2.8, "on": "B3"}, {"t": 3.8, "on": "B4"}, {"t": 4.2, "on": "B4"}, {"t": 5.2, "on": "B1"}, {"t": 5.6, "on": "B1"}, {"t": 6.0, "x": 9.5, "y": 6.0}, {"t": 6.2, "on": "R1"}, {"t": 7.4, "on": "R1"}, {"t": 7.7, "x": 12.4, "y": -0.3}]},
+    {"keys": [{"t": 0, "on": "R2"}, {"t": 0.5, "on": "R2"}, {"t": 1.5, "on": "R3"}, {"t": 2.0, "on": "R3"}, {"t": 3.0, "on": "R4"}, {"t": 3.5, "on": "R4"}, {"t": 4.5, "on": "R2"}, {"t": 5.0, "on": "R2"}, {"t": 6.0, "on": "R3"}, {"t": 6.5, "on": "R3"}, {"t": 7.5, "on": "R4"}, {"t": 8.0, "on": "R4"}, {"t": 9.0, "on": "R2"}]}
+  ],
+  "signals": [
+    {"from": 5.0, "to": 8.0, "color": "#d6452f", "de": "Rot!", "en": "Red!"}
+  ],
+  "captions": [
+    {"from": 0, "to": 5.0, "de": "Passen in der Gruppe, danach Laufschule zum Rand", "en": "Pass in the group, then running drills to the edge"},
+    {"from": 5.0, "to": 8.0, "de": "Trainer ruft Rot: Rot jagt fremde Bälle", "en": "Coach calls red: red hunts other balls"},
+    {"from": 8.0, "to": 10, "de": "Gejagte Bälle in die Minitore spielen", "en": "Play the hunted balls into the mini goals"}
+  ],
+  "legend": [
+    {"team": "blue", "de": "Gruppe Blau", "en": "Group blue"},
+    {"team": "red", "de": "Gruppe Rot", "en": "Group red"}
+  ]
+}

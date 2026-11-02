@@ -1,0 +1,55 @@
+{
+  "id": "ab-sechseck-anspieler",
+  "name": "Sechseck-Spiel mit tiefen Anspielern",
+  "duration": 10,
+  "fps": 12.5,
+  "field": {"w": 25, "h": 33, "margin": 3, "outline": false},
+  "lines": [[6, 0, 19, 0], [19, 0, 25, 8], [25, 8, 25, 25], [25, 25, 19, 33], [19, 33, 6, 33], [6, 33, 0, 25], [0, 25, 0, 8], [0, 8, 6, 0], [0, 16.5, 25, 16.5]],
+  "goals": [
+    {"x": 12.5, "y": 0, "side": "top", "kind": "small"},
+    {"x": 12.5, "y": 33, "side": "bottom", "kind": "small"}
+  ],
+  "teams": {
+    "blue": {"color": "#2f6fd6"},
+    "red": {"color": "#d6452f"},
+    "gk": {"color": "#1fa463"},
+    "supb": {"color": "#7fb0f5"},
+    "supr": {"color": "#f29a8a"}
+  },
+  "players": [
+    {"id": "B1", "team": "blue", "path": [[0, 12, 22], [0.8, 12, 21], [3, 11, 16], [6, 12, 19]]},
+    {"id": "B2", "team": "blue", "path": [[0, 18, 16], [1.6, 19, 12], [2.0, 19.5, 11], [4, 17, 12], [7, 18, 18]]},
+    {"id": "B3", "team": "blue", "path": [[0, 7, 15], [2.4, 9, 9], [3.4, 11.5, 4.5], [3.8, 11.5, 5], [6, 9, 14]]},
+    {"id": "B4", "team": "blue", "path": [[0, 15, 25], [4, 14, 18], [7, 15, 24]]},
+    {"id": "R1", "team": "red", "path": [[0, 10, 12], [3, 11, 8], [4, 10, 8], [5.4, 10, 9], [6.2, 8, 14], [8, 9, 20], [9.5, 10, 12]]},
+    {"id": "R2", "team": "red", "path": [[0, 16, 8], [3.4, 13, 5], [4, 14, 7], [6, 14, 18], [7.8, 13, 28.5], [8.2, 13, 29], [9.5, 16, 8]]},
+    {"id": "R3", "team": "red", "path": [[0, 6, 20], [3, 7, 15], [6, 6, 22]]},
+    {"id": "R4", "team": "red", "path": [[0, 20, 20], [4, 20, 16], [8, 20, 22]]},
+    {"id": "S1", "team": "supb", "path": [[0, 22.6, 3.6]], "face": [-1, 0], "highlight": [[2.5, 3.0]]},
+    {"id": "S2", "team": "supb", "path": [[0, 2.4, 3.6]], "face": [1, 0]},
+    {"id": "S3", "team": "supr", "path": [[0, 2.4, 29.4]], "face": [1, 0], "highlight": [[6.7, 7.2]]},
+    {"id": "S4", "team": "supr", "path": [[0, 22.6, 29.4]], "face": [-1, 0]},
+    {"id": "G1", "team": "gk", "path": [[0, 12.5, 1.3], [3.4, 13, 1.3], [3.8, 14, 1.1], [4.6, 12.5, 1.3]]},
+    {"id": "G2", "team": "gk", "path": [[0, 12.5, 31.7], [7.8, 13.2, 31.7], [8.2, 14, 31.9], [9, 12.5, 31.7]]}
+  ],
+  "balls": [
+    {"show": [[0, 8.6]], "keys": [{"t": 0, "on": "B1"}, {"t": 0.8, "on": "B1"}, {"t": 1.6, "on": "B2"}, {"t": 2.0, "on": "B2"}, {"t": 2.6, "on": "S1"}, {"t": 2.8, "on": "S1"}, {"t": 3.4, "on": "B3", "lob": true}, {"t": 3.7, "x": 14, "y": -0.3}, {"t": 4.4, "on": "G1", "fx": "hand"}, {"t": 5.0, "on": "G1", "fx": "hand"}, {"t": 5.6, "on": "R1", "lob": true}, {"t": 6.0, "on": "R1"}, {"t": 6.8, "on": "S3"}, {"t": 7.0, "on": "S3"}, {"t": 7.8, "on": "R2", "lob": true}, {"t": 8.1, "x": 11, "y": 33.3}]}
+  ],
+  "signals": [
+    {"from": 3.7, "to": 5.0, "color": "#ffd23f", "de": "Tor x2", "en": "Goal x2"},
+    {"from": 8.1, "to": 9.6, "color": "#ffd23f", "de": "Tor x2", "en": "Goal x2"}
+  ],
+  "captions": [
+    {"from": 0, "to": 2.6, "de": "4 gegen 4 im Sechseck", "en": "4 v 4 in a hexagon"},
+    {"from": 2.6, "to": 3.7, "de": "Tiefe Anspieler an den Seiten des Gegners", "en": "Deep support players beside the opponent's goal"},
+    {"from": 3.7, "to": 5.6, "de": "Tor nach Hereingabe zählt doppelt", "en": "A goal after their cross counts double"},
+    {"from": 5.6, "to": 10, "de": "Anspieler: 2 Kontakte, nur für ihr Team", "en": "Support players: 2 touches, only for their team"}
+  ],
+  "legend": [
+    {"team": "blue", "de": "Blau", "en": "Blue"},
+    {"team": "red", "de": "Rot", "en": "Red"},
+    {"team": "gk", "de": "Torwart", "en": "Keeper"},
+    {"team": "supb", "de": "Anspieler Blau", "en": "Blue support"},
+    {"team": "supr", "de": "Anspieler Rot", "en": "Red support"}
+  ]
+}
