@@ -52,6 +52,8 @@ export const AGE_GROUPS = {
   D: {
     id: 'D',
     stage: 'youth',
+    // Präventions-Aufwärmen in der Aktivierung (FIFA 11+ Kids unter 14, sonst FIFA 11+).
+    prevention: '11plus-kids',
     label: 'D-Jugend (U12–U13)',
     short: 'D-Jugend',
     format: 'Wettspiel 7 gegen 7 (regional auch 9 gegen 9). Im Training 1 gegen 1 bis 4+TW gegen 4+TW',
@@ -70,6 +72,7 @@ export const AGE_GROUPS = {
   C: {
     id: 'C',
     stage: 'youth',
+    prevention: '11plus',
     label: 'C-Jugend (U14–U15)',
     short: 'C-Jugend',
     format: 'Wettspiel meist 11 gegen 11 (7 bis 11 Spieler). Im Training 1 gegen 1 bis 4+TW gegen 4+TW',
@@ -88,6 +91,7 @@ export const AGE_GROUPS = {
   B: {
     id: 'B',
     stage: 'youth',
+    prevention: '11plus',
     label: 'B-Jugend (U16–U17)',
     short: 'B-Jugend',
     format: 'Wettspiel 11 gegen 11. Im Training 1 gegen 1 bis 4+TW gegen 4+TW',
@@ -107,6 +111,7 @@ export const AGE_GROUPS = {
   A: {
     id: 'A',
     stage: 'youth',
+    prevention: '11plus',
     label: 'A-Jugend (U18–U19)',
     short: 'A-Jugend',
     format: 'Wettspiel 11 gegen 11. Im Training 1 gegen 1 bis 4+TW gegen 4+TW',

@@ -243,3 +243,37 @@ test('youth sessions use short team talks and keep both game blocks equal', () =
   }
   assert.ok(rituals.principlesYouth.length > 0 && rituals.standardYouth.opening.length > 0);
 });
+
+test('youth activation uses the prevention warm-up unless switched off', () => {
+  const prev = JSON.parse(readFileSync(new URL('../data/prevention.json', import.meta.url)));
+  const ids = new Set(prev.programs.map((p) => p.id));
+  for (const p of prev.programs) {
+    assert.ok(p.name.de && p.name.en && p.note.de && p.note.en, `${p.id}: texts`);
+    for (const part of p.parts) {
+      for (const x of part.exercises) {
+        assert.ok(x.name.de && x.name.en && x.how.de && x.how.en, `${p.id}: exercise texts`);
+        if (x.levels) assert.equal(x.levels.length, 3, `${p.id}/${x.name.de}: three levels`);
+      }
+    }
+  }
+  for (const age of Object.keys(AGE_GROUPS)) {
+    const group = AGE_GROUPS[age];
+    const opts = { age, level: 2, sessions: 2, minutes: group.defaultMinutes, week: 7 };
+    const on = generatePlan(exercises, opts, rituals);
+    const off = generatePlan(exercises, { ...opts, prevention: false }, rituals);
+    for (const s of on.sessions) {
+      const warm = s.blocks.find((b) => b.phase === 'aufwaermen');
+      if (group.stage === 'youth') {
+        assert.ok(ids.has(warm.prevention), `${age}: prevention program`);
+        assert.equal(warm.preventionLevel, s.level);
+      } else {
+        assert.equal(warm.prevention, undefined, `${age}: no prevention for kids`);
+      }
+    }
+    assert.ok(off.sessions.every((s) => s.blocks.every((b) => !b.prevention)));
+    // Der Schalter ändert die Übungsauswahl nicht.
+    assert.deepEqual(on.sessions.map((s) => s.blocks.map((b) => b.exercise?.id)), off.sessions.map((s) => s.blocks.map((b) => b.exercise?.id)));
+  }
+  assert.equal(AGE_GROUPS.D.prevention, '11plus-kids');
+  assert.equal(AGE_GROUPS.A.prevention, '11plus');
+});
