@@ -186,10 +186,11 @@ test('English translations cover all strings, config and data', async () => {
 const youthAges = Object.keys(AGE_GROUPS).filter((a) => AGE_GROUPS[a].stage === 'youth');
 
 test('youth age groups exist with DFB session shares', () => {
-  assert.deepEqual(youthAges, ['D', 'C']);
+  assert.deepEqual(youthAges, ['D', 'C', 'B', 'A']);
   for (const a of youthAges) {
     assert.deepEqual(splitMinutes(90, AGE_GROUPS[a].phaseShares, true), [15, 30, 15, 30]);
-    assert.equal(AGE_GROUPS[a].minNetPlay, 48);
+    // DFB: 48 min netto bis U16, ab U17 32 min.
+    assert.equal(AGE_GROUPS[a].minNetPlay, a === 'A' ? 32 : 48);
   }
 });
 
